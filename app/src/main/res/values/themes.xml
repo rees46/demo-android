@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid" />
+
+    <style name="ThemeOverlay.Demoandroid.StartScreen" parent="">
+        <item name="backgroundColor">@color/black</item>
+        <item name="headerTextColor">@color/white</item>
+    </style>
 </resources>

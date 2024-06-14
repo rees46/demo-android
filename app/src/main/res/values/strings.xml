@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">demo-android</string>
+    <string name="app_header">DEMO<b>STORE</b></string>
 </resources>
