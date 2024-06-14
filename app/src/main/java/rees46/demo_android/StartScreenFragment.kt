@@ -13,7 +13,7 @@ class StartScreenFragment
         super.onResume()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_startScreenFragment_to_homeFragment)
-        }, 3000)
+            findNavController().navigate(R.id.action_startScreenFragment_to_mainFragment)
+        }, 1000)
     }
 }
