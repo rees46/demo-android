@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">demo-android</string>
     <string name="app_header">DEMO<b>STORE</b></string>
+    <string name="home">home</string>
+    <string name="category">category</string>
+    <string name="cart">cart</string>
+    <string name="settings">settings</string>
 </resources>

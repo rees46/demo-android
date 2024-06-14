@@ -1,8 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.Demoandroid" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid" />
@@ -10,5 +7,13 @@
     <style name="ThemeOverlay.Demoandroid.StartScreen" parent="">
         <item name="backgroundColor">@color/black</item>
         <item name="headerTextColor">@color/white</item>
+    </style>
+    
+    <style name="HomeBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@color/black</item>
+        <item name="itemRippleColor">@color/black</item>
+        <item name="itemIconTint">@color/home_bottom_navigation_item_color</item>
+        <item name="itemTextColor">@color/home_bottom_navigation_item_color</item>
+        <item name="itemIconSize">@dimen/home_bottom_navigation_size</item>
     </style>
 </resources>
