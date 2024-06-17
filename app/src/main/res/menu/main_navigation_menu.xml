@@ -12,7 +12,7 @@
     <item
         android:id="@+id/cart"
         android:enabled="true"
-        android:icon="@drawable/cart"
+        android:icon="@drawable/cart_bottom_menu"
         android:title="@string/cart" />
     <item
         android:id="@+id/settings"
