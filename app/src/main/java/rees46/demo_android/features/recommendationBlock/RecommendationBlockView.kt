@@ -10,12 +10,12 @@ import rees46.demo_android.R
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
+) : ConstraintLayout(context, attrs), ShortCardProductsAdapter.ClickListener {
 
-    private lateinit var cardProductsRecyclerView: RecyclerView
-    private lateinit var cardProductsAdapter: CardProductsAdapter
+    private lateinit var shortCardProductsRecyclerView: RecyclerView
+    private lateinit var shortCardProductsAdapter: ShortCardProductsAdapter
 
-    private val cardProducts: MutableList<CardProduct> = ArrayList()
+    private val cardProducts: MutableList<ShortCardProduct> = ArrayList()
 
     init {
         inflate(context, R.layout.view_recommendation_block, this)
@@ -25,25 +25,25 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     private fun initViews() {
-        cardProductsRecyclerView = findViewById(R.id.card_products_recycler_view)
+        shortCardProductsRecyclerView = findViewById(R.id.card_products_recycler_view)
     }
 
     private fun setupViews() {
-        cardProductsAdapter = CardProductsAdapter(cardProducts, this)
-        cardProductsRecyclerView.adapter = cardProductsAdapter
+        shortCardProductsAdapter = ShortCardProductsAdapter(context, cardProducts, this)
+        shortCardProductsRecyclerView.adapter = shortCardProductsAdapter
     }
 
-    fun updateCardProducts(cardProducts: Collection<CardProduct>) {
+    fun updateCardProducts(cardProducts: Collection<ShortCardProduct>) {
         this.cardProducts.clear()
         addCardProducts(cardProducts)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addCardProducts(cardProducts: Collection<CardProduct>) {
+    fun addCardProducts(cardProducts: Collection<ShortCardProduct>) {
         this.cardProducts.addAll(cardProducts)
 
         Handler(context.mainLooper).post {
-            cardProductsAdapter.notifyDataSetChanged()
+            shortCardProductsAdapter.notifyDataSetChanged()
         }
     }
 

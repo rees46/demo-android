@@ -15,7 +15,7 @@ class HomeFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val cardProducts = ModelBuilder.getCardProducts()
-        binding.newArrivalsRecommendationBlockView.updateCardProducts(cardProducts)
+        val shortCardProducts = ModelBuilder.getShortCardProducts()
+        binding.newArrivalsRecommendationBlockView.updateCardProducts(shortCardProducts)
     }
 }

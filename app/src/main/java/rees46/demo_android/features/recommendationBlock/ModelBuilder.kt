@@ -3,11 +3,11 @@ package rees46.demo_android.features.recommendationBlock
 // TODO: replace by real data
 internal object ModelBuilder {
 
-    fun getCardProducts() : List<CardProduct> {
-        val cardProducts = ArrayList<CardProduct>()
+    fun getShortCardProducts() : List<ShortCardProduct> {
+        val cardProducts = ArrayList<ShortCardProduct>()
 
         for (i in 0..10) {
-            cardProducts.add(CardProduct(i))
+            cardProducts.add(ShortCardProduct(i))
         }
 
         return cardProducts
