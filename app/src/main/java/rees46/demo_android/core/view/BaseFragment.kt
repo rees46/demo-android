@@ -1,6 +1,5 @@
 package rees46.demo_android.core.view
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
