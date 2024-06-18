@@ -7,15 +7,21 @@ import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
+import rees46.demo_android.features.product.Product
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs), ShortCardProductsAdapter.ClickListener {
 
+    interface ClickListener {
+        fun onCardProductClick(productId: Int)
+    }
+
     private lateinit var shortCardProductsRecyclerView: RecyclerView
     private lateinit var shortCardProductsAdapter: ShortCardProductsAdapter
 
-    private val cardProducts: MutableList<ShortCardProduct> = ArrayList()
+    private val products: MutableList<Product> = ArrayList()
+    private var listener: ClickListener? = null
 
     init {
         inflate(context, R.layout.view_recommendation_block, this)
@@ -29,25 +35,29 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     private fun setupViews() {
-        shortCardProductsAdapter = ShortCardProductsAdapter(context, cardProducts, this)
+        shortCardProductsAdapter = ShortCardProductsAdapter(context, products, this)
         shortCardProductsRecyclerView.adapter = shortCardProductsAdapter
     }
 
-    fun updateCardProducts(cardProducts: Collection<ShortCardProduct>) {
-        this.cardProducts.clear()
-        addCardProducts(cardProducts)
+    fun updateProducts(products: Collection<Product>) {
+        this.products.clear()
+        addCardProducts(products)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addCardProducts(cardProducts: Collection<ShortCardProduct>) {
-        this.cardProducts.addAll(cardProducts)
+    fun addCardProducts(products: Collection<Product>) {
+        this.products.addAll(products)
 
         Handler(context.mainLooper).post {
             shortCardProductsAdapter.notifyDataSetChanged()
         }
     }
 
+    fun setClickListener(listener: ClickListener) {
+        this.listener = listener
+    }
+
     override fun onCardProductClick(productId: Int) {
-        TODO("Not yet implemented")
+        listener?.onCardProductClick(productId)
     }
 }

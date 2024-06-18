@@ -1,15 +1,14 @@
 package rees46.demo_android.features.recommendationBlock
 
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.R
+import rees46.demo_android.features.product.Product
 
 class ShortCardProductsAdapter(
     private val context: Context,
-    private val shortCardProducts: List<ShortCardProduct>,
+    private val products: List<Product>,
     private val listener: ClickListener
 ) : RecyclerView.Adapter<ShortCardProductsAdapter.ViewHolder>() {
 
@@ -17,17 +16,17 @@ class ShortCardProductsAdapter(
         fun onCardProductClick(productId: Int)
     }
 
-    inner class ViewHolder(view: View, private val listener: ClickListener)
-        : RecyclerView.ViewHolder(view), View.OnClickListener {
+    inner class ViewHolder(private val view: View, private val listener: ClickListener)
+        : RecyclerView.ViewHolder(view) {
 
         private var productId: Int = 0
 
-        fun bind(cardProduct: ShortCardProduct) {
-            productId = cardProduct.productId
-        }
+        fun bind(product: Product) {
+            productId = product.productId
 
-        override fun onClick(view: View) {
-            listener.onCardProductClick(productId)
+            view.setOnClickListener {
+                listener.onCardProductClick(productId)
+            }
         }
     }
 
@@ -38,10 +37,10 @@ class ShortCardProductsAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(shortCardProducts[position])
+        viewHolder.bind(products[position])
     }
 
     override fun getItemCount(): Int {
-        return shortCardProducts.size
+        return products.size
     }
 }

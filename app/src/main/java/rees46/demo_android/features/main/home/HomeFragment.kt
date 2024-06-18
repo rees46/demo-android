@@ -3,9 +3,12 @@ package rees46.demo_android.features.main.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import rees46.demo_android.R
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.features.recommendationBlock.ModelBuilder
+import rees46.demo_android.features.product.ModelBuilder
+import rees46.demo_android.features.recommendationBlock.RecommendationBlockView
 
 class HomeFragment
     : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -15,7 +18,21 @@ class HomeFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val shortCardProducts = ModelBuilder.getShortCardProducts()
-        binding.newArrivalsRecommendationBlockView.updateCardProducts(shortCardProducts)
+        binding.newArrivalsRecommendationBlockView.run {
+            updateProducts(viewModel.products)
+            setClickListener(getRecommendationProductClickListener())
+        }
+    }
+
+    private fun getRecommendationProductClickListener() : RecommendationBlockView.ClickListener {
+        return object : RecommendationBlockView.ClickListener {
+            override fun onCardProductClick(productId: Int) {
+                val product = viewModel.getProduct(productId)
+                if(product != null) {
+                    val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
+                    findNavController().navigate(action)
+                }
+            }
+        }
     }
 }

@@ -9,5 +9,18 @@
         android:id="@+id/home_fragment"
         android:name="rees46.demo_android.features.main.home.HomeFragment"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_fragment_to_card_product_fragment"
+            app:destination="@id/card_product_fragment">
+            <argument
+                android:name="product"
+                app:argType="rees46.demo_android.features.product.Product" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/card_product_fragment"
+        android:name="rees46.demo_android.features.cardProduct.CardProductFragment"
+        tools:layout="@layout/fragment_card_product" >
     </fragment>
 </navigation>
