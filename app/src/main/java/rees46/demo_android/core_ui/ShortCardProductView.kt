@@ -1,9 +1,9 @@
-package rees46.demo_android.features.recommendationBlock
+package rees46.demo_android.core_ui
 
 import android.content.Context
 import android.util.AttributeSet
 import rees46.demo_android.R
-import rees46.demo_android.features.base.BaseCardProductView
+import rees46.demo_android.base.BaseCardProductView
 
 class ShortCardProductView @JvmOverloads constructor(
     context: Context,

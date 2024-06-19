@@ -1,4 +1,4 @@
-package rees46.demo_android.features.cardProduct
+package rees46.demo_android.core_ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import com.google.android.material.button.MaterialButton
 import rees46.demo_android.R
-import rees46.demo_android.features.base.BaseCardProductView
+import rees46.demo_android.base.BaseCardProductView
 
 class CardProductView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null

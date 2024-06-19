@@ -1,4 +1,4 @@
-package rees46.demo_android.features.base
+package rees46.demo_android.base
 
 import android.content.Context
 import android.util.AttributeSet

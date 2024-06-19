@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+    <rees46.demo_android.core_ui.RecommendationBlockView
         android:id="@+id/new_arrivals_recommendation_block_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
