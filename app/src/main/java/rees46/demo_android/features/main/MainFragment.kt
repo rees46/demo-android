@@ -16,8 +16,10 @@ class MainFragment
         super.onViewCreated(view, savedInstanceState)
 
         val pagerAdapter = MainScreenPagerAdapter(this)
-        binding.viewPager.adapter = pagerAdapter
-
+        binding.viewPager.run {
+            isUserInputEnabled = false
+            adapter = pagerAdapter
+        }
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> binding.viewPager.currentItem = 0
