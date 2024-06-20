@@ -3,4 +3,13 @@
     <style name="Widget.Theme.Demoandroid.ButtonBar.Fullscreen" parent="">
         <item name="android:background">@color/black</item>
     </style>
+
+    <style name="DrawerMenuButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="icon">@drawable/baseline_keyboard_arrow_right_24</item>
+        <item name="iconTint">@color/black</item>
+        <item name="iconGravity">end</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
 </resources>

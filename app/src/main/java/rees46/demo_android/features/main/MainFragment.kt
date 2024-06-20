@@ -20,6 +20,11 @@ class MainFragment
             isUserInputEnabled = false
             adapter = pagerAdapter
         }
+
+        binding.topAppBar.setNavigationOnClickListener {
+            binding.root.open()
+        }
+
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> binding.viewPager.currentItem = 0
