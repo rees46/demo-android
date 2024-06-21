@@ -5,13 +5,14 @@ import android.util.AttributeSet
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.button.MaterialButton
 import rees46.demo_android.R
 import rees46.demo_android.base.BaseCardProductView
 
 class CardProductView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : BaseCardProductView(context, attrs, R.layout.view_card_product) {
+) : ConstraintLayout(context, attrs, R.layout.view_card_product) {
 
     private lateinit var producerNameTextView: TextView
     private lateinit var productNameTextView: TextView

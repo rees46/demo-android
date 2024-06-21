@@ -109,7 +109,7 @@
             app:cornerRadius="6dp" />
     </LinearLayout>
 
-    <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+    <rees46.demo_android.core_ui.RecommendationBlockView
         android:id="@+id/recommendation_block"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
