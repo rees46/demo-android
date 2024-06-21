@@ -1,14 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.main.cart.CartFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/default_offset">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Cart"
-        android:textSize="50dp" />
+        android:id="@+id/header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Shopping cart"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_products_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_offset"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_text"
+        tools:listitem="@layout/view_cart_product" />
+
+    <TextView
+        android:id="@+id/shipping_value_text"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_offset"
+        android:text="Free"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cart_products_recycler_view" />
+
+    <TextView
+        android:id="@+id/shipping_text"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_offset"
+        android:text="Shipping:"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toStartOf="@id/shipping_value_text"
+        app:layout_constraintTop_toBottomOf="@id/cart_products_recycler_view" />
+
+    <TextView
+        android:id="@+id/total_value_text"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:text="$ 2365"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shipping_value_text" />
+
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:text="Total:"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toStartOf="@id/shipping_value_text"
+        app:layout_constraintTop_toBottomOf="@id/shipping_text" />
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="@dimen/default_offset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_text">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continue_shopping"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:text="Continue shopping"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:cornerRadius="6dp"
+            app:strokeColor="@color/black"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/checkout_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Checkout"
+            android:textSize="16sp"
+            app:backgroundTint="@color/black"
+            app:cornerRadius="6dp" />
+    </LinearLayout>
+
+    <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+        android:id="@+id/recommendation_block"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_offset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttons_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
