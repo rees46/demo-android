@@ -6,9 +6,11 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
+import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
 
 abstract class BaseCardProductView @JvmOverloads constructor(
     context: Context,
+    private val cardProductViewSettings: CardProductViewSettings,
     attrs: AttributeSet? = null,
     layoutId: Int
 ) : ConstraintLayout(context, attrs) {
@@ -35,5 +37,6 @@ abstract class BaseCardProductView @JvmOverloads constructor(
     }
 
     private fun setupViews() {
+        producerNameTextView.setTextColor(cardProductViewSettings.producerNameTextColor)
     }
 }

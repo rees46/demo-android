@@ -7,6 +7,7 @@ import rees46.demo_android.base.BaseCardProductView
 
 class ShortCardProductView @JvmOverloads constructor(
     context: Context,
+    cardProductViewSettings: CardProductViewSettings,
     attrs: AttributeSet? = null
-) : BaseCardProductView(context, attrs, R.layout.view_short_card_product) {
+) : BaseCardProductView(context, cardProductViewSettings, attrs, R.layout.view_short_card_product) {
 }

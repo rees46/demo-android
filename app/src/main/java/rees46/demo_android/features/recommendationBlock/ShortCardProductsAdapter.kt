@@ -10,6 +10,7 @@ import rees46.demo_android.features.product.Product
 class ShortCardProductsAdapter(
     private val context: Context,
     private val products: List<Product>,
+    private val cardProductViewSettings: CardProductViewSettings,
     private val listener: ClickListener
 ) : RecyclerView.Adapter<ShortCardProductsAdapter.ViewHolder>() {
 
@@ -32,7 +33,7 @@ class ShortCardProductsAdapter(
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val shortCardProductView = ShortCardProductView(context, null)
+        val shortCardProductView = ShortCardProductView(context, cardProductViewSettings,null)
 
         return ViewHolder(shortCardProductView, listener)
     }

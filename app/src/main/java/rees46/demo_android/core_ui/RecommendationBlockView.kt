@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
@@ -18,26 +19,58 @@ class RecommendationBlockView @JvmOverloads constructor(
         fun onCardProductClick(productId: Int)
     }
 
+    private lateinit var headerTextView: TextView
+    private lateinit var showAllTextView: TextView
     private lateinit var shortCardProductsRecyclerView: RecyclerView
     private lateinit var shortCardProductsAdapter: ShortCardProductsAdapter
 
     private val products: MutableList<Product> = ArrayList()
     private var listener: ClickListener? = null
 
+    private lateinit var recommendationBlockViewSettings: RecommendationBlockViewSettings
+
     init {
         inflate(context, R.layout.view_recommendation_block, this)
 
         initViews()
+
+        applyAttr(attrs)
+
         setupViews()
     }
 
     private fun initViews() {
+        headerTextView = findViewById(R.id.header_text)
+        showAllTextView = findViewById(R.id.show_all_text)
         shortCardProductsRecyclerView = findViewById(R.id.card_products_recycler_view)
     }
 
     private fun setupViews() {
-        shortCardProductsAdapter = ShortCardProductsAdapter(context, products, this)
+        shortCardProductsAdapter = ShortCardProductsAdapter(context, products,
+            recommendationBlockViewSettings.cardProductViewSettings, this)
         shortCardProductsRecyclerView.adapter = shortCardProductsAdapter
+
+        recommendationBlockViewSettings.apply {
+            headerTextView.setTextColor(headerTextColor)
+            headerTextView.textSize = headerTextSize
+
+            showAllTextView.setTextColor(showAllTextColor)
+            showAllTextView.textSize = showAllTextSize
+        }
+    }
+
+    private fun applyAttr(attrs: AttributeSet?) {
+        context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.RecommendationBlockView,
+            0, 0).apply {
+
+            try {
+                recommendationBlockViewSettings = RecommendationBlockViewSettings(resources,this)
+            } finally {
+                recycle()
+            }
+        }
     }
 
     fun updateProducts(products: Collection<Product>) {
@@ -60,5 +93,34 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     override fun onCardProductClick(productId: Int) {
         listener?.onCardProductClick(productId)
+    }
+
+    fun setHeaderTextColor(color: Int) {
+        headerTextView.setTextColor(color)
+
+        invalidateView()
+    }
+
+    fun setHeaderTextSize(textSize: Float) {
+        headerTextView.textSize = textSize
+
+        invalidateView()
+    }
+
+    fun setShowAllTextColor(color: Int) {
+        showAllTextView.setTextColor(color)
+
+        invalidateView()
+    }
+
+    fun setShowAllTextSize(textSize: Float) {
+        showAllTextView.textSize = textSize
+
+        invalidateView()
+    }
+
+    private fun invalidateView() {
+        invalidate()
+        requestLayout()
     }
 }
