@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:text="Producer name"
         android:textSize="12sp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="@id/product_image"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

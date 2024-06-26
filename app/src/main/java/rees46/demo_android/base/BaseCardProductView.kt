@@ -8,18 +8,18 @@ import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import rees46.demo_android.R
+import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.features.product.Product
 import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
 
 abstract class BaseCardProductView @JvmOverloads constructor(
     context: Context,
-    private val cardProductViewSettings: CardProductViewSettings,
     attrs: AttributeSet? = null,
     layoutId: Int
 ) : ConstraintLayout(context, attrs) {
 
     private lateinit var productImageView: ImageView
-    private lateinit var producerNameTextView: TextView
+    internal lateinit var producerNameTextView: TextView
     private lateinit var productNameTextView: TextView
     private lateinit var ratingBar: AppCompatRatingBar
     private lateinit var oldPriceTextView: TextView
@@ -29,7 +29,6 @@ abstract class BaseCardProductView @JvmOverloads constructor(
         inflate(context, layoutId, this)
 
         initViews()
-        setupViews()
     }
 
     private fun initViews() {
@@ -41,24 +40,11 @@ abstract class BaseCardProductView @JvmOverloads constructor(
         priceTextView = findViewById(R.id.price_text)
     }
 
-    private fun setupViews() {
-        producerNameTextView.setTextColor(cardProductViewSettings.producerNameTextColor)
-    }
-
-    internal fun updateProduct(product: Product) {
-        updateImage(product.pictureUrl)
+    internal open fun updateProduct(product: Product) {
+        ImageUtils.updateImage(this, productImageView, product.pictureUrl)
 
         productNameTextView.text = product.name
         producerNameTextView.text = product.producerName
-        priceTextView.text = product.price
-    }
-
-    private fun updateImage(imageUrl: String) {
-        Glide.with(this)
-            .load(imageUrl)
-            .placeholder(R.drawable.loading)
-            .error(R.drawable.loading)
-            .centerCrop()
-            .into(productImageView)
+        priceTextView.text = product.priceFormatted
     }
 }
