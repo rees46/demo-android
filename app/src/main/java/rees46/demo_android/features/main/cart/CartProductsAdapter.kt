@@ -13,16 +13,16 @@ class CartProductsAdapter(
 ) : RecyclerView.Adapter<CartProductsAdapter.ViewHolder>() {
 
     interface ClickListener {
-        fun onCartProductClick(productId: Int)
+        fun onCartProductClick(productId: String)
     }
 
     inner class ViewHolder(private val view: View, private val listener: ClickListener)
         : RecyclerView.ViewHolder(view) {
 
-        private var productId: Int = 0
+        private var productId: String = ""
 
         fun bind(product: Product) {
-            productId = product.productId
+            productId = product.id
 
             view.setOnClickListener {
                 listener.onCartProductClick(productId)

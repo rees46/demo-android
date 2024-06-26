@@ -15,16 +15,18 @@ class ShortCardProductsAdapter(
 ) : RecyclerView.Adapter<ShortCardProductsAdapter.ViewHolder>() {
 
     interface ClickListener {
-        fun onCardProductClick(productId: Int)
+        fun onCardProductClick(productId: String)
     }
 
     inner class ViewHolder(private val view: View, private val listener: ClickListener)
         : RecyclerView.ViewHolder(view) {
 
-        private var productId: Int = 0
+        private var productId: String = ""
 
         fun bind(product: Product) {
-            productId = product.productId
+            productId = product.id
+
+            (view as ShortCardProductView).updateProduct(product)
 
             view.setOnClickListener {
                 listener.onCardProductClick(productId)

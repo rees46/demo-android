@@ -17,7 +17,7 @@ class RecommendationBlockView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs), ShortCardProductsAdapter.ClickListener {
 
     interface ClickListener {
-        fun onCardProductClick(productId: Int)
+        fun onCardProductClick(productId: String)
     }
 
     private lateinit var headerTextView: TextView
@@ -92,7 +92,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.listener = listener
     }
 
-    override fun onCardProductClick(productId: Int) {
+    override fun onCardProductClick(productId: String) {
         listener?.onCardProductClick(productId)
     }
 

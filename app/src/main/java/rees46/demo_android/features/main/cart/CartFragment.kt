@@ -14,11 +14,10 @@ class CartFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val shortCardProductsAdapter = CartProductsAdapter(requireContext(), viewModel.products, this)
-        binding.cartProductsRecyclerView.adapter = shortCardProductsAdapter
+        //val shortCardProductsAdapter = CartProductsAdapter(requireContext(), viewModel.products, this)
+        //binding.cartProductsRecyclerView.adapter = shortCardProductsAdapter
     }
 
-    override fun onCartProductClick(productId: Int) {
-        TODO("Not yet implemented")
+    override fun onCartProductClick(productId: String) {
     }
 }

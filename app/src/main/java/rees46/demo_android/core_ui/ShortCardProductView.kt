@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import rees46.demo_android.R
 import rees46.demo_android.base.BaseCardProductView
+import rees46.demo_android.features.product.Product
 import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
 
 class ShortCardProductView @JvmOverloads constructor(

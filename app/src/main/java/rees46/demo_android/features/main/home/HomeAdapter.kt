@@ -89,4 +89,4 @@ sealed interface HomeFragmentTypeBlock {
 }
 
 data class StoriesType(override val type: Int = TYPE_STORIES) : HomeFragmentTypeBlock
-data class TopTrendsType(override val type: Int = TYPE_TOP_TRENDS) : HomeFragmentTypeBlock
+data class RecommendationType(override val type: Int = TYPE_TOP_TRENDS, val code: String) : HomeFragmentTypeBlock
