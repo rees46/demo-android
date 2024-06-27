@@ -10,7 +10,7 @@ import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
 
 class CartFragment
-    : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate), CartProductsAdapter.ClickListener {
+    : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate), CartProductView.ClickListener {
 
     private val viewModel: CartViewModel by viewModel()
 
@@ -21,9 +21,9 @@ class CartFragment
         binding.cartProductsRecyclerView.adapter = shortCardProductsAdapter
 
         lifecycleScope.launch {
-            viewModel.productsFlow.collectLatest { products ->
+            viewModel.cartProductsFlow.collectLatest { cartProducts ->
                 run {
-                    shortCardProductsAdapter.updateProducts(products)
+                    shortCardProductsAdapter.updateCartProducts(cartProducts)
                 }
             }
         }
@@ -35,6 +35,7 @@ class CartFragment
         viewModel.updateCart()
     }
 
-    override fun onCartProductClick(productId: String) {
+    override fun removeProduct(cartProduct: CartProduct) {
+        viewModel.removeProduct(cartProduct)
     }
 }
