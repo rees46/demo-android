@@ -6,6 +6,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
+import rees46.demo_android.core.utils.ImageUtils
+import rees46.demo_android.features.product.Product
 
 class CartProductView @JvmOverloads constructor(
     context: Context,
@@ -32,5 +34,13 @@ class CartProductView @JvmOverloads constructor(
     }
 
     private fun setupViews() {
+    }
+
+    internal fun updateProduct(product: Product) {
+        ImageUtils.updateImage(this, productImageView, product.pictureUrl)
+
+        productNameTextView.text = product.name
+        producerNameTextView.text = product.producerName
+        priceTextView.text = product.priceFormatted
     }
 }

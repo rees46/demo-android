@@ -6,7 +6,6 @@ import com.personalizatio.Params
 import com.personalizatio.SDK
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import rees46.demo_android.features.product.Product
 import rees46.demo_android.features.recommendationBlock.RecommendationUtils
