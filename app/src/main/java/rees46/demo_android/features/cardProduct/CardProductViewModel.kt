@@ -6,6 +6,8 @@ import com.personalizatio.Params
 import com.personalizatio.SDK
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import rees46.demo_android.features.product.Product
 import rees46.demo_android.features.recommendationBlock.RecommendationUtils
 
@@ -15,6 +17,18 @@ class CardProductViewModel(
     private val _recommendedProductsFlow: MutableSharedFlow<ArrayList<Product>> = MutableSharedFlow()
     val recommendedProductsFlow: Flow<List<Product>> = _recommendedProductsFlow
     private val recommendedProducts = arrayListOf<Product>()
+
+    private var _count: MutableSharedFlow<Int> = MutableSharedFlow()
+    internal var count: Flow<Int> = _count
+    private var countValue: Int = 1
+
+    private var productId: String = ""
+
+    internal fun updateProduct(productId: String) {
+        changeCount(1)
+
+        this.productId = productId
+    }
 
     internal fun updateRecommendationBlock(productId: String) {
         recommendedProducts.clear()
@@ -31,6 +45,27 @@ class CardProductViewModel(
             recommendedProducts,
             _recommendedProductsFlow,
             viewModelScope)
+    }
+
+    internal fun addToCart() {
+        sdk.track(Params.TrackEvent.CART, productId)
+    }
+
+    internal fun increaseCount() {
+        changeCount(countValue + 1)
+    }
+
+    internal fun decreaseCount() {
+        if(countValue > 1){
+            changeCount(countValue - 1)
+        }
+    }
+
+    private fun changeCount(value: Int) {
+        countValue = value
+        viewModelScope.launch {
+            _count.emit(countValue)
+        }
     }
 
     companion object {

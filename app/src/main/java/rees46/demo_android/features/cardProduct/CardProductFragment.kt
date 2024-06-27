@@ -9,12 +9,14 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
+import rees46.demo_android.core_ui.CardProductView
 import rees46.demo_android.core_ui.RecommendationBlockView
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.features.product.Product
 
 class CardProductFragment
-    : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
+    : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate),
+    CardProductView.ClickListener {
 
     private val args by navArgs<CardProductFragmentArgs>()
 
@@ -23,11 +25,9 @@ class CardProductFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateCardProductView(args.product)
-    }
+        updateProduct(args.product)
 
-    private fun updateCardProductView(product: Product) {
-        viewModel.updateRecommendationBlock(product.id)
+        binding.cardProductView.setListener(this)
 
         lifecycleScope.launch {
             viewModel.recommendedProductsFlow.collectLatest { products ->
@@ -36,8 +36,25 @@ class CardProductFragment
                 }
             }
         }
+
+        lifecycleScope.launch {
+            viewModel.count.collectLatest { value ->
+                binding.cardProductView.updateCount(value)
+            }
+        }
+
         binding.recommendationBlock.setClickListener(getRecommendationTopTrendsProductClickListener())
         binding.recommendationBlock.setHeaderText("You also may like")
+    }
+
+    private fun updateProduct(product: Product) {
+        viewModel.updateProduct(product.id)
+
+        updateCardProductView(product)
+    }
+
+    private fun updateCardProductView(product: Product) {
+        viewModel.updateRecommendationBlock(product.id)
 
         binding.cardProductView.updateProduct(product)
     }
@@ -45,7 +62,7 @@ class CardProductFragment
     private fun getRecommendationTopTrendsProductClickListener(): RecommendationBlockView.ClickListener {
         return object : RecommendationBlockView.ClickListener {
             override fun onCardProductClick(product: Product) {
-                updateCardProductView(product)
+                updateProduct(product)
             }
         }
     }
@@ -53,5 +70,17 @@ class CardProductFragment
     override fun onResume() {
         super.onResume()
         onBackPressedNavigation()
+    }
+
+    override fun onAddToCart() {
+        viewModel.addToCart()
+    }
+
+    override fun decreaseCount() {
+        viewModel.decreaseCount()
+    }
+
+    override fun increaseCount() {
+        viewModel.increaseCount()
     }
 }
