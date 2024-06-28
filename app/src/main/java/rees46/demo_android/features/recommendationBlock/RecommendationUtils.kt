@@ -2,11 +2,11 @@ package rees46.demo_android.features.recommendationBlock
 
 import com.personalizatio.Params
 import com.personalizatio.SDK
+import com.personalizatio.api.listeners.OnProductsListener
+import com.personalizatio.api.listeners.OnRecommendationListener
 import com.personalizatio.entities.products.productInfo.ProductInfoEntity
 import com.personalizatio.entities.recommended.RecommendedEntity
 import com.personalizatio.entities.recommended.RecommendedFullEntity
-import com.personalizatio.products.OnProductsListener
-import com.personalizatio.recommended.OnRecommendedListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
@@ -22,8 +22,8 @@ object RecommendationUtils {
         productsFlow: MutableSharedFlow<ArrayList<Product>>,
         scope: CoroutineScope
     ) {
-        val listener = createOnRecommendedListener(sdk, products, productsFlow, scope)
-        sdk.recommend(recommenderCode, listener)
+        val listener = createOnRecommendationListener(sdk, products, productsFlow, scope)
+        sdk.recommendationManager.recommend(recommenderCode, listener)
     }
 
     internal fun updateRecommendation(
@@ -34,16 +34,16 @@ object RecommendationUtils {
         productsFlow: MutableSharedFlow<ArrayList<Product>>,
         scope: CoroutineScope
     ) {
-        val listener = createOnRecommendedListener(sdk, products, productsFlow, scope)
-        sdk.recommend(recommenderCode, params, listener)
+        val listener = createOnRecommendationListener(sdk, products, productsFlow, scope)
+        sdk.recommendationManager.recommend(recommenderCode, params, listener)
     }
 
-    private fun createOnRecommendedListener(
+    private fun createOnRecommendationListener(
         sdk: SDK,
         products: ArrayList<Product>,
         productsFlow: MutableSharedFlow<ArrayList<Product>>,
         scope: CoroutineScope
-    ) : OnRecommendedListener {
+    ) : OnRecommendationListener {
         fun addProduct(product: Product) {
             products.add(product)
             scope.launch {
@@ -51,10 +51,10 @@ object RecommendationUtils {
             }
         }
 
-        return object: OnRecommendedListener {
+        return object: OnRecommendationListener {
             override fun onGetRecommended(recommendedEntity: RecommendedEntity) {
                 for (productId in recommendedEntity.productIds) {
-                    sdk.getProductInfo(productId.toString(), object: OnProductsListener() {
+                    sdk.productsManager.getProductInfo(productId.toString(), object: OnProductsListener {
                         override fun onGetProductInfo(productInfoEntity: ProductInfoEntity) {
                             val product = ProductUtils.createProduct(productInfoEntity)
                             addProduct(product)

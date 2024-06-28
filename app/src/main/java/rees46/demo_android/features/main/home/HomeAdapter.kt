@@ -60,7 +60,7 @@ class HomeAdapter(
     ) : BaseViewHolder(itemBinding.root) {
 
         override fun bind() {
-            sdk.initializeStoriesView(itemBinding.root)
+            sdk.storiesManager.initialize(itemBinding.root)
         }
     }
 

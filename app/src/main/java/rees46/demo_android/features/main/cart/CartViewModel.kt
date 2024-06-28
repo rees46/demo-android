@@ -4,9 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.personalizatio.SDK
 import com.personalizatio.api.OnApiCallbackListener
+import com.personalizatio.api.listeners.OnCartListener
+import com.personalizatio.api.listeners.OnProductsListener
 import com.personalizatio.entities.products.cart.CartEntity
 import com.personalizatio.entities.products.productInfo.ProductInfoEntity
-import com.personalizatio.products.OnProductsListener
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
@@ -27,7 +28,7 @@ class CartViewModel(
 
         cartProducts.clear()
 
-        sdk.getCart(object : OnProductsListener() {
+        sdk.cartManager.getCart(object : OnCartListener {
             override fun onGetCart(cartEntity: CartEntity) {
                 for (item in cartEntity.data.items) {
                     val cartProduct = oldCartProducts.find { cartProduct -> cartProduct.product.id == item.uniqid }
@@ -37,7 +38,7 @@ class CartViewModel(
                         continue
                     }
 
-                    sdk.getProductInfo(item.uniqid, object : OnProductsListener() {
+                    sdk.productsManager.getProductInfo(item.uniqid, object : OnProductsListener {
                         override fun onGetProductInfo(productInfoEntity: ProductInfoEntity) {
                             val product = ProductUtils.createProduct(productInfoEntity)
                             cartProducts.add(CartProduct(product, item.quantity))
@@ -52,7 +53,7 @@ class CartViewModel(
     }
 
     internal fun removeProduct(cartProduct: CartProduct) {
-        sdk.removeProductFromCart(cartProduct.product.id, cartProduct.quantity, object : OnApiCallbackListener() {
+        sdk.cartManager.removeFromCart(cartProduct.product.id, cartProduct.quantity, object : OnApiCallbackListener() {
             override fun onSuccess(response: JSONObject?) {
                 updateCart()
             }
