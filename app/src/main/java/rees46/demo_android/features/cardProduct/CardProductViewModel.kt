@@ -47,7 +47,7 @@ class CardProductViewModel(
     }
 
     internal fun addToCart() {
-        sdk.track(Params.TrackEvent.CART, productId)
+        sdk.cartManager.addToCart(productId, countValue)
     }
 
     internal fun increaseCount() {
