@@ -8,6 +8,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import rees46.demo_android.features.di.FeaturesModule.cardProductFragmentModule
 import rees46.demo_android.features.di.FeaturesModule.cartFragmentModule
+import rees46.demo_android.features.di.FeaturesModule.categoryFragmentModule
 import rees46.demo_android.features.di.FeaturesModule.homeFragmentModule
 
 class DemoApplication : Application() {
@@ -37,7 +38,15 @@ class DemoApplication : Application() {
 
         startKoin {
             androidContext(this@DemoApplication)
-            modules(listOf(appModule, homeFragmentModule, cardProductFragmentModule, cartFragmentModule))
+            modules(
+                listOf(
+                    appModule,
+                    homeFragmentModule,
+                    cardProductFragmentModule,
+                    cartFragmentModule,
+                    categoryFragmentModule
+                )
+            )
         }
     }
 

@@ -25,6 +25,8 @@ abstract class BaseCardProductView @JvmOverloads constructor(
     private lateinit var oldPriceTextView: TextView
     private lateinit var priceTextView: TextView
 
+    internal lateinit var product: Product
+
     init {
         inflate(context, layoutId, this)
 
@@ -41,6 +43,8 @@ abstract class BaseCardProductView @JvmOverloads constructor(
     }
 
     internal open fun updateProduct(product: Product) {
+        this.product = product
+
         ImageUtils.updateImage(this, productImageView, product.pictureUrl)
 
         productNameTextView.text = product.name

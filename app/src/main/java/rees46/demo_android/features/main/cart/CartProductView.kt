@@ -44,8 +44,7 @@ class CartProductView @JvmOverloads constructor(
     }
 
     private fun setupViews() {
-        removeButton.setOnClickListener { listener?.removeProduct(cartProduct)
-        }
+        removeButton.setOnClickListener { listener?.removeProduct(cartProduct) }
     }
 
     internal fun updateCartProduct(cartProduct: CartProduct) {
