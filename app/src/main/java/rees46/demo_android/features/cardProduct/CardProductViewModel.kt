@@ -33,11 +33,10 @@ class CardProductViewModel(
         recommendedProducts.clear()
 
         val params = Params().apply {
-            put(Params.Parameter.EXTENDED, true)
             put(Params.Parameter.ITEM, productId)
         }
 
-        RecommendationUtils.updateRecommendation(
+        RecommendationUtils.updateExtendedRecommendation(
             sdk,
             RECOMMENDER_CODE,
             params,

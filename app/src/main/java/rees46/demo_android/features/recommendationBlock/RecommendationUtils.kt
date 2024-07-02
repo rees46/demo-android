@@ -5,8 +5,8 @@ import com.personalizatio.SDK
 import com.personalizatio.api.listeners.OnProductsListener
 import com.personalizatio.api.listeners.OnRecommendationListener
 import com.personalizatio.entities.products.productInfo.ProductInfoEntity
-import com.personalizatio.entities.recommended.RecommendedEntity
-import com.personalizatio.entities.recommended.RecommendedFullEntity
+import com.personalizatio.entities.recommendation.ExtendedRecommendationEntity
+import com.personalizatio.entities.recommendation.RecommendationEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
@@ -15,18 +15,7 @@ import rees46.demo_android.features.product.ProductUtils
 
 object RecommendationUtils {
 
-    internal fun updateRecommendation(
-        sdk: SDK,
-        recommenderCode: String,
-        products: ArrayList<Product>,
-        productsFlow: MutableSharedFlow<ArrayList<Product>>,
-        scope: CoroutineScope
-    ) {
-        val listener = createOnRecommendationListener(sdk, products, productsFlow, scope)
-        sdk.recommendationManager.recommend(recommenderCode, listener)
-    }
-
-    internal fun updateRecommendation(
+    internal fun updateExtendedRecommendation(
         sdk: SDK,
         recommenderCode: String,
         params: Params,
@@ -35,7 +24,18 @@ object RecommendationUtils {
         scope: CoroutineScope
     ) {
         val listener = createOnRecommendationListener(sdk, products, productsFlow, scope)
-        sdk.recommendationManager.recommend(recommenderCode, params, listener)
+        sdk.recommendationManager.getExtendedRecommendation(recommenderCode, params, listener)
+    }
+
+    internal fun updateExtendedRecommendation(
+        sdk: SDK,
+        recommenderCode: String,
+        products: ArrayList<Product>,
+        productsFlow: MutableSharedFlow<ArrayList<Product>>,
+        scope: CoroutineScope
+    ) {
+        val listener = createOnRecommendationListener(sdk, products, productsFlow, scope)
+        sdk.recommendationManager.getExtendedRecommendation(recommenderCode, listener)
     }
 
     private fun createOnRecommendationListener(
@@ -52,8 +52,8 @@ object RecommendationUtils {
         }
 
         return object: OnRecommendationListener {
-            override fun onGetRecommended(recommendedEntity: RecommendedEntity) {
-                for (productId in recommendedEntity.productIds) {
+            override fun onGetRecommendation(recommendationEntity: RecommendationEntity) {
+                for (productId in recommendationEntity.productIds) {
                     sdk.productsManager.getProductInfo(productId.toString(), object: OnProductsListener {
                         override fun onGetProductInfo(productInfoEntity: ProductInfoEntity) {
                             val product = ProductUtils.createProduct(productInfoEntity)
@@ -63,9 +63,9 @@ object RecommendationUtils {
                 }
             }
 
-            override fun onGetRecommended(recommendedFullEntity: RecommendedFullEntity) {
-                for (recommend in recommendedFullEntity.recommends) {
-                    val product = ProductUtils.createProduct(recommend)
+            override fun onGetExtendedRecommendation(extendedRecommendationEntity: ExtendedRecommendationEntity) {
+                for (productEntity in extendedRecommendationEntity.products) {
+                    val product = ProductUtils.createProduct(productEntity)
                     addProduct(product)
                 }
             }

@@ -1,7 +1,6 @@
 package rees46.demo_android.features.product
 
 import com.personalizatio.entities.products.productInfo.ProductInfoEntity
-import com.personalizatio.entities.recommended.Recommend
 
 object ProductUtils {
 
@@ -10,7 +9,7 @@ object ProductUtils {
             id = productInfoEntity.uniqid,
             name = productInfoEntity.name,
             producerName = productInfoEntity.brand,
-            price = Integer.getInteger(productInfoEntity.price),
+            price = productInfoEntity.price.toDouble(),
             priceFormatted = productInfoEntity.price,
             priceFull = null,
             priceFullFormatted = null,
@@ -19,17 +18,17 @@ object ProductUtils {
         )
     }
 
-    internal fun createProduct(recommend: Recommend) : Product {
+    internal fun createProduct(product: com.personalizatio.entities.products.Product) : Product {
         return Product(
-            id = recommend.id,
-            name = recommend.name,
-            producerName = recommend.brand,
-            price = recommend.price,
-            priceFormatted = recommend.priceFormatted,
-            priceFull = recommend.priceFull,
-            priceFullFormatted = recommend.priceFullFormatted,
-            pictureUrl = recommend.picture,
-            description = recommend.description,
+            id = product.id,
+            name = product.name,
+            producerName = product.brand,
+            price = product.price,
+            priceFormatted = product.priceFormatted,
+            priceFull = product.priceFull,
+            priceFullFormatted = product.priceFullFormatted,
+            pictureUrl = product.picture,
+            description = product.description,
         )
     }
 }

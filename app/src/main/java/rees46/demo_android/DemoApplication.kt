@@ -19,6 +19,7 @@ class DemoApplication : Application() {
                     initialize(
                         context = this@DemoApplication,
                         shopId = SHOP_ID,
+                        shopSecretKey = SHOP_SECRET_KEY,
                         apiUrl = SDK_API_URL,
                         preferencesKey = SDK_PREFERENCES_KEY,
                         tag = SDK_TAG,
@@ -43,6 +44,7 @@ class DemoApplication : Application() {
     companion object {
 
         private const val SHOP_ID = "357382bf66ac0ce2f1722677c59511"
+        private const val SHOP_SECRET_KEY = "shop_secret"
         private const val SDK_API_URL = "https://api.rees46.ru/"
         private const val SDK_PREFERENCES_KEY = "demo android"
         private const val SDK_TAG = "DEMO TAG"

@@ -17,7 +17,7 @@ class HomeViewModel(
     private val topTrendsProducts = arrayListOf<Product>()
 
     init {
-        RecommendationUtils.updateRecommendation(
+        RecommendationUtils.updateExtendedRecommendation(
             sdk,
             TOP_TRENDS_RECOMMENDER_CODE,
             topTrendsProducts,
