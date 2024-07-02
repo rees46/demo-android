@@ -1,4 +1,4 @@
-package rees46.demo_android.base
+package rees46.demo_android.core_ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,11 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bumptech.glide.Glide
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.features.product.Product
-import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
 
 abstract class BaseCardProductView @JvmOverloads constructor(
     context: Context,

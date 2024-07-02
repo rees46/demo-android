@@ -1,16 +1,15 @@
-package rees46.demo_android.core_ui
+package rees46.demo_android.features.recommendationBlock
 
 import android.content.Context
 import android.util.AttributeSet
 import rees46.demo_android.R
-import rees46.demo_android.base.BaseCardProductView
-import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
+import rees46.demo_android.core_ui.BaseCardProductView
 
-class ShortCardProductView @JvmOverloads constructor(
+class CardProductView @JvmOverloads constructor(
     context: Context,
     private val cardProductViewSettings: CardProductViewSettings,
     attrs: AttributeSet? = null
-) : BaseCardProductView(context, attrs, R.layout.view_short_card_product) {
+) : BaseCardProductView(context, attrs, R.layout.view_recommendation_card_product) {
 
     init {
         setupViews()

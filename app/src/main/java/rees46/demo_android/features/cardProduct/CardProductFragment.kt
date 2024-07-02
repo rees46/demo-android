@@ -9,8 +9,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
-import rees46.demo_android.core_ui.CardProductView
-import rees46.demo_android.core_ui.RecommendationBlockView
+import rees46.demo_android.features.recommendationBlock.RecommendationBlockView
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.features.product.Product
 

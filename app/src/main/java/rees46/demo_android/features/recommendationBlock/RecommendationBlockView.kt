@@ -1,4 +1,4 @@
-package rees46.demo_android.core_ui
+package rees46.demo_android.features.recommendationBlock
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,12 +9,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
 import rees46.demo_android.features.product.Product
-import rees46.demo_android.features.recommendationBlock.RecommendationBlockViewSettings
-import rees46.demo_android.features.recommendationBlock.ShortCardProductsAdapter
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs), ShortCardProductsAdapter.ClickListener {
+) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
 
     interface ClickListener {
         fun onCardProductClick(product: Product)
@@ -22,8 +20,8 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
-    private lateinit var shortCardProductsRecyclerView: RecyclerView
-    private lateinit var shortCardProductsAdapter: ShortCardProductsAdapter
+    private lateinit var cardProductsRecyclerView: RecyclerView
+    private lateinit var cardProductsAdapter: CardProductsAdapter
 
     private val products: MutableList<Product> = ArrayList()
     private var listener: ClickListener? = null
@@ -43,13 +41,13 @@ class RecommendationBlockView @JvmOverloads constructor(
     private fun initViews() {
         headerTextView = findViewById(R.id.header_text)
         showAllTextView = findViewById(R.id.show_all_text)
-        shortCardProductsRecyclerView = findViewById(R.id.card_products_recycler_view)
+        cardProductsRecyclerView = findViewById(R.id.card_products_recycler_view)
     }
 
     private fun setupViews() {
-        shortCardProductsAdapter = ShortCardProductsAdapter(context, products,
+        cardProductsAdapter = CardProductsAdapter(context, products,
             recommendationBlockViewSettings.cardProductViewSettings, this)
-        shortCardProductsRecyclerView.adapter = shortCardProductsAdapter
+        cardProductsRecyclerView.adapter = cardProductsAdapter
 
         recommendationBlockViewSettings.apply {
             headerTextView.setTextColor(headerTextColor)
@@ -84,7 +82,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.products.addAll(products)
 
         Handler(context.mainLooper).post {
-            shortCardProductsAdapter.notifyDataSetChanged()
+            cardProductsAdapter.notifyDataSetChanged()
         }
     }
 
