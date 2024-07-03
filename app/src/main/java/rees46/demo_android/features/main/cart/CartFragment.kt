@@ -32,7 +32,7 @@ class CartFragment
     override fun onResume() {
         super.onResume()
 
-        viewModel.updateCart()
+        viewModel.updateCarts()
     }
 
     override fun removeProduct(cartProduct: CartProduct) {

@@ -7,5 +7,5 @@ import rees46.demo_android.features.product.Product
 @Parcelize
 data class CartProduct(
     val product: Product,
-    val quantity: Int
+    var quantity: Int
 ) : Parcelable

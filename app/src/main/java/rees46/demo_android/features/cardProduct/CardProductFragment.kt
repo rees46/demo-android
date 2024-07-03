@@ -47,7 +47,7 @@ class CardProductFragment
     }
 
     private fun updateProduct(product: Product) {
-        viewModel.updateProduct(product.id)
+        viewModel.updateProduct(product)
 
         updateCardProductView(product)
     }

@@ -7,6 +7,7 @@ import com.personalizatio.SDK
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
+import rees46.demo_android.features.main.cart.Cart
 import rees46.demo_android.features.product.Product
 import rees46.demo_android.features.recommendationBlock.RecommendationUtils
 
@@ -21,12 +22,12 @@ class CardProductViewModel(
     internal var count: Flow<Int> = _count
     private var countValue: Int = 1
 
-    private var productId: String = ""
+    private lateinit var product: Product
 
-    internal fun updateProduct(productId: String) {
+    internal fun updateProduct(product: Product) {
         changeCount(1)
 
-        this.productId = productId
+        this.product = product
     }
 
     internal fun updateRecommendationBlock(productId: String) {
@@ -46,7 +47,9 @@ class CardProductViewModel(
     }
 
     internal fun addToCart() {
-        sdk.cartManager.addToCart(productId, countValue)
+        Cart.addProduct(product, countValue)
+
+        sdk.trackEventManager.track(Params.TrackEvent.VIEW, product.id)
     }
 
     internal fun increaseCount() {
