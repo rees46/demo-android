@@ -24,7 +24,7 @@ class CardProductViewModel(
             put(Params.Parameter.ITEM, productId)
         }
 
-        RecommendationUtils.updateRecommendation(
+        RecommendationUtils.updateExtendedRecommendation(
             sdk,
             RECOMMENDER_CODE,
             params,

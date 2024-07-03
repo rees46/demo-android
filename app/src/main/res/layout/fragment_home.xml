@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <rees46.demo_android.core_ui.RecommendationBlockView
+            <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
                 android:id="@+id/top_trends_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

@@ -1,12 +1,11 @@
-package rees46.demo_android.core_ui
+package rees46.demo_android.features.recommendationBlock
 
 import android.content.Context
 import android.util.AttributeSet
 import rees46.demo_android.R
 import rees46.demo_android.base.BaseCardProductView
-import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
 
-class ShortCardProductView @JvmOverloads constructor(
+class CardProductView @JvmOverloads constructor(
     context: Context,
     private val cardProductViewSettings: CardProductViewSettings,
     attrs: AttributeSet? = null

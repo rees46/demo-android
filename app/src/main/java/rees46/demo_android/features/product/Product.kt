@@ -8,9 +8,9 @@ data class Product(
     val id: String,
     val name: String,
     val producerName: String,
-    val price: Int?,
+    val price: Double?,
     val priceFormatted: String,
-    val priceFull: Int?,
+    val priceFull: Double?,
     val priceFullFormatted: String?,
     val pictureUrl: String,
     val description: String
