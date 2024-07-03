@@ -4,82 +4,57 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
-import rees46.demo_android.features.recommendationBlock.RecommendationBlockView
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.entity.productsEntity.ProductEntity
 
 class CardProductFragment
-    : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate),
-    CardProductView.ClickListener {
+    : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
 
     private val args by navArgs<CardProductFragmentArgs>()
 
-    private val viewModel: CardProductViewModel by viewModel()
+    private val viewModel: CardProductViewModel by viewModel { parametersOf(args) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        updateProduct(args.product)
-
-        binding.cardProductView.setListener(this)
-
-        lifecycleScope.launch {
-            viewModel.recommendedProductsFlow.collectLatest { products ->
-                run {
-                    binding.recommendationBlock.updateProducts(products)
-                }
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.count.collectLatest { value ->
-                binding.cardProductView.updateCount(value)
-            }
-        }
-
-        binding.recommendationBlock.setClickListener(getRecommendationTopTrendsProductClickListener())
+        binding.recommendationBlock.onCardProductClick = ::updateProduct
         binding.recommendationBlock.setHeaderText("You also may like")
-    }
-
-    private fun updateProduct(product: ProductEntity) {
-        viewModel.updateProduct(product)
-
-        updateCardProductView(product)
-    }
-
-    private fun updateCardProductView(product: ProductEntity) {
-        viewModel.updateRecommendationBlock(product.id)
-
-        binding.cardProductView.updateProduct(product)
-    }
-
-    private fun getRecommendationTopTrendsProductClickListener(): RecommendationBlockView.ClickListener {
-        return object : RecommendationBlockView.ClickListener {
-            override fun onCardProductClick(product: ProductEntity) {
-                updateProduct(product)
-            }
-        }
     }
 
     override fun onResume() {
         super.onResume()
+        setupListeners()
+        setupViewModel()
         onBackPressedNavigation()
     }
 
-    override fun onAddToCart() {
-        viewModel.addToCart()
+    private fun setupViewModel() {
+        lifecycleScope.launch {
+            viewModel.currentProductFlow.collect(::updateCardProductView)
+        }
+        lifecycleScope.launch {
+            viewModel.recommendedProductsFlow.collect(binding.recommendationBlock::updateProducts)
+        }
+
+        lifecycleScope.launch {
+            viewModel.count.collect(binding.cardProductView::updateCount)
+        }
     }
 
-    override fun decreaseCount() {
-        viewModel.decreaseCount()
+    private fun updateProduct(product: ProductEntity) {
+        viewModel.updateProduct(product)
     }
 
-    override fun increaseCount() {
-        viewModel.increaseCount()
+    private fun updateCardProductView(product: ProductEntity) {
+        viewModel.updateRecommendationBlock(product.id)
+        binding.cardProductView.updateProduct(product)
+    }
+
+    private fun setupListeners() {
+        binding.cardProductView.setupCartController(viewModel::proceedCartAction)
     }
 }

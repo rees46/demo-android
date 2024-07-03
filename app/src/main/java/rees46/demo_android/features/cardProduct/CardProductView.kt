@@ -14,12 +14,6 @@ class CardProductView @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : BaseCardProductView(context, attrs, R.layout.view_card_product) {
 
-    interface ClickListener {
-        fun onAddToCart()
-        fun decreaseCount()
-        fun increaseCount()
-    }
-
     private lateinit var descriptionTextView: TextView
     private lateinit var reviewsTextView: TextView
     private lateinit var saleTextView: TextView
@@ -28,11 +22,8 @@ class CardProductView @JvmOverloads constructor(
     private lateinit var countInCartTextView: TextView
     private lateinit var addToCartButton: MaterialButton
 
-    private var listener: ClickListener? = null
-
     init {
         initViews()
-        setupViews()
     }
 
     private fun initViews() {
@@ -45,21 +36,15 @@ class CardProductView @JvmOverloads constructor(
         addToCartButton = findViewById(R.id.add_to_cart_button)
     }
 
-    private fun setupViews() {
-        addToCartButton.setOnClickListener { listener?.onAddToCart() }
-
-        minusButton.setOnClickListener { listener?.decreaseCount() }
-        plusButton.setOnClickListener { listener?.increaseCount() }
+    fun setupCartController(onCartActionClick: (CardAction) -> Unit) {
+        addToCartButton.setOnClickListener { onCartActionClick.invoke(CardAction.ADD) }
+        minusButton.setOnClickListener { onCartActionClick.invoke(CardAction.DECREASE) }
+        plusButton.setOnClickListener { onCartActionClick.invoke(CardAction.INCREASE) }
     }
 
     override fun updateProduct(product: ProductEntity) {
         super.updateProduct(product)
-
         descriptionTextView.text = product.description
-    }
-
-    internal fun setListener(listener: ClickListener) {
-        this.listener = listener
     }
 
     internal fun updateCount(count: Int) {

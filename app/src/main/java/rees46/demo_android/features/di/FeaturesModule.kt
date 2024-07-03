@@ -15,7 +15,7 @@ object FeaturesModule {
     }
 
     val cardProductFragmentModule = module {
-        viewModel { CardProductViewModel(sdk = get()) }
+        viewModel { parameter -> CardProductViewModel(sdk = get(), args = parameter.get()) }
     }
 
     val cartFragmentModule = module {
