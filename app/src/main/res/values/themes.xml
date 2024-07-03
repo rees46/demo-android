@@ -2,13 +2,24 @@
     <style name="Base.Theme.Demoandroid" parent="Theme.Material3.DayNight.NoActionBar">
     </style>
 
-    <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid" />
+    <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid">
+    </style>
 
     <style name="ThemeOverlay.Demoandroid.StartScreen" parent="">
         <item name="backgroundColor">@color/black</item>
         <item name="headerTextColor">@color/white</item>
     </style>
-    
+
+    <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SuggestTextBold" parent="SuggestTextRegular">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="HomeBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="backgroundTint">@color/black</item>
         <item name="itemRippleColor">@color/black</item>

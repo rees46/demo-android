@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.main.MainFragment"
-    tools:openDrawer="start">
+    tools:context=".features.main.MainFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -48,13 +47,33 @@
                 </LinearLayout>
             </FrameLayout>
 
-            <com.google.android.material.appbar.MaterialToolbar
+            <com.google.android.material.search.SearchBar
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/main_top_app_bar_menu"
-                app:navigationIcon="@drawable/settings_top_menu" />
+                app:navigationIcon="@drawable/settings_top_menu"
+                app:buttonGravity="center_vertical">
+
+            </com.google.android.material.search.SearchBar>
         </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.search.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fitsSystemWindows="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:hint="hint">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/search_result_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        </com.google.android.material.search.SearchView>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
@@ -62,15 +81,17 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
             app:layout_constraintEnd_toEndOf="parent"
+            android:saveEnabled="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             style="@style/HomeBottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:saveEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

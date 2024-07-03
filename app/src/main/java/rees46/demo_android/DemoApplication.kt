@@ -28,6 +28,7 @@ class DemoApplication : Application() {
                     )
                 }
             }
+            includes(FeaturesModule.module)
         }
     }
 
