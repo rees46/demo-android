@@ -3,6 +3,7 @@
     <dimen name="design_bottom_navigation_height" tools:override="true">64dp</dimen>
     <dimen name="main_bottom_navigation_size">32dp</dimen>
     <dimen name="default_offset">16dp</dimen>
+    <dimen name="stories_header_textSize">24sp</dimen>
     <dimen name="recommendationBlock_header_textSize">24sp</dimen>
     <dimen name="recommendationBlock_showAll_textSize">14sp</dimen>
     <dimen name="recommendationBlock_cardProduct_producerName_textSize">12sp</dimen>

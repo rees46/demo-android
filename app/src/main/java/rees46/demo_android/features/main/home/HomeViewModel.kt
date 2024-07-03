@@ -12,20 +12,20 @@ class HomeViewModel(
     sdk: SDK
 ) : ViewModel() {
 
-    private val _topTrendsProductsFlow: MutableSharedFlow<ArrayList<ProductEntity>> = MutableSharedFlow()
-    val topTrendsProductsFlow: Flow<List<ProductEntity>> = _topTrendsProductsFlow
-    private val topTrendsProducts = arrayListOf<ProductEntity>()
+    private val _recommendationProductsFlow: MutableSharedFlow<ArrayList<ProductEntity>> = MutableSharedFlow()
+    val recommendationProductsFlow: Flow<List<ProductEntity>> = _recommendationProductsFlow
+    private val recommendationProducts = arrayListOf<ProductEntity>()
 
     init {
         RecommendationUtils.updateExtendedRecommendation(
             sdk,
-            TOP_TRENDS_RECOMMENDER_CODE,
-            topTrendsProducts,
-            _topTrendsProductsFlow,
+            RECOMMENDER_CODE,
+            recommendationProducts,
+            _recommendationProductsFlow,
             viewModelScope)
     }
 
     companion object {
-        var TOP_TRENDS_RECOMMENDER_CODE = "a043dbc2f852ffe18861a2cdfc364ef2"
+        var RECOMMENDER_CODE = "a043dbc2f852ffe18861a2cdfc364ef2"
     }
 }
