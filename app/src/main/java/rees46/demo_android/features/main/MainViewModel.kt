@@ -3,20 +3,20 @@ package rees46.demo_android.features.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.personalizatio.SDK
-import com.personalizatio.api.entities.product.ProductEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.features.product.Product
-import rees46.demo_android.features.product.ProductUtils
+import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.features.product.createProduct
 
 class MainViewModel(
     private val sdk: SDK
 ) : ViewModel() {
 
-    private val _searchResultItems: MutableSharedFlow<MutableList<Product>> =
+    private val _searchResultItems: MutableSharedFlow<MutableList<ProductEntity>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultItems: Flow<MutableList<Product>> = _searchResultItems
+    val searchResultItems: Flow<MutableList<ProductEntity>> =
+        _searchResultItems
 
     fun searchProduct(query: String = "") {
 
@@ -39,11 +39,13 @@ class MainViewModel(
         )
     }
 
-    private fun handleProductResult(searchProductsResult: List<ProductEntity>) {
-        val searchResultList = mutableListOf<Product>()
-        for (i in searchProductsResult) {
-            val product = ProductUtils.createProduct(i)
-            searchResultList.add(product)
+    private fun handleProductResult(searchProductsResult: List<com.personalizatio.api.entities.product.ProductEntity>) {
+
+        val searchResultList =
+            mutableListOf<ProductEntity>()
+
+        for (product in searchProductsResult) {
+            searchResultList.add(product.createProduct())
         }
         viewModelScope.launch {
             _searchResultItems.emit(searchResultList)

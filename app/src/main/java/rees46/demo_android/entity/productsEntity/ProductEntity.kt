@@ -1,10 +1,11 @@
-package rees46.demo_android.features.product
+package rees46.demo_android.entity.productsEntity
 
 import android.os.Parcelable
+import com.personalizatio.api.entities.product.ProductEntity
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Product(
+data class ProductEntity(
     val id: String,
     val name: String,
     val producerName: String,

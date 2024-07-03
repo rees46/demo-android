@@ -8,22 +8,24 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
-import rees46.demo_android.features.product.Product
+import rees46.demo_android.entity.productsEntity.ProductEntity
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
 
     interface ClickListener {
-        fun onCardProductClick(product: Product)
+        fun onCardProductClick(product: ProductEntity)
     }
+
+    var onCardProductClick: (ProductEntity) -> Unit = {  }
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
     private lateinit var cardProductsRecyclerView: RecyclerView
     private lateinit var cardProductsAdapter: CardProductsAdapter
 
-    private val products: MutableList<Product> = ArrayList()
+    private val products: MutableList<ProductEntity> = ArrayList()
     private var listener: ClickListener? = null
 
     private lateinit var recommendationBlockViewSettings: RecommendationBlockViewSettings
@@ -72,13 +74,13 @@ class RecommendationBlockView @JvmOverloads constructor(
         }
     }
 
-    fun updateProducts(products: Collection<Product>) {
+    fun updateProducts(products: Collection<ProductEntity>) {
         this.products.clear()
         addCardProducts(products)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addCardProducts(products: Collection<Product>) {
+    fun addCardProducts(products: Collection<ProductEntity>) {
         this.products.addAll(products)
 
         Handler(context.mainLooper).post {
@@ -90,8 +92,8 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.listener = listener
     }
 
-    override fun onCardProductClick(product: Product) {
-        listener?.onCardProductClick(product)
+    override fun onCardProductClick(product: ProductEntity) {
+        onCardProductClick.invoke(product)
     }
 
     fun setHeaderText(text: String) {

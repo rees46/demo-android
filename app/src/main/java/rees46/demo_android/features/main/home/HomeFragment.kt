@@ -9,8 +9,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.features.recommendationBlock.RecommendationBlockView
-import rees46.demo_android.features.product.Product
+import rees46.demo_android.entity.productsEntity.ProductEntity
 
 class HomeFragment
     : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -27,16 +26,12 @@ class HomeFragment
                 }
             }
         }
-        binding.topTrendsRecommendationBlockView.setClickListener(getRecommendationTopTrendsProductClickListener())
+        binding.topTrendsRecommendationBlockView.onCardProductClick = ::navigateProductFragment
         binding.topTrendsRecommendationBlockView.setHeaderText("Top trends")
     }
 
-    private fun getRecommendationTopTrendsProductClickListener(): RecommendationBlockView.ClickListener {
-        return object : RecommendationBlockView.ClickListener {
-            override fun onCardProductClick(product: Product) {
-                val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
-                findNavController().navigate(action)
-            }
-        }
+    private fun navigateProductFragment(product: ProductEntity) {
+        val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
+        findNavController().navigate(action)
     }
 }

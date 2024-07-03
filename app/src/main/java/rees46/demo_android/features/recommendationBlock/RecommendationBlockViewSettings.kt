@@ -9,25 +9,20 @@ import rees46.demo_android.utils.ViewAttrsUtils
 
 class RecommendationBlockViewSettings(resources: Resources, attrs: TypedArray) {
 
-    private @ColorRes val defaultHeaderTextColor : Int = R.color.recommendationBlock_header_textColor
-    private @DimenRes val defaultHeaderTextSize : Int = R.dimen.recommendationBlock_header_textSize
-    private @ColorRes val defaultShowAllTextColor : Int = R.color.recommendationBlock_showAll_textColor
-    private @DimenRes val defaultShowAllTextSize : Int = R.dimen.recommendationBlock_showAll_textSize
+    @ColorRes
+    private val defaultHeaderTextColor : Int = R.color.recommendationBlock_header_textColor
+    @DimenRes
+    private val defaultHeaderTextSize : Int = R.dimen.recommendationBlock_header_textSize
+    @ColorRes
+    private val defaultShowAllTextColor : Int = R.color.recommendationBlock_showAll_textColor
+    @DimenRes
+    private val defaultShowAllTextSize : Int = R.dimen.recommendationBlock_showAll_textSize
 
-    internal var headerTextColor: Int
-    internal var headerTextSize: Float
-    internal var showAllTextColor: Int
-    internal var showAllTextSize: Float
+    internal var headerTextColor: Int =
+        attrs.getColor(R.styleable.RecommendationBlockView_header_textColor, defaultHeaderTextColor)
+    internal var headerTextSize: Float = ViewAttrsUtils.getTextSize(resources, attrs, R.styleable.RecommendationBlockView_header_textSize, defaultHeaderTextSize)
+    internal var showAllTextColor: Int = attrs.getColor(R.styleable.RecommendationBlockView_showAll_textColor, defaultShowAllTextColor)
+    internal var showAllTextSize: Float = ViewAttrsUtils.getTextSize(resources, attrs, R.styleable.RecommendationBlockView_showAll_textSize, defaultShowAllTextSize)
 
-    internal var cardProductViewSettings: CardProductViewSettings
-
-    init {
-        headerTextColor = attrs.getColor(R.styleable.RecommendationBlockView_header_textColor, defaultHeaderTextColor)
-        headerTextSize = ViewAttrsUtils.getTextSize(resources, attrs, R.styleable.RecommendationBlockView_header_textSize, defaultHeaderTextSize)
-
-        showAllTextColor = attrs.getColor(R.styleable.RecommendationBlockView_showAll_textColor, defaultShowAllTextColor)
-        showAllTextSize = ViewAttrsUtils.getTextSize(resources, attrs, R.styleable.RecommendationBlockView_showAll_textSize, defaultShowAllTextSize)
-
-        cardProductViewSettings = CardProductViewSettings(attrs)
-    }
+    internal var cardProductViewSettings: CardProductViewSettings = CardProductViewSettings(attrs)
 }

@@ -1,4 +1,4 @@
-package rees46.demo_android.utils
+package rees46.demo_android.core.utils
 
 import android.view.View
 import androidx.core.view.WindowCompat

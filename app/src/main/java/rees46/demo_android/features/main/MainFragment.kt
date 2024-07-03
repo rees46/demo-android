@@ -15,9 +15,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.R
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentMainBinding
-import rees46.demo_android.utils.fragmentOffFullScreen
-import rees46.demo_android.utils.fragmentOnFullScreen
-import rees46.demo_android.utils.showSystemBar
+import rees46.demo_android.core.utils.fragmentOffFullScreen
+import rees46.demo_android.core.utils.fragmentOnFullScreen
+import rees46.demo_android.core.utils.showSystemBar
 
 class MainFragment
     : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {

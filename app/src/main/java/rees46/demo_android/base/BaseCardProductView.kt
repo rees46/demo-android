@@ -6,11 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bumptech.glide.Glide
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ImageUtils
-import rees46.demo_android.features.product.Product
-import rees46.demo_android.features.recommendationBlock.CardProductViewSettings
+import rees46.demo_android.entity.productsEntity.ProductEntity
 
 abstract class BaseCardProductView @JvmOverloads constructor(
     context: Context,
@@ -40,7 +38,7 @@ abstract class BaseCardProductView @JvmOverloads constructor(
         priceTextView = findViewById(R.id.price_text)
     }
 
-    internal open fun updateProduct(product: Product) {
+    internal open fun updateProduct(product: ProductEntity) {
         ImageUtils.updateImage(this, productImageView, product.pictureUrl)
 
         productNameTextView.text = product.name

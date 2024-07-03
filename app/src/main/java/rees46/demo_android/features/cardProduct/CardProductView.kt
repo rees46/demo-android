@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.google.android.material.button.MaterialButton
 import rees46.demo_android.R
 import rees46.demo_android.base.BaseCardProductView
-import rees46.demo_android.features.product.Product
+import rees46.demo_android.entity.productsEntity.ProductEntity
 
 class CardProductView @JvmOverloads constructor(
     context: Context,
@@ -16,7 +16,6 @@ class CardProductView @JvmOverloads constructor(
 
     interface ClickListener {
         fun onAddToCart()
-
         fun decreaseCount()
         fun increaseCount()
     }
@@ -53,7 +52,7 @@ class CardProductView @JvmOverloads constructor(
         plusButton.setOnClickListener { listener?.increaseCount() }
     }
 
-    override fun updateProduct(product: Product) {
+    override fun updateProduct(product: ProductEntity) {
         super.updateProduct(product)
 
         descriptionTextView.text = product.description

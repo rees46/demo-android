@@ -1,52 +1,46 @@
 package rees46.demo_android.features.main.cart
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.os.Handler
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import rees46.demo_android.databinding.CartProductItemBinding
+import rees46.demo_android.entity.productsEntity.CartProductEntity
 
 class CartProductsAdapter(
-    private val context: Context,
-    private val listener: CartProductView.ClickListener
-) : RecyclerView.Adapter<CartProductsAdapter.ViewHolder>() {
-
-    private val cartProducts: MutableList<CartProduct> = ArrayList()
-
-    inner class ViewHolder(private val view: CartProductView)
-        : RecyclerView.ViewHolder(view) {
-
-        fun bind(cartProduct: CartProduct) {
-            view.updateCartProduct(cartProduct)
-        }
-    }
+    private val onClickRemoveCart: (CartProductEntity) -> Unit
+) : ListAdapter<CartProductEntity, CartProductsAdapter.ViewHolder>(CartProductDiffCallback()) {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val cartProductView = CartProductView(context, null)
-        cartProductView.setListener(listener)
-
-        return ViewHolder(cartProductView)
+        val cartProductView =
+            CartProductItemBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        return ViewHolder(cartProductView.root)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(cartProducts[position])
+        getItem(position).run(viewHolder::bind)
     }
 
-    override fun getItemCount(): Int {
-        return cartProducts.size
-    }
+    inner class ViewHolder(private val view: CartProductView) : RecyclerView.ViewHolder(view) {
 
-    fun updateCartProducts(cartProducts: Collection<CartProduct>) {
-        this.cartProducts.clear()
-        addCartProducts(cartProducts)
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun addCartProducts(cartProducts: Collection<CartProduct>) {
-        this.cartProducts.addAll(cartProducts)
-
-        Handler(context.mainLooper).post {
-            notifyDataSetChanged()
+        fun bind(cartProduct: CartProductEntity) {
+            view.run {
+                updateCartProduct(cartProduct)
+                setOnClickListener { onClickRemoveCart.invoke(cartProduct) }
+            }
         }
+    }
+
+    private class CartProductDiffCallback : DiffUtil.ItemCallback<CartProductEntity>() {
+        override fun areItemsTheSame(
+            oldItem: CartProductEntity,
+            newItem: CartProductEntity
+        ): Boolean = oldItem == newItem
+
+        override fun areContentsTheSame(
+            oldItem: CartProductEntity,
+            newItem: CartProductEntity
+        ): Boolean = oldItem.product.id == newItem.product.id
     }
 }

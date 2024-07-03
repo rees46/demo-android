@@ -11,7 +11,7 @@ import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.features.recommendationBlock.RecommendationBlockView
 import rees46.demo_android.databinding.FragmentCardProductBinding
-import rees46.demo_android.features.product.Product
+import rees46.demo_android.entity.productsEntity.ProductEntity
 
 class CardProductFragment
     : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate),
@@ -46,13 +46,13 @@ class CardProductFragment
         binding.recommendationBlock.setHeaderText("You also may like")
     }
 
-    private fun updateProduct(product: Product) {
+    private fun updateProduct(product: ProductEntity) {
         viewModel.updateProduct(product)
 
         updateCardProductView(product)
     }
 
-    private fun updateCardProductView(product: Product) {
+    private fun updateCardProductView(product: ProductEntity) {
         viewModel.updateRecommendationBlock(product.id)
 
         binding.cardProductView.updateProduct(product)
@@ -60,7 +60,7 @@ class CardProductFragment
 
     private fun getRecommendationTopTrendsProductClickListener(): RecommendationBlockView.ClickListener {
         return object : RecommendationBlockView.ClickListener {
-            override fun onCardProductClick(product: Product) {
+            override fun onCardProductClick(product: ProductEntity) {
                 updateProduct(product)
             }
         }

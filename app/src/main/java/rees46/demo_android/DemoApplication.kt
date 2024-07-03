@@ -2,6 +2,7 @@ package rees46.demo_android
 
 import android.app.Application
 import com.personalizatio.SDK
+import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -9,6 +10,7 @@ import org.koin.dsl.module
 import rees46.demo_android.features.di.FeaturesModule.cardProductFragmentModule
 import rees46.demo_android.features.di.FeaturesModule.cartFragmentModule
 import rees46.demo_android.features.di.FeaturesModule.homeFragmentModule
+import rees46.demo_android.features.di.FeaturesModule.mainViewModel
 
 class DemoApplication : Application() {
 
@@ -28,7 +30,6 @@ class DemoApplication : Application() {
                     )
                 }
             }
-            includes(FeaturesModule.module)
         }
     }
 
@@ -37,7 +38,7 @@ class DemoApplication : Application() {
 
         startKoin {
             androidContext(this@DemoApplication)
-            modules(listOf(appModule, homeFragmentModule, cardProductFragmentModule, cartFragmentModule))
+            modules(listOf(appModule, homeFragmentModule, cardProductFragmentModule, cartFragmentModule, mainViewModel))
         }
     }
 

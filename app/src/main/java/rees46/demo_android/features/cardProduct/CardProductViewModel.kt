@@ -8,23 +8,23 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.features.main.cart.Cart
-import rees46.demo_android.features.product.Product
+import rees46.demo_android.entity.productsEntity.ProductEntity
 import rees46.demo_android.features.recommendationBlock.RecommendationUtils
 
 class CardProductViewModel(
     private val sdk: SDK
 ) : ViewModel() {
-    private val _recommendedProductsFlow: MutableSharedFlow<ArrayList<Product>> = MutableSharedFlow()
-    val recommendedProductsFlow: Flow<List<Product>> = _recommendedProductsFlow
-    private val recommendedProducts = arrayListOf<Product>()
+    private val _recommendedProductsFlow: MutableSharedFlow<ArrayList<ProductEntity>> = MutableSharedFlow()
+    val recommendedProductsFlow: Flow<List<ProductEntity>> = _recommendedProductsFlow
+    private val recommendedProducts = arrayListOf<ProductEntity>()
 
     private var _count: MutableSharedFlow<Int> = MutableSharedFlow()
     internal var count: Flow<Int> = _count
     private var countValue: Int = 1
 
-    private lateinit var product: Product
+    private lateinit var product: ProductEntity
 
-    internal fun updateProduct(product: Product) {
+    internal fun updateProduct(product: ProductEntity) {
         changeCount(1)
 
         this.product = product

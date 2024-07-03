@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import rees46.demo_android.databinding.SearchResultItemBinding
-import rees46.demo_android.features.product.Product
+import rees46.demo_android.entity.productsEntity.ProductEntity
 
 class MainScreenSearchResultAdapter(
-    private val onSelectItem: (Product) -> Unit
+    private val onSelectItem: (ProductEntity) -> Unit
 ) :
-    ListAdapter<Product, MainScreenSearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
+    ListAdapter<ProductEntity, MainScreenSearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
@@ -28,7 +28,7 @@ class MainScreenSearchResultAdapter(
     inner class ViewHolder(private val binding: SearchResultItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product) {
+        fun bind(product: ProductEntity) {
             binding.itemNameTextView.text = product.name
             binding.itemPriceTextView.text = product.priceFormatted
             binding.root.setOnClickListener {
@@ -41,12 +41,12 @@ class MainScreenSearchResultAdapter(
         }
     }
 
-    internal class SearchResultItemCallback : DiffUtil.ItemCallback<Product>() {
-        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+    internal class SearchResultItemCallback : DiffUtil.ItemCallback<ProductEntity>() {
+        override fun areItemsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+        override fun areContentsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
             return oldItem.id == newItem.id
         }
     }
