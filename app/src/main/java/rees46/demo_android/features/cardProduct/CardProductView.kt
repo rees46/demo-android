@@ -1,4 +1,4 @@
-package rees46.demo_android.core_ui
+package rees46.demo_android.features.cardProduct
 
 import android.content.Context
 import android.util.AttributeSet
@@ -14,6 +14,13 @@ class CardProductView @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : BaseCardProductView(context, attrs, R.layout.view_card_product) {
 
+    interface ClickListener {
+        fun onAddToCart()
+
+        fun decreaseCount()
+        fun increaseCount()
+    }
+
     private lateinit var descriptionTextView: TextView
     private lateinit var reviewsTextView: TextView
     private lateinit var saleTextView: TextView
@@ -22,8 +29,11 @@ class CardProductView @JvmOverloads constructor(
     private lateinit var countInCartTextView: TextView
     private lateinit var addToCartButton: MaterialButton
 
+    private var listener: ClickListener? = null
+
     init {
         initViews()
+        setupViews()
     }
 
     private fun initViews() {
@@ -36,9 +46,24 @@ class CardProductView @JvmOverloads constructor(
         addToCartButton = findViewById(R.id.add_to_cart_button)
     }
 
+    private fun setupViews() {
+        addToCartButton.setOnClickListener { listener?.onAddToCart() }
+
+        minusButton.setOnClickListener { listener?.decreaseCount() }
+        plusButton.setOnClickListener { listener?.increaseCount() }
+    }
+
     override fun updateProduct(product: Product) {
         super.updateProduct(product)
 
         descriptionTextView.text = product.description
+    }
+
+    internal fun setListener(listener: ClickListener) {
+        this.listener = listener
+    }
+
+    internal fun updateCount(count: Int) {
+        countInCartTextView.text = count.toString()
     }
 }
