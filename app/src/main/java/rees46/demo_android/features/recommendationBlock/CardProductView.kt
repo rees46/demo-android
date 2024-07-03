@@ -7,15 +7,6 @@ import rees46.demo_android.base.BaseCardProductView
 
 class CardProductView @JvmOverloads constructor(
     context: Context,
-    private val cardProductViewSettings: CardProductViewSettings,
     attrs: AttributeSet? = null
-) : BaseCardProductView(context, attrs, R.layout.view_short_card_product) {
-
-    init {
-        setupViews()
-    }
-
-    private fun setupViews() {
-        producerNameTextView.setTextColor(cardProductViewSettings.producerNameTextColor)
-    }
+) : BaseCardProductView(context, attrs, R.layout.view_recommendation_card_product) {
 }

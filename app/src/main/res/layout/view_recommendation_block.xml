@@ -6,13 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="@dimen/default_offset">
+    android:paddingStart="@dimen/default_offset"
+    android:paddingVertical="@dimen/default_offset">
 
     <TextView
         android:id="@+id/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recommendation"
+        android:fontFamily="@font/inter"
+        android:textStyle="bold"
         android:textColor="@color/recommendationBlock_header_textColor"
         android:textSize="@dimen/recommendationBlock_header_textSize"
         app:layout_constraintEnd_toStartOf="@+id/show_all_text"
@@ -20,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
         android:id="@+id/show_all_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +42,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/header_text"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_offset"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/view_short_card_product" />
+        tools:listitem="@layout/view_recommendation_card_product" />
 </androidx.constraintlayout.widget.ConstraintLayout>

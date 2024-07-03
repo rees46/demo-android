@@ -28,14 +28,10 @@ class RecommendationBlockView @JvmOverloads constructor(
     private val products: MutableList<ProductEntity> = ArrayList()
     private var listener: ClickListener? = null
 
-    private lateinit var recommendationBlockViewSettings: RecommendationBlockViewSettings
-
     init {
         inflate(context, R.layout.view_recommendation_block, this)
 
         initViews()
-
-        applyAttr(attrs)
 
         setupViews()
     }
@@ -47,31 +43,8 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     private fun setupViews() {
-        cardProductsAdapter = CardProductsAdapter(context, products,
-            recommendationBlockViewSettings.cardProductViewSettings, this)
+        cardProductsAdapter = CardProductsAdapter(context, products, this)
         cardProductsRecyclerView.adapter = cardProductsAdapter
-
-        recommendationBlockViewSettings.apply {
-            headerTextView.setTextColor(headerTextColor)
-            headerTextView.textSize = headerTextSize
-
-            showAllTextView.setTextColor(showAllTextColor)
-            showAllTextView.textSize = showAllTextSize
-        }
-    }
-
-    private fun applyAttr(attrs: AttributeSet?) {
-        context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.RecommendationBlockView,
-            0, 0).apply {
-
-            try {
-                recommendationBlockViewSettings = RecommendationBlockViewSettings(resources,this)
-            } finally {
-                recycle()
-            }
-        }
     }
 
     fun updateProducts(products: Collection<ProductEntity>) {
@@ -98,34 +71,5 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     fun setHeaderText(text: String) {
         headerTextView.text = text
-    }
-
-    fun setHeaderTextColor(color: Int) {
-        headerTextView.setTextColor(color)
-
-        invalidateView()
-    }
-
-    fun setHeaderTextSize(textSize: Float) {
-        headerTextView.textSize = textSize
-
-        invalidateView()
-    }
-
-    fun setShowAllTextColor(color: Int) {
-        showAllTextView.setTextColor(color)
-
-        invalidateView()
-    }
-
-    fun setShowAllTextSize(textSize: Float) {
-        showAllTextView.textSize = textSize
-
-        invalidateView()
-    }
-
-    private fun invalidateView() {
-        invalidate()
-        requestLayout()
     }
 }

@@ -9,7 +9,6 @@ import rees46.demo_android.entity.productsEntity.ProductEntity
 class CardProductsAdapter(
     private val context: Context,
     private val products: List<ProductEntity>,
-    private val cardProductViewSettings: CardProductViewSettings,
     private val listener: ClickListener
 ) : RecyclerView.Adapter<CardProductsAdapter.ViewHolder>() {
 
@@ -30,7 +29,7 @@ class CardProductsAdapter(
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val cardProductView = CardProductView(context, cardProductViewSettings,null)
+        val cardProductView = CardProductView(context,null)
 
         return ViewHolder(cardProductView, listener)
     }
