@@ -2,6 +2,7 @@ package rees46.demo_android.features.main.cart
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,9 @@ import rees46.demo_android.entity.productsEntity.CartProductEntity
 
 class CartProductsAdapter(
     private val onClickRemoveCart: (CartProductEntity) -> Unit
-) : ListAdapter<CartProductEntity, CartProductsAdapter.ViewHolder>(CartProductDiffCallback()) {
+) : ListAdapter<CartProductEntity, CartProductsAdapter.ViewHolder>(
+    AsyncDifferConfig.Builder(CartProductDiffCallback()).build()
+) {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val cartProductView =
@@ -27,7 +30,7 @@ class CartProductsAdapter(
         fun bind(cartProduct: CartProductEntity) {
             view.run {
                 updateCartProduct(cartProduct)
-                setOnClickListener { onClickRemoveCart.invoke(cartProduct) }
+                setupOnRemoveListener(onClickRemoveCart::invoke)
             }
         }
     }

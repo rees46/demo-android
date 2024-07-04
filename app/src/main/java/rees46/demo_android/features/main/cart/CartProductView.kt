@@ -45,4 +45,8 @@ class CartProductView @JvmOverloads constructor(
         producerNameTextView.text = cartProduct.product.producerName
         priceTextView.text = cartProduct.product.priceFormatted
     }
+
+    internal fun setupOnRemoveListener(onClick: (CartProductEntity) -> Unit) {
+        removeButton.setOnClickListener { onClick.invoke(cartProduct) }
+    }
 }

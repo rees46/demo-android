@@ -15,21 +15,16 @@ class CartFragment
 
     private val shortCardProductsAdapter = CartProductsAdapter(::removeProduct)
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         binding.cartProductsRecyclerView.adapter = shortCardProductsAdapter
         lifecycleScope.launch {
             viewModel.cartProductsFlow.collectLatest(::updateCartAdapter)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
         viewModel.updateCarts()
     }
 
-    private fun updateCartAdapter(newList: MutableList<CartProductEntity>) {
+    private fun updateCartAdapter(newList: MutableList<CartProductEntity>) = lifecycleScope.launch {
         shortCardProductsAdapter.submitList(newList)
     }
 
