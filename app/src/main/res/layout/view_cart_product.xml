@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_cart_product"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,33 +18,46 @@
 
     <TextView
         android:id="@+id/producer_name_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_offset"
         android:layout_marginLeft="@dimen/default_offset"
         android:layout_marginTop="12dp"
-        android:layout_marginHorizontal="@dimen/default_offset"
         android:text="Producer name"
         android:textColor="@color/cart_cartProduct_producerName_textColor"
         android:textSize="@dimen/cart_cartProduct_producerName_textSize"
-        app:layout_constraintEnd_toStartOf="@id/price_text"
+        app:layout_constraintEnd_toStartOf="@id/product_quantity"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/product_image_view"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/product_name_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginHorizontal="@dimen/default_offset"
+        android:layout_marginTop="4dp"
         android:text="Product name"
         android:textColor="@color/cart_cartProduct_productName_textColor"
         android:textSize="@dimen/cart_cartProduct_productName_textSize"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/price_text"
+        app:layout_constraintEnd_toStartOf="@id/product_quantity"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/product_image_view"
         app:layout_constraintTop_toBottomOf="@id/producer_name_text" />
+
+    <TextView
+        android:id="@+id/product_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/cart_cartProduct_price_textColor"
+        android:textSize="@dimen/cart_cartProduct_price_textSize"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/price_text"
+        app:layout_constraintEnd_toStartOf="@+id/price_text"
+        app:layout_constraintTop_toTopOf="@+id/price_text"
+        tools:text="x1" />
 
     <ImageButton
         android:id="@+id/remove_button"
@@ -57,13 +70,13 @@
 
     <TextView
         android:id="@+id/price_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_offset"
         android:text="$ 650"
         android:textColor="@color/cart_cartProduct_price_textColor"
         android:textSize="@dimen/cart_cartProduct_price_textSize"
         android:textStyle="bold"
-        android:layout_marginEnd="@dimen/default_offset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/remove_button"
         app:layout_constraintTop_toTopOf="parent" />

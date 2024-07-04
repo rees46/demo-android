@@ -20,6 +20,7 @@ class CartProductView @JvmOverloads constructor(
     private lateinit var productNameTextView: TextView
     private lateinit var priceTextView: TextView
     private lateinit var removeButton: ImageButton
+    private lateinit var quantityTextView: TextView
 
     private lateinit var cartProduct: CartProductEntity
 
@@ -34,6 +35,7 @@ class CartProductView @JvmOverloads constructor(
         productNameTextView = findViewById(R.id.product_name_text)
         priceTextView = findViewById(R.id.price_text)
         removeButton = findViewById(R.id.remove_button)
+        quantityTextView = findViewById(R.id.product_quantity)
     }
 
     internal fun updateCartProduct(cartProduct: CartProductEntity) {
@@ -43,7 +45,8 @@ class CartProductView @JvmOverloads constructor(
 
         productNameTextView.text = cartProduct.product.name
         producerNameTextView.text = cartProduct.product.producerName
-        priceTextView.text = cartProduct.product.priceFormatted
+        priceTextView.text = (cartProduct.product.price?.times(cartProduct.quantity)).toString()
+        quantityTextView.text = "x${cartProduct.quantity}"
     }
 
     internal fun setupOnRemoveListener(onClick: (CartProductEntity) -> Unit) {

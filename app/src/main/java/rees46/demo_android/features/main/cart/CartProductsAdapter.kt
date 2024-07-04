@@ -25,6 +25,11 @@ class CartProductsAdapter(
         getItem(position).run(viewHolder::bind)
     }
 
+    override fun submitList(list: MutableList<CartProductEntity>?) {
+        super.submitList(list)
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(private val view: CartProductView) : RecyclerView.ViewHolder(view) {
 
         fun bind(cartProduct: CartProductEntity) {
