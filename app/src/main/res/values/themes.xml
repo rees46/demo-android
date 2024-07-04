@@ -1,5 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Demoandroid" parent="Theme.Material3.DayNight.NoActionBar">
+<resources>
+    <style name="Base.Theme.Demoandroid" parent="Theme.Material3.Light.NoActionBar">
     </style>
 
     <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid">
@@ -24,6 +24,8 @@
 
     <style name="HomeBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="backgroundTint">@color/black</item>
+        <item name="background">@color/black</item>
+
         <item name="itemRippleColor">@color/black</item>
         <item name="itemIconTint">@color/main_bottom_navigation_item_color</item>
         <item name="itemTextColor">@color/main_bottom_navigation_item_color</item>

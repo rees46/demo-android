@@ -16,7 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/default_offset">
 
             <TextView
                 android:layout_width="match_parent"
@@ -40,7 +41,7 @@
                 android:id="@+id/new_arrivals_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_offset" />
+                android:layout_marginTop="@dimen/half_default_offset" />
 
             <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
                 android:id="@+id/top_trends_recommendation_block_view"
