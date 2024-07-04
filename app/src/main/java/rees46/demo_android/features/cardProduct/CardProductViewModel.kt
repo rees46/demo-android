@@ -17,43 +17,33 @@ class CardProductViewModel(
     private val sdk: SDK,
     args: CardProductFragmentArgs
 ) : ViewModel() {
-    private val _recommendedProductsFlow: MutableSharedFlow<ArrayList<ProductEntity>> = MutableSharedFlow()
-    val recommendedProductsFlow: Flow<List<ProductEntity>> = _recommendedProductsFlow
-    private val recommendedProducts = arrayListOf<ProductEntity>()
 
-    private val _currentProductFlow: MutableStateFlow<ProductEntity> = MutableStateFlow(args.product)
+    private val _recommendedProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> =
+        MutableSharedFlow()
+    val recommendedProductsFlow: Flow<MutableList<ProductEntity>> = _recommendedProductsFlow
+
+    private val _currentProductFlow: MutableStateFlow<ProductEntity> =
+        MutableStateFlow(args.product)
     val currentProductFlow: Flow<ProductEntity> = _currentProductFlow
 
-    private var _count: MutableSharedFlow<Int> = MutableSharedFlow()
-    internal var count: Flow<Int> = _count
-    private var countValue: Int = 1
-
-    private var product: ProductEntity = args.product
+    private var _countCartProductFlow: MutableStateFlow<Int> =
+        MutableStateFlow(Cart.getCartProduct(args.product.id)?.quantity ?: 1)
+    internal var countCartProductFlow: Flow<Int> = _countCartProductFlow
 
     internal fun updateProduct(product: ProductEntity) {
-        changeCount(1)
-        this.product = product
-        _currentProductFlow.update { this.product }
+        _countCartProductFlow.update { Cart.getCartProduct(product.id)?.quantity ?: 1 }
+        _currentProductFlow.update { product }
     }
 
     internal fun updateRecommendationBlock(productId: String) {
-        recommendedProducts.clear()
 
-        val params = Params().apply {
-            put(Params.Parameter.ITEM, productId)
+        RecommendationUtils.updateExtendedRecommendationForProduct(sdk, RECOMMENDER_CODE, productId) {
+            viewModelScope.launch { _recommendedProductsFlow.emit(it) }
         }
-
-        RecommendationUtils.updateExtendedRecommendation(
-            sdk,
-            RECOMMENDER_CODE,
-            params,
-            recommendedProducts,
-            _recommendedProductsFlow,
-            viewModelScope)
     }
 
     fun proceedCartAction(action: CardAction) {
-        when(action) {
+        when (action) {
             CardAction.ADD -> addToCart()
             CardAction.INCREASE -> increaseCount()
             CardAction.DECREASE -> decreaseCount()
@@ -61,24 +51,15 @@ class CardProductViewModel(
     }
 
     private fun addToCart() {
-        Cart.addProduct(product, countValue)
-        sdk.trackEventManager.track(Params.TrackEvent.VIEW, product.id)
+        Cart.addProduct(_currentProductFlow.value, _countCartProductFlow.value)
+        sdk.trackEventManager.track(Params.TrackEvent.VIEW, _currentProductFlow.value.id)
     }
 
-    private fun increaseCount() {
-        changeCount(countValue + 1)
-    }
+    private fun increaseCount() = _countCartProductFlow.update { it.inc() }
 
     private fun decreaseCount() {
-        if(countValue > 1){
-            changeCount(countValue - 1)
-        }
-    }
-
-    private fun changeCount(value: Int) {
-        countValue = value
-        viewModelScope.launch {
-            _count.emit(countValue)
+        if (_countCartProductFlow.value > 1) {
+            _countCartProductFlow.update { it.dec() }
         }
     }
 

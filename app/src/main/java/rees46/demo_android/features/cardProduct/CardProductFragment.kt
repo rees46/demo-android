@@ -41,7 +41,7 @@ class CardProductFragment
         }
 
         lifecycleScope.launch {
-            viewModel.count.collect(binding.cardProductView::updateCount)
+            viewModel.countCartProductFlow.collect(binding.cardProductView::updateCount)
         }
     }
 

@@ -33,7 +33,6 @@ class CartFragment
         shortCardProductsAdapter.submitList(newList)
     }
 
-
     private fun removeProduct(cartProduct: CartProductEntity) {
         viewModel.removeProduct(cartProduct)
     }

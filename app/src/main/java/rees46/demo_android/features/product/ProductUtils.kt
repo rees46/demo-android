@@ -15,3 +15,6 @@ fun ProductEntity.createProduct(): rees46.demo_android.entity.productsEntity.Pro
         description = description,
     )
 }
+
+fun List<ProductEntity>.createProductList(): MutableList<rees46.demo_android.entity.productsEntity.ProductEntity> =
+    map { it.createProduct() }.toMutableList()
