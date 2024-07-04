@@ -12,4 +12,7 @@
     <string name="shipping">Shipping:</string>
     <string name="total">Total:</string>
     <string name="continue_shopping">Continue shopping</string>
+    <string name="suitable_categories">SUITABLE CATEGORIES</string>
+    <string name="suitable_products">SUITABLE PRODUCTS</string>
+    <string name="suitable_products_not_found">Products not found</string>
 </resources>

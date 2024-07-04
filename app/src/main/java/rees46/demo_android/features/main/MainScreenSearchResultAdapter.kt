@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.SearchResultItemBinding
 import rees46.demo_android.entity.productsEntity.ProductEntity
 
@@ -29,15 +29,12 @@ class MainScreenSearchResultAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: ProductEntity) {
-            binding.itemNameTextView.text = product.name
-            binding.itemPriceTextView.text = product.priceFormatted
+            binding.productName.text = product.name
+            binding.price.text = product.priceFormatted
             binding.root.setOnClickListener {
                 onSelectItem.invoke(product)
             }
-            Glide.with(binding.root.context)
-                .load(product.pictureUrl)
-                .fitCenter()
-                .into(binding.previewImg)
+            ImageUtils.updateImage(binding.root, binding.image, product.pictureUrl)
         }
     }
 

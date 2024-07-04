@@ -4,12 +4,12 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="12dp">
+    android:padding="@dimen/default_offset">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/previewImg"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:id="@+id/image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:scaleType="centerCrop"
         tools:src="@mipmap/ic_launcher"
         app:layout_constraintTop_toTopOf="parent"
@@ -17,24 +17,24 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/itemNameTextView"
+        android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         style="@style/SuggestTextRegular"
         tools:text="item name"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/previewImg"/>
+        app:layout_constraintStart_toEndOf="@id/image"/>
 
     <TextView
-        android:id="@+id/itemPriceTextView"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         style="@style/SuggestTextBold"
         tools:text="item price"
-        app:layout_constraintStart_toEndOf="@id/previewImg"
-        app:layout_constraintTop_toBottomOf="@id/itemNameTextView"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/product_name"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

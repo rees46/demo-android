@@ -3,6 +3,7 @@ package rees46.demo_android.features.main
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -24,11 +25,12 @@ class MainFragment
 
     private val viewModel: MainViewModel by viewModel()
 
-    private val adapter = MainScreenSearchResultAdapter { product ->
+    private val searchResultAdapter = MainScreenSearchResultAdapter { product ->
         showSystemBar()
         val action = MainFragmentDirections.actionHomeFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }
+    private val searchResultCategoriesAdapter = MainScreenSearchResultCategoriesAdapter { _ -> }
     private val pagerAdapter by lazy {
         MainScreenPagerAdapter(this)
     }
@@ -36,7 +38,7 @@ class MainFragment
     override fun onStart() {
         super.onStart()
         setupBottomNavigationView()
-        setupRecyclerView()
+        setupSearchResultView()
         createOptionMenu()
         setupTopAppBar()
         setupSearchView()
@@ -49,13 +51,9 @@ class MainFragment
         }
     }
 
-    private fun setupRecyclerView() {
-        binding.searchResultRecyclerView.adapter = adapter
-        lifecycleScope.launch {
-            viewModel.searchResultItems.collect {
-                adapter.submitList(it)
-            }
-        }
+    private fun setupSearchResultView() {
+        setupSearchResultProductsView()
+        setupSearchResultCategoriesView()
     }
 
     private fun setupBottomNavigationView() {
@@ -99,5 +97,29 @@ class MainFragment
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean = true
         })
+    }
+
+    private fun setupSearchResultProductsView() {
+        binding.searchResultRecyclerView.adapter = searchResultAdapter
+        lifecycleScope.launch {
+            viewModel.searchResultItems.collect {
+                binding.suitableProductsText.text =
+                    getString(if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products)
+
+                searchResultAdapter.submitList(it)
+            }
+        }
+    }
+
+    private fun setupSearchResultCategoriesView() {
+        binding.searchResultCategoriesRecyclerView.adapter = searchResultCategoriesAdapter
+        lifecycleScope.launch {
+            viewModel.searchResultCategoriesItems.collect {
+                binding.suitableCategoriesText.visibility =
+                    if(it.isEmpty()) View.GONE else View.VISIBLE
+
+                searchResultCategoriesAdapter.submitList(it)
+            }
+        }
     }
 }

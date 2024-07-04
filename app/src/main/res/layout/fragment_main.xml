@@ -67,12 +67,43 @@
             app:layout_constraintTop_toTopOf="parent"
             android:hint="hint">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_result_recycler_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                android:orientation="vertical"
+                android:layout_margin="@dimen/default_offset">
 
+                <TextView
+                    android:id="@+id/suitable_categories_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="@color/default_subTextColor"
+                    android:text="@string/suitable_categories"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/search_result_categories_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                <TextView
+                    android:id="@+id/suitable_products_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="@color/default_subTextColor"
+                    android:layout_marginTop="@dimen/default_offset"
+                    android:text="@string/suitable_products"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/search_result_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            </LinearLayout>
         </com.google.android.material.search.SearchView>
 
         <androidx.viewpager2.widget.ViewPager2
