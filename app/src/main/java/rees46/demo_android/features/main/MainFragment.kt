@@ -64,9 +64,9 @@ class MainFragment
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> binding.viewPager.currentItem = 0
-                R.id.category -> binding.viewPager.currentItem = 1
+                R.id.category -> {} //TODO: // binding.viewPager.currentItem = 1
                 R.id.cart -> binding.viewPager.currentItem = 2
-                R.id.settings -> binding.viewPager.currentItem = 3
+                R.id.settings -> {} //TODO: // binding.viewPager.currentItem = 3
             }
             true
         }
