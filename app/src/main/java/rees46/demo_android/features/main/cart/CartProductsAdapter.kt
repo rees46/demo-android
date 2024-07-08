@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.databinding.CartProductItemBinding
-import rees46.demo_android.entity.productsEntity.CartProductEntity
+import rees46.demo_android.entities.products.CartProductEntity
 
 class CartProductsAdapter(
     private val onClickRemoveCart: (CartProductEntity) -> Unit

@@ -1,4 +1,4 @@
-package rees46.demo_android.entity.productsEntity
+package rees46.demo_android.entities.products
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

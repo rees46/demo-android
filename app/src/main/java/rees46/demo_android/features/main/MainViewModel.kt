@@ -7,7 +7,7 @@ import com.personalizatio.api.entities.search.CategoryEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.entities.products.ProductEntity
 import rees46.demo_android.features.product.createProduct
 
 class MainViewModel(

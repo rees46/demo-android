@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ImageUtils
-import rees46.demo_android.entity.productsEntity.CartProductEntity
+import rees46.demo_android.entities.products.CartProductEntity
 
 class CartProductView @JvmOverloads constructor(
     context: Context,

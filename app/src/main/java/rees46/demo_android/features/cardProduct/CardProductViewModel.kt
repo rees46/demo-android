@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.features.main.cart.Cart
-import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.entities.products.ProductEntity
 import rees46.demo_android.features.recommendationBlock.RecommendationUtils
 
 class CardProductViewModel(

@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "demo-android"
 include(":app")
- 
+include(":entities")

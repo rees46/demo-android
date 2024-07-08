@@ -1,7 +1,6 @@
-package rees46.demo_android.entity.productsEntity
+package rees46.demo_android.entities.products
 
 import android.os.Parcelable
-import com.personalizatio.api.entities.product.ProductEntity
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

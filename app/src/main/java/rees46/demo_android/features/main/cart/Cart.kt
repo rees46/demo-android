@@ -2,8 +2,8 @@ package rees46.demo_android.features.main.cart
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import rees46.demo_android.entity.productsEntity.CartProductEntity
-import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.entities.products.CartProductEntity
+import rees46.demo_android.entities.products.ProductEntity
 
 // TODO: removed after implementation getting cart in sdk
 object Cart {
@@ -24,7 +24,12 @@ object Cart {
         }
         val cartProduct = getCartProduct(product.id)
         if(cartProduct == null) {
-            cartProducts.add(CartProductEntity(product, quantity))
+            cartProducts.add(
+                CartProductEntity(
+                    product,
+                    quantity
+                )
+            )
         }
         else {
             cartProduct.quantity += quantity

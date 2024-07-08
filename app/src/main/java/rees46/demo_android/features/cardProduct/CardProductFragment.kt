@@ -10,7 +10,7 @@ import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCardProductBinding
-import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.entities.products.ProductEntity
 
 class CardProductFragment
     : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {

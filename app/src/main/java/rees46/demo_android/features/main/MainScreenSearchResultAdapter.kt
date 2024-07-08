@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.SearchResultItemBinding
-import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.entities.products.ProductEntity
 
 class MainScreenSearchResultAdapter(
     private val onSelectItem: (ProductEntity) -> Unit

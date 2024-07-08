@@ -2,8 +2,8 @@ package rees46.demo_android.features.product
 
 import com.personalizatio.api.entities.product.ProductEntity
 
-fun ProductEntity.createProduct(): rees46.demo_android.entity.productsEntity.ProductEntity {
-    return rees46.demo_android.entity.productsEntity.ProductEntity(
+fun ProductEntity.createProduct(): rees46.demo_android.entities.products.ProductEntity {
+    return rees46.demo_android.entities.products.ProductEntity(
         id = id,
         name = name,
         producerName = brand,
@@ -16,5 +16,5 @@ fun ProductEntity.createProduct(): rees46.demo_android.entity.productsEntity.Pro
     )
 }
 
-fun List<ProductEntity>.createProductList(): MutableList<rees46.demo_android.entity.productsEntity.ProductEntity> =
+fun List<ProductEntity>.createProductList(): MutableList<rees46.demo_android.entities.products.ProductEntity> =
     map { it.createProduct() }.toMutableList()

@@ -8,8 +8,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.entity.productsEntity.CartProductEntity
-import rees46.demo_android.entity.productsEntity.ProductEntity
+import rees46.demo_android.entities.products.CartProductEntity
 
 class CartFragment
     : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
@@ -65,7 +64,7 @@ class CartFragment
         binding.recommendationBlock.setHeaderText("Also bought")
     }
 
-    private fun navigateProductFragment(product: ProductEntity) {
+    private fun navigateProductFragment(product: rees46.demo_android.entities.products.ProductEntity) {
         val action = CartFragmentDirections.actionCartFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }
