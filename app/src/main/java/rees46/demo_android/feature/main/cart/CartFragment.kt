@@ -9,6 +9,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.data.products.CartProductDto
+import rees46.demo_android.feature.main.cart.adapter.CartProductsAdapter
 
 class CartFragment
     : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {

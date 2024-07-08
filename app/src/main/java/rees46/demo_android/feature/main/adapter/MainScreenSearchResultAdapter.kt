@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.main
+package rees46.demo_android.feature.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

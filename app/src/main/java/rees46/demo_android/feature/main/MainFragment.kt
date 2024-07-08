@@ -19,6 +19,9 @@ import rees46.demo_android.databinding.FragmentMainBinding
 import rees46.demo_android.core.utils.fragmentOffFullScreen
 import rees46.demo_android.core.utils.fragmentOnFullScreen
 import rees46.demo_android.core.utils.showSystemBar
+import rees46.demo_android.feature.main.adapter.MainScreenPagerAdapter
+import rees46.demo_android.feature.main.adapter.MainScreenSearchResultAdapter
+import rees46.demo_android.feature.main.adapter.MainScreenSearchResultCategoriesAdapter
 
 class MainFragment
     : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {

@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.main.cart
+package rees46.demo_android.feature.main.cart.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,8 +16,7 @@ class CartProductsAdapter(
 ) {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val cartProductView =
-            CartProductItemBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val cartProductView = CartProductItemBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(cartProductView.root)
     }
 

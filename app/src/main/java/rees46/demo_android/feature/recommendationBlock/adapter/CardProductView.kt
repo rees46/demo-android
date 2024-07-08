@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.recommendationBlock
+package rees46.demo_android.feature.recommendationBlock.adapter
 
 import android.content.Context
 import android.util.AttributeSet

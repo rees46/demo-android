@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.main.cart
+package rees46.demo_android.feature.main.cart.adapter
 
 import android.content.Context
 import android.util.AttributeSet

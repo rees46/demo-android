@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.main
+package rees46.demo_android.feature.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,7 +11,9 @@ import rees46.demo_android.databinding.SearchResultCategoryItemBinding
 class MainScreenSearchResultCategoriesAdapter(
     private val onSelectItem: (CategoryEntity) -> Unit
 ) :
-    ListAdapter<CategoryEntity, MainScreenSearchResultCategoriesAdapter.ViewHolder>(SearchResultItemCallback()) {
+    ListAdapter<CategoryEntity, MainScreenSearchResultCategoriesAdapter.ViewHolder>(
+        SearchResultItemCallback()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =

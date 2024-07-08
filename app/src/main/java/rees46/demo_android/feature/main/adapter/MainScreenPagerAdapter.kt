@@ -1,8 +1,9 @@
-package rees46.demo_android.feature.main
+package rees46.demo_android.feature.main.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import rees46.demo_android.R
+import rees46.demo_android.feature.main.MainPageFragment
 
 internal class MainScreenPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 4
