@@ -3,7 +3,7 @@ package rees46.demo_android
 import android.os.Handler
 import android.os.Looper
 import androidx.navigation.fragment.findNavController
-import rees46.demo_android.core.view.BaseFragment
+import rees46.demo_android.core.base.BaseFragment
 import rees46.demo_android.databinding.FragmentRootBinding
 
 class RootFragment

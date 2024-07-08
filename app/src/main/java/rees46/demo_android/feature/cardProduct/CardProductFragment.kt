@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.onBackPressedNavigation
-import rees46.demo_android.core.view.BaseFragment
+import rees46.demo_android.core.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.data.products.ProductDto
 

@@ -14,12 +14,11 @@ import com.google.android.material.search.SearchView
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.R
-import rees46.demo_android.core.view.BaseFragment
+import rees46.demo_android.core.base.BaseFragment
 import rees46.demo_android.databinding.FragmentMainBinding
 import rees46.demo_android.core.utils.fragmentOffFullScreen
 import rees46.demo_android.core.utils.fragmentOnFullScreen
 import rees46.demo_android.core.utils.showSystemBar
-import rees46.demo_android.domain.feature.main.presentation.MainViewModel
 
 class MainFragment
     : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {

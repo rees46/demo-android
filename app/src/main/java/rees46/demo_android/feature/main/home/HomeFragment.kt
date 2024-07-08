@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import rees46.demo_android.core.view.BaseFragment
+import rees46.demo_android.core.base.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.data.products.ProductDto
 import rees46.demo_android.feature.recommendationBlock.RecommendationBlockView
