@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+    implementation(fileTree(mapOf("dir" to "..\\libs", "include" to listOf("*.aar"))))
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.core.ktx)
@@ -63,4 +63,12 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.glide)
     implementation(project(":entities"))
+    implementation(project(":feature"))
+    implementation(project(":feature:main"))
+    implementation(project(":feature:main:cart"))
+    implementation(project(":feature:main:home"))
+    implementation(project(":feature:recommendationBlock"))
+    implementation(project(":feature:main:category"))
+    implementation(project(":feature:main:settings"))
+    implementation(project(":feature:main:settings"))
 }

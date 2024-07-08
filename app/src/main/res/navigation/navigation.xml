@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="rees46.demo_android.features.main.MainFragment"
+        android:name="rees46.demo_android.feature.main.MainFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_main">
 
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/searchCartFragment"
-        android:name="rees46.demo_android.features.cardProduct.CardProductFragment"
+        android:name="rees46.demo_android.feature.cardProduct.CardProductFragment"
         android:label="fragment card product from search"
         tools:layout="@layout/fragment_card_product">
 

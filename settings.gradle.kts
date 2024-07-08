@@ -22,3 +22,10 @@ dependencyResolutionManagement {
 rootProject.name = "demo-android"
 include(":app")
 include(":entities")
+include(":feature")
+include(":feature:main")
+include(":feature:main:cart")
+include(":feature:recommendationBlock")
+include(":feature:main:home")
+include(":feature:main:category")
+include(":feature:main:settings")

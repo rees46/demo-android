@@ -2,15 +2,14 @@ package rees46.demo_android
 
 import android.app.Application
 import com.personalizatio.SDK
-import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
-import rees46.demo_android.features.di.FeaturesModule.cardProductFragmentModule
-import rees46.demo_android.features.di.FeaturesModule.cartFragmentModule
-import rees46.demo_android.features.di.FeaturesModule.homeFragmentModule
-import rees46.demo_android.features.di.FeaturesModule.mainViewModel
+import rees46.demo_android.feature.di.FeaturesModule.cardProductFragmentModule
+import rees46.demo_android.feature.di.FeaturesModule.cartFragmentModule
+import rees46.demo_android.feature.di.FeaturesModule.homeFragmentModule
+import rees46.demo_android.feature.di.FeaturesModule.mainViewModel
 
 class DemoApplication : Application() {
 

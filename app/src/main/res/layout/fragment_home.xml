@@ -37,18 +37,18 @@
                 app:code="fcaa8d3168ab7d7346e4b4f1a1c92214"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+            <rees46.demo_android.feature.recommendationBlock.RecommendationBlockView
                 android:id="@+id/new_arrivals_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/half_default_offset" />
 
-            <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+            <rees46.demo_android.feature.recommendationBlock.RecommendationBlockView
                 android:id="@+id/top_trends_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+            <rees46.demo_android.feature.recommendationBlock.RecommendationBlockView
                 android:id="@+id/you_like_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

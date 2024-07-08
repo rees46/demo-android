@@ -133,7 +133,7 @@
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <rees46.demo_android.features.recommendationBlock.RecommendationBlockView
+            <rees46.demo_android.feature.recommendationBlock.RecommendationBlockView
                 android:id="@+id/recommendation_block"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
