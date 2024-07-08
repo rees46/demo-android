@@ -8,24 +8,24 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
 
     interface ClickListener {
-        fun onCardProductClick(product: ProductEntity)
+        fun onCardProductClick(product: ProductDto)
     }
 
-    var onCardProductClick: (ProductEntity) -> Unit = {  }
+    var onCardProductClick: (ProductDto) -> Unit = {  }
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
     private lateinit var cardProductsRecyclerView: RecyclerView
     private lateinit var cardProductsAdapter: CardProductsAdapter
 
-    private val products: MutableList<ProductEntity> = ArrayList()
+    private val products: MutableList<ProductDto> = ArrayList()
     private var listener: ClickListener? = null
 
     init {
@@ -47,13 +47,13 @@ class RecommendationBlockView @JvmOverloads constructor(
         cardProductsRecyclerView.adapter = cardProductsAdapter
     }
 
-    fun updateProducts(products: Collection<ProductEntity>) {
+    fun updateProducts(products: Collection<ProductDto>) {
         this.products.clear()
         addCardProducts(products)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addCardProducts(products: Collection<ProductEntity>) {
+    fun addCardProducts(products: Collection<ProductDto>) {
         this.products.addAll(products)
 
         Handler(context.mainLooper).post {
@@ -65,7 +65,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.listener = listener
     }
 
-    override fun onCardProductClick(product: ProductEntity) {
+    override fun onCardProductClick(product: ProductDto) {
         onCardProductClick.invoke(product)
     }
 

@@ -1,9 +1,10 @@
 package rees46.demo_android.domain.feature.utils
 
 import com.personalizatio.api.entities.product.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 
-fun ProductEntity.createProduct(): rees46.demo_android.entities.products.ProductEntity {
-    return rees46.demo_android.entities.products.ProductEntity(
+fun ProductEntity.createProduct(): ProductDto {
+    return ProductDto(
         id = id,
         name = name,
         producerName = brand,
@@ -16,5 +17,5 @@ fun ProductEntity.createProduct(): rees46.demo_android.entities.products.Product
     )
 }
 
-fun List<ProductEntity>.createProductList(): MutableList<rees46.demo_android.entities.products.ProductEntity> =
+fun List<ProductEntity>.createProductList(): MutableList<ProductDto> =
     map { it.createProduct() }.toMutableList()

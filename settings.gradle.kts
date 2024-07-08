@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "demo-android"
 include(":app")
-include(":entities")
+include(":data")
 include(":domain:feature")
 include(":domain:feature:main")
 include(":domain:feature:main:cart")

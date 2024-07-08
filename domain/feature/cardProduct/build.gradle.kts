@@ -40,7 +40,7 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.material)
-    implementation(project(":entities"))
+    implementation(project(":data"))
     implementation(project(":domain:feature:main:cart"))
     implementation(project(":domain:feature:recommendationBlock"))
 }

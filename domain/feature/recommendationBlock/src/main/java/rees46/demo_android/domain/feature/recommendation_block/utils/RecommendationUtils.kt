@@ -2,7 +2,7 @@ package rees46.demo_android.domain.feature.recommendation_block.utils
 
 import com.personalizatio.Params
 import com.personalizatio.SDK
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 import rees46.demo_android.domain.feature.utils.createProductList
 
 object RecommendationUtils {
@@ -14,7 +14,7 @@ object RecommendationUtils {
     fun updateExtendedRecommendation(
         sdk: SDK,
         recommenderCode: String,
-        onGetExtendedRecommendation: (MutableList<ProductEntity>) -> Unit
+        onGetExtendedRecommendation: (MutableList<ProductDto>) -> Unit
     ) {
         updateExtendedRecommendation(
             sdk = sdk,
@@ -28,7 +28,7 @@ object RecommendationUtils {
         sdk: SDK,
         recommenderCode: String,
         productId: String,
-        onGetExtendedRecommendation: (MutableList<ProductEntity>) -> Unit
+        onGetExtendedRecommendation: (MutableList<ProductDto>) -> Unit
     ) {
         updateExtendedRecommendation(
             sdk = sdk,
@@ -42,7 +42,7 @@ object RecommendationUtils {
         sdk: SDK,
         recommenderCode: String,
         params: Params,
-        onGetExtendedRecommendation: (MutableList<ProductEntity>) -> Unit
+        onGetExtendedRecommendation: (MutableList<ProductDto>) -> Unit
     ) {
         sdk.recommendationManager.getExtendedRecommendation(
             recommenderCode = recommenderCode,

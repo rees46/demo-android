@@ -38,5 +38,5 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.koin.android)
-    implementation(project(":entities"))
+    implementation(project(":data"))
 }

@@ -4,22 +4,22 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 
 class CardProductsAdapter(
     private val context: Context,
-    private val products: List<ProductEntity>,
+    private val products: List<ProductDto>,
     private val listener: ClickListener
 ) : RecyclerView.Adapter<CardProductsAdapter.ViewHolder>() {
 
     interface ClickListener {
-        fun onCardProductClick(product: ProductEntity)
+        fun onCardProductClick(product: ProductDto)
     }
 
     inner class ViewHolder(private val view: View, private val listener: ClickListener)
         : RecyclerView.ViewHolder(view) {
 
-        fun bind(product: ProductEntity) {
+        fun bind(product: ProductDto) {
             (view as CardProductView).updateProduct(product)
 
             view.setOnClickListener {

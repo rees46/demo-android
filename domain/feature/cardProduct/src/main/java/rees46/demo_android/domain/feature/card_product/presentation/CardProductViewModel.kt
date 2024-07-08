@@ -9,29 +9,27 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 import rees46.demo_android.domain.feature.card_product.CardAction
-import rees46.demo_android.domain.feature.main.cart.Cart
-import rees46.demo_android.domain.feature.recommendation_block.utils.RecommendationUtils
 
 class CardProductViewModel(
     private val sdk: SDK,
-    product: ProductEntity
+    product: ProductDto
 ) : ViewModel() {
 
-    private val _recommendedProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> =
+    private val _recommendedProductsFlow: MutableSharedFlow<MutableList<ProductDto>> =
         MutableSharedFlow()
-    val recommendedProductsFlow: Flow<MutableList<ProductEntity>> = _recommendedProductsFlow
+    val recommendedProductsFlow: Flow<MutableList<ProductDto>> = _recommendedProductsFlow
 
-    private val _currentProductFlow: MutableStateFlow<ProductEntity> =
+    private val _currentProductFlow: MutableStateFlow<ProductDto> =
         MutableStateFlow(product)
-    val currentProductFlow: Flow<ProductEntity> = _currentProductFlow
+    val currentProductFlow: Flow<ProductDto> = _currentProductFlow
 
     private var _countCartProductFlow: MutableStateFlow<Int> =
         MutableStateFlow(rees46.demo_android.domain.feature.main.cart.Cart.getCartProduct(product.id)?.quantity ?: 1)
     var countCartProductFlow: Flow<Int> = _countCartProductFlow
 
-    fun updateProduct(product: ProductEntity) {
+    fun updateProduct(product: ProductDto) {
         _countCartProductFlow.update { rees46.demo_android.domain.feature.main.cart.Cart.getCartProduct(product.id)?.quantity ?: 1 }
         _currentProductFlow.update { product }
     }

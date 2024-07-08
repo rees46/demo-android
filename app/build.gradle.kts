@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.gson)
     implementation(libs.glide)
-    implementation(project(":entities"))
+    implementation(project(":data"))
     implementation(project(":domain:feature"))
     implementation(project(":domain:feature:main"))
     implementation(project(":domain:feature:main:cart"))

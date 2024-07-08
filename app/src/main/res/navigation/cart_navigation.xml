@@ -19,6 +19,6 @@
         android:label="CardProductFragment">
         <argument
             android:name="product"
-            app:argType="rees46.demo_android.entities.products.ProductEntity" />
+            app:argType="rees46.demo_android.data.products.ProductDto" />
     </fragment>
 </navigation>

@@ -8,8 +8,7 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.entities.products.CartProductEntity
-import rees46.demo_android.domain.feature.main.cart.presentation.CartViewModel
+import rees46.demo_android.data.products.CartProductDto
 
 class CartFragment
     : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
@@ -34,7 +33,7 @@ class CartFragment
         initRecommendationBlockView()
     }
 
-    private fun updateCart(newList: MutableList<CartProductEntity>) {
+    private fun updateCart(newList: MutableList<CartProductDto>) {
         if(newList.isEmpty()) {
             binding.cartLayout.isVisible = false
             binding.headerText.isVisible = false
@@ -53,7 +52,7 @@ class CartFragment
         }
     }
 
-    private fun removeProduct(cartProduct: CartProductEntity) {
+    private fun removeProduct(cartProduct: CartProductDto) {
         viewModel.removeProduct(cartProduct)
     }
 
@@ -65,7 +64,7 @@ class CartFragment
         binding.recommendationBlock.setHeaderText("Also bought")
     }
 
-    private fun navigateProductFragment(product: rees46.demo_android.entities.products.ProductEntity) {
+    private fun navigateProductFragment(product: rees46.demo_android.data.products.ProductDto) {
         val action = CartFragmentDirections.actionCartFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }

@@ -1,10 +1,10 @@
-package rees46.demo_android.entities.products
+package rees46.demo_android.data.products
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CartProductEntity(
-    val product: ProductEntity,
+data class CartProductDto(
+    val product: ProductDto,
     var quantity: Int
 ) : Parcelable

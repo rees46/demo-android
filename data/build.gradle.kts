@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "rees46.demo_android.entities"
+    namespace = "rees46.demo_android.data"
     compileSdk = 34
 
     defaultConfig {

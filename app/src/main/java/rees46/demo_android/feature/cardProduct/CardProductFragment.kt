@@ -10,8 +10,7 @@ import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCardProductBinding
-import rees46.demo_android.entities.products.ProductEntity
-import rees46.demo_android.domain.feature.card_product.presentation.CardProductViewModel
+import rees46.demo_android.data.products.ProductDto
 
 class CardProductFragment
     : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
@@ -48,11 +47,11 @@ class CardProductFragment
         }
     }
 
-    private fun updateProduct(product: ProductEntity) {
+    private fun updateProduct(product: ProductDto) {
         viewModel.updateProduct(product)
     }
 
-    private fun updateCardProductView(product: ProductEntity) {
+    private fun updateCardProductView(product: ProductDto) {
         viewModel.updateRecommendationBlock(product.id)
         binding.cardProductView.updateProduct(product)
     }

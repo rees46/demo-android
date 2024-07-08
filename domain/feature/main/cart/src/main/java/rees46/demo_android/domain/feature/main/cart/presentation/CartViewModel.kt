@@ -8,21 +8,21 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.feature.main.cart.Cart
-import rees46.demo_android.entities.products.CartProductEntity
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.CartProductDto
+import rees46.demo_android.data.products.ProductDto
 
 class CartViewModel(
     private val sdk: SDK
 ) : ViewModel() {
 
-    private val _cartProductsFlow: MutableSharedFlow<ArrayList<CartProductEntity>> =
+    private val _cartProductsFlow: MutableSharedFlow<ArrayList<CartProductDto>> =
         MutableSharedFlow()
-    val cartProductsFlow: Flow<MutableList<CartProductEntity>> = _cartProductsFlow
-    private val cartProducts = arrayListOf<CartProductEntity>()
+    val cartProductsFlow: Flow<MutableList<CartProductDto>> = _cartProductsFlow
+    private val cartProducts = arrayListOf<CartProductDto>()
 
-    private val _recommendationProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> =
+    private val _recommendationProductsFlow: MutableSharedFlow<MutableList<ProductDto>> =
         MutableSharedFlow()
-    val recommendationProductsFlow: Flow<MutableList<ProductEntity>> = _recommendationProductsFlow
+    val recommendationProductsFlow: Flow<MutableList<ProductDto>> = _recommendationProductsFlow
     val pricesFlow: Flow<Double> = Cart.cartSumPrices
 
     init {
@@ -38,7 +38,7 @@ class CartViewModel(
         updateCartProducts()
     }
 
-    fun removeProduct(cartProduct: CartProductEntity) {
+    fun removeProduct(cartProduct: CartProductDto) {
         sdk.trackEventManager.track(Params.TrackEvent.REMOVE_FROM_CART, Params(), null)
 
         Cart.removeProduct(cartProduct.product.id)

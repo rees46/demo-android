@@ -8,15 +8,15 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.feature.utils.createProduct
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 
 class MainViewModel(
     private val sdk: SDK
 ) : ViewModel() {
 
-    private val _searchResultItems: MutableSharedFlow<MutableList<ProductEntity>> =
+    private val _searchResultItems: MutableSharedFlow<MutableList<ProductDto>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultItems: Flow<MutableList<ProductEntity>> =
+    val searchResultItems: Flow<MutableList<ProductDto>> =
         _searchResultItems
 
     private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<CategoryEntity>> =
@@ -46,7 +46,7 @@ class MainViewModel(
     }
 
     private fun handleProductResult(searchProductsResult: List<com.personalizatio.api.entities.product.ProductEntity>) {
-        val searchResultList = mutableListOf<ProductEntity>()
+        val searchResultList = mutableListOf<ProductDto>()
 
         for (product in searchProductsResult) {
             searchResultList.add(product.createProduct())

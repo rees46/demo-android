@@ -6,14 +6,14 @@ import com.personalizatio.SDK
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.data.products.ProductDto
 
 class HomeViewModel(
     sdk: SDK
 ) : ViewModel() {
 
-    private val _recommendationProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> = MutableSharedFlow()
-    val recommendationProductsFlow: Flow<List<ProductEntity>> = _recommendationProductsFlow
+    private val _recommendationProductsFlow: MutableSharedFlow<MutableList<ProductDto>> = MutableSharedFlow()
+    val recommendationProductsFlow: Flow<List<ProductDto>> = _recommendationProductsFlow
 
     init {
         rees46.demo_android.domain.feature.recommendation_block.utils.RecommendationUtils.updateExtendedRecommendation(sdk, RECOMMENDER_CODE) {
