@@ -12,13 +12,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.entities.products.ProductEntity
-import rees46.demo_android.feature.main.home.presentation.HomeViewModel
+import rees46.demo_android.domain.feature.main.home.presentation.HomeViewModel
 import rees46.demo_android.feature.recommendationBlock.RecommendationBlockView
 
 class HomeFragment
     : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private val viewModel: HomeViewModel by viewModel()
+    private val viewModel: rees46.demo_android.domain.feature.main.home.presentation.HomeViewModel by viewModel()
 
     private val sdk: SDK by inject()
 

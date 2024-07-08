@@ -9,12 +9,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.entities.products.CartProductEntity
-import rees46.demo_android.feature.main.cart.presentation.CartViewModel
+import rees46.demo_android.domain.feature.main.cart.presentation.CartViewModel
 
 class CartFragment
     : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
 
-    private val viewModel: CartViewModel by viewModel()
+    private val viewModel: rees46.demo_android.domain.feature.main.cart.presentation.CartViewModel by viewModel()
 
     private val cartProductsAdapter = CartProductsAdapter(::removeProduct)
 

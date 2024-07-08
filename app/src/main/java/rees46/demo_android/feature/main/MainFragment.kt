@@ -19,12 +19,12 @@ import rees46.demo_android.databinding.FragmentMainBinding
 import rees46.demo_android.core.utils.fragmentOffFullScreen
 import rees46.demo_android.core.utils.fragmentOnFullScreen
 import rees46.demo_android.core.utils.showSystemBar
-import rees46.demo_android.feature.main.presentation.MainViewModel
+import rees46.demo_android.domain.feature.main.presentation.MainViewModel
 
 class MainFragment
     : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel: rees46.demo_android.domain.feature.main.presentation.MainViewModel by viewModel()
 
     private val searchResultAdapter = MainScreenSearchResultAdapter { product ->
         showSystemBar()

@@ -11,14 +11,14 @@ import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.entities.products.ProductEntity
-import rees46.demo_android.feature.card_product.presentation.CardProductViewModel
+import rees46.demo_android.domain.feature.card_product.presentation.CardProductViewModel
 
 class CardProductFragment
     : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
 
     private val args by navArgs<CardProductFragmentArgs>()
 
-    private val viewModel: CardProductViewModel by viewModel {
+    private val viewModel: rees46.demo_android.domain.feature.card_product.presentation.CardProductViewModel by viewModel {
         parametersOf(args.product)
     }
 
