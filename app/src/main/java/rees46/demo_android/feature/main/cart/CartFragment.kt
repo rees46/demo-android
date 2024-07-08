@@ -35,21 +35,19 @@ class CartFragment
     }
 
     private fun updateCart(newList: MutableList<CartProductDto>) {
-        if(newList.isEmpty()) {
-            binding.cartLayout.isVisible = false
-            binding.headerText.isVisible = false
-            binding.emptyCartText.isVisible = true
-            binding.recyclerContainer.isVisible = false
-        }
-        else {
-            binding.headerText.isVisible = true
-            binding.cartLayout.isVisible = true
-            binding.emptyCartText.isVisible = false
-            binding.recyclerContainer.isVisible = true
-        }
+        updateCartView(newList.isEmpty())
 
         lifecycleScope.launch {
             cartProductsAdapter.submitList(newList)
+        }
+    }
+
+    private fun updateCartView(isEmpty: Boolean) {
+        binding.apply {
+            cartLayout.isVisible = !isEmpty
+            headerText.isVisible = !isEmpty
+            emptyCartText.isVisible = isEmpty
+            recyclerContainer.isVisible = !isEmpty
         }
     }
 
