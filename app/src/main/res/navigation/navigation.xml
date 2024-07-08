@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/startScreenFragment">
+    app:startDestination="@id/rootFragment">
 
     <fragment
-        android:id="@+id/startScreenFragment"
-        android:name="rees46.demo_android.StartScreenFragment"
-        android:label="fragment_start_screen"
-        tools:layout="@layout/fragment_start_screen" >
+        android:id="@+id/rootFragment"
+        android:name="rees46.demo_android.RootFragment"
+        android:label="fragment_root"
+        tools:layout="@layout/fragment_root" >
         <action
-            android:id="@+id/action_startScreenFragment_to_mainFragment"
+            android:id="@+id/action_rootFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
     <fragment
