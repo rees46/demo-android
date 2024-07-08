@@ -11,13 +11,16 @@ import rees46.demo_android.core.utils.onBackPressedNavigation
 import rees46.demo_android.core.view.BaseFragment
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.feature.card_product.presentation.CardProductViewModel
 
 class CardProductFragment
     : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
 
     private val args by navArgs<CardProductFragmentArgs>()
 
-    private val viewModel: CardProductViewModel by viewModel { parametersOf(args) }
+    private val viewModel: CardProductViewModel by viewModel {
+        parametersOf(args.product)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

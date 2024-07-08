@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.cardProduct
+package rees46.demo_android.feature.card_product.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,11 +10,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.feature.card_product.CardAction
 import rees46.demo_android.feature.main.cart.Cart
+import rees46.demo_android.feature.recommendation_block.utils.RecommendationUtils
 
 class CardProductViewModel(
     private val sdk: SDK,
-    args: CardProductFragmentArgs
+    product: ProductEntity
 ) : ViewModel() {
 
     private val _recommendedProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> =
@@ -22,21 +24,20 @@ class CardProductViewModel(
     val recommendedProductsFlow: Flow<MutableList<ProductEntity>> = _recommendedProductsFlow
 
     private val _currentProductFlow: MutableStateFlow<ProductEntity> =
-        MutableStateFlow(args.product)
+        MutableStateFlow(product)
     val currentProductFlow: Flow<ProductEntity> = _currentProductFlow
 
     private var _countCartProductFlow: MutableStateFlow<Int> =
-        MutableStateFlow(Cart.getCartProduct(args.product.id)?.quantity ?: 1)
-    internal var countCartProductFlow: Flow<Int> = _countCartProductFlow
+        MutableStateFlow(Cart.getCartProduct(product.id)?.quantity ?: 1)
+    var countCartProductFlow: Flow<Int> = _countCartProductFlow
 
-    internal fun updateProduct(product: ProductEntity) {
+    fun updateProduct(product: ProductEntity) {
         _countCartProductFlow.update { Cart.getCartProduct(product.id)?.quantity ?: 1 }
         _currentProductFlow.update { product }
     }
 
-    internal fun updateRecommendationBlock(productId: String) {
-
-        rees46.demo_android.feature.recommendation_block.utils.RecommendationUtils.updateExtendedRecommendationForProduct(sdk, RECOMMENDER_CODE, productId) {
+    fun updateRecommendationBlock(productId: String) {
+        RecommendationUtils.updateExtendedRecommendationForProduct(sdk, RECOMMENDER_CODE, productId) {
             viewModelScope.launch { _recommendedProductsFlow.emit(it) }
         }
     }

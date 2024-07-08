@@ -71,4 +71,5 @@ dependencies {
     implementation(project(":feature:main:category"))
     implementation(project(":feature:main:settings"))
     implementation(project(":feature:main:settings"))
+    implementation(project(":feature:cardProduct"))
 }

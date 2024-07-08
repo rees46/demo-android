@@ -8,6 +8,7 @@ import com.google.android.material.button.MaterialButton
 import rees46.demo_android.R
 import rees46.demo_android.base.BaseCardProductView
 import rees46.demo_android.entities.products.ProductEntity
+import rees46.demo_android.feature.card_product.CardAction
 
 class CardProductView @JvmOverloads constructor(
     context: Context,
