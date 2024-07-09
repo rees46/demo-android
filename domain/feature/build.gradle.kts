@@ -33,10 +33,10 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "..\\..\\libs", "include" to listOf("*.aar"))))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.koin.android)
+    implementation(project(":sdkRees46"))
     implementation(project(":data"))
 }

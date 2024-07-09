@@ -39,7 +39,6 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "..\\libs", "include" to listOf("*.aar"))))
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.core.ktx)
@@ -62,6 +61,7 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.gson)
     implementation(libs.glide)
+    implementation(project(":sdkRees46"))
     implementation(project(":data"))
     implementation(project(":domain:feature"))
     implementation(project(":domain:feature:main"))

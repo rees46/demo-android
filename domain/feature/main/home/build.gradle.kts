@@ -33,13 +33,13 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "..\\..\\..\\..\\libs", "include" to listOf("*.aar"))))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.material)
+    implementation(project(":sdkRees46"))
     implementation(project(":data"))
     implementation(project(":domain:feature:recommendationBlock"))
 }

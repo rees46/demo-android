@@ -3,7 +3,8 @@ package rees46.demo_android.domain.feature.main.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.personalizatio.SDK
-import com.personalizatio.api.entities.search.CategoryEntity
+import com.personalizatio.api.responses.product.Product
+import com.personalizatio.api.responses.search.Category
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
@@ -19,9 +20,9 @@ class MainViewModel(
     val searchResultItems: Flow<MutableList<ProductDto>> =
         _searchResultItems
 
-    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<CategoryEntity>> =
+    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<Category>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultCategoriesItems: Flow<MutableList<CategoryEntity>> =
+    val searchResultCategoriesItems: Flow<MutableList<Category>> =
         _searchResultCategoriesItems
 
     fun searchProduct(query: String = "") {
@@ -29,7 +30,7 @@ class MainViewModel(
         else {
             sdk.searchManager.searchInstant(
                 query = query,
-                onGetSearchInstant = { searchInstantEntity ->
+                onSearchInstant = { searchInstantEntity ->
                     handleProductResult(searchInstantEntity.products)
                     handleCategoriesResult(searchInstantEntity.categories)
                 }
@@ -39,13 +40,13 @@ class MainViewModel(
 
     private fun emptySearch() {
         sdk.searchManager.searchBlank(
-            onGetSearchBlank = { searchBlankEntity ->
+            onSearchBlank = { searchBlankEntity ->
                 handleProductResult(searchBlankEntity.products)
             }
         )
     }
 
-    private fun handleProductResult(searchProductsResult: List<com.personalizatio.api.entities.product.ProductEntity>) {
+    private fun handleProductResult(searchProductsResult: List<Product>) {
         val searchResultList = mutableListOf<ProductDto>()
 
         for (product in searchProductsResult) {
@@ -57,7 +58,7 @@ class MainViewModel(
         }
     }
 
-    private fun handleCategoriesResult(searchCategoriesResult: List<CategoryEntity>?) {
+    private fun handleCategoriesResult(searchCategoriesResult: List<Category>?) {
         viewModelScope.launch {
             _searchResultCategoriesItems.emit(searchCategoriesResult?.toMutableList() ?: mutableListOf())
         }
