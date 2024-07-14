@@ -10,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.button.MaterialButton
 import rees46.demo_android.R
 import rees46.demo_android.utils.ImageUtils
-import rees46.demo_android.data.products.ProductDto
+import rees46.demo_android.domain.entities.ProductDto
 
 class CardProductView @JvmOverloads constructor(
     context: Context,
@@ -53,10 +53,10 @@ class CardProductView @JvmOverloads constructor(
         addToCartButton = findViewById(R.id.add_to_cart_button)
     }
 
-    fun setupCartController(onCartActionClick: (rees46.demo_android.domain.feature.card_product.CardAction) -> Unit) {
-        addToCartButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.card_product.CardAction.ADD) }
-        minusButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.card_product.CardAction.DECREASE) }
-        plusButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.card_product.CardAction.INCREASE) }
+    fun setupCartController(onCartActionClick: (rees46.demo_android.domain.feature.cardProduct.CardAction) -> Unit) {
+        addToCartButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.cardProduct.CardAction.ADD) }
+        minusButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.cardProduct.CardAction.DECREASE) }
+        plusButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.cardProduct.CardAction.INCREASE) }
     }
 
     fun updateProduct(product: ProductDto) {

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
-import rees46.demo_android.data.products.ProductDto
+import rees46.demo_android.domain.entities.ProductDto
 import rees46.demo_android.ui.recommendationBlock.adapter.CardProductsAdapter
 
 class RecommendationBlockView @JvmOverloads constructor(

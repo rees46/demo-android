@@ -8,8 +8,8 @@ import com.personalizatio.api.responses.search.Category
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
+import rees46.demo_android.domain.entities.ProductDto
 import rees46.demo_android.domain.feature.utils.createProduct
-import rees46.demo_android.data.products.ProductDto
 
 class MainViewModel(
     private val sdk: SDK
@@ -47,7 +47,7 @@ class MainViewModel(
     }
 
     private fun handleProductResult(searchProductsResult: List<Product>) {
-        val searchResultList = mutableListOf<ProductDto>()
+        val searchResultList = mutableListOf<rees46.demo_android.domain.entities.ProductDto>()
 
         for (product in searchProductsResult) {
             searchResultList.add(product.createProduct())

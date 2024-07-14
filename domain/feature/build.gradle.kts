@@ -38,5 +38,5 @@ dependencies {
     implementation(libs.material)
     implementation(libs.koin.android)
     implementation(project(":sdkRees46"))
-    implementation(project(":data"))
+    implementation(project(":domain"))
 }

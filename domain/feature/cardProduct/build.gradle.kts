@@ -40,7 +40,6 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.material)
     implementation(project(":sdkRees46"))
-    implementation(project(":data"))
-    implementation(project(":domain:feature:main:cart"))
     implementation(project(":domain:feature:recommendationBlock"))
+    implementation(project(":domain"))
 }

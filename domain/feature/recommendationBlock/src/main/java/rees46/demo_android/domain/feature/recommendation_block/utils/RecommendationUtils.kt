@@ -2,7 +2,7 @@ package rees46.demo_android.domain.feature.recommendation_block.utils
 
 import com.personalizatio.Params
 import com.personalizatio.SDK
-import rees46.demo_android.data.products.ProductDto
+import rees46.demo_android.domain.entities.ProductDto
 import rees46.demo_android.domain.feature.utils.createProductList
 
 object RecommendationUtils {

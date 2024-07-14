@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cart_fragment"
-        android:name="rees46.demo_android.ui.main.cart.CartFragment"
+        android:name="rees46.demo_android.presentation.ui.cart.CartFragment"
         tools:layout="@layout/fragment_cart" >
         <action
             android:id="@+id/action_cart_fragment_to_cardProductFragment"
@@ -19,6 +19,6 @@
         android:label="CardProductFragment">
         <argument
             android:name="product"
-            app:argType="rees46.demo_android.data.products.ProductDto" />
+            app:argType="rees46.demo_android.domain.entities.ProductDto" />
     </fragment>
 </navigation>

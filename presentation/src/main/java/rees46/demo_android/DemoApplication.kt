@@ -3,11 +3,12 @@ package rees46.demo_android
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import rees46.demo_android.domain.feature.card_product.di.cardProductViewModelModule
+import rees46.demo_android.domain.feature.cardProduct.di.cardProductViewModelModule
 import rees46.demo_android.domain.feature.di.sdkModule
-import rees46.demo_android.domain.feature.main.cart.di.cartViewModelModule
 import rees46.demo_android.domain.feature.main.di.mainViewModelModule
 import rees46.demo_android.domain.feature.main.home.di.homeViewModelModule
+import rees46.demo_android.data.di.DataModule
+import rees46.demo_android.presentation.di.ViewModelModule
 
 class DemoApplication : Application() {
 
@@ -20,9 +21,10 @@ class DemoApplication : Application() {
             modules(
                 listOf(
                     sdkModule(this@DemoApplication),
+                    DataModule.cartModule,
                     homeViewModelModule,
                     cardProductViewModelModule,
-                    cartViewModelModule,
+                    ViewModelModule.module,
                     mainViewModelModule
                 )
             )

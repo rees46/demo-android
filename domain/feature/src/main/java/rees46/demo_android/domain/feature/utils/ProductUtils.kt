@@ -1,7 +1,7 @@
 package rees46.demo_android.domain.feature.utils
 
 import com.personalizatio.api.responses.product.Product
-import rees46.demo_android.data.products.ProductDto
+import rees46.demo_android.domain.entities.ProductDto
 
 fun Product.createProduct(): ProductDto {
     return ProductDto(

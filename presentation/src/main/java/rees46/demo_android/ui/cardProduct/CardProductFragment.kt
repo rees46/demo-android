@@ -10,14 +10,14 @@ import org.koin.core.parameter.parametersOf
 import rees46.demo_android.utils.onBackPressedNavigation
 import rees46.demo_android.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCardProductBinding
-import rees46.demo_android.data.products.ProductDto
+import rees46.demo_android.domain.entities.ProductDto
 
 class CardProductFragment
     : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
 
     private val args by navArgs<CardProductFragmentArgs>()
 
-    private val viewModel: rees46.demo_android.domain.feature.card_product.presentation.CardProductViewModel by viewModel {
+    private val viewModel: rees46.demo_android.domain.feature.cardProduct.presentation.CardProductViewModel by viewModel {
         parametersOf(args.product)
     }
 

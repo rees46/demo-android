@@ -21,6 +21,6 @@
         tools:layout="@layout/fragment_card_product" >
         <argument
             android:name="product"
-            app:argType="rees46.demo_android.data.products.ProductDto" />
+            app:argType="rees46.demo_android.domain.entities.ProductDto" />
     </fragment>
 </navigation>

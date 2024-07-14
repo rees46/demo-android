@@ -11,7 +11,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.data.products.ProductDto
+import rees46.demo_android.domain.entities.ProductDto
 import rees46.demo_android.ui.recommendationBlock.RecommendationBlockView
 
 class HomeFragment
