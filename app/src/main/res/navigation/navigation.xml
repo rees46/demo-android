@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/rootFragment">
+
+    <fragment
+        android:id="@+id/rootFragment"
+        android:name="rees46.demo_android.app.ui.RootFragment"
+        android:label="fragment_root"
+        tools:layout="@layout/fragment_root" >
+        <action
+            android:id="@+id/action_rootFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="rees46.demo_android.app.ui.main.MainFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_main">
+
+        <action android:id="@+id/action_home_fragment_to_card_product_fragment"
+            app:destination="@id/searchCartFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchCartFragment"
+        android:name="rees46.demo_android.app.ui.cardProduct.CardProductFragment"
+        android:label="fragment card product from search"
+        tools:layout="@layout/fragment_card_product">
+
+        <argument
+            android:name="product"
+            app:argType="rees46.demo_android.domain.entities.ProductEntity" />
+    </fragment>
+</navigation>

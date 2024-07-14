@@ -22,6 +22,6 @@ dependencyResolutionManagement {
 rootProject.name = "demo-android"
 
 include(":sdkRees46")
-include(":presentation")
+include(":app")
 include(":data")
 include(":domain")
