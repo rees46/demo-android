@@ -42,4 +42,5 @@ dependencies {
     implementation(libs.koin.compat)
     implementation(project(":sdkRees46"))
     implementation(project(":domain"))
+    implementation(project(":domain:feature"))
 }

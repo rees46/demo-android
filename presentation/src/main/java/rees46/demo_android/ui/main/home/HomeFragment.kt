@@ -12,7 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.domain.entities.ProductDto
-import rees46.demo_android.ui.recommendationBlock.RecommendationBlockView
+import rees46.demo_android.presentation.ui.recommendationBlock.RecommendationBlockView
 
 class HomeFragment
     : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {

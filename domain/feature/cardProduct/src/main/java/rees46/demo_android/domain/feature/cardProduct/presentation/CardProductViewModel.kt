@@ -10,14 +10,15 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.ProductDto
 import rees46.demo_android.domain.feature.cardProduct.CardAction
-import rees46.demo_android.domain.feature.recommendation_block.utils.RecommendationUtils
 import rees46.demo_android.domain.usecase.cart.AddProductToCartUseCase
 import rees46.demo_android.domain.usecase.cart.GetCartProductUseCase
+import rees46.demo_android.domain.usecase.recommendation.GetRecommendationForProductUseCase
 
 class CardProductViewModel(
     private val sdk: SDK,
     private val addProductToCartUseCase: AddProductToCartUseCase,
     private val getCartProductUseCase: GetCartProductUseCase,
+    private val getRecommendationForProductUseCase: GetRecommendationForProductUseCase,
     product: ProductDto
 ) : ViewModel() {
 
@@ -39,7 +40,7 @@ class CardProductViewModel(
     }
 
     fun updateRecommendationBlock(productId: String) {
-        RecommendationUtils.updateExtendedRecommendationForProduct(sdk, RECOMMENDER_CODE, productId) {
+        getRecommendationForProductUseCase(RECOMMENDER_CODE, productId) {
             viewModelScope.launch { _recommendedProductsFlow.emit(it) }
         }
     }

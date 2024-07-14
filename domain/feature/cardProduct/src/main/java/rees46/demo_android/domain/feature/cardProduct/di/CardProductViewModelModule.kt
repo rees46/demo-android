@@ -10,6 +10,7 @@ val cardProductViewModelModule = module {
             sdk = get(),
             addProductToCartUseCase = get(),
             getCartProductUseCase = get(),
+            getRecommendationForProductUseCase = get(),
             product = parameter.get()
         )
     }

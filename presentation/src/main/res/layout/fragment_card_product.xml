@@ -18,7 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <rees46.demo_android.ui.recommendationBlock.RecommendationBlockView
+        <rees46.demo_android.presentation.ui.recommendationBlock.RecommendationBlockView
             android:id="@+id/recommendation_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

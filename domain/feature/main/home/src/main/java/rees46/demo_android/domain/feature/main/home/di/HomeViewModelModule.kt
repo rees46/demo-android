@@ -5,5 +5,5 @@ import org.koin.dsl.module
 import rees46.demo_android.domain.feature.main.home.presentation.HomeViewModel
 
 val homeViewModelModule = module {
-    viewModel { HomeViewModel(sdk = get()) }
+    viewModel { HomeViewModel(getRecommendationUseCase = get()) }
 }

@@ -22,6 +22,7 @@ class DemoApplication : Application() {
                 listOf(
                     sdkModule(this@DemoApplication),
                     DataModule.cartModule,
+                    DataModule.recommendationModule,
                     homeViewModelModule,
                     cardProductViewModelModule,
                     ViewModelModule.module,

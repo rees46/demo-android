@@ -67,8 +67,6 @@ dependencies {
     implementation(project(":domain:feature:main:home"))
     implementation(project(":domain:feature:main:category"))
     implementation(project(":domain:feature:main:settings"))
-    implementation(project(":domain:feature:main:settings"))
-    implementation(project(":domain:feature:recommendationBlock"))
     implementation(project(":domain:feature:cardProduct"))
     implementation(project(":domain"))
     implementation(project(":data"))

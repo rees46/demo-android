@@ -9,10 +9,10 @@ object ViewModelModule {
     val module = module {
         viewModel {
             CartViewModel(
-                sdk = get(),
                 getCartProductsUseCase = get(),
                 removeProductFromCartUseCase = get(),
-                getCartSumPriceUseCase = get()
+                getCartSumPriceUseCase = get(),
+                getRecommendationUseCase = get()
             )
         }
     }

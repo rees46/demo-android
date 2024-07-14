@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.recommendationBlock.adapter
+package rees46.demo_android.presentation.ui.recommendationBlock.adapter
 
 import android.content.Context
 import android.view.View

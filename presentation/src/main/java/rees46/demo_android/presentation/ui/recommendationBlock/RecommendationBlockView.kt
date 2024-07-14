@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.recommendationBlock
+package rees46.demo_android.presentation.ui.recommendationBlock
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
 import rees46.demo_android.domain.entities.ProductDto
-import rees46.demo_android.ui.recommendationBlock.adapter.CardProductsAdapter
+import rees46.demo_android.presentation.ui.recommendationBlock.adapter.CardProductsAdapter
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null

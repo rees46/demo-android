@@ -40,6 +40,5 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.material)
     implementation(project(":sdkRees46"))
-    implementation(project(":domain:feature:recommendationBlock"))
     implementation(project(":domain"))
 }
