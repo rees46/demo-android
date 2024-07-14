@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import rees46.demo_android.presentation.ui.cardProduct.CardProductViewModel
 import rees46.demo_android.presentation.ui.cart.CartViewModel
 import rees46.demo_android.presentation.ui.home.HomeViewModel
+import rees46.demo_android.presentation.ui.main.MainViewModel
 
 object ViewModelModule {
 
@@ -28,6 +29,12 @@ object ViewModelModule {
                 getCartProductUseCase = get(),
                 getRecommendationForProductUseCase = get(),
                 product = product.get()
+            )
+        }
+        viewModel {
+            MainViewModel(
+                searchProductsUseCase = get(),
+                searchRecommendedProductsUseCase = get()
             )
         }
     }

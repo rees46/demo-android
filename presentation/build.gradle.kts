@@ -63,7 +63,6 @@ dependencies {
     implementation(libs.glide)
     implementation(project(":sdkRees46"))
     implementation(project(":domain:feature"))
-    implementation(project(":domain:feature:main"))
     implementation(project(":domain"))
     implementation(project(":data"))
 }

@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.main
+package rees46.demo_android.presentation.ui.main
 
 import android.view.Menu
 import android.view.MenuInflater
@@ -19,14 +19,14 @@ import rees46.demo_android.databinding.FragmentMainBinding
 import rees46.demo_android.utils.fragmentOffFullScreen
 import rees46.demo_android.utils.fragmentOnFullScreen
 import rees46.demo_android.utils.showSystemBar
-import rees46.demo_android.ui.main.adapter.MainScreenPagerAdapter
-import rees46.demo_android.ui.main.adapter.MainScreenSearchResultAdapter
-import rees46.demo_android.ui.main.adapter.MainScreenSearchResultCategoriesAdapter
+import rees46.demo_android.presentation.ui.main.adapter.MainScreenPagerAdapter
+import rees46.demo_android.presentation.ui.main.adapter.MainScreenSearchResultAdapter
+import rees46.demo_android.presentation.ui.main.adapter.MainScreenSearchResultCategoriesAdapter
 
 class MainFragment
     : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
-    private val viewModel: rees46.demo_android.domain.feature.main.presentation.MainViewModel by viewModel()
+    private val viewModel: MainViewModel by viewModel()
 
     private val searchResultAdapter = MainScreenSearchResultAdapter { product ->
         showSystemBar()

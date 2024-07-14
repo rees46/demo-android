@@ -4,7 +4,6 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import rees46.demo_android.domain.feature.di.sdkModule
-import rees46.demo_android.domain.feature.main.di.mainViewModelModule
 import rees46.demo_android.data.di.DataModule
 import rees46.demo_android.presentation.di.ViewModelModule
 
@@ -21,8 +20,8 @@ class DemoApplication : Application() {
                     sdkModule(this@DemoApplication),
                     DataModule.cartModule,
                     DataModule.recommendationModule,
-                    ViewModelModule.module,
-                    mainViewModelModule
+                    DataModule.productModule,
+                    ViewModelModule.module
                 )
             )
         }

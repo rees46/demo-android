@@ -67,4 +67,17 @@ object DataModule {
             )
         }
     }
+
+    val productModule = module {
+        single {
+            GetRecommendationUseCase(
+                recommendationRepository = get()
+            )
+        }
+        single {
+            GetRecommendationForProductUseCase(
+                recommendationRepository = get()
+            )
+        }
+    }
 }

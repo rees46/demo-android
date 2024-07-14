@@ -1,8 +1,7 @@
-package rees46.demo_android.domain.feature.main.presentation
+package rees46.demo_android.presentation.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.personalizatio.SDK
 import com.personalizatio.api.responses.product.Product
 import com.personalizatio.api.responses.search.Category
 import kotlinx.coroutines.flow.Flow
@@ -10,9 +9,12 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.ProductDto
 import rees46.demo_android.domain.feature.utils.createProduct
+import rees46.demo_android.domain.usecase.search.SearchProductsUseCase
+import rees46.demo_android.domain.usecase.search.SearchRecommendedProductsUseCase
 
 class MainViewModel(
-    private val sdk: SDK
+    private val searchProductsUseCase: SearchProductsUseCase,
+    private val searchRecommendedProductsUseCase: SearchRecommendedProductsUseCase
 ) : ViewModel() {
 
     private val _searchResultItems: MutableSharedFlow<MutableList<ProductDto>> =
@@ -26,28 +28,26 @@ class MainViewModel(
         _searchResultCategoriesItems
 
     fun searchProduct(query: String = "") {
-        if (query.isEmpty()) emptySearch()
+        if (query.isEmpty()) {
+            emptySearch()
+        }
         else {
-            sdk.searchManager.searchInstant(
+            searchProductsUseCase.invoke(
                 query = query,
-                onSearchInstant = { searchInstantEntity ->
-                    handleProductResult(searchInstantEntity.products)
-                    handleCategoriesResult(searchInstantEntity.categories)
-                }
+                onGetProducts = { handleProductResult(it) },
+                onGetCategories = { handleCategoriesResult(it) }
             )
         }
     }
 
     private fun emptySearch() {
-        sdk.searchManager.searchBlank(
-            onSearchBlank = { searchBlankEntity ->
-                handleProductResult(searchBlankEntity.products)
-            }
+        searchRecommendedProductsUseCase.invoke(
+            onGetProducts = { handleProductResult(it) }
         )
     }
 
     private fun handleProductResult(searchProductsResult: List<Product>) {
-        val searchResultList = mutableListOf<rees46.demo_android.domain.entities.ProductDto>()
+        val searchResultList = mutableListOf<ProductDto>()
 
         for (product in searchProductsResult) {
             searchResultList.add(product.createProduct())

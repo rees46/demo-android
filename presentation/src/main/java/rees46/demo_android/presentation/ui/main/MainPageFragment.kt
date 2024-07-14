@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.main
+package rees46.demo_android.presentation.ui.main
 
 import android.os.Bundle
 import android.view.View
