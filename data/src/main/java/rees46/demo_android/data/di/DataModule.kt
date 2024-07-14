@@ -3,8 +3,10 @@ package rees46.demo_android.data.di
 import org.koin.dsl.module
 import rees46.demo_android.data.repository.cart.CartRepositoryImpl
 import rees46.demo_android.data.repository.cart.Cart
+import rees46.demo_android.data.repository.product.ProductRepositoryImpl
 import rees46.demo_android.data.repository.recommendation.RecommendationRepositoryImpl
 import rees46.demo_android.domain.repository.CartRepository
+import rees46.demo_android.domain.repository.ProductRepository
 import rees46.demo_android.domain.repository.RecommendationRepository
 import rees46.demo_android.domain.usecase.cart.AddProductToCartUseCase
 import rees46.demo_android.domain.usecase.cart.GetCartProductUseCase
@@ -13,6 +15,8 @@ import rees46.demo_android.domain.usecase.cart.GetCartSumPriceUseCase
 import rees46.demo_android.domain.usecase.cart.RemoveProductFromCartUseCase
 import rees46.demo_android.domain.usecase.recommendation.GetRecommendationForProductUseCase
 import rees46.demo_android.domain.usecase.recommendation.GetRecommendationUseCase
+import rees46.demo_android.domain.usecase.search.SearchProductsUseCase
+import rees46.demo_android.domain.usecase.search.SearchRecommendedProductsUseCase
 
 object DataModule {
 
@@ -69,14 +73,19 @@ object DataModule {
     }
 
     val productModule = module {
-        single {
-            GetRecommendationUseCase(
-                recommendationRepository = get()
+        single<ProductRepository> {
+            ProductRepositoryImpl(
+                sdk = get()
             )
         }
         single {
-            GetRecommendationForProductUseCase(
-                recommendationRepository = get()
+            SearchProductsUseCase(
+                productRepository = get()
+            )
+        }
+        single {
+            SearchRecommendedProductsUseCase(
+                productRepository = get()
             )
         }
     }
