@@ -8,8 +8,8 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.domain.entities.CartProductDto
-import rees46.demo_android.domain.entities.ProductDto
+import rees46.demo_android.domain.entities.CartProductEntity
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.presentation.ui.cart.adapter.CartProductsAdapter
 
 class CartFragment
@@ -35,7 +35,7 @@ class CartFragment
         initRecommendationBlockView()
     }
 
-    private fun updateCart(newList: MutableList<CartProductDto>) {
+    private fun updateCart(newList: MutableList<CartProductEntity>) {
         updateCartView(newList.isEmpty())
 
         lifecycleScope.launch {
@@ -52,7 +52,7 @@ class CartFragment
         }
     }
 
-    private fun removeProduct(cartProduct: CartProductDto) {
+    private fun removeProduct(cartProduct: CartProductEntity) {
         viewModel.removeProduct(cartProduct)
     }
 
@@ -64,7 +64,7 @@ class CartFragment
         binding.recommendationBlock.setHeaderText("Also bought")
     }
 
-    private fun navigateProductFragment(product: ProductDto) {
+    private fun navigateProductFragment(product: ProductEntity) {
         val action = CartFragmentDirections.actionCartFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }

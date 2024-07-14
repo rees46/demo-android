@@ -2,13 +2,11 @@ package rees46.demo_android.presentation.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.personalizatio.api.responses.product.Product
 import com.personalizatio.api.responses.search.Category
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.domain.entities.ProductDto
-import rees46.demo_android.domain.feature.utils.createProduct
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.usecase.search.SearchProductsUseCase
 import rees46.demo_android.domain.usecase.search.SearchRecommendedProductsUseCase
 
@@ -17,9 +15,9 @@ class MainViewModel(
     private val searchRecommendedProductsUseCase: SearchRecommendedProductsUseCase
 ) : ViewModel() {
 
-    private val _searchResultItems: MutableSharedFlow<MutableList<ProductDto>> =
+    private val _searchResultItems: MutableSharedFlow<MutableList<ProductEntity>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultItems: Flow<MutableList<ProductDto>> =
+    val searchResultItems: Flow<MutableList<ProductEntity>> =
         _searchResultItems
 
     private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<Category>> =
@@ -46,15 +44,9 @@ class MainViewModel(
         )
     }
 
-    private fun handleProductResult(searchProductsResult: List<Product>) {
-        val searchResultList = mutableListOf<ProductDto>()
-
-        for (product in searchProductsResult) {
-            searchResultList.add(product.createProduct())
-        }
-
+    private fun handleProductResult(searchProductsResult: List<ProductEntity>) {
         viewModelScope.launch {
-            _searchResultItems.emit(searchResultList)
+            _searchResultItems.emit(searchProductsResult.toMutableList())
         }
     }
 

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
-import rees46.demo_android.domain.entities.ProductDto
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.presentation.ui.recommendationBlock.adapter.CardProductsAdapter
 
 class RecommendationBlockView @JvmOverloads constructor(
@@ -16,17 +16,17 @@ class RecommendationBlockView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
 
     interface ClickListener {
-        fun onCardProductClick(product: ProductDto)
+        fun onCardProductClick(product: ProductEntity)
     }
 
-    var onCardProductClick: (ProductDto) -> Unit = {  }
+    var onCardProductClick: (ProductEntity) -> Unit = {  }
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
     private lateinit var cardProductsRecyclerView: RecyclerView
     private lateinit var cardProductsAdapter: CardProductsAdapter
 
-    private val products: MutableList<ProductDto> = ArrayList()
+    private val products: MutableList<ProductEntity> = ArrayList()
     private var listener: ClickListener? = null
 
     init {
@@ -48,13 +48,13 @@ class RecommendationBlockView @JvmOverloads constructor(
         cardProductsRecyclerView.adapter = cardProductsAdapter
     }
 
-    fun updateProducts(products: Collection<ProductDto>) {
+    fun updateProducts(products: Collection<ProductEntity>) {
         this.products.clear()
         addCardProducts(products)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addCardProducts(products: Collection<ProductDto>) {
+    fun addCardProducts(products: Collection<ProductEntity>) {
         this.products.addAll(products)
 
         Handler(context.mainLooper).post {
@@ -66,7 +66,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.listener = listener
     }
 
-    override fun onCardProductClick(product: ProductDto) {
+    override fun onCardProductClick(product: ProductEntity) {
         onCardProductClick.invoke(product)
     }
 

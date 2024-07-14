@@ -5,15 +5,15 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.domain.entities.ProductDto
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.usecase.recommendation.GetRecommendationUseCase
 
 class HomeViewModel(
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    private val _recommendationProductsFlow: MutableSharedFlow<MutableList<ProductDto>> = MutableSharedFlow()
-    val recommendationProductsFlow: Flow<List<ProductDto>> = _recommendationProductsFlow
+    private val _recommendationProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> = MutableSharedFlow()
+    val recommendationProductsFlow: Flow<List<ProductEntity>> = _recommendationProductsFlow
 
     init {
         getRecommendationUseCase(RECOMMENDER_CODE) {

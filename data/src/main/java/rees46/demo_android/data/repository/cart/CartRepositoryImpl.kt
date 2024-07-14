@@ -3,8 +3,8 @@ package rees46.demo_android.data.repository.cart
 import com.personalizatio.Params
 import com.personalizatio.SDK
 import kotlinx.coroutines.flow.MutableStateFlow
-import rees46.demo_android.domain.entities.CartProductDto
-import rees46.demo_android.domain.entities.ProductDto
+import rees46.demo_android.domain.entities.CartProductEntity
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.repository.CartRepository
 
 class CartRepositoryImpl (
@@ -12,13 +12,13 @@ class CartRepositoryImpl (
     private val cart: Cart
 ) : CartRepository {
 
-    override fun getCartProducts(): MutableList<CartProductDto> =
+    override fun getCartProducts(): MutableList<CartProductEntity> =
         cart.cartProducts
 
-    override fun getCartProduct(productId: String): CartProductDto? =
+    override fun getCartProduct(productId: String): CartProductEntity? =
         cart.getCartProduct(productId)
 
-    override fun addProduct(product: ProductDto, quantity: Int) {
+    override fun addProduct(product: ProductEntity, quantity: Int) {
         sdk.trackEventManager.track(Params.TrackEvent.VIEW, product.id)
 
         cart.addProduct(product, quantity)

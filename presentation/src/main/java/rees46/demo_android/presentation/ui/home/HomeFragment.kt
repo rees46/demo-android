@@ -11,7 +11,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.domain.entities.ProductDto
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.presentation.ui.recommendationBlock.RecommendationBlockView
 
 class HomeFragment
@@ -50,7 +50,7 @@ class HomeFragment
         recommendationBlockView.setHeaderText(header)
     }
 
-    private fun navigateProductFragment(product: ProductDto) {
+    private fun navigateProductFragment(product: ProductEntity) {
         val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }

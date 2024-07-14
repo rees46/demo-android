@@ -2,8 +2,8 @@ package rees46.demo_android.data.repository.recommendation
 
 import com.personalizatio.SDK
 import com.personalizatio.Params
-import rees46.demo_android.domain.entities.ProductDto
-import rees46.demo_android.domain.feature.utils.createProductList
+import rees46.demo_android.data.utils.ProductUtils.toProducts
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.repository.RecommendationRepository
 
 class RecommendationRepositoryImpl (
@@ -12,7 +12,7 @@ class RecommendationRepositoryImpl (
 
     override fun getRecommendation(
         recommenderCode: String,
-        onGetRecommendation: (MutableList<ProductDto>) -> Unit
+        onGetRecommendation: (MutableList<ProductEntity>) -> Unit
     ) {
         getRecommendation(recommenderCode, Params(), onGetRecommendation)
     }
@@ -20,7 +20,7 @@ class RecommendationRepositoryImpl (
     override fun getRecommendationForProduct(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (MutableList<ProductDto>) -> Unit
+        onGetRecommendation: (MutableList<ProductEntity>) -> Unit
     ) {
         getRecommendation(recommenderCode, createRecommendationParams(productId), onGetRecommendation)
     }
@@ -28,13 +28,13 @@ class RecommendationRepositoryImpl (
     private fun getRecommendation(
         recommenderCode: String,
         params: Params,
-        onGetRecommendation: (MutableList<ProductDto>) -> Unit
+        onGetRecommendation: (MutableList<ProductEntity>) -> Unit
     ) {
         sdk.recommendationManager.getExtendedRecommendation(
             recommenderCode = recommenderCode,
             params = params,
             onGetExtendedRecommendation = {
-                onGetRecommendation.invoke(it.products.createProductList())
+                onGetRecommendation.invoke(it.products.toProducts())
             }
         )
     }

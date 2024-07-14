@@ -1,6 +1,6 @@
 package rees46.demo_android.domain.usecase.recommendation
 
-import rees46.demo_android.domain.entities.ProductDto
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.repository.RecommendationRepository
 
 class GetRecommendationForProductUseCase (
@@ -10,7 +10,7 @@ class GetRecommendationForProductUseCase (
     operator fun invoke(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (MutableList<ProductDto>) -> Unit
+        onGetRecommendation: (MutableList<ProductEntity>) -> Unit
     ) {
         recommendationRepository.getRecommendationForProduct(recommenderCode, productId, onGetRecommendation)
     }

@@ -1,6 +1,6 @@
 package rees46.demo_android.domain.usecase.search
 
-import com.personalizatio.api.responses.product.Product
+import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.repository.ProductRepository
 
 class SearchRecommendedProductsUseCase (
@@ -8,7 +8,7 @@ class SearchRecommendedProductsUseCase (
 ) {
 
     operator fun invoke(
-        onGetProducts: (List<Product>) -> Unit
+        onGetProducts: (List<ProductEntity>) -> Unit
     ) {
         productRepository.searchRecommendedProducts(onGetProducts)
     }
