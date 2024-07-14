@@ -2,10 +2,10 @@ package rees46.demo_android.presentation.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.personalizatio.api.responses.search.Category
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
+import rees46.demo_android.domain.entities.CategoryEntity
 import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.usecase.search.SearchProductsUseCase
 import rees46.demo_android.domain.usecase.search.SearchRecommendedProductsUseCase
@@ -20,9 +20,9 @@ class MainViewModel(
     val searchResultItems: Flow<MutableList<ProductEntity>> =
         _searchResultItems
 
-    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<Category>> =
+    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<CategoryEntity>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultCategoriesItems: Flow<MutableList<Category>> =
+    val searchResultCategoriesItems: Flow<MutableList<CategoryEntity>> =
         _searchResultCategoriesItems
 
     fun searchProduct(query: String = "") {
@@ -50,7 +50,7 @@ class MainViewModel(
         }
     }
 
-    private fun handleCategoriesResult(searchCategoriesResult: List<Category>?) {
+    private fun handleCategoriesResult(searchCategoriesResult: List<CategoryEntity>?) {
         viewModelScope.launch {
             _searchResultCategoriesItems.emit(searchCategoriesResult?.toMutableList() ?: mutableListOf())
         }
