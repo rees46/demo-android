@@ -3,7 +3,7 @@ package rees46.demo_android
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import rees46.demo_android.domain.feature.di.sdkModule
+import rees46.demo_android.data.di.sdkModule
 import rees46.demo_android.data.di.DataModule
 import rees46.demo_android.presentation.di.ViewModelModule
 

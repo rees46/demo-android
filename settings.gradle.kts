@@ -24,4 +24,4 @@ rootProject.name = "demo-android"
 include(":sdkRees46")
 include(":presentation")
 include(":data")
-include(":domain:feature")
+include(":domain")
