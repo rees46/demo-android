@@ -14,11 +14,11 @@ import com.google.android.material.search.SearchView
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.R
-import rees46.demo_android.ui.base.BaseFragment
+import rees46.demo_android.presentation.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentMainBinding
-import rees46.demo_android.utils.fragmentOffFullScreen
-import rees46.demo_android.utils.fragmentOnFullScreen
-import rees46.demo_android.utils.showSystemBar
+import rees46.demo_android.presentation.utils.fragmentOffFullScreen
+import rees46.demo_android.presentation.utils.fragmentOnFullScreen
+import rees46.demo_android.presentation.utils.showSystemBar
 import rees46.demo_android.presentation.ui.main.adapter.MainScreenPagerAdapter
 import rees46.demo_android.presentation.ui.main.adapter.MainScreenSearchResultAdapter
 import rees46.demo_android.presentation.ui.main.adapter.MainScreenSearchResultCategoriesAdapter

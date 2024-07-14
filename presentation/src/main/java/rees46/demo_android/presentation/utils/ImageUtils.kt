@@ -1,4 +1,4 @@
-package rees46.demo_android.utils
+package rees46.demo_android.presentation.utils
 
 import android.view.View
 import android.widget.ImageView

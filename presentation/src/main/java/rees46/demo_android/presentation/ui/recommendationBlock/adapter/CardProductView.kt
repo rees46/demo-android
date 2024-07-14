@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
-import rees46.demo_android.utils.ImageUtils
+import rees46.demo_android.presentation.utils.ImageUtils
 import rees46.demo_android.domain.entities.ProductEntity
 
 class CardProductView @JvmOverloads constructor(

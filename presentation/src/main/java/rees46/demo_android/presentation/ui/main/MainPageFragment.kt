@@ -5,7 +5,7 @@ import android.view.View
 import androidx.annotation.NavigationRes
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import rees46.demo_android.ui.base.BaseFragment
+import rees46.demo_android.presentation.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentMainPageBinding
 
 class MainPageFragment(@NavigationRes val graphResId: Int)

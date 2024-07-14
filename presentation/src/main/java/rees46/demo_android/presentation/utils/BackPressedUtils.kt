@@ -1,4 +1,4 @@
-package rees46.demo_android.utils
+package rees46.demo_android.presentation.utils
 
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -13,7 +13,7 @@ fun Fragment.handleOnBackPressed(onBackPressed: () -> Unit, isEnabledBackButton:
 }
 
 fun Fragment.onBackPressedNavigation() {
-    handleOnBackPressed({ findNavController().popBackStack() }, true)
+    this.handleOnBackPressed({ findNavController().popBackStack() }, true)
 }
 
 fun Fragment.backPressedInvoke() {

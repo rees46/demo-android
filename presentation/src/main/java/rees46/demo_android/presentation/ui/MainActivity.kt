@@ -1,8 +1,9 @@
-package rees46.demo_android
+package rees46.demo_android.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import rees46.demo_android.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.utils.ImageUtils
+import rees46.demo_android.presentation.utils.ImageUtils
 import rees46.demo_android.databinding.SearchResultItemBinding
 import rees46.demo_android.domain.entities.ProductEntity
 

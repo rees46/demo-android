@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.base
+package rees46.demo_android.presentation.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

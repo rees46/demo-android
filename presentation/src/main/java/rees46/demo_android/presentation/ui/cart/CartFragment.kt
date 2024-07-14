@@ -6,7 +6,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import rees46.demo_android.ui.base.BaseFragment
+import rees46.demo_android.presentation.ui.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.domain.entities.CartProductEntity
 import rees46.demo_android.domain.entities.ProductEntity
