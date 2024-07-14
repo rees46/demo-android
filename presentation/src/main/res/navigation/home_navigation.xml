@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="rees46.demo_android.ui.main.home.HomeFragment"
+        android:name="rees46.demo_android.presentation.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_fragment_to_card_product_fragment"

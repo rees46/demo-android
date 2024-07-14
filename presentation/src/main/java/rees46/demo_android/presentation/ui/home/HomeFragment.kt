@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.main.home
+package rees46.demo_android.presentation.ui.home
 
 import android.os.Bundle
 import android.view.View
@@ -17,7 +17,7 @@ import rees46.demo_android.presentation.ui.recommendationBlock.RecommendationBlo
 class HomeFragment
     : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    private val viewModel: rees46.demo_android.domain.feature.main.home.presentation.HomeViewModel by viewModel()
+    private val viewModel: HomeViewModel by viewModel()
 
     private val sdk: SDK by inject()
 
