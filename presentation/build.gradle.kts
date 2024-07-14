@@ -64,7 +64,6 @@ dependencies {
     implementation(project(":sdkRees46"))
     implementation(project(":domain:feature"))
     implementation(project(":domain:feature:main"))
-    implementation(project(":domain:feature:cardProduct"))
     implementation(project(":domain"))
     implementation(project(":data"))
 }

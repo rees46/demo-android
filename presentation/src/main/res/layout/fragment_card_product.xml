@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical">
 
-        <rees46.demo_android.ui.cardProduct.CardProductView
+        <rees46.demo_android.presentation.ui.cardProduct.CardProductView
             android:id="@+id/card_product_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

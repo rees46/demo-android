@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/searchCartFragment"
-        android:name="rees46.demo_android.ui.cardProduct.CardProductFragment"
+        android:name="rees46.demo_android.presentation.ui.cardProduct.CardProductFragment"
         android:label="fragment card product from search"
         tools:layout="@layout/fragment_card_product">
 

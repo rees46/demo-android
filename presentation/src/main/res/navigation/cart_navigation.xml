@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/cardProductFragment"
-        android:name="rees46.demo_android.ui.cardProduct.CardProductFragment"
+        android:name="rees46.demo_android.presentation.ui.cardProduct.CardProductFragment"
         android:label="CardProductFragment">
         <argument
             android:name="product"

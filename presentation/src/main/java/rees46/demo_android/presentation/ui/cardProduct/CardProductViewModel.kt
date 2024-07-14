@@ -1,21 +1,18 @@
-package rees46.demo_android.domain.feature.cardProduct.presentation
+package rees46.demo_android.presentation.ui.cardProduct
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.personalizatio.SDK
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.ProductDto
-import rees46.demo_android.domain.feature.cardProduct.CardAction
 import rees46.demo_android.domain.usecase.cart.AddProductToCartUseCase
 import rees46.demo_android.domain.usecase.cart.GetCartProductUseCase
 import rees46.demo_android.domain.usecase.recommendation.GetRecommendationForProductUseCase
 
 class CardProductViewModel(
-    private val sdk: SDK,
     private val addProductToCartUseCase: AddProductToCartUseCase,
     private val getCartProductUseCase: GetCartProductUseCase,
     private val getRecommendationForProductUseCase: GetRecommendationForProductUseCase,

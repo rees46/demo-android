@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.cardProduct
+package rees46.demo_android.presentation.ui.cardProduct
 
 import android.os.Bundle
 import android.view.View
@@ -17,7 +17,7 @@ class CardProductFragment
 
     private val args by navArgs<CardProductFragmentArgs>()
 
-    private val viewModel: rees46.demo_android.domain.feature.cardProduct.presentation.CardProductViewModel by viewModel {
+    private val viewModel: CardProductViewModel by viewModel {
         parametersOf(args.product)
     }
 
@@ -57,6 +57,6 @@ class CardProductFragment
     }
 
     private fun setupListeners() {
-        binding.cardProductView.setupCartController(viewModel::proceedCartAction)
+        binding.cardProductView.setupCartAction(viewModel::proceedCartAction)
     }
 }

@@ -1,4 +1,4 @@
-package rees46.demo_android.ui.cardProduct
+package rees46.demo_android.presentation.ui.cardProduct
 
 import android.content.Context
 import android.util.AttributeSet
@@ -53,10 +53,10 @@ class CardProductView @JvmOverloads constructor(
         addToCartButton = findViewById(R.id.add_to_cart_button)
     }
 
-    fun setupCartController(onCartActionClick: (rees46.demo_android.domain.feature.cardProduct.CardAction) -> Unit) {
-        addToCartButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.cardProduct.CardAction.ADD) }
-        minusButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.cardProduct.CardAction.DECREASE) }
-        plusButton.setOnClickListener { onCartActionClick.invoke(rees46.demo_android.domain.feature.cardProduct.CardAction.INCREASE) }
+    fun setupCartAction(onCartActionClick: (CardAction) -> Unit) {
+        addToCartButton.setOnClickListener { onCartActionClick.invoke(CardAction.ADD) }
+        minusButton.setOnClickListener { onCartActionClick.invoke(CardAction.DECREASE) }
+        plusButton.setOnClickListener { onCartActionClick.invoke(CardAction.INCREASE) }
     }
 
     fun updateProduct(product: ProductDto) {

@@ -3,7 +3,6 @@ package rees46.demo_android
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import rees46.demo_android.domain.feature.cardProduct.di.cardProductViewModelModule
 import rees46.demo_android.domain.feature.di.sdkModule
 import rees46.demo_android.domain.feature.main.di.mainViewModelModule
 import rees46.demo_android.data.di.DataModule
@@ -22,7 +21,6 @@ class DemoApplication : Application() {
                     sdkModule(this@DemoApplication),
                     DataModule.cartModule,
                     DataModule.recommendationModule,
-                    cardProductViewModelModule,
                     ViewModelModule.module,
                     mainViewModelModule
                 )
