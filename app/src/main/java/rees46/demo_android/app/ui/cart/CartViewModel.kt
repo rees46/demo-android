@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.CartProductEntity
 import rees46.demo_android.domain.entities.RecommendationEntity
-import rees46.demo_android.domain.usecase.cart.GetCartProductsUseCase
-import rees46.demo_android.domain.usecase.cart.GetCartSumPriceUseCase
-import rees46.demo_android.domain.usecase.cart.RemoveProductFromCartUseCase
-import rees46.demo_android.domain.usecase.recommendation.GetRecommendationUseCase
+import rees46.demo_android.domain.features.cart.usecase.GetCartProductsUseCase
+import rees46.demo_android.domain.features.cart.usecase.GetCartSumPriceUseCase
+import rees46.demo_android.domain.features.cart.usecase.RemoveProductFromCartUseCase
+import rees46.demo_android.domain.features.recommendation.usecase.GetRecommendationUseCase
 
 class CartViewModel(
     private val getCartProductsUseCase: GetCartProductsUseCase,

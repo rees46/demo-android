@@ -1,4 +1,4 @@
-package rees46.demo_android.domain.usecase.cart
+package rees46.demo_android.domain.features.cart.usecase
 
 import rees46.demo_android.domain.repository.CartRepository
 

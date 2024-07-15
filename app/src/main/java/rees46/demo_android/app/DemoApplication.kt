@@ -6,7 +6,7 @@ import org.koin.core.context.startKoin
 import rees46.demo_android.data.di.sdkModule
 import rees46.demo_android.data.di.DataModule
 import rees46.demo_android.app.di.ViewModelModule
-import rees46.demo_android.domain.di.UseCaseModule
+import rees46.demo_android.domain.di.FeatureModule
 
 class DemoApplication : Application() {
 
@@ -22,10 +22,8 @@ class DemoApplication : Application() {
                     DataModule.cartModule,
                     DataModule.recommendationModule,
                     DataModule.productModule,
-                    UseCaseModule.cartModule,
-                    UseCaseModule.recommendationModule,
-                    UseCaseModule.productModule,
-                    ViewModelModule.module
+                    ViewModelModule.module,
+                    FeatureModule.featureUseCaseModule
                 )
             )
         }

@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.CategoryEntity
 import rees46.demo_android.domain.entities.ProductEntity
-import rees46.demo_android.domain.usecase.search.SearchProductsUseCase
-import rees46.demo_android.domain.usecase.search.SearchRecommendedProductsUseCase
+import rees46.demo_android.domain.features.search.usecase.SearchProductsUseCase
+import rees46.demo_android.domain.features.search.usecase.SearchRecommendedProductsUseCase
 
 class MainViewModel(
     private val searchProductsUseCase: SearchProductsUseCase,

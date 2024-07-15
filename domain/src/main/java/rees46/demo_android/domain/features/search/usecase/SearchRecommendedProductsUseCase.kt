@@ -1,4 +1,4 @@
-package rees46.demo_android.domain.usecase.search
+package rees46.demo_android.domain.features.search.usecase
 
 import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.repository.ProductRepository

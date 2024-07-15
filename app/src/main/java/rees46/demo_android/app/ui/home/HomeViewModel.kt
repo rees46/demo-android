@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.RecommendationEntity
-import rees46.demo_android.domain.usecase.recommendation.GetRecommendationUseCase
+import rees46.demo_android.domain.features.recommendation.usecase.GetRecommendationUseCase
 
 class HomeViewModel(
     getRecommendationUseCase: GetRecommendationUseCase

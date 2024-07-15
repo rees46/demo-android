@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.domain.entities.RecommendationEntity
-import rees46.demo_android.domain.usecase.cart.AddProductToCartUseCase
-import rees46.demo_android.domain.usecase.cart.GetCartProductUseCase
-import rees46.demo_android.domain.usecase.recommendation.GetRecommendationForProductUseCase
+import rees46.demo_android.domain.features.cardProduct.usecase.AddProductToCartUseCase
+import rees46.demo_android.domain.features.cardProduct.usecase.GetCartProductUseCase
+import rees46.demo_android.domain.features.cardProduct.usecase.GetRecommendationForProductUseCase
 
 class CardProductViewModel(
     private val addProductToCartUseCase: AddProductToCartUseCase,
