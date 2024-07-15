@@ -1,6 +1,7 @@
 package rees46.demo_android.app.ui.cardProduct
 
 import android.content.Context
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -18,7 +19,7 @@ class CardProductView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs) {
 
     private lateinit var productImageView: ImageView
-    internal lateinit var producerNameTextView: TextView
+    private lateinit var producerNameTextView: TextView
     private lateinit var productNameTextView: TextView
     private lateinit var ratingBar: AppCompatRatingBar
     private lateinit var oldPriceTextView: TextView
@@ -33,8 +34,8 @@ class CardProductView @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.view_card_product, this)
-
         initViews()
+        setupViews()
     }
 
     private fun initViews() {
@@ -53,6 +54,10 @@ class CardProductView @JvmOverloads constructor(
         addToCartButton = findViewById(R.id.add_to_cart_button)
     }
 
+    private fun setupViews() {
+        oldPriceTextView.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
+    }
+
     fun setupCartAction(onCartActionClick: (CardAction) -> Unit) {
         addToCartButton.setOnClickListener { onCartActionClick.invoke(CardAction.ADD) }
         minusButton.setOnClickListener { onCartActionClick.invoke(CardAction.DECREASE) }
@@ -65,6 +70,7 @@ class CardProductView @JvmOverloads constructor(
         productNameTextView.text = product.name
         producerNameTextView.text = product.producerName
         priceTextView.text = product.priceFormatted
+        oldPriceTextView.text = product.priceFullFormatted
         descriptionTextView.text = product.description
     }
 

@@ -1,6 +1,7 @@
 package rees46.demo_android.app.ui.recommendationBlock.adapter
 
 import android.content.Context
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,6 +27,7 @@ class CardProductView @JvmOverloads constructor(
         inflate(context, R.layout.view_recommendation_card_product, this)
 
         initViews()
+        setupView()
     }
 
     private fun initViews() {
@@ -35,6 +37,10 @@ class CardProductView @JvmOverloads constructor(
         ratingBar = findViewById(R.id.product_rating_bar)
         oldPriceTextView = findViewById(R.id.old_price_text)
         priceTextView = findViewById(R.id.price_text)
+    }
+
+    private fun setupView() {
+        oldPriceTextView.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
     }
 
     internal fun updateProduct(product: ProductEntity) {
