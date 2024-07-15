@@ -14,7 +14,7 @@ import com.google.android.material.search.SearchView
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.R
-import rees46.demo_android.app.ui.base.BaseFragment
+import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.databinding.FragmentMainBinding
 import rees46.demo_android.app.utils.fragmentOffFullScreen
 import rees46.demo_android.app.utils.fragmentOnFullScreen
@@ -23,8 +23,7 @@ import rees46.demo_android.app.ui.main.adapter.MainScreenPagerAdapter
 import rees46.demo_android.app.ui.main.adapter.MainScreenSearchResultAdapter
 import rees46.demo_android.app.ui.main.adapter.MainScreenSearchResultCategoriesAdapter
 
-class MainFragment
-    : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
+class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
     private val viewModel: MainViewModel by viewModel()
 

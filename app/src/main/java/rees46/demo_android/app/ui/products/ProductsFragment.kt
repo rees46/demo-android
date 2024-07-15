@@ -4,15 +4,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import rees46.demo_android.app.ui.base.BaseFragment
-import rees46.demo_android.app.ui.home.HomeFragmentDirections
+import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.app.ui.products.adapter.CardProductsAdapter
 import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.databinding.FragmentProductsBinding
 import rees46.demo_android.domain.entities.ProductEntity
 
-class ProductsFragment
-    : BaseFragment<FragmentProductsBinding>(FragmentProductsBinding::inflate), CardProductsAdapter.ClickListener {
+class ProductsFragment : BaseFragment<FragmentProductsBinding>(FragmentProductsBinding::inflate),
+    CardProductsAdapter.ClickListener {
 
     private val args by navArgs<ProductsFragmentArgs>()
 

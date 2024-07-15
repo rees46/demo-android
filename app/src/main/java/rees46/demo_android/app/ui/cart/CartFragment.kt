@@ -6,14 +6,13 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import rees46.demo_android.app.ui.base.BaseFragment
+import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.domain.entities.CartProductEntity
 import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.app.ui.cart.adapter.CartProductsAdapter
 
-class CartFragment
-    : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
+class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
 
     private val viewModel: CartViewModel by viewModel()
 

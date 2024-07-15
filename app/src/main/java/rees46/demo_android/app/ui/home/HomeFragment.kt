@@ -9,13 +9,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import rees46.demo_android.app.ui.base.BaseFragment
+import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.app.ui.recommendationBlock.RecommendationBlockView
 
-class HomeFragment
-    : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val viewModel: HomeViewModel by viewModel()
 
@@ -51,7 +50,8 @@ class HomeFragment
     }
 
     private fun navigateProductsFragment(products: List<ProductEntity>) {
-        val action = HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
+        val action =
+            HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
         findNavController().navigate(action)
     }
 }
