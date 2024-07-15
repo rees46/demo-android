@@ -1,4 +1,4 @@
-package rees46.demo_android.data.di
+package rees46.demo_android.app.di
 
 import android.content.Context
 import com.personalizatio.SDK
