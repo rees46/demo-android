@@ -14,6 +14,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -51,10 +52,11 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/settings_top_menu"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
-                app:buttonGravity="center_vertical" />
+                android:paddingStart="-16dp"
+                app:buttonGravity="center_vertical"
+                app:navigationIcon="@drawable/settings_top_menu" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.search.SearchView
@@ -62,46 +64,46 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fitsSystemWindows="false"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/default_offset">
+                android:layout_margin="@dimen/default_offset"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/suitable_categories_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:text="@string/suitable_categories"
                     android:textColor="@color/default_subTextColor"
-                    android:text="@string/suitable_categories"/>
+                    android:textSize="11sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/search_result_categories_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 <TextView
                     android:id="@+id/suitable_products_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:textColor="@color/default_subTextColor"
                     android:layout_marginTop="@dimen/default_offset"
-                    android:text="@string/suitable_products"/>
+                    android:text="@string/suitable_products"
+                    android:textColor="@color/default_subTextColor"
+                    android:textSize="11sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/search_result_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </LinearLayout>
         </com.google.android.material.search.SearchView>
 
@@ -110,20 +112,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:saveEnabled="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             style="@style/HomeBottomNavigationView"
-            app:itemBackground="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:saveEnabled="false"
             app:background="@color/black"
             app:backgroundTint="@color/black"
+            app:itemBackground="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +137,6 @@
         android:id="@+id/navigationView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start">
-    </com.google.android.material.navigation.NavigationView>
+        android:layout_gravity="start"></com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

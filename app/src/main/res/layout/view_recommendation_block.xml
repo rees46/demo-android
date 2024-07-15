@@ -18,6 +18,8 @@
         android:textStyle="bold"
         android:textColor="@color/recommendationBlock_header_textColor"
         android:textSize="@dimen/recommendationBlock_header_textSize"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintEnd_toStartOf="@+id/show_all_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

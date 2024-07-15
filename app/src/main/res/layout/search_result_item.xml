@@ -10,7 +10,7 @@
         android:id="@+id/image"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         tools:src="@mipmap/ic_launcher"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,6 +23,8 @@
         android:layout_marginStart="12dp"
         style="@style/SuggestTextRegular"
         tools:text="item name"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/image"/>
 
@@ -33,6 +35,8 @@
         android:layout_marginStart="12dp"
         style="@style/SuggestTextBold"
         tools:text="item price"
+        android:maxLines="1"
+        android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintTop_toBottomOf="@id/product_name"
         app:layout_constraintBottom_toBottomOf="parent"/>
