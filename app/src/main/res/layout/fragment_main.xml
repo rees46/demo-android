@@ -54,15 +54,17 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
-                android:paddingStart="-16dp"
+                android:paddingStart="-12dp"
                 app:buttonGravity="center_vertical"
-                app:navigationIcon="@drawable/settings_top_menu" />
+                app:navigationIcon="@drawable/settings_top_menu"
+                tools:ignore="RtlSymmetry" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.search.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            style="@style/SearchView"
             android:fitsSystemWindows="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
