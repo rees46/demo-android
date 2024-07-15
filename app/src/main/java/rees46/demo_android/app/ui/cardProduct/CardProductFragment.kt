@@ -22,12 +22,7 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recommendationBlock.onCardProductClick = ::updateProduct
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setupListeners()
+        setupViews()
         setupViewModel()
         onBackPressedNavigation()
     }
@@ -36,6 +31,7 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
         lifecycleScope.launch {
             viewModel.currentProductFlow.collect(::updateCardProductView)
         }
+
         lifecycleScope.launch {
             viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
         }
@@ -45,6 +41,12 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
         }
     }
 
+    private fun setupViews() {
+        binding.cardProductView.setupCartAction(viewModel::proceedCartAction)
+
+        binding.recommendationBlock.onCardProductClick = ::updateProduct
+    }
+
     private fun updateProduct(product: ProductEntity) {
         viewModel.updateProduct(product)
     }
@@ -52,9 +54,5 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
     private fun updateCardProductView(product: ProductEntity) {
         viewModel.updateRecommendationBlock(product.id)
         binding.cardProductView.updateProduct(product)
-    }
-
-    private fun setupListeners() {
-        binding.cardProductView.setupCartAction(viewModel::proceedCartAction)
     }
 }

@@ -1,5 +1,7 @@
 package rees46.demo_android.app.ui.products
 
+import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,13 +21,15 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding>(FragmentProductsB
 
     private val gridLayoutCount = 2
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+        onBackPressedNavigation()
+    }
 
+    private fun setupViews() {
         binding.cardProductsRecyclerView.adapter = CardProductsAdapter(requireContext(), args.products.toList(), this)
         binding.cardProductsRecyclerView.layoutManager = GridLayoutManager(context, gridLayoutCount)
-
-        onBackPressedNavigation()
     }
 
     override fun onCardProductClick(product: ProductEntity) {

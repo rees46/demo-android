@@ -1,5 +1,7 @@
 package rees46.demo_android.app.ui.cart
 
+import android.os.Bundle
+import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,9 +20,18 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
 
     private val cartProductsAdapter = CartProductsAdapter(::removeProduct)
 
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViews()
+        setupViewModels()
+        initRecommendationBlockView()
+    }
+
+    private fun setupViews() {
         binding.cartProductsRecyclerView.adapter = cartProductsAdapter
+    }
+
+    private fun setupViewModels() {
         lifecycleScope.launch {
             viewModel.cartProductsFlow.collectLatest(::updateCart)
         }
@@ -30,8 +41,6 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
             }
         }
         viewModel.updateCarts()
-
-        initRecommendationBlockView()
     }
 
     private fun updateCart(newList: MutableList<CartProductEntity>) {
