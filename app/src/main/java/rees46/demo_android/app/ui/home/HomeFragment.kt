@@ -38,15 +38,20 @@ class HomeFragment
     }
 
     private fun initRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
-
         lifecycleScope.launch {
             viewModel.recommendationFlow.collectLatest(recommendationBlockView::update)
         }
         recommendationBlockView.onCardProductClick = ::navigateProductFragment
+        recommendationBlockView.onShowAllClick = ::navigateProductsFragment
     }
 
     private fun navigateProductFragment(product: ProductEntity) {
         val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateProductsFragment(products: List<ProductEntity>) {
+        val action = HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
         findNavController().navigate(action)
     }
 }

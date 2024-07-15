@@ -21,6 +21,7 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     var onCardProductClick: (ProductEntity) -> Unit = {  }
+    var onShowAllClick: (List<ProductEntity>) -> Unit = {  }
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
@@ -47,6 +48,8 @@ class RecommendationBlockView @JvmOverloads constructor(
     private fun setupViews() {
         cardProductsAdapter = CardProductsAdapter(context, products, this)
         cardProductsRecyclerView.adapter = cardProductsAdapter
+
+        showAllTextView.setOnClickListener { onShowAllClick.invoke(products) }
     }
 
     fun update(recommendation: RecommendationEntity) {

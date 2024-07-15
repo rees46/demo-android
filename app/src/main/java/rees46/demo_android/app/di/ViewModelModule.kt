@@ -6,6 +6,7 @@ import rees46.demo_android.app.ui.cardProduct.CardProductViewModel
 import rees46.demo_android.app.ui.cart.CartViewModel
 import rees46.demo_android.app.ui.home.HomeViewModel
 import rees46.demo_android.app.ui.main.MainViewModel
+import rees46.demo_android.app.ui.products.ProductsViewModel
 
 object ViewModelModule {
 
@@ -36,6 +37,9 @@ object ViewModelModule {
                 searchProductsUseCase = get(),
                 searchRecommendedProductsUseCase = get()
             )
+        }
+        viewModel {
+            ProductsViewModel()
         }
     }
 }
