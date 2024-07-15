@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/header_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Recommendation"
         android:fontFamily="@font/inter"
@@ -29,11 +29,12 @@
         android:id="@+id/show_all_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show all >"
+        android:text="@string/show_all"
         android:textColor="@color/recommendationBlock_showAll_textColor"
         android:textSize="@dimen/recommendationBlock_showAll_textSize"
         android:backgroundTint="@android:color/transparent"
         android:layout_marginEnd="@dimen/default_offset"
+        android:paddingStart="@dimen/default_offset"
         app:layout_constraintBottom_toBottomOf="@+id/header_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
