@@ -68,11 +68,19 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
         lifecycleScope.launch {
             viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
         }
-        binding.recommendationBlock.onCardProductClick = ::navigateProductFragment
+        binding.recommendationBlock.apply {
+            onCardProductClick = ::navigateProductFragment
+            onShowAllClick = ::navigateProductsFragment
+        }
     }
 
     private fun navigateProductFragment(product: ProductDto) {
         val action = CartFragmentDirections.actionCartFragmentToCardProductFragment(product)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateProductsFragment(products: List<ProductDto>) {
+        val action = CartFragmentDirections.actionCartFragmentToProductsFragment(products.toTypedArray())
         findNavController().navigate(action)
     }
 }

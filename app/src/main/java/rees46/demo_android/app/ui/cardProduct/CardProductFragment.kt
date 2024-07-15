@@ -3,6 +3,7 @@ package rees46.demo_android.app.ui.cardProduct
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -44,7 +45,10 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
     private fun setupViews() {
         binding.cardProductView.setupCartAction(viewModel::proceedCartAction)
 
-        binding.recommendationBlock.onCardProductClick = ::updateProduct
+        binding.recommendationBlock.apply {
+            onCardProductClick = ::updateProduct
+            onShowAllClick = ::navigateProductsFragment
+        }
     }
 
     private fun updateProduct(product: ProductDto) {
@@ -54,5 +58,10 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
     private fun updateCardProductView(product: ProductDto) {
         viewModel.updateRecommendationBlock(product.id)
         binding.cardProductView.updateProduct(product)
+    }
+
+    private fun navigateProductsFragment(products: List<ProductDto>) {
+        val action = CardProductFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
+        findNavController().navigate(action)
     }
 }
