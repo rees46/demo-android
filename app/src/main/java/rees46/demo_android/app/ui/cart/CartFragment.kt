@@ -10,8 +10,8 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.domain.entities.CartProductEntity
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.CartProductDto
+import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.app.ui.cart.adapter.CartProductsAdapter
 
 class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
@@ -43,7 +43,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
         viewModel.updateCarts()
     }
 
-    private fun updateCart(newList: MutableList<CartProductEntity>) {
+    private fun updateCart(newList: MutableList<CartProductDto>) {
         updateCartView(newList.isEmpty())
 
         lifecycleScope.launch {
@@ -60,7 +60,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
         }
     }
 
-    private fun removeProduct(cartProduct: CartProductEntity) {
+    private fun removeProduct(cartProduct: CartProductDto) {
         viewModel.removeProduct(cartProduct)
     }
 
@@ -71,7 +71,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
         binding.recommendationBlock.onCardProductClick = ::navigateProductFragment
     }
 
-    private fun navigateProductFragment(product: ProductEntity) {
+    private fun navigateProductFragment(product: ProductDto) {
         val action = CartFragmentDirections.actionCartFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }

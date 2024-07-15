@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.button.MaterialButton
 import rees46.demo_android.R
 import rees46.demo_android.app.utils.ImageUtils
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.ProductDto
 
 class CardProductView @JvmOverloads constructor(
     context: Context,
@@ -64,7 +64,7 @@ class CardProductView @JvmOverloads constructor(
         plusButton.setOnClickListener { onCartActionClick.invoke(CardAction.INCREASE) }
     }
 
-    fun updateProduct(product: ProductEntity) {
+    fun updateProduct(product: ProductDto) {
         ImageUtils.updateImage(this, productImageView, product.pictureUrl)
 
         productNameTextView.text = product.name

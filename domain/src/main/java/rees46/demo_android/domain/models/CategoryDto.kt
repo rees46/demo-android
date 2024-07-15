@@ -1,10 +1,10 @@
-package rees46.demo_android.domain.entities
+package rees46.demo_android.domain.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CategoryEntity(
+data class CategoryDto(
     val id: String,
     val name: String,
     val parent: String,

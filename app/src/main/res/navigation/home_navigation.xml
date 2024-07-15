@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_card_product" >
         <argument
             android:name="product"
-            app:argType="rees46.demo_android.domain.entities.ProductEntity" />
+            app:argType="rees46.demo_android.domain.models.ProductDto" />
     </fragment>
     <fragment
         android:id="@+id/products_fragment"
@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_products">
         <argument
             android:name="products"
-            app:argType="rees46.demo_android.domain.entities.ProductEntity[]" />
+            app:argType="rees46.demo_android.domain.models.ProductDto[]" />
         <action
             android:id="@+id/action_products_fragment_to_card_product_fragment"
             app:destination="@id/card_product_fragment" />

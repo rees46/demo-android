@@ -3,8 +3,8 @@ package rees46.demo_android.data.repository.product
 import com.personalizatio.SDK
 import rees46.demo_android.data.utils.ProductUtils.toCategories
 import rees46.demo_android.data.utils.ProductUtils.toProducts
-import rees46.demo_android.domain.entities.CategoryEntity
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.CategoryDto
+import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.domain.repository.ProductRepository
 
 class ProductRepositoryImpl (
@@ -13,8 +13,8 @@ class ProductRepositoryImpl (
 
     override fun searchProducts(
         query: String,
-        onGetProducts: (List<ProductEntity>) -> Unit,
-        onGetCategories: (List<CategoryEntity>) -> Unit
+        onGetProducts: (List<ProductDto>) -> Unit,
+        onGetCategories: (List<CategoryDto>) -> Unit
     ) {
         sdk.searchManager.searchInstant(
             query = query,
@@ -26,7 +26,7 @@ class ProductRepositoryImpl (
     }
 
     override fun searchRecommendedProducts(
-        onGetProducts: (List<ProductEntity>) -> Unit
+        onGetProducts: (List<ProductDto>) -> Unit
     ) {
         sdk.searchManager.searchBlank(
             onSearchBlank = { searchBlankEntity ->

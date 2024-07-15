@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
 import rees46.demo_android.app.utils.ImageUtils
-import rees46.demo_android.domain.entities.CartProductEntity
+import rees46.demo_android.domain.models.CartProductDto
 
 class CartProductView @JvmOverloads constructor(
     context: Context,
@@ -22,7 +22,7 @@ class CartProductView @JvmOverloads constructor(
     private lateinit var removeButton: ImageButton
     private lateinit var quantityTextView: TextView
 
-    private lateinit var cartProduct: CartProductEntity
+    private lateinit var cartProduct: CartProductDto
 
     init {
         inflate(context, R.layout.view_cart_product, this)
@@ -38,7 +38,7 @@ class CartProductView @JvmOverloads constructor(
         quantityTextView = findViewById(R.id.product_quantity)
     }
 
-    internal fun updateCartProduct(cartProduct: CartProductEntity) {
+    internal fun updateCartProduct(cartProduct: CartProductDto) {
         this.cartProduct = cartProduct
 
         ImageUtils.updateImage(this, productImageView, cartProduct.product.pictureUrl)
@@ -49,7 +49,7 @@ class CartProductView @JvmOverloads constructor(
         quantityTextView.text = "x${cartProduct.quantity}"
     }
 
-    internal fun setupOnRemoveListener(onClick: (CartProductEntity) -> Unit) {
+    internal fun setupOnRemoveListener(onClick: (CartProductDto) -> Unit) {
         removeButton.setOnClickListener { onClick.invoke(cartProduct) }
     }
 }

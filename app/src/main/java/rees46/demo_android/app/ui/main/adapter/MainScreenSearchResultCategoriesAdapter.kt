@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.databinding.SearchResultCategoryItemBinding
-import rees46.demo_android.domain.entities.CategoryEntity
+import rees46.demo_android.domain.models.CategoryDto
 
 class MainScreenSearchResultCategoriesAdapter(
-    private val onSelectItem: (CategoryEntity) -> Unit
+    private val onSelectItem: (CategoryDto) -> Unit
 ) :
-    ListAdapter<CategoryEntity, MainScreenSearchResultCategoriesAdapter.ViewHolder>(
+    ListAdapter<CategoryDto, MainScreenSearchResultCategoriesAdapter.ViewHolder>(
         SearchResultItemCallback()
     ) {
 
@@ -29,7 +29,7 @@ class MainScreenSearchResultCategoriesAdapter(
     inner class ViewHolder(private val binding: SearchResultCategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(category: CategoryEntity) {
+        fun bind(category: CategoryDto) {
             binding.categoryName.text = category.name
             binding.root.setOnClickListener {
                 onSelectItem.invoke(category)
@@ -37,12 +37,12 @@ class MainScreenSearchResultCategoriesAdapter(
         }
     }
 
-    internal class SearchResultItemCallback : DiffUtil.ItemCallback<CategoryEntity>() {
-        override fun areItemsTheSame(oldItem: CategoryEntity, newItem: CategoryEntity): Boolean {
+    internal class SearchResultItemCallback : DiffUtil.ItemCallback<CategoryDto>() {
+        override fun areItemsTheSame(oldItem: CategoryDto, newItem: CategoryDto): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: CategoryEntity, newItem: CategoryEntity): Boolean {
+        override fun areContentsTheSame(oldItem: CategoryDto, newItem: CategoryDto): Boolean {
             return oldItem.id == newItem.id
         }
     }

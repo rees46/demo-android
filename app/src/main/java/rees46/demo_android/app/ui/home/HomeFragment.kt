@@ -11,7 +11,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.app.ui.recommendationBlock.RecommendationBlockView
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -44,12 +44,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         recommendationBlockView.onShowAllClick = ::navigateProductsFragment
     }
 
-    private fun navigateProductFragment(product: ProductEntity) {
+    private fun navigateProductFragment(product: ProductDto) {
         val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }
 
-    private fun navigateProductsFragment(products: List<ProductEntity>) {
+    private fun navigateProductsFragment(products: List<ProductDto>) {
         val action = HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
         findNavController().navigate(action)
     }

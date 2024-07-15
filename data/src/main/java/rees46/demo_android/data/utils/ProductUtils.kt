@@ -2,13 +2,13 @@ package rees46.demo_android.data.utils
 
 import com.personalizatio.api.responses.product.Product
 import com.personalizatio.api.responses.search.Category
-import rees46.demo_android.domain.entities.CategoryEntity
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.CategoryDto
+import rees46.demo_android.domain.models.ProductDto
 
 object ProductUtils {
 
-    fun Product.toProduct(): ProductEntity {
-        return ProductEntity(
+    fun Product.toProduct(): ProductDto {
+        return ProductDto(
             id = id,
             name = name,
             producerName = brand,
@@ -21,11 +21,11 @@ object ProductUtils {
         )
     }
 
-    fun List<Product>.toProducts(): List<ProductEntity> =
+    fun List<Product>.toProducts(): List<ProductDto> =
         map { it.toProduct() }
 
-    fun Category.toCategory(): CategoryEntity {
-        return CategoryEntity(
+    fun Category.toCategory(): CategoryDto {
+        return CategoryDto(
             id = id,
             name = name,
             parent = parent,
@@ -34,6 +34,6 @@ object ProductUtils {
         )
     }
 
-    fun List<Category>.toCategories(): List<CategoryEntity> =
+    fun List<Category>.toCategories(): List<CategoryDto> =
         map { it.toCategory() }
 }

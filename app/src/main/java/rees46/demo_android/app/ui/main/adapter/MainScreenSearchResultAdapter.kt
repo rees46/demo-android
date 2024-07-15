@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.app.utils.ImageUtils
 import rees46.demo_android.databinding.SearchResultItemBinding
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.ProductDto
 
 class MainScreenSearchResultAdapter(
-    private val onSelectItem: (ProductEntity) -> Unit
+    private val onSelectItem: (ProductDto) -> Unit
 ) :
-    ListAdapter<ProductEntity, MainScreenSearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
+    ListAdapter<ProductDto, MainScreenSearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
@@ -28,7 +28,7 @@ class MainScreenSearchResultAdapter(
     inner class ViewHolder(private val binding: SearchResultItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: ProductEntity) {
+        fun bind(product: ProductDto) {
             binding.productName.text = product.name
             binding.price.text = product.priceFormatted
             binding.root.setOnClickListener {
@@ -38,12 +38,12 @@ class MainScreenSearchResultAdapter(
         }
     }
 
-    internal class SearchResultItemCallback : DiffUtil.ItemCallback<ProductEntity>() {
-        override fun areItemsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
+    internal class SearchResultItemCallback : DiffUtil.ItemCallback<ProductDto>() {
+        override fun areItemsTheSame(oldItem: ProductDto, newItem: ProductDto): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean {
+        override fun areContentsTheSame(oldItem: ProductDto, newItem: ProductDto): Boolean {
             return oldItem.id == newItem.id
         }
     }

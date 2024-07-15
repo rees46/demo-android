@@ -10,7 +10,7 @@ import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.app.ui.products.adapter.CardProductsAdapter
 import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.databinding.FragmentProductsBinding
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.ProductDto
 
 class ProductsFragment : BaseFragment<FragmentProductsBinding>(FragmentProductsBinding::inflate),
     CardProductsAdapter.ClickListener {
@@ -32,11 +32,11 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding>(FragmentProductsB
         binding.cardProductsRecyclerView.layoutManager = GridLayoutManager(context, gridLayoutCount)
     }
 
-    override fun onCardProductClick(product: ProductEntity) {
+    override fun onCardProductClick(product: ProductDto) {
         navigateProductFragment(product)
     }
 
-    private fun navigateProductFragment(product: ProductEntity) {
+    private fun navigateProductFragment(product: ProductDto) {
         val action = ProductsFragmentDirections.actionProductsFragmentToCardProductFragment(product)
         findNavController().navigate(action)
     }

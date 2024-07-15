@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.domain.entities.CategoryEntity
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.models.CategoryDto
+import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.domain.features.search.usecase.SearchProductsUseCase
 import rees46.demo_android.domain.features.search.usecase.SearchRecommendedProductsUseCase
 
@@ -15,14 +15,14 @@ class MainViewModel(
     private val searchRecommendedProductsUseCase: SearchRecommendedProductsUseCase
 ) : ViewModel() {
 
-    private val _searchResultItems: MutableSharedFlow<MutableList<ProductEntity>> =
+    private val _searchResultItems: MutableSharedFlow<MutableList<ProductDto>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultItems: Flow<MutableList<ProductEntity>> =
+    val searchResultItems: Flow<MutableList<ProductDto>> =
         _searchResultItems
 
-    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<CategoryEntity>> =
+    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<CategoryDto>> =
         MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultCategoriesItems: Flow<MutableList<CategoryEntity>> =
+    val searchResultCategoriesItems: Flow<MutableList<CategoryDto>> =
         _searchResultCategoriesItems
 
     fun searchProduct(query: String = "") {
@@ -44,13 +44,13 @@ class MainViewModel(
         )
     }
 
-    private fun handleProductResult(searchProductsResult: List<ProductEntity>) {
+    private fun handleProductResult(searchProductsResult: List<ProductDto>) {
         viewModelScope.launch {
             _searchResultItems.emit(searchProductsResult.toMutableList())
         }
     }
 
-    private fun handleCategoriesResult(searchCategoriesResult: List<CategoryEntity>?) {
+    private fun handleCategoriesResult(searchCategoriesResult: List<CategoryDto>?) {
         viewModelScope.launch {
             _searchResultCategoriesItems.emit(searchCategoriesResult?.toMutableList() ?: mutableListOf())
         }

@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.databinding.CartProductItemBinding
-import rees46.demo_android.domain.entities.CartProductEntity
+import rees46.demo_android.domain.models.CartProductDto
 
 class CartProductsAdapter(
-    private val onClickRemoveCart: (CartProductEntity) -> Unit
-) : ListAdapter<CartProductEntity, CartProductsAdapter.ViewHolder>(
+    private val onClickRemoveCart: (CartProductDto) -> Unit
+) : ListAdapter<CartProductDto, CartProductsAdapter.ViewHolder>(
     AsyncDifferConfig.Builder(CartProductDiffCallback()).build()
 ) {
 
@@ -24,14 +24,14 @@ class CartProductsAdapter(
         getItem(position).run(viewHolder::bind)
     }
 
-    override fun submitList(list: MutableList<CartProductEntity>?) {
+    override fun submitList(list: MutableList<CartProductDto>?) {
         super.submitList(list)
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(private val view: CartProductView) : RecyclerView.ViewHolder(view) {
 
-        fun bind(cartProduct: CartProductEntity) {
+        fun bind(cartProduct: CartProductDto) {
             view.run {
                 updateCartProduct(cartProduct)
                 setupOnRemoveListener(onClickRemoveCart::invoke)
@@ -39,15 +39,15 @@ class CartProductsAdapter(
         }
     }
 
-    private class CartProductDiffCallback : DiffUtil.ItemCallback<CartProductEntity>() {
+    private class CartProductDiffCallback : DiffUtil.ItemCallback<CartProductDto>() {
         override fun areItemsTheSame(
-            oldItem: CartProductEntity,
-            newItem: CartProductEntity
+            oldItem: CartProductDto,
+            newItem: CartProductDto
         ): Boolean = oldItem == newItem
 
         override fun areContentsTheSame(
-            oldItem: CartProductEntity,
-            newItem: CartProductEntity
+            oldItem: CartProductDto,
+            newItem: CartProductDto
         ): Boolean = oldItem.product.id == newItem.product.id
     }
 }
