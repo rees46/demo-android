@@ -10,7 +10,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_offset"
+        android:layout_marginVertical="@dimen/default_offset"
         android:fillViewport="true"
         android:orientation="vertical">
 
@@ -42,6 +42,7 @@
                 android:id="@+id/recycler_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_offset"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -56,7 +57,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cart_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/default_offset">
 
                 <TextView
                     android:id="@+id/shipping_value_text"
