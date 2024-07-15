@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
 import rees46.demo_android.domain.entities.ProductEntity
 import rees46.demo_android.app.ui.recommendationBlock.adapter.CardProductsAdapter
+import rees46.demo_android.domain.entities.RecommendationEntity
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -48,9 +49,11 @@ class RecommendationBlockView @JvmOverloads constructor(
         cardProductsRecyclerView.adapter = cardProductsAdapter
     }
 
-    fun updateProducts(products: Collection<ProductEntity>) {
+    fun update(recommendation: RecommendationEntity) {
         this.products.clear()
-        addCardProducts(products)
+        addCardProducts(recommendation.products)
+
+        setHeaderText(recommendation.title)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -70,7 +73,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         onCardProductClick.invoke(product)
     }
 
-    fun setHeaderText(text: String) {
+    private fun setHeaderText(text: String) {
         headerTextView.text = text
     }
 }

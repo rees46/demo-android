@@ -24,7 +24,6 @@ class CardProductFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recommendationBlock.onCardProductClick = ::updateProduct
-        binding.recommendationBlock.setHeaderText("You also may like")
     }
 
     override fun onResume() {
@@ -39,7 +38,7 @@ class CardProductFragment
             viewModel.currentProductFlow.collect(::updateCardProductView)
         }
         lifecycleScope.launch {
-            viewModel.recommendedProductsFlow.collect(binding.recommendationBlock::updateProducts)
+            viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
         }
 
         lifecycleScope.launch {

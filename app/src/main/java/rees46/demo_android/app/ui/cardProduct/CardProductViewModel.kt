@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.entities.RecommendationEntity
 import rees46.demo_android.domain.usecase.cart.AddProductToCartUseCase
 import rees46.demo_android.domain.usecase.cart.GetCartProductUseCase
 import rees46.demo_android.domain.usecase.recommendation.GetRecommendationForProductUseCase
@@ -19,12 +20,10 @@ class CardProductViewModel(
     product: ProductEntity
 ) : ViewModel() {
 
-    private val _recommendedProductsFlow: MutableSharedFlow<MutableList<ProductEntity>> =
-        MutableSharedFlow()
-    val recommendedProductsFlow: Flow<MutableList<ProductEntity>> = _recommendedProductsFlow
+    private val _recommendationFlow: MutableSharedFlow<RecommendationEntity> = MutableSharedFlow()
+    val recommendationFlow: Flow<RecommendationEntity> = _recommendationFlow
 
-    private val _currentProductFlow: MutableStateFlow<ProductEntity> =
-        MutableStateFlow(product)
+    private val _currentProductFlow: MutableStateFlow<ProductEntity> = MutableStateFlow(product)
     val currentProductFlow: Flow<ProductEntity> = _currentProductFlow
 
     private var _countCartProductFlow: MutableStateFlow<Int> =
@@ -38,7 +37,7 @@ class CardProductViewModel(
 
     fun updateRecommendationBlock(productId: String) {
         getRecommendationForProductUseCase(RECOMMENDER_CODE, productId) {
-            viewModelScope.launch { _recommendedProductsFlow.emit(it) }
+            viewModelScope.launch { _recommendationFlow.emit(it) }
         }
     }
 

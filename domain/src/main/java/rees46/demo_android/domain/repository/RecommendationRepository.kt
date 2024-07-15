@@ -1,17 +1,17 @@
 package rees46.demo_android.domain.repository
 
-import rees46.demo_android.domain.entities.ProductEntity
+import rees46.demo_android.domain.entities.RecommendationEntity
 
 interface RecommendationRepository {
 
     fun getRecommendation(
         recommenderCode: String,
-        onGetRecommendation: (MutableList<ProductEntity>) -> Unit
+        onGetRecommendation: (RecommendationEntity) -> Unit
     )
 
     fun getRecommendationForProduct(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (MutableList<ProductEntity>) -> Unit
+        onGetRecommendation: (RecommendationEntity) -> Unit
     )
 }

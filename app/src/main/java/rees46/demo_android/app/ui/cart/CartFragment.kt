@@ -58,10 +58,9 @@ class CartFragment
 
     private fun initRecommendationBlockView() {
         lifecycleScope.launch {
-            viewModel.recommendationProductsFlow.collect(binding.recommendationBlock::updateProducts)
+            viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
         }
         binding.recommendationBlock.onCardProductClick = ::navigateProductFragment
-        binding.recommendationBlock.setHeaderText("Also bought")
     }
 
     private fun navigateProductFragment(product: ProductEntity) {

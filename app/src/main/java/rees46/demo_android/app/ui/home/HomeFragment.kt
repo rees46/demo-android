@@ -26,9 +26,9 @@ class HomeFragment
 
         initStories()
 
-        initRecommendationBlockView(binding.newArrivalsRecommendationBlockView, "New arrivals")
-        initRecommendationBlockView(binding.topTrendsRecommendationBlockView, "Top trends")
-        initRecommendationBlockView(binding.youLikeRecommendationBlockView, "Also you like")
+        initRecommendationBlockView(binding.newArrivalsRecommendationBlockView)
+        initRecommendationBlockView(binding.topTrendsRecommendationBlockView)
+        initRecommendationBlockView(binding.youLikeRecommendationBlockView)
     }
 
     private fun initStories() {
@@ -37,17 +37,12 @@ class HomeFragment
         binding.storiesView.settings.label_font_size = 0
     }
 
-    private fun initRecommendationBlockView(recommendationBlockView: RecommendationBlockView, header: String) {
+    private fun initRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
 
         lifecycleScope.launch {
-            viewModel.recommendationProductsFlow.collectLatest { products ->
-                run {
-                    recommendationBlockView.updateProducts(products)
-                }
-            }
+            viewModel.recommendationFlow.collectLatest(recommendationBlockView::update)
         }
         recommendationBlockView.onCardProductClick = ::navigateProductFragment
-        recommendationBlockView.setHeaderText(header)
     }
 
     private fun navigateProductFragment(product: ProductEntity) {

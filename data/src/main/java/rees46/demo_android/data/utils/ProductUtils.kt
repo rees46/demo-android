@@ -21,8 +21,8 @@ object ProductUtils {
         )
     }
 
-    fun List<Product>.toProducts(): MutableList<ProductEntity> =
-        map { it.toProduct() }.toMutableList()
+    fun List<Product>.toProducts(): List<ProductEntity> =
+        map { it.toProduct() }
 
     fun Category.toCategory(): CategoryEntity {
         return CategoryEntity(
@@ -35,5 +35,5 @@ object ProductUtils {
     }
 
     fun List<Category>.toCategories(): List<CategoryEntity> =
-        map { it.toCategory() }.toMutableList()
+        map { it.toCategory() }
 }
