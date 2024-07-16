@@ -19,4 +19,5 @@
     <color name="cart_cartProduct_price_textColor">#000000</color>
     <color name="cart_shipping_textColor">#000000</color>
     <color name="cart_price_textColor">#000000</color>
+    <color name="settings_header_textColor">#000000</color>
 </resources>

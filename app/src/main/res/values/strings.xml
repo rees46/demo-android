@@ -16,4 +16,9 @@
     <string name="suitable_products">SUITABLE PRODUCTS</string>
     <string name="suitable_products_not_found">Products not found</string>
     <string name="show_all"><![CDATA[Show all >]]></string>
+    <string name="store_settings">Store settings</string>
+    <string name="settings_title">Try your own products</string>
+    <string name="settings_description">If you want to try a demo store with your products, you can put here your store key. To get the key, sign up on rees46.ru.</string>
+    <string name="you_story_key">You story key</string>
+    <string name="upload">Upload</string>
 </resources>

@@ -19,4 +19,6 @@
     <dimen name="cart_cartProduct_price_textSize">16sp</dimen>
     <dimen name="cart_shipping_textSize">16sp</dimen>
     <dimen name="cart_price_textSize">16sp</dimen>
+    <dimen name="settings_header_textSize">32sp</dimen>
+    <dimen name="settings_default_offset">20dp</dimen>
 </resources>
