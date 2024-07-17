@@ -64,4 +64,5 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.androidx.core.splashscreen)
     implementation(project(":sdkRees46"))
+    implementation(project(":core"))
 }

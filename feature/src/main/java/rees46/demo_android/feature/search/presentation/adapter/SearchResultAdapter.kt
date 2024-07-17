@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.feature.utils.ImageUtils
+import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.SearchResultItemBinding
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
@@ -34,7 +34,7 @@ class SearchResultAdapter(
             binding.root.setOnClickListener {
                 onSelectItem.invoke(product)
             }
-            ImageUtils.updateImage(binding.root, binding.image, product.pictureUrl)
+            rees46.demo_android.core.utils.ImageUtils.updateImage(binding.root, binding.image, product.pictureUrl)
         }
     }
 

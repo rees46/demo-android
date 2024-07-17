@@ -1,12 +1,12 @@
-package rees46.demo_android.feature.utils
+package rees46.demo_android.core.utils
 
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
-internal object ImageUtils {
+object ImageUtils {
 
-    internal fun updateImage(rootView: View, imageView: ImageView, imageUrl: String) {
+    fun updateImage(rootView: View, imageView: ImageView, imageUrl: String) {
         Glide.with(rootView)
             .load(imageUrl)
             .centerCrop()

@@ -1,11 +1,11 @@
-package rees46.demo_android.feature.utils
+package rees46.demo_android.core.utils
 
 import android.content.Context
 import com.personalizatio.SDK
 
-internal object SdkUtils {
+object SdkUtils {
 
-    internal fun initialize(sdk: SDK, context: Context, shopId: String? = SHOP_ID) {
+    fun initialize(sdk: SDK, context: Context, shopId: String? = SHOP_ID) {
         sdk.initialize(
             context = context,
             shopId = shopId ?: SHOP_ID,
