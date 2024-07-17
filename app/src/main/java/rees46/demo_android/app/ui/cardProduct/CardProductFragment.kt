@@ -1,5 +1,6 @@
 package rees46.demo_android.app.ui.cardProduct
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.app.base.BaseFragment
+import rees46.demo_android.app.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentCardProductBinding
 import rees46.demo_android.domain.models.ProductDto
 
@@ -38,16 +40,28 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
         }
 
         lifecycleScope.launch {
-            viewModel.countCartProductFlow.collect(binding.cardProductView::updateCount)
+            viewModel.countCartProductFlow.collect(::updateCount)
         }
     }
 
     private fun setupViews() {
-        binding.cardProductView.setupCartAction(viewModel::proceedCartAction)
+        setupCardAction(viewModel::proceedCartAction)
 
-        binding.recommendationBlock.apply {
-            onCardProductClick = ::updateProduct
-            onShowAllClick = ::navigateProductsFragment
+        binding.apply {
+            oldPriceText.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
+
+            recommendationBlock.apply {
+                onCardProductClick = ::updateProduct
+                onShowAllClick = ::navigateProductsFragment
+            }
+        }
+    }
+
+    private fun setupCardAction(onCardActionClick: (CardAction) -> Unit) {
+        binding.apply {
+            addToCartButton.setOnClickListener { onCardActionClick.invoke(CardAction.ADD) }
+            minusButton.setOnClickListener { onCardActionClick.invoke(CardAction.DECREASE) }
+            plusButton.setOnClickListener { onCardActionClick.invoke(CardAction.INCREASE) }
         }
     }
 
@@ -57,7 +71,20 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
 
     private fun updateCardProductView(product: ProductDto) {
         viewModel.updateRecommendationBlock(product.id)
-        binding.cardProductView.updateProduct(product)
+
+        binding.apply {
+            ImageUtils.updateImage(productImage, productImage, product.pictureUrl)
+
+            productNameText.text = product.name
+            producerNameText.text = product.producerName
+            priceText.text = product.priceFormatted
+            oldPriceText.text = product.priceFullFormatted
+            descriptionText.text = product.description
+        }
+    }
+
+    private fun updateCount(count: Int) {
+        binding.countInCartText.text = count.toString()
     }
 
     private fun navigateProductsFragment(products: List<ProductDto>) {
