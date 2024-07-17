@@ -11,25 +11,14 @@
         tools:layout="@layout/fragment_cart" >
         <action
             android:id="@+id/action_cart_fragment_to_cardProductFragment"
-            app:destination="@id/cardProductFragment" />
-        <action
-            android:id="@+id/action_cart_fragment_to_productsFragment"
-            app:destination="@id/productsFragment" />
+            app:destination="@id/card_product_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/cardProductFragment"
+        android:id="@+id/card_product_fragment"
         android:name="rees46.demo_android.app.ui.cardProduct.CardProductFragment"
-        android:label="CardProductFragment">
+        tools:layout="@layout/fragment_card_product" >
         <argument
             android:name="product"
             app:argType="rees46.demo_android.domain.models.ProductDto" />
-    </fragment>
-    <fragment
-        android:id="@+id/productsFragment"
-        android:name="rees46.demo_android.app.ui.products.ProductsFragment"
-        tools:layout="@layout/fragment_products">
-        <argument
-            android:name="products"
-            app:argType="rees46.demo_android.domain.models.ProductDto[]" />
     </fragment>
 </navigation>
