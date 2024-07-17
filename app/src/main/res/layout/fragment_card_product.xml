@@ -32,7 +32,7 @@
                 android:text="Producer name"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/card_product_default_offset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
                 style="@style/RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/card_product_medium_offset"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/product_name_text" />
 
@@ -63,7 +63,7 @@
                 android:id="@+id/reviews_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="46 reviews"
+                android:text="@string/reviews"
                 android:textSize="13sp"
                 android:layout_marginStart="@dimen/default_offset"
                 app:layout_constraintBottom_toBottomOf="@+id/product_rating_bar"
@@ -78,7 +78,7 @@
 \n\n(Which is ironic, because their origin is old as sh*t. They’re named for the UK’s Oxford University, where they originally became popular way back in the Victorian Era of the 19th century.)
 \n\nShoe nerds like me geek out on oxfords thanks to their closed lacing system, which means the eyelet tabs that the laces pass through are sewn on underneath the shoe’s vamp"
                 android:textSize="13sp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/card_product_medium_offset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
                 android:text="$ 1000"
                 android:textColor="@color/default_subTextColor"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/card_product_default_offset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -104,16 +104,18 @@
                 android:text="$ 759"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:layout_marginTop="@dimen/small_default_offset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/old_price_text" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                app:cardBackgroundColor="#DC2626"
                 android:layout_marginStart="@dimen/default_offset"
+                app:cardBackgroundColor="#DC2626"
                 app:cardCornerRadius="@dimen/default_button_cornerRadius"
                 app:layout_constraintBottom_toBottomOf="@+id/price_text"
                 app:layout_constraintStart_toEndOf="@+id/price_text"
@@ -123,12 +125,12 @@
                     android:id="@+id/sale_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-35%"
                     android:layout_gravity="center"
-                    android:textSize="16sp"
-                    android:layout_marginVertical="4dp"
                     android:layout_marginHorizontal="8dp"
-                    android:textColor="@color/white" />
+                    android:layout_marginVertical="4dp"
+                    android:text="-35%"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -138,7 +140,7 @@
                 app:cardCornerRadius="4sp"
                 app:strokeColor="#b7b7b7"
                 android:backgroundTint="@color/white"
-                android:layout_marginTop="@dimen/default_offset"
+                android:layout_marginTop="@dimen/card_product_default_offset"
                 app:layout_constraintTop_toBottomOf="@id/price_text"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -184,23 +186,22 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/add_to_cart_button"
+                style="@style/BlackButton"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                style="@style/BlackButton"
-                android:text="@string/add_to_cart"
-                android:layout_marginTop="@dimen/default_offset"
                 android:layout_marginStart="@dimen/default_offset"
+                android:text="@string/add_to_cart"
                 app:layout_constraintBottom_toBottomOf="@+id/count_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/count_card"
-                app:layout_constraintTop_toBottomOf="@+id/price_text" />
+                app:layout_constraintTop_toTopOf="@+id/count_card" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <rees46.demo_android.app.ui.recommendationBlock.RecommendationBlockView
             android:id="@+id/recommendation_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_offset"
+            android:layout_marginTop="@dimen/card_product_default_offset"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_product_view" />

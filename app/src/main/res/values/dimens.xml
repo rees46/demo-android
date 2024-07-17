@@ -22,4 +22,6 @@
     <dimen name="cart_price_textSize">16sp</dimen>
     <dimen name="settings_header_textSize">32sp</dimen>
     <dimen name="settings_default_offset">20dp</dimen>
+    <dimen name="card_product_default_offset">20dp</dimen>
+    <dimen name="card_product_medium_offset">12dp</dimen>
 </resources>
