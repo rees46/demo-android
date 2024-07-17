@@ -4,6 +4,6 @@
     <item
         android:width="74dp"
         android:height="67dp"
-        android:drawable="@drawable/logo"
+        android:drawable="@drawable/ic_logo"
         android:gravity="center" />
 </layer-list>

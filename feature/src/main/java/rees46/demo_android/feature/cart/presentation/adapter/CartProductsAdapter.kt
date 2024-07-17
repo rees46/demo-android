@@ -1,23 +1,23 @@
 package rees46.demo_android.feature.cart.presentation.adapter
 
-import android.view.LayoutInflater
+import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.databinding.CartProductItemBinding
 import rees46.demo_android.feature.product.domain.models.CartProductDto
 
 class CartProductsAdapter(
+    private val context: Context,
     private val onClickRemoveCart: (CartProductDto) -> Unit
 ) : ListAdapter<CartProductDto, CartProductsAdapter.ViewHolder>(
     AsyncDifferConfig.Builder(CartProductDiffCallback()).build()
 ) {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val cartProductView = CartProductItemBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
-        return ViewHolder(cartProductView.root)
+        val cartProductView = CartProductView(context, null)
+        return ViewHolder(cartProductView)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.databinding.SearchResultCategoryItemBinding
+import rees46.demo_android.databinding.ViewSearchResultCategoryItemBinding
 import rees46.demo_android.feature.search.domain.models.CategoryDto
 
 class SearchResultCategoriesAdapter(
@@ -16,8 +16,7 @@ class SearchResultCategoriesAdapter(
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding =
-            SearchResultCategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemBinding = ViewSearchResultCategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(itemBinding)
     }
@@ -26,7 +25,7 @@ class SearchResultCategoriesAdapter(
         getItem(position).apply(holder::bind)
     }
 
-    inner class ViewHolder(private val binding: SearchResultCategoryItemBinding) :
+    inner class ViewHolder(private val binding: ViewSearchResultCategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: CategoryDto) {

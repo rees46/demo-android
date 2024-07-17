@@ -23,7 +23,7 @@ class CartFragment : Fragment() {
 
     private lateinit var binding: FragmentCartBinding
 
-    private val cartProductsAdapter = CartProductsAdapter(::removeProduct)
+    private val cartProductsAdapter = CartProductsAdapter(requireContext(), ::removeProduct)
 
     override fun onCreateView(
         inflater: LayoutInflater,

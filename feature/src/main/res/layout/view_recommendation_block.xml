@@ -47,5 +47,5 @@
         android:orientation="horizontal"
         android:layout_marginTop="@dimen/default_offset"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/view_recommendation_card_product" />
+        tools:listitem="@layout/view_recommendation_block_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

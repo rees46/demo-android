@@ -25,7 +25,7 @@ class CartProductView @JvmOverloads constructor(
     private lateinit var cartProduct: CartProductDto
 
     init {
-        inflate(context, R.layout.view_cart_product, this)
+        inflate(context, R.layout.view_cart_product_item, this)
         initViews()
     }
 

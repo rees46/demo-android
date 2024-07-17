@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.core.utils.ImageUtils
-import rees46.demo_android.databinding.SearchResultItemBinding
+import rees46.demo_android.databinding.ViewSearchResultItemBinding
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
 class SearchResultAdapter(
@@ -15,8 +14,7 @@ class SearchResultAdapter(
     ListAdapter<ProductDto, SearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding =
-            SearchResultItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemBinding = ViewSearchResultItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(itemBinding)
     }
@@ -25,7 +23,7 @@ class SearchResultAdapter(
         getItem(position).apply(holder::bind)
     }
 
-    inner class ViewHolder(private val binding: SearchResultItemBinding) :
+    inner class ViewHolder(private val binding: ViewSearchResultItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: ProductDto) {

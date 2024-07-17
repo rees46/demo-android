@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.personalizatio.stories.views.StoriesView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:code="40e9f2c0b33aa016dba02b5b1024bd36">
-
-</com.personalizatio.stories.views.StoriesView>

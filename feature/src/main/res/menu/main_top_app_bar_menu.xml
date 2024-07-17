@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/menu_top_app_search"
-        android:icon="@drawable/search_top_menu"
+        android:icon="@drawable/ic_search"
         android:title="@string/search"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_top_app_cart"
-        android:icon="@drawable/cart_top_menu"
+        android:icon="@drawable/ic_cart_top_menu"
         android:title="@string/cart"
         app:showAsAction="ifRoom"/>
 

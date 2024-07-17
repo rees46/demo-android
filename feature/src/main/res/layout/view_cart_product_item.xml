@@ -14,8 +14,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/product_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/producer_name_text"
@@ -68,7 +67,7 @@
         android:id="@+id/remove_button"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/cross_circle_fill"
+        android:src="@drawable/ic_cross_circle_fill"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
-import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
 class CardProductView @JvmOverloads constructor(
@@ -24,7 +23,7 @@ class CardProductView @JvmOverloads constructor(
     private lateinit var priceTextView: TextView
 
     init {
-        inflate(context, R.layout.view_recommendation_card_product, this)
+        inflate(context, R.layout.view_recommendation_block_item, this)
 
         initViews()
         setupView()
