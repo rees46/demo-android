@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun navigateProductFragment(product: ProductDto) {
         findNavController().navigate(
-            directions = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
+            directions = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(product)
         )
     }
 

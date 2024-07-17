@@ -1,9 +1,9 @@
-package rees46.demo_android.domain.features.cardProduct.di
+package rees46.demo_android.domain.features.productDetails.di
 
 import org.koin.dsl.module
-import rees46.demo_android.domain.features.cardProduct.usecase.AddProductToCartUseCase
-import rees46.demo_android.domain.features.cardProduct.usecase.GetCartProductUseCase
-import rees46.demo_android.domain.features.cardProduct.usecase.GetRecommendationForProductUseCase
+import rees46.demo_android.domain.features.productDetails.usecase.AddProductToCartUseCase
+import rees46.demo_android.domain.features.productDetails.usecase.GetCartProductUseCase
+import rees46.demo_android.domain.features.productDetails.usecase.GetRecommendationForProductUseCase
 
 val cardProductUseCaseModule = module {
     single {

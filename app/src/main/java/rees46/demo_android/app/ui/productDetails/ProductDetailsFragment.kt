@@ -1,4 +1,4 @@
-package rees46.demo_android.app.ui.cardProduct
+package rees46.demo_android.app.ui.productDetails
 
 import android.graphics.Paint
 import android.os.Bundle
@@ -12,16 +12,16 @@ import org.koin.core.parameter.parametersOf
 import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.app.utils.ImageUtils
-import rees46.demo_android.databinding.FragmentCardProductBinding
-import rees46.demo_android.domain.features.cardProduct.presentation.CardAction
-import rees46.demo_android.domain.features.cardProduct.presentation.CardProductViewModel
+import rees46.demo_android.databinding.FragmentProductDetailsBinding
+import rees46.demo_android.domain.features.productDetails.presentation.ProductAction
+import rees46.demo_android.domain.features.productDetails.presentation.ProductDetailsViewModel
 import rees46.demo_android.domain.models.ProductDto
 
-class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {
+class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(FragmentProductDetailsBinding::inflate) {
 
-    private val args by navArgs<CardProductFragmentArgs>()
+    private val args by navArgs<ProductDetailsFragmentArgs>()
 
-    private val viewModel: CardProductViewModel by viewModel {
+    private val viewModel: ProductDetailsViewModel by viewModel {
         parametersOf(args.product)
     }
 
@@ -59,11 +59,11 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
         }
     }
 
-    private fun setupCardAction(onCardActionClick: (CardAction) -> Unit) {
+    private fun setupCardAction(onCardActionClick: (ProductAction) -> Unit) {
         binding.apply {
-            addToCartButton.setOnClickListener { onCardActionClick.invoke(CardAction.ADD) }
-            minusButton.setOnClickListener { onCardActionClick.invoke(CardAction.DECREASE) }
-            plusButton.setOnClickListener { onCardActionClick.invoke(CardAction.INCREASE) }
+            addToCartButton.setOnClickListener { onCardActionClick.invoke(ProductAction.ADD) }
+            minusButton.setOnClickListener { onCardActionClick.invoke(ProductAction.DECREASE) }
+            plusButton.setOnClickListener { onCardActionClick.invoke(ProductAction.INCREASE) }
         }
     }
 
@@ -91,7 +91,8 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
     }
 
     private fun navigateProductsFragment(products: List<ProductDto>) {
-        val action = CardProductFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
-        findNavController().navigate(action)
+        findNavController().navigate(
+            directions = ProductDetailsFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
+        )
     }
 }

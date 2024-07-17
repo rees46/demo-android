@@ -1,4 +1,4 @@
-package rees46.demo_android.domain.features.cardProduct.presentation
+package rees46.demo_android.domain.features.productDetails.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,11 +9,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.domain.models.RecommendationDto
-import rees46.demo_android.domain.features.cardProduct.usecase.AddProductToCartUseCase
-import rees46.demo_android.domain.features.cardProduct.usecase.GetCartProductUseCase
-import rees46.demo_android.domain.features.cardProduct.usecase.GetRecommendationForProductUseCase
+import rees46.demo_android.domain.features.productDetails.usecase.AddProductToCartUseCase
+import rees46.demo_android.domain.features.productDetails.usecase.GetCartProductUseCase
+import rees46.demo_android.domain.features.productDetails.usecase.GetRecommendationForProductUseCase
 
-class CardProductViewModel(
+class ProductDetailsViewModel(
     private val addProductToCartUseCase: AddProductToCartUseCase,
     private val getCartProductUseCase: GetCartProductUseCase,
     private val getRecommendationForProductUseCase: GetRecommendationForProductUseCase,
@@ -41,11 +41,11 @@ class CardProductViewModel(
         }
     }
 
-    fun proceedCartAction(action: CardAction) {
+    fun proceedCartAction(action: ProductAction) {
         when (action) {
-            CardAction.ADD -> addToCart()
-            CardAction.INCREASE -> increaseCount()
-            CardAction.DECREASE -> decreaseCount()
+            ProductAction.ADD -> addToCart()
+            ProductAction.INCREASE -> increaseCount()
+            ProductAction.DECREASE -> decreaseCount()
         }
     }
 

@@ -1,4 +1,4 @@
-package rees46.demo_android.domain.features.cardProduct.usecase
+package rees46.demo_android.domain.features.productDetails.usecase
 
 import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.domain.repository.CartRepository

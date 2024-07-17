@@ -9,8 +9,8 @@
         android:name="rees46.demo_android.app.ui.home.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_cardProductFragment"
-            app:destination="@id/cardProductFragment" />
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
         <action
             android:id="@+id/action_homeFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
@@ -20,8 +20,8 @@
         android:name="rees46.demo_android.app.ui.cart.CartFragment"
         android:label="CartFragment" >
         <action
-            android:id="@+id/action_cartFragment_to_cardProductFragment"
-            app:destination="@id/cardProductFragment" />
+            android:id="@+id/action_cartFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
         <action
             android:id="@+id/action_cartFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
@@ -35,9 +35,9 @@
         android:name="rees46.demo_android.app.ui.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
-        android:id="@+id/cardProductFragment"
-        android:name="rees46.demo_android.app.ui.cardProduct.CardProductFragment"
-        android:label="CardProductFragment">
+        android:id="@+id/productDetailsFragment"
+        android:name="rees46.demo_android.app.ui.productDetails.ProductDetailsFragment"
+        android:label="ProductDetailsFragment">
         <argument
             android:name="product"
             app:argType="rees46.demo_android.domain.models.ProductDto" />
@@ -53,7 +53,7 @@
             android:name="products"
             app:argType="rees46.demo_android.domain.models.ProductDto[]" />
         <action
-            android:id="@+id/action_productsFragment_to_cardProductFragment"
-            app:destination="@id/cardProductFragment" />
+            android:id="@+id/action_productsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
 </navigation>

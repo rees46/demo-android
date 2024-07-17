@@ -79,7 +79,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
 
     private fun navigateProductFragment(product: ProductDto) {
         findNavController().navigate(
-            directions = CartFragmentDirections.actionCartFragmentToCardProductFragment(product)
+            directions = CartFragmentDirections.actionCartFragmentToProductDetailsFragment(product)
         )
     }
 

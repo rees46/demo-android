@@ -38,7 +38,8 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding>(FragmentProductsB
     }
 
     private fun navigateProductFragment(product: ProductDto) {
-        val action = ProductsFragmentDirections.actionProductsFragmentToCardProductFragment(product)
-        findNavController().navigate(action)
+        findNavController().navigate(
+            directions = ProductsFragmentDirections.actionProductsFragmentToProductDetailsFragment(product)
+        )
     }
 }
