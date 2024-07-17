@@ -97,7 +97,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 menuInflater.inflate(R.menu.main_top_app_bar_menu, menu)
             }
 
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean = true
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if(menuItem.itemId == R.id.menu_top_app_cart) {
+                    binding.bottomNavigation.selectedItemId = R.id.cart
+                    return true
+                }
+
+                return false
+            }
         })
     }
 
