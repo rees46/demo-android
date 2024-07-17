@@ -1,13 +1,13 @@
-package rees46.demo_android.app.di
+package rees46.demo_android.domain.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import rees46.demo_android.app.ui.cardProduct.CardProductViewModel
-import rees46.demo_android.app.ui.cart.CartViewModel
-import rees46.demo_android.app.ui.home.HomeViewModel
-import rees46.demo_android.app.ui.main.MainViewModel
-import rees46.demo_android.app.ui.products.ProductsViewModel
-import rees46.demo_android.app.ui.settings.SettingsViewModel
+import rees46.demo_android.domain.features.cardProduct.presentation.CardProductViewModel
+import rees46.demo_android.domain.features.cart.presentation.CartViewModel
+import rees46.demo_android.domain.features.home.presentation.HomeViewModel
+import rees46.demo_android.domain.features.main.presentation.MainViewModel
+import rees46.demo_android.domain.features.products.presentation.ProductsViewModel
+import rees46.demo_android.domain.features.settings.presentation.SettingsViewModel
 
 object ViewModelModule {
 

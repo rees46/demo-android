@@ -13,6 +13,8 @@ import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.app.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentCardProductBinding
+import rees46.demo_android.domain.features.cardProduct.presentation.CardAction
+import rees46.demo_android.domain.features.cardProduct.presentation.CardProductViewModel
 import rees46.demo_android.domain.models.ProductDto
 
 class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCardProductBinding::inflate) {

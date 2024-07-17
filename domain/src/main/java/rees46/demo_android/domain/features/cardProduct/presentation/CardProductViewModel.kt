@@ -1,4 +1,4 @@
-package rees46.demo_android.app.ui.cardProduct
+package rees46.demo_android.domain.features.cardProduct.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

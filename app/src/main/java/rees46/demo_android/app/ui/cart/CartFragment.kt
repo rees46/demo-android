@@ -14,6 +14,7 @@ import rees46.demo_android.domain.models.CartProductDto
 import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.app.ui.cart.adapter.CartProductsAdapter
 import rees46.demo_android.app.utils.onBackPressedNavigation
+import rees46.demo_android.domain.features.cart.presentation.CartViewModel
 
 class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
 

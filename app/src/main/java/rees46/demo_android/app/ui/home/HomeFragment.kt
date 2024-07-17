@@ -14,6 +14,7 @@ import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.app.ui.recommendationBlock.RecommendationBlockView
 import rees46.demo_android.app.utils.onBackPressedNavigation
+import rees46.demo_android.domain.features.home.presentation.HomeViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 

@@ -22,6 +22,7 @@ import rees46.demo_android.app.utils.showSystemBar
 import rees46.demo_android.app.ui.main.adapter.MainScreenPagerAdapter
 import rees46.demo_android.app.ui.main.adapter.MainScreenSearchResultAdapter
 import rees46.demo_android.app.ui.main.adapter.MainScreenSearchResultCategoriesAdapter
+import rees46.demo_android.domain.features.main.presentation.MainViewModel
 
 class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 

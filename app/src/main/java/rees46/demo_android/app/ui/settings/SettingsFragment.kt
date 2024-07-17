@@ -9,6 +9,7 @@ import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.app.utils.SdkUtils
 import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.databinding.FragmentSettingsBinding
+import rees46.demo_android.domain.features.settings.presentation.SettingsViewModel
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
 

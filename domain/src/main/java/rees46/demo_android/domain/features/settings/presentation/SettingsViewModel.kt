@@ -1,4 +1,4 @@
-package rees46.demo_android.app.ui.settings
+package rees46.demo_android.domain.features.settings.presentation
 
 import androidx.lifecycle.ViewModel
 

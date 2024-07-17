@@ -1,4 +1,4 @@
-package rees46.demo_android.app.ui.products
+package rees46.demo_android.domain.features.products.presentation
 
 import androidx.lifecycle.ViewModel
 
