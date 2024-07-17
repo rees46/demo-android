@@ -49,12 +49,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun navigateProductFragment(product: ProductDto) {
-        val action = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
-        findNavController().navigate(action)
+        findNavController().navigate(
+            directions = HomeFragmentDirections.actionHomeFragmentToCardProductFragment(product)
+        )
     }
 
     private fun navigateProductsFragment(products: List<ProductDto>) {
-        val action = HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
-        findNavController().navigate(action)
+        findNavController().navigate(
+            directions = HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
+        )
     }
 }
