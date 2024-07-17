@@ -4,6 +4,7 @@
     <dimen name="main_bottom_navigation_size">32dp</dimen>
     <dimen name="default_offset">16dp</dimen>
     <dimen name="half_default_offset">8dp</dimen>
+    <dimen name="small_default_offset">4dp</dimen>
     <dimen name="default_button_cornerRadius">6dp</dimen>
     <dimen name="default_button_textSize">16sp</dimen>
     <dimen name="stories_header_textSize">24sp</dimen>
