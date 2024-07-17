@@ -10,8 +10,6 @@ internal object ImageUtils {
     internal fun updateImage(rootView: View, imageView: ImageView, imageUrl: String) {
         Glide.with(rootView)
             .load(imageUrl)
-            .placeholder(R.drawable.loading)
-            .error(R.drawable.loading)
             .centerCrop()
             .into(imageView)
     }
