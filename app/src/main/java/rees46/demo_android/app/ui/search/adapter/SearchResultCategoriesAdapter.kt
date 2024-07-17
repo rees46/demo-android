@@ -1,4 +1,4 @@
-package rees46.demo_android.app.ui.main.adapter
+package rees46.demo_android.app.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.databinding.SearchResultCategoryItemBinding
 import rees46.demo_android.domain.models.CategoryDto
 
-class MainScreenSearchResultCategoriesAdapter(
+class SearchResultCategoriesAdapter(
     private val onSelectItem: (CategoryDto) -> Unit
 ) :
-    ListAdapter<CategoryDto, MainScreenSearchResultCategoriesAdapter.ViewHolder>(
+    ListAdapter<CategoryDto, SearchResultCategoriesAdapter.ViewHolder>(
         SearchResultItemCallback()
     ) {
 

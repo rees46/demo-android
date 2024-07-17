@@ -1,4 +1,4 @@
-package rees46.demo_android.app.ui.main.adapter
+package rees46.demo_android.app.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import rees46.demo_android.app.utils.ImageUtils
 import rees46.demo_android.databinding.SearchResultItemBinding
 import rees46.demo_android.domain.models.ProductDto
 
-class MainScreenSearchResultAdapter(
+class SearchResultAdapter(
     private val onSelectItem: (ProductDto) -> Unit
 ) :
-    ListAdapter<ProductDto, MainScreenSearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
+    ListAdapter<ProductDto, SearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =

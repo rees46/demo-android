@@ -5,7 +5,7 @@ import org.koin.dsl.module
 import rees46.demo_android.domain.features.cardProduct.presentation.CardProductViewModel
 import rees46.demo_android.domain.features.cart.presentation.CartViewModel
 import rees46.demo_android.domain.features.home.presentation.HomeViewModel
-import rees46.demo_android.domain.features.main.presentation.MainViewModel
+import rees46.demo_android.domain.features.search.presentation.SearchViewModel
 import rees46.demo_android.domain.features.products.presentation.ProductsViewModel
 import rees46.demo_android.domain.features.settings.presentation.SettingsViewModel
 
@@ -34,7 +34,7 @@ object ViewModelModule {
             )
         }
         viewModel {
-            MainViewModel(
+            SearchViewModel(
                 searchProductsUseCase = get(),
                 searchRecommendedProductsUseCase = get()
             )

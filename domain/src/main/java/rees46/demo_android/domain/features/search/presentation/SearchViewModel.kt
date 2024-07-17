@@ -1,4 +1,4 @@
-package rees46.demo_android.domain.features.main.presentation
+package rees46.demo_android.domain.features.search.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.domain.features.search.usecase.SearchProductsUseCase
 import rees46.demo_android.domain.features.search.usecase.SearchRecommendedProductsUseCase
 
-class MainViewModel(
+class SearchViewModel(
     private val searchProductsUseCase: SearchProductsUseCase,
     private val searchRecommendedProductsUseCase: SearchRecommendedProductsUseCase
 ) : ViewModel() {
