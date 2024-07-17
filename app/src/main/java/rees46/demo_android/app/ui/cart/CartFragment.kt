@@ -13,6 +13,7 @@ import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.domain.models.CartProductDto
 import rees46.demo_android.domain.models.ProductDto
 import rees46.demo_android.app.ui.cart.adapter.CartProductsAdapter
+import rees46.demo_android.app.utils.onBackPressedNavigation
 
 class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::inflate) {
 
@@ -25,6 +26,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
         setupViews()
         setupViewModels()
         initRecommendationBlockView()
+        onBackPressedNavigation()
     }
 
     private fun setupViews() {

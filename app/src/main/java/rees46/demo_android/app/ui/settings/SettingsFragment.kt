@@ -7,6 +7,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.app.base.BaseFragment
 import rees46.demo_android.app.utils.SdkUtils
+import rees46.demo_android.app.utils.onBackPressedNavigation
 import rees46.demo_android.databinding.FragmentSettingsBinding
 
 class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
@@ -18,6 +19,7 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(FragmentSettingsB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+        onBackPressedNavigation()
     }
 
     private fun setupViews() {
