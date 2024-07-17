@@ -37,6 +37,8 @@ class RecommendationBlockView @JvmOverloads constructor(
         initViews()
 
         setupViews()
+
+        changeView(false)
     }
 
     private fun initViews() {
@@ -66,6 +68,8 @@ class RecommendationBlockView @JvmOverloads constructor(
         Handler(context.mainLooper).post {
             cardProductsAdapter.notifyDataSetChanged()
         }
+
+        changeView(true)
     }
 
     fun setClickListener(listener: ClickListener) {
@@ -78,5 +82,13 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     private fun setHeaderText(text: String) {
         headerTextView.text = text
+    }
+
+    private fun changeView(show: Boolean) {
+        val visibility = if (show) VISIBLE else GONE
+
+        headerTextView.visibility = visibility
+        showAllTextView.visibility = visibility
+        cardProductsRecyclerView.visibility = visibility
     }
 }
