@@ -7,9 +7,11 @@
         <item name="android:textColor">@color/default_textColor</item>
     </style>
 
-    <style name="ThemeOverlay.Demoandroid.StartScreen" parent="">
-        <item name="backgroundColor">@color/black</item>
-        <item name="headerTextColor">@color/white</item>
+    <style name="Theme.Demoandroid.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/black</item>
+        <item name="windowSplashScreenIconBackgroundColor">@android:color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/launch_screen</item>
+        <item name="postSplashScreenTheme">@style/Theme.Demoandroid</item>
     </style>
 
     <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
