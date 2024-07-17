@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginHorizontal="@dimen/default_offset"
+    android:layout_marginTop="@dimen/default_offset"
+    android:layout_marginBottom="48dp">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_header"
+        android:textStyle="bold"
+        android:textColor="@color/default_textColor"
+        android:textSize="32sp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_description"
+        android:textAlignment="center"
+        android:textColor="@color/default_textColor"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/settings_default_offset" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/go_home_button"
+        style="@style/BlackButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/settings_default_offset"
+        android:text="@string/go_home" />
+</LinearLayout>
