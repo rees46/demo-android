@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.di
+package rees46.demo_android.core.di
 
 import android.content.Context
 import com.personalizatio.SDK
@@ -10,7 +10,7 @@ fun sdkModule(context: Context): Module {
     return module {
         single {
             SDK().apply {
-                rees46.demo_android.core.utils.SdkUtils.initialize(this, context)
+                SdkUtils.initialize(this, context)
             }
         }
     }

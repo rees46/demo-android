@@ -3,7 +3,7 @@ package rees46.demo_android.feature
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import rees46.demo_android.feature.di.sdkModule
+import rees46.demo_android.core.di.sdkModule
 import rees46.demo_android.feature.cart.di.cartModule
 import rees46.demo_android.feature.category.di.categoryModule
 import rees46.demo_android.feature.home.di.homeModule
