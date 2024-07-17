@@ -13,5 +13,6 @@ data class ProductDto(
     val priceFull: Double?,
     val priceFullFormatted: String?,
     val pictureUrl: String,
-    val description: String
+    val description: String,
+    val rating: Float
 ) : Parcelable

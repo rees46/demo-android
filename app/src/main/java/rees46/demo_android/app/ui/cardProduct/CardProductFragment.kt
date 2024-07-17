@@ -80,6 +80,7 @@ class CardProductFragment : BaseFragment<FragmentCardProductBinding>(FragmentCar
             priceText.text = product.priceFormatted
             oldPriceText.text = product.priceFullFormatted
             descriptionText.text = product.description
+            productRatingBar.rating = product.rating
         }
     }
 

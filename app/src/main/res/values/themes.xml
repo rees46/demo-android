@@ -53,4 +53,8 @@
     <style name="SearchView" parent="Widget.Material3.SearchView">
         <item name="backgroundTint">@color/white</item>
     </style>
+
+    <style name="RatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressTint">@color/yellow</item>
+    </style>
 </resources>

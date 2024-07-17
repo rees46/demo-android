@@ -4,6 +4,7 @@ import com.personalizatio.api.responses.product.Product
 import com.personalizatio.api.responses.search.Category
 import rees46.demo_android.domain.models.CategoryDto
 import rees46.demo_android.domain.models.ProductDto
+import kotlin.random.Random
 
 object ProductUtils {
 
@@ -18,6 +19,7 @@ object ProductUtils {
             priceFullFormatted = priceFullFormatted,
             pictureUrl = picture,
             description = description,
+            rating = getRating()
         )
     }
 
@@ -36,4 +38,8 @@ object ProductUtils {
 
     fun List<Category>.toCategories(): List<CategoryDto> =
         map { it.toCategory() }
+
+    // TODO: replaced by real data
+    private fun getRating() =
+        Random.nextFloat() * 5
 }

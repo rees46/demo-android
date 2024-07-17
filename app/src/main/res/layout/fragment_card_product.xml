@@ -52,7 +52,7 @@
 
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/product_rating_bar"
-                style="@style/Widget.AppCompat.RatingBar.Small"
+                style="@style/RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -137,6 +137,7 @@
                 android:layout_height="44dp"
                 app:cardCornerRadius="4sp"
                 app:strokeColor="#b7b7b7"
+                android:backgroundTint="@color/white"
                 android:layout_marginTop="@dimen/default_offset"
                 app:layout_constraintTop_toBottomOf="@id/price_text"
                 app:layout_constraintStart_toStartOf="parent">

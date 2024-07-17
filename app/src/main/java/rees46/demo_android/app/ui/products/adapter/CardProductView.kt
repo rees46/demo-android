@@ -54,5 +54,6 @@ class CardProductView @JvmOverloads constructor(
         productNameTextView.text = product.name
         producerNameTextView.text = product.producerName
         priceTextView.text = product.priceFormatted
+        ratingBar.rating = product.rating
     }
 }
