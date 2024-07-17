@@ -9,7 +9,6 @@ import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.feature.utils.onBackPressedNavigation
 import rees46.demo_android.feature.BaseFragment
 import rees46.demo_android.feature.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
@@ -29,7 +28,6 @@ class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(Fragm
         super.onViewCreated(view, savedInstanceState)
         setupViews()
         setupViewModel()
-        onBackPressedNavigation()
     }
 
     private fun setupViewModel() {

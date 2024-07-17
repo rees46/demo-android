@@ -13,7 +13,6 @@ import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.feature.BaseFragment
 import rees46.demo_android.feature.product.domain.models.ProductDto
 import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
-import rees46.demo_android.feature.utils.onBackPressedNavigation
 import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -30,8 +29,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         initRecommendationBlockView(binding.newArrivalsRecommendationBlockView)
         initRecommendationBlockView(binding.topTrendsRecommendationBlockView)
         initRecommendationBlockView(binding.youLikeRecommendationBlockView)
-
-        onBackPressedNavigation()
     }
 
     private fun initStories() {

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.feature.BaseFragment
 import rees46.demo_android.feature.products.presentation.adapter.CardProductsAdapter
-import rees46.demo_android.feature.utils.onBackPressedNavigation
 import rees46.demo_android.databinding.FragmentProductsBinding
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.product.domain.models.ProductDto
@@ -25,7 +24,6 @@ class ProductsFragment : BaseFragment<FragmentProductsBinding>(FragmentProductsB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
-        onBackPressedNavigation()
     }
 
     private fun setupViews() {
