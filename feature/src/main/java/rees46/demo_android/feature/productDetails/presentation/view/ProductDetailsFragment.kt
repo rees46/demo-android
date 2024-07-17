@@ -2,26 +2,38 @@ package rees46.demo_android.feature.productDetails.presentation.view
 
 import android.graphics.Paint
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.feature.BaseFragment
-import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
-class ProductDetailsFragment : BaseFragment<FragmentProductDetailsBinding>(FragmentProductDetailsBinding::inflate) {
+class ProductDetailsFragment : Fragment() {
 
     private val args by navArgs<ProductDetailsFragmentArgs>()
 
     private val viewModel: ProductDetailsViewModel by viewModel {
         parametersOf(args.product)
+    }
+
+    private lateinit var binding: FragmentProductDetailsBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentProductDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
