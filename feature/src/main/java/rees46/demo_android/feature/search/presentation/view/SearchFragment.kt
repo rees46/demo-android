@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -87,8 +88,7 @@ class SearchFragment : Fragment() {
         binding.searchResultCategoriesRecyclerView.adapter = searchResultCategoriesAdapter
         lifecycleScope.launch {
             viewModel.searchResultCategoriesItems.collect {
-                binding.suitableCategoriesText.visibility =
-                    if(it.isEmpty()) View.GONE else View.VISIBLE
+                binding.suitableCategoriesText.isVisible = it.isEmpty()
 
                 searchResultCategoriesAdapter.submitList(it)
             }

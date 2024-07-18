@@ -6,6 +6,7 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ViewUtils
@@ -95,11 +96,9 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     private fun changeView(show: Boolean) {
-        val visibility = if (show) VISIBLE else GONE
-
-        headerTextView.visibility = visibility
-        showAllTextView.visibility = visibility
-        productsRecyclerView.visibility = visibility
+        headerTextView.isVisible = show
+        showAllTextView.isVisible = show
+        productsRecyclerView.isVisible = show
     }
 
     private fun setupProductViewSettings() {
