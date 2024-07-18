@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
+import rees46.demo_android.feature.Navigator
+import rees46.demo_android.feature.ProductsDetails
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
@@ -24,6 +28,12 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentProductDetailsBinding
+
+    private val navigator by lazy {
+        get<Navigator> {
+            parametersOf(findNavController())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -100,8 +110,6 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun navigateProductsFragment(products: List<Product>) {
-//        findNavController().navigate(
-//            directions = ProductDetailsFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
-//        )
+        navigator.navigate(ProductsDetails(products))
     }
 }
