@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingStart="@dimen/default_offset"
     android:paddingVertical="@dimen/default_offset">
 
     <TextView
@@ -20,6 +19,7 @@
         android:textSize="@dimen/recommendationBlock_header_textSize"
         android:maxLines="1"
         android:ellipsize="end"
+        android:paddingStart="@dimen/default_offset"
         app:layout_constraintEnd_toStartOf="@+id/show_all_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,9 +43,10 @@
         android:id="@+id/products_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/header_text"
-        android:orientation="horizontal"
         android:layout_marginTop="@dimen/default_offset"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_text"
         tools:listitem="@layout/view_product_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
