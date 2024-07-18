@@ -1,4 +1,10 @@
 <resources>
+    <style name="HeaderText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/header_textColor</item>
+        <item name="android:textSize">@dimen/header_textSize</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/inter</item>
         <item name="android:textColor">@color/black</item>

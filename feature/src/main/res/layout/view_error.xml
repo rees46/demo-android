@@ -16,16 +16,16 @@
         android:textStyle="bold"
         android:textColor="@color/default_textColor"
         android:textSize="32sp"
-        android:textAlignment="center"/>
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/error_description"
-        android:textAlignment="center"
         android:textColor="@color/default_textColor"
         android:textSize="18sp"
+        android:gravity="center"
         android:layout_marginTop="@dimen/settings_default_offset" />
 
     <com.google.android.material.button.MaterialButton

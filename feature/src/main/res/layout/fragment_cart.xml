@@ -26,8 +26,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/shopping_cart"
                 android:visibility="gone"
-                android:textColor="@color/cart_header_textColor"
-                android:textSize="@dimen/cart_header_textSize" />
+                android:layout_marginLeft="@dimen/default_offset"
+                style="@style/HeaderText" />
 
             <TextView
                 android:id="@+id/empty_cart_text"
@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
-                        android:text="Checkout" />
+                        android:text="@string/checkout" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,6 +5,7 @@
     <dimen name="default_offset">16dp</dimen>
     <dimen name="half_default_offset">8dp</dimen>
     <dimen name="small_default_offset">4dp</dimen>
+    <dimen name="header_textSize">32sp</dimen>
     <dimen name="default_button_cornerRadius">6dp</dimen>
     <dimen name="default_button_textSize">16sp</dimen>
     <dimen name="stories_header_textSize">24sp</dimen>
@@ -14,13 +15,11 @@
     <dimen name="recommendationBlock_cardProduct_productName_textSize">16sp</dimen>
     <dimen name="recommendationBlock_cardProduct_oldPrice_textSize">12sp</dimen>
     <dimen name="recommendationBlock_cardProduct_price_textSize">14sp</dimen>
-    <dimen name="cart_header_textSize">32sp</dimen>
     <dimen name="cart_cartProduct_producerName_textSize">12sp</dimen>
     <dimen name="cart_cartProduct_productName_textSize">16sp</dimen>
     <dimen name="cart_cartProduct_price_textSize">16sp</dimen>
     <dimen name="cart_shipping_textSize">16sp</dimen>
     <dimen name="cart_price_textSize">16sp</dimen>
-    <dimen name="settings_header_textSize">32sp</dimen>
     <dimen name="settings_default_offset">20dp</dimen>
     <dimen name="card_product_default_offset">20dp</dimen>
     <dimen name="card_product_medium_offset">12dp</dimen>

@@ -11,16 +11,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_offset"
         app:boxCornerRadiusBottomEnd="@dimen/default_button_cornerRadius"
         app:boxCornerRadiusBottomStart="@dimen/default_button_cornerRadius"
         app:boxCornerRadiusTopEnd="@dimen/default_button_cornerRadius"
         app:boxCornerRadiusTopStart="@dimen/default_button_cornerRadius"
         app:boxStrokeColor="@color/default_subTextColor"
         app:hintEnabled="false"
-        android:layout_marginEnd="@dimen/default_offset"
         app:layout_constraintEnd_toStartOf="@+id/cancel_button"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInput"

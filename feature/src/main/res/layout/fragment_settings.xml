@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/store_settings"
-        android:textStyle="bold"
-        android:textColor="@color/settings_header_textColor"
-        android:textSize="@dimen/settings_header_textSize" />
+        style="@style/HeaderText" />
 
     <LinearLayout
         android:layout_width="match_parent"

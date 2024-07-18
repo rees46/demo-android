@@ -26,4 +26,5 @@
     <string name="error_header">Something \nwent wrong.</string>
     <string name="error_description">Page not found.</string>
     <string name="go_home">Go home</string>
+    <string name="checkout">Checkout</string>
 </resources>
