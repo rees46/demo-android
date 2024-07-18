@@ -10,7 +10,10 @@ fun sdkModule(context: Context): Module {
     return module {
         single {
             SDK().apply {
-                SdkUtils.initialize(this, context)
+                SdkUtils.initialize(
+                    sdk = this,
+                    context = context
+                )
             }
         }
     }

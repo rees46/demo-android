@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
@@ -85,7 +86,7 @@ class ProductDetailsFragment : Fragment() {
         viewModel.updateRecommendationBlock(product.id)
 
         binding.apply {
-            rees46.demo_android.core.utils.ImageUtils.updateImage(productImage, productImage, product.pictureUrl)
+            ImageUtils.updateImage(productImage, productImage, product.pictureUrl)
 
             productNameText.text = product.name
             producerNameText.text = product.producerName

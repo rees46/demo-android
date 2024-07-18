@@ -1,7 +1,6 @@
 package rees46.demo_android.feature.recommendationBlock.presentation.adapter
 
 import android.content.Context
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.feature.product.domain.models.ProductDto
@@ -16,14 +15,16 @@ class CardProductsAdapter(
         fun onCardProductClick(product: ProductDto)
     }
 
-    inner class ViewHolder(private val view: View, private val listener: ClickListener)
+    inner class ViewHolder(private val view: CardProductView, private val listener: ClickListener)
         : RecyclerView.ViewHolder(view) {
 
         fun bind(product: ProductDto) {
-            (view as CardProductView).updateProduct(product)
+            view.apply {
+                updateProduct(product)
 
-            view.setOnClickListener {
-                listener.onCardProductClick(product)
+                setOnClickListener {
+                    listener.onCardProductClick(product)
+                }
             }
         }
     }

@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.products.presentation.adapter.CardProductsAdapter
 import rees46.demo_android.databinding.FragmentProductsBinding
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
@@ -40,8 +39,10 @@ class ProductsFragment : Fragment(), CardProductsAdapter.ClickListener {
     }
 
     private fun setupViews() {
-        binding.cardProductsRecyclerView.adapter = CardProductsAdapter(requireContext(), args.products.toList(), this)
-        binding.cardProductsRecyclerView.layoutManager = GridLayoutManager(context, gridLayoutCount)
+        binding.cardProductsRecyclerView.apply {
+            adapter = CardProductsAdapter(requireContext(), args.products.toList(), this@ProductsFragment)
+            layoutManager = GridLayoutManager(context, gridLayoutCount)
+        }
     }
 
     override fun onCardProductClick(product: ProductDto) {

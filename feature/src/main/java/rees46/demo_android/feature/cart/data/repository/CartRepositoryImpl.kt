@@ -20,13 +20,23 @@ class CartRepositoryImpl (
         cart.getCartProduct(productId)
 
     override fun addProduct(product: ProductDto, quantity: Int) {
-        sdk.trackEventManager.track(Params.TrackEvent.VIEW, product.id)
+        sdk.trackEventManager.track(
+            event = Params.TrackEvent.VIEW,
+            productId = product.id
+        )
 
-        cart.addProduct(product, quantity)
+        cart.addProduct(
+            product = product,
+            quantity = quantity
+        )
     }
 
     override fun removeProduct(productId: String) {
-        sdk.trackEventManager.track(Params.TrackEvent.REMOVE_FROM_CART, Params(), null)
+        sdk.trackEventManager.track(
+            event = Params.TrackEvent.REMOVE_FROM_CART,
+            params = Params(),
+            listener = null
+        )
 
         cart.removeProduct(productId)
     }

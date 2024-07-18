@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
+import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
 class CardProductView @JvmOverloads constructor(
@@ -16,7 +17,7 @@ class CardProductView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs) {
 
     private lateinit var productImageView: ImageView
-    internal lateinit var producerNameTextView: TextView
+    private lateinit var producerNameTextView: TextView
     private lateinit var productNameTextView: TextView
     private lateinit var ratingBar: AppCompatRatingBar
     private lateinit var oldPriceTextView: TextView
@@ -43,7 +44,7 @@ class CardProductView @JvmOverloads constructor(
     }
 
     internal fun updateProduct(product: ProductDto) {
-        rees46.demo_android.core.utils.ImageUtils.updateImage(this, productImageView, product.pictureUrl)
+        ImageUtils.updateImage(this, productImageView, product.pictureUrl)
 
         productNameTextView.text = product.name
         producerNameTextView.text = product.producerName

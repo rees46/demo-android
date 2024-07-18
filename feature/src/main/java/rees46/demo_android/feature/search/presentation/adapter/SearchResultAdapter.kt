@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.ViewSearchResultItemBinding
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
@@ -27,12 +28,14 @@ class SearchResultAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: ProductDto) {
-            binding.productName.text = product.name
-            binding.price.text = product.priceFormatted
-            binding.root.setOnClickListener {
-                onSelectItem.invoke(product)
+            binding.apply {
+                productName.text = product.name
+                price.text = product.priceFormatted
+                root.setOnClickListener {
+                    onSelectItem.invoke(product)
+                }
+                ImageUtils.updateImage(root, image, product.pictureUrl)
             }
-            rees46.demo_android.core.utils.ImageUtils.updateImage(binding.root, binding.image, product.pictureUrl)
         }
     }
 

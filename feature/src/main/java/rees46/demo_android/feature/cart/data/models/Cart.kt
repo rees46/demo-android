@@ -26,8 +26,8 @@ class Cart {
         if(cartProduct == null) {
             cartProducts.add(
                 CartProductDto(
-                    product,
-                    quantity
+                    product = product,
+                    quantity = quantity
                 )
             )
         }

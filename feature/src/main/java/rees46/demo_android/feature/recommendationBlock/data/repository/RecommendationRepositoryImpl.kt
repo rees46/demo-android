@@ -4,6 +4,7 @@ import com.personalizatio.SDK
 import com.personalizatio.Params
 import com.personalizatio.api.responses.recommendation.GetExtendedRecommendationResponse
 import rees46.demo_android.feature.product.data.utils.ProductUtils.toProducts
+import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
 import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
 
 class RecommendationRepositoryImpl (
@@ -12,23 +13,31 @@ class RecommendationRepositoryImpl (
 
     override fun getRecommendation(
         recommenderCode: String,
-        onGetRecommendation: (rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto) -> Unit
+        onGetRecommendation: (RecommendationDto) -> Unit
     ) {
-        getRecommendation(recommenderCode, Params(), onGetRecommendation)
+        getRecommendation(
+            recommenderCode = recommenderCode,
+            params = Params(),
+            onGetRecommendation = onGetRecommendation
+        )
     }
 
     override fun getRecommendationForProduct(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto) -> Unit
+        onGetRecommendation: (RecommendationDto) -> Unit
     ) {
-        getRecommendation(recommenderCode, createRecommendationParams(productId), onGetRecommendation)
+        getRecommendation(
+            recommenderCode = recommenderCode,
+            params = createRecommendationParams(productId),
+            onGetRecommendation = onGetRecommendation
+        )
     }
 
     private fun getRecommendation(
         recommenderCode: String,
         params: Params,
-        onGetRecommendation: (rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto) -> Unit
+        onGetRecommendation: (RecommendationDto) -> Unit
     ) {
         sdk.recommendationManager.getExtendedRecommendation(
             recommenderCode = recommenderCode,
@@ -44,8 +53,8 @@ class RecommendationRepositoryImpl (
     }
 
     private fun GetExtendedRecommendationResponse.toRecommendation() =
-        rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto(
-            title,
-            products.toProducts()
+        RecommendationDto(
+            title = title,
+            products = products.toProducts()
         )
 }

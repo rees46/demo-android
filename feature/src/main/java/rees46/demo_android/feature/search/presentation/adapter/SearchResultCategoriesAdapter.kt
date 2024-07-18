@@ -29,9 +29,11 @@ class SearchResultCategoriesAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: CategoryDto) {
-            binding.categoryName.text = category.name
-            binding.root.setOnClickListener {
-                onSelectItem.invoke(category)
+            binding.apply {
+                categoryName.text = category.name
+                root.setOnClickListener {
+                    onSelectItem.invoke(category)
+                }
             }
         }
     }

@@ -39,23 +39,29 @@ class HomeFragment : Fragment() {
 
         initStories()
 
-        initRecommendationBlockView(binding.newArrivalsRecommendationBlockView)
-        initRecommendationBlockView(binding.topTrendsRecommendationBlockView)
-        initRecommendationBlockView(binding.youLikeRecommendationBlockView)
+        with(binding) {
+            initRecommendationBlockView(newArrivalsRecommendationBlockView)
+            initRecommendationBlockView(topTrendsRecommendationBlockView)
+            initRecommendationBlockView(youLikeRecommendationBlockView)
+        }
     }
 
     private fun initStories() {
-        sdk.initializeStoriesView(binding.storiesView)
-        binding.storiesView.settings.icon_size = 80
-        binding.storiesView.settings.label_font_size = 0
+        with(binding.storiesView) {
+            sdk.initializeStoriesView(this)
+            settings.icon_size = 80
+            settings.label_font_size = 0
+        }
     }
 
     private fun initRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
-        lifecycleScope.launch {
-            viewModel.recommendationFlow.collectLatest(recommendationBlockView::update)
+        recommendationBlockView.apply {
+            lifecycleScope.launch {
+                viewModel.recommendationFlow.collectLatest(::update)
+            }
+            onCardProductClick = ::navigateProductFragment
+            onShowAllClick = ::navigateProductsFragment
         }
-        recommendationBlockView.onCardProductClick = ::navigateProductFragment
-        recommendationBlockView.onShowAllClick = ::navigateProductsFragment
     }
 
     private fun navigateProductFragment(product: ProductDto) {

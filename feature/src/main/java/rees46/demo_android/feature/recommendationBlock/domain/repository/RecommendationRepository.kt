@@ -1,15 +1,17 @@
 package rees46.demo_android.feature.recommendationBlock.domain.repository
 
+import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
+
 interface RecommendationRepository {
 
     fun getRecommendation(
         recommenderCode: String,
-        onGetRecommendation: (rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto) -> Unit
+        onGetRecommendation: (RecommendationDto) -> Unit
     )
 
     fun getRecommendationForProduct(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto) -> Unit
+        onGetRecommendation: (RecommendationDto) -> Unit
     )
 }

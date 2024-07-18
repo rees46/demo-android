@@ -11,6 +11,9 @@ class GetRecommendationUseCase (
         recommenderCode: String,
         onGetRecommendation: (RecommendationDto) -> Unit
     ) {
-        recommendationRepository.getRecommendation(recommenderCode, onGetRecommendation)
+        recommendationRepository.getRecommendation(
+            recommenderCode = recommenderCode,
+            onGetRecommendation = onGetRecommendation
+        )
     }
 }
