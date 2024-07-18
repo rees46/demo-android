@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_marginHorizontal="@dimen/default_offset"
-    android:layout_marginTop="@dimen/default_offset"
-    android:layout_marginBottom="48dp">
+    android:paddingHorizontal="@dimen/default_offset"
+    android:paddingTop="@dimen/default_offset"
+    android:paddingBottom="48dp">
 
     <TextView
         android:id="@+id/header_text"
