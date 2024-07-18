@@ -25,12 +25,15 @@ class CartViewModel(
     private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow()
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
-    val sumPriceFlow: Flow<Double> = getCartSumPriceUseCase.invoke()
+    val sumPriceFlow: Flow<Double> = getCartSumPriceUseCase.execute()
 
     init {
-        getRecommendationUseCase(RECOMMENDER_CODE) {
-            viewModelScope.launch { _recommendationFlow.emit(it) }
-        }
+        getRecommendationUseCase.execute(
+            recommenderCode = RECOMMENDER_CODE,
+            onGetRecommendation = {
+                viewModelScope.launch { _recommendationFlow.emit(it) }
+            }
+        )
     }
 
     fun updateCarts() {
@@ -38,14 +41,14 @@ class CartViewModel(
     }
 
     fun removeProduct(cartProduct: CartProduct) {
-        removeProductFromCartUseCase.invoke(cartProduct.product.id)
+        removeProductFromCartUseCase.execute(cartProduct.product.id)
 
         updateCartProducts()
     }
 
     private fun updateCartProducts() {
         viewModelScope.launch {
-            _cartProductsFlow.emit(getCartProductsUseCase.invoke())
+            _cartProductsFlow.emit(getCartProductsUseCase.execute())
         }
     }
 

@@ -28,18 +28,22 @@ class ProductDetailsViewModel(
     val currentProductFlow: Flow<Product> = _currentProductFlow
 
     private var _countCartProductFlow: MutableStateFlow<Int> =
-        MutableStateFlow(getCartProductUseCase(product.id)?.quantity ?: 1)
+        MutableStateFlow(getCartProductUseCase.execute(product.id)?.quantity ?: 1)
     var countCartProductFlow: Flow<Int> = _countCartProductFlow
 
     fun updateProduct(product: Product) {
-        _countCartProductFlow.update { getCartProductUseCase(product.id)?.quantity ?: 1 }
+        _countCartProductFlow.update { getCartProductUseCase.execute(product.id)?.quantity ?: 1 }
         _currentProductFlow.update { product }
     }
 
     fun updateRecommendationBlock(productId: String) {
-        getRecommendationForProductUseCase(RECOMMENDER_CODE, productId) {
-            viewModelScope.launch { _recommendationFlow.emit(it) }
-        }
+        getRecommendationForProductUseCase.execute(
+            recommenderCode = RECOMMENDER_CODE,
+            productId = productId,
+            onGetRecommendation = {
+                viewModelScope.launch { _recommendationFlow.emit(it) }
+            }
+        )
     }
 
     fun proceedCartAction(action: ProductAction) {
@@ -51,7 +55,10 @@ class ProductDetailsViewModel(
     }
 
     private fun addToCart() {
-        addProductToCartUseCase.invoke(_currentProductFlow.value, _countCartProductFlow.value)
+        addProductToCartUseCase.execute(
+            product = _currentProductFlow.value,
+            quantity = _countCartProductFlow.value
+        )
     }
 
     private fun increaseCount() = _countCartProductFlow.update { it.inc() }

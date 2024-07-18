@@ -7,7 +7,7 @@ class GetRecommendationUseCase (
     private val recommendationRepository: RecommendationRepository
 ) {
 
-    operator fun invoke(
+    fun execute(
         recommenderCode: String,
         onGetRecommendation: (Recommendation) -> Unit
     ) {

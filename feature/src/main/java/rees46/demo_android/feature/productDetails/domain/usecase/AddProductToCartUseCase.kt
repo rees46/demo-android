@@ -7,7 +7,13 @@ class AddProductToCartUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    operator fun invoke(product: Product, quantity: Int) {
-        cartRepository.addProduct(product, quantity)
+    fun execute(
+        product: Product,
+        quantity: Int
+    ) {
+        cartRepository.addProduct(
+            product = product,
+            quantity = quantity
+        )
     }
 }

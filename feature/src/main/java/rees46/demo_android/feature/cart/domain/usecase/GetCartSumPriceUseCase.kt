@@ -7,6 +7,6 @@ class GetCartSumPriceUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    operator fun invoke(): MutableSharedFlow<Double> =
+    fun execute(): MutableSharedFlow<Double> =
         cartRepository.getSumPrice()
 }

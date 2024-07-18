@@ -16,9 +16,12 @@ class HomeViewModel(
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     init {
-        getRecommendationUseCase(RECOMMENDER_CODE) {
-            viewModelScope.launch { _recommendationFlow.emit(it) }
-        }
+        getRecommendationUseCase.execute(
+            recommenderCode = RECOMMENDER_CODE,
+            onGetRecommendation = {
+                viewModelScope.launch { _recommendationFlow.emit(it) }
+            }
+        )
     }
 
     companion object {

@@ -30,7 +30,7 @@ class SearchViewModel(
             emptySearch()
         }
         else {
-            searchProductsUseCase.invoke(
+            searchProductsUseCase.execute(
                 query = query,
                 onGetProducts = { handleProductResult(it) },
                 onGetCategories = { handleCategoriesResult(it) }
@@ -39,7 +39,7 @@ class SearchViewModel(
     }
 
     private fun emptySearch() {
-        searchRecommendedProductsUseCase.invoke(
+        searchRecommendedProductsUseCase.execute(
             onGetProducts = { handleProductResult(it) }
         )
     }

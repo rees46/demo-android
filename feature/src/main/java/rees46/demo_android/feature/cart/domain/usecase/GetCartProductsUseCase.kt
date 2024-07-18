@@ -7,6 +7,6 @@ class GetCartProductsUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    operator fun invoke(): MutableList<CartProduct> =
+    fun execute(): MutableList<CartProduct> =
         cartRepository.getCartProducts()
 }
