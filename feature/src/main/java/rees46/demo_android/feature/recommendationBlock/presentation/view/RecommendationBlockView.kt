@@ -17,11 +17,7 @@ import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendat
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs), ProductsAdapter.ClickListener {
-
-    interface ClickListener {
-        fun onCardProductClick(product: Product)
-    }
+) : ConstraintLayout(context, attrs), ProductsAdapter.OnClickListener {
 
     var onCardProductClick: (Product) -> Unit = {  }
     var onShowAllClick: (List<Product>) -> Unit = {  }
@@ -32,7 +28,6 @@ class RecommendationBlockView @JvmOverloads constructor(
     private lateinit var productsAdapter: ProductsAdapter
 
     private val products: MutableList<Product> = ArrayList()
-    private var listener: ClickListener? = null
 
     private lateinit var productViewSettings: ProductViewSettings
 
@@ -81,10 +76,6 @@ class RecommendationBlockView @JvmOverloads constructor(
         }
 
         changeView(true)
-    }
-
-    fun setClickListener(listener: ClickListener) {
-        this.listener = listener
     }
 
     override fun onCardProductClick(product: Product) {

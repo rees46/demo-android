@@ -19,7 +19,7 @@ import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewM
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.adapter.ProductViewSettings
 
-class ProductsFragment : Fragment(), ProductsAdapter.ClickListener {
+class ProductsFragment : Fragment(), ProductsAdapter.OnClickListener {
 
     private val viewModel: ProductsViewModel by viewModel()
 

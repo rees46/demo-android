@@ -9,14 +9,14 @@ class ProductsAdapter(
     private val context: Context,
     private val products: List<Product>,
     private val productViewSettings: ProductViewSettings,
-    private val listener: ClickListener
+    private val listener: OnClickListener
 ) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
-    interface ClickListener {
+    interface OnClickListener {
         fun onCardProductClick(product: Product)
     }
 
-    inner class ViewHolder(private val view: ProductView, private val listener: ClickListener)
+    inner class ViewHolder(private val view: ProductView, private val listener: OnClickListener)
         : RecyclerView.ViewHolder(view) {
 
         fun bind(product: Product) {
