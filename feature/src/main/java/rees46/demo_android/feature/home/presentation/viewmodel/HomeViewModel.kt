@@ -12,7 +12,7 @@ class HomeViewModel(
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow()
+    private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow(replay = 1)
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     init {
