@@ -1,5 +1,6 @@
 package rees46.demo_android.feature.products.presentation.adapter
 
+import android.R.attr
 import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
@@ -8,12 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.feature.productDetails.domain.models.Product
 
+
 class ProductView @JvmOverloads constructor(
     context: Context,
+    private val productViewSettings: ProductViewSettings,
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
@@ -46,6 +51,11 @@ class ProductView @JvmOverloads constructor(
         oldPriceTextView.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
 
         shopButton.setOnClickListener { }
+
+        shopButton.isVisible = productViewSettings.showButton
+        productImageView.updateLayoutParams {
+            width = productViewSettings.width
+        }
     }
 
     internal fun updateProduct(product: Product) {

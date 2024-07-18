@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/producer_name_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Producer name"
         android:textSize="@dimen/recommendationBlock_cardProduct_producerName_textSize"
@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/product_name_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Product name"
         android:textColor="@color/recommendationBlock_cardProduct_productName_textColor"
@@ -56,26 +56,30 @@
 
     <TextView
         android:id="@+id/old_price_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_default_offset"
         android:text="$ 1000"
         android:textColor="@color/recommendationBlock_cardProduct_oldPrice_textColor"
         android:textSize="@dimen/recommendationBlock_cardProduct_oldPrice_textSize"
-        android:layout_marginTop="@dimen/half_default_offset"
-        app:layout_constraintEnd_toEndOf="@id/product_image"
+        android:maxLines="1"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/shop_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_rating_bar" />
 
     <TextView
         android:id="@+id/price_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="$ 759"
         android:textColor="@color/recommendationBlock_cardProduct_price_textColor"
         android:textSize="@dimen/recommendationBlock_cardProduct_price_textSize"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/product_image"
+        android:maxLines="1"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/shop_button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/old_price_text" />

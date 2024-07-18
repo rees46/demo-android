@@ -8,13 +8,15 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
+import rees46.demo_android.core.utils.ViewUtils
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.recommendationBlock.presentation.adapter.CardProductsAdapter
+import rees46.demo_android.feature.products.presentation.adapter.ProductViewSettings
+import rees46.demo_android.feature.products.presentation.adapter.ProductsAdapter
 import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
+) : ConstraintLayout(context, attrs), ProductsAdapter.ClickListener {
 
     interface ClickListener {
         fun onCardProductClick(product: Product)
@@ -25,17 +27,20 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
-    private lateinit var cardProductsRecyclerView: RecyclerView
-    private lateinit var cardProductsAdapter: CardProductsAdapter
+    private lateinit var productsRecyclerView: RecyclerView
+    private lateinit var productsAdapter: ProductsAdapter
 
     private val products: MutableList<Product> = ArrayList()
     private var listener: ClickListener? = null
+
+    private lateinit var productViewSettings: ProductViewSettings
 
     init {
         inflate(context, R.layout.view_recommendation_block, this)
 
         initViews()
 
+        setupProductViewSettings()
         setupViews()
 
         changeView(false)
@@ -44,12 +49,17 @@ class RecommendationBlockView @JvmOverloads constructor(
     private fun initViews() {
         headerTextView = findViewById(R.id.header_text)
         showAllTextView = findViewById(R.id.show_all_text)
-        cardProductsRecyclerView = findViewById(R.id.card_products_recycler_view)
+        productsRecyclerView = findViewById(R.id.products_recycler_view)
     }
 
     private fun setupViews() {
-        cardProductsAdapter = CardProductsAdapter(context, products, this)
-        cardProductsRecyclerView.adapter = cardProductsAdapter
+        productsAdapter = ProductsAdapter(
+            context = context,
+            products = products,
+            productViewSettings = productViewSettings,
+            listener = this
+        )
+        productsRecyclerView.adapter = productsAdapter
 
         showAllTextView.setOnClickListener { onShowAllClick.invoke(products) }
     }
@@ -66,7 +76,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.products.addAll(products)
 
         Handler(context.mainLooper).post {
-            cardProductsAdapter.notifyDataSetChanged()
+            productsAdapter.notifyDataSetChanged()
         }
 
         changeView(true)
@@ -89,6 +99,13 @@ class RecommendationBlockView @JvmOverloads constructor(
 
         headerTextView.visibility = visibility
         showAllTextView.visibility = visibility
-        cardProductsRecyclerView.visibility = visibility
+        productsRecyclerView.visibility = visibility
+    }
+
+    private fun setupProductViewSettings() {
+        productViewSettings = ProductViewSettings(
+            width = ViewUtils.convertDpToPixel(140f, context).toInt(),
+            showButton = false
+        )
     }
 }
