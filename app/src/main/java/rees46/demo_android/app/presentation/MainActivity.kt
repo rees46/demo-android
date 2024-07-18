@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
@@ -61,25 +62,26 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                if(menuItem.itemId == R.id.menu_top_app_cart) {
-                    binding.bottomNavigation.selectedItemId = R.id.cart
-                    return true
+                return when (menuItem.itemId) {
+                    R.id.menu_top_app_cart -> {
+                        binding.bottomNavigation.selectedItemId = R.id.cart
+                        true
+                    }
+                    R.id.menu_top_app_search -> {
+                        supportActionBar?.hide()
+                        binding.bottomNavigation.isVisible = false
+                        navigator.navigate(R.id.searchFragment)
+                        true
+                    }
+                    else -> false
                 }
-
-                if(menuItem.itemId == R.id.menu_top_app_search) {
-                    supportActionBar?.hide()
-                    binding.bottomNavigation.visibility = View.GONE
-                    navigator.navigate(R.id.searchFragment)
-                }
-
-                return false
             }
         })
     }
 
     override fun onBackPressed() {
         supportActionBar?.show()
-        binding.bottomNavigation.visibility = View.VISIBLE
+        binding.bottomNavigation.isVisible = true
 
         if (supportFragmentManager.backStackEntryCount == 0) {
             super.onBackPressed()

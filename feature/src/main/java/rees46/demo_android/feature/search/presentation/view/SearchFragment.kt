@@ -76,8 +76,8 @@ class SearchFragment : Fragment() {
         binding.searchResultRecyclerView.adapter = searchResultAdapter
         lifecycleScope.launch {
             viewModel.searchResultItems.collect {
-                binding.suitableProductsText.text =
-                    getString(if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products)
+                val resString = if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
+                binding.suitableProductsText.text = getString(resString)
 
                 searchResultAdapter.submitList(it)
             }
