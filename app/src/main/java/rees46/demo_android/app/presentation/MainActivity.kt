@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.MenuProvider
@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         setupTopAppBar()
         setupBottomNavigationView()
+        setupPopBackStack()
         createOptionMenu()
     }
 
@@ -45,14 +46,40 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigationView() {
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> navigator.navigate(R.id.homeFragment)
-                R.id.category -> navigator.navigate(R.id.categoryFragment)
-                R.id.cart -> navigator.navigate(R.id.cartFragment)
-                R.id.settings -> navigator.navigate(R.id.settingsFragment)
+                R.id.home -> switchBottomTab(R.id.homeFragment)
+                R.id.category -> switchBottomTab(R.id.categoryFragment)
+                R.id.cart -> switchBottomTab(R.id.cartFragment)
+                R.id.settings -> switchBottomTab(R.id.settingsFragment)
             }
 
             true
         }
+    }
+
+    private fun switchBottomTab(id: Int) {
+        if(navigator.getCurrentDestination() == id) return
+
+        navigator.navigate(id)
+    }
+
+    private fun setupPopBackStack() {
+        onBackPressedDispatcher.addCallback(
+            owner = this,
+            onBackPressedCallback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    navigator.popBackStack()
+
+                    with(binding.bottomNavigation) {
+                        when (navigator.getCurrentDestination()) {
+                            R.id.homeFragment -> selectedItemId = R.id.home
+                            R.id.categoryFragment -> selectedItemId = R.id.category
+                            R.id.cartFragment -> selectedItemId = R.id.cart
+                            R.id.settingsFragment -> selectedItemId = R.id.settingsFragment
+                        }
+                    }
+                }
+            }
+        )
     }
 
     private fun createOptionMenu() {
@@ -77,16 +104,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-
-    override fun onBackPressed() {
-        supportActionBar?.show()
-        binding.bottomNavigation.isVisible = true
-
-        if (supportFragmentManager.backStackEntryCount == 0) {
-            super.onBackPressed()
-        } else {
-            supportFragmentManager.popBackStack()
-        }
     }
 }
