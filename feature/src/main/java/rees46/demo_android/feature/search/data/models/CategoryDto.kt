@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class CategoryDto(
     val id: String,
     val name: String,
-    val parent: String,
+    val parent: String?,
     val url: String,
     val count: Int
 ) : Parcelable
