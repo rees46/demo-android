@@ -1,28 +1,27 @@
 package rees46.demo_android.feature.cart.data.repository
 
-import com.personalizatio.Params
-import com.personalizatio.SDK
 import kotlinx.coroutines.flow.MutableStateFlow
+import rees46.demo_android.feature.cart.data.api.CartApi
 import rees46.demo_android.feature.cart.data.models.Cart
 import rees46.demo_android.feature.cart.domain.repository.CartRepository
-import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.cart.domain.models.CartProduct
+import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class CartRepositoryImpl (
-    private val sdk: SDK,
+    private val cartApi: CartApi,
     private val cart: Cart
 ) : CartRepository {
 
-    override fun getCartProducts(): MutableList<CartProductDto> =
+    override fun getCartProducts(): MutableList<CartProduct> =
         cart.cartProducts
 
-    override fun getCartProduct(productId: String): CartProductDto? =
+    override fun getCartProduct(productId: String): CartProduct? =
         cart.getCartProduct(productId)
 
-    override fun addProduct(product: ProductDto, quantity: Int) {
-        sdk.trackEventManager.track(
-            event = Params.TrackEvent.VIEW,
-            productId = product.id
+    override fun addProduct(product: Product, quantity: Int) {
+        cartApi.addProduct(
+            product = product,
+            quantity = quantity
         )
 
         cart.addProduct(
@@ -32,11 +31,7 @@ class CartRepositoryImpl (
     }
 
     override fun removeProduct(productId: String) {
-        sdk.trackEventManager.track(
-            event = Params.TrackEvent.REMOVE_FROM_CART,
-            params = Params(),
-            listener = null
-        )
+        cartApi.removeProduct(productId)
 
         cart.removeProduct(productId)
     }

@@ -2,6 +2,8 @@ package rees46.demo_android.feature.cart.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import rees46.demo_android.feature.cart.data.api.CartApi
+import rees46.demo_android.feature.cart.data.models.Cart
 import rees46.demo_android.feature.cart.data.repository.CartRepositoryImpl
 import rees46.demo_android.feature.cart.domain.repository.CartRepository
 import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
@@ -33,10 +35,15 @@ val cartModule = module {
             cartRepository = get()
         )
     }
+    single<CartApi> {
+        CartApi(
+            sdk = get()
+        )
+    }
     single<CartRepository> {
         CartRepositoryImpl(
-            sdk = get(),
-            cart = rees46.demo_android.feature.cart.data.models.Cart()
+            cartApi = get(),
+            cart = Cart()
         )
     }
 }

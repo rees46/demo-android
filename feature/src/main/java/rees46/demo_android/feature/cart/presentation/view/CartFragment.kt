@@ -14,13 +14,13 @@ import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 import rees46.demo_android.feature.cart.presentation.adapter.CartProductsAdapter
 import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.ProductsDetails
+import rees46.demo_android.feature.cart.domain.models.CartProduct
+import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class CartFragment : Fragment() {
 
@@ -69,7 +69,7 @@ class CartFragment : Fragment() {
         viewModel.updateCarts()
     }
 
-    private fun updateCart(newList: MutableList<CartProductDto>) {
+    private fun updateCart(newList: MutableList<CartProduct>) {
         updateCartView(newList.isEmpty())
 
         lifecycleScope.launch {
@@ -86,7 +86,7 @@ class CartFragment : Fragment() {
         }
     }
 
-    private fun removeProduct(cartProduct: CartProductDto) {
+    private fun removeProduct(cartProduct: CartProduct) {
         viewModel.removeProduct(cartProduct)
     }
 
@@ -100,11 +100,11 @@ class CartFragment : Fragment() {
         }
     }
 
-    private fun navigateProductFragment(product: ProductDto) {
+    private fun navigateProductFragment(product: Product) {
         navigator.navigate(ProductDetails(product))
     }
 
-    private fun navigateProductsFragment(products: List<ProductDto>) {
+    private fun navigateProductsFragment(products: List<Product>) {
         navigator.navigate(ProductsDetails(products))
     }
 }

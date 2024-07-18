@@ -15,7 +15,9 @@ import rees46.demo_android.databinding.FragmentProductsBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.data.models.ProductDto
+import rees46.demo_android.feature.search.data.repository.SearchRepositoryImpl.Companion.toProducts
+import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class ProductsFragment : Fragment(), ProductsAdapter.ClickListener {
 
@@ -49,17 +51,17 @@ class ProductsFragment : Fragment(), ProductsAdapter.ClickListener {
         binding.cardProductsRecyclerView.apply {
             val products = arguments?.getParcelableArrayList<ProductDto>("products")
             adapter = products?.let {
-                ProductsAdapter(requireContext(), it, this@ProductsFragment)
+                ProductsAdapter(requireContext(), it.toProducts(), this@ProductsFragment)
             }
             layoutManager = GridLayoutManager(context, gridLayoutCount)
         }
     }
 
-    override fun onCardProductClick(product: ProductDto) {
+    override fun onCardProductClick(product: Product) {
         navigateProductFragment(product)
     }
 
-    private fun navigateProductFragment(product: ProductDto) {
+    private fun navigateProductFragment(product: Product) {
         navigator.navigate(ProductDetails(product))
     }
 }

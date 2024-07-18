@@ -1,19 +1,19 @@
 package rees46.demo_android.feature.recommendationBlock.data.repository
 
-import com.personalizatio.SDK
 import com.personalizatio.Params
-import com.personalizatio.api.responses.recommendation.GetExtendedRecommendationResponse
-import rees46.demo_android.feature.productDetails.data.utils.ProductUtils.toProducts
-import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
+import rees46.demo_android.feature.search.data.repository.SearchRepositoryImpl.Companion.toProducts
+import rees46.demo_android.feature.recommendationBlock.data.api.RecommendationApi
+import rees46.demo_android.feature.recommendationBlock.data.models.RecommendationDto
+import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
 
 class RecommendationRepositoryImpl (
-    private val sdk: SDK
+    private val recommendationApi: RecommendationApi
 ) : RecommendationRepository {
 
     override fun getRecommendation(
         recommenderCode: String,
-        onGetRecommendation: (RecommendationDto) -> Unit
+        onGetRecommendation: (Recommendation) -> Unit
     ) {
         getRecommendation(
             recommenderCode = recommenderCode,
@@ -25,7 +25,7 @@ class RecommendationRepositoryImpl (
     override fun getRecommendationForProduct(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (RecommendationDto) -> Unit
+        onGetRecommendation: (Recommendation) -> Unit
     ) {
         getRecommendation(
             recommenderCode = recommenderCode,
@@ -37,12 +37,12 @@ class RecommendationRepositoryImpl (
     private fun getRecommendation(
         recommenderCode: String,
         params: Params,
-        onGetRecommendation: (RecommendationDto) -> Unit
+        onGetRecommendation: (Recommendation) -> Unit
     ) {
-        sdk.recommendationManager.getExtendedRecommendation(
+        recommendationApi.getRecommendation(
             recommenderCode = recommenderCode,
             params = params,
-            onGetExtendedRecommendation = {
+            onGetRecommendation = {
                 onGetRecommendation.invoke(it.toRecommendation())
             }
         )
@@ -52,8 +52,8 @@ class RecommendationRepositoryImpl (
         return Params().apply { put(parameter, productId) }
     }
 
-    private fun GetExtendedRecommendationResponse.toRecommendation() =
-        RecommendationDto(
+    private fun RecommendationDto.toRecommendation() : Recommendation =
+        Recommendation(
             title = title,
             products = products.toProducts()
         )

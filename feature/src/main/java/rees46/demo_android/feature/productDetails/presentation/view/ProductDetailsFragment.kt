@@ -14,12 +14,12 @@ import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class ProductDetailsFragment : Fragment() {
 
     private val viewModel: ProductDetailsViewModel by viewModel {
-        val product = arguments?.getParcelable<ProductDto>("product")
+        val product = arguments?.getParcelable<Product>("product")
         parametersOf(product)
     }
 
@@ -76,11 +76,11 @@ class ProductDetailsFragment : Fragment() {
         }
     }
 
-    private fun updateProduct(product: ProductDto) {
+    private fun updateProduct(product: Product) {
         viewModel.updateProduct(product)
     }
 
-    private fun updateCardProductView(product: ProductDto) {
+    private fun updateCardProductView(product: Product) {
         viewModel.updateRecommendationBlock(product.id)
 
         binding.apply {
@@ -99,7 +99,7 @@ class ProductDetailsFragment : Fragment() {
         binding.countInCartText.text = count.toString()
     }
 
-    private fun navigateProductsFragment(products: List<ProductDto>) {
+    private fun navigateProductsFragment(products: List<Product>) {
 //        findNavController().navigate(
 //            directions = ProductDetailsFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
 //        )

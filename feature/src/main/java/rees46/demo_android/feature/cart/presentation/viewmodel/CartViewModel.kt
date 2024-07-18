@@ -5,11 +5,11 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
-import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
+import rees46.demo_android.feature.cart.domain.models.CartProduct
 import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
 import rees46.demo_android.feature.cart.domain.usecase.GetCartSumPriceUseCase
 import rees46.demo_android.feature.cart.domain.usecase.RemoveProductFromCartUseCase
+import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 import rees46.demo_android.feature.recommendationBlock.domain.usecase.GetRecommendationUseCase
 
 class CartViewModel(
@@ -19,11 +19,11 @@ class CartViewModel(
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    private val _cartProductsFlow: MutableSharedFlow<MutableList<CartProductDto>> = MutableSharedFlow()
-    val cartProductsFlow: Flow<MutableList<CartProductDto>> = _cartProductsFlow
+    private val _cartProductsFlow: MutableSharedFlow<MutableList<CartProduct>> = MutableSharedFlow()
+    val cartProductsFlow: Flow<MutableList<CartProduct>> = _cartProductsFlow
 
-    private val _recommendationFlow: MutableSharedFlow<RecommendationDto> = MutableSharedFlow()
-    val recommendationFlow: Flow<RecommendationDto> = _recommendationFlow
+    private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow()
+    val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     val sumPriceFlow: Flow<Double> = getCartSumPriceUseCase.invoke()
 
@@ -37,7 +37,7 @@ class CartViewModel(
         updateCartProducts()
     }
 
-    fun removeProduct(cartProduct: CartProductDto) {
+    fun removeProduct(cartProduct: CartProduct) {
         removeProductFromCartUseCase.invoke(cartProduct.product.id)
 
         updateCartProducts()

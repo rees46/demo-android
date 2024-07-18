@@ -8,30 +8,30 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
-import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
+import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.productDetails.domain.usecase.AddProductToCartUseCase
 import rees46.demo_android.feature.productDetails.domain.usecase.GetCartProductUseCase
 import rees46.demo_android.feature.productDetails.domain.usecase.GetRecommendationForProductUseCase
+import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 
 class ProductDetailsViewModel(
     private val addProductToCartUseCase: AddProductToCartUseCase,
     private val getCartProductUseCase: GetCartProductUseCase,
     private val getRecommendationForProductUseCase: GetRecommendationForProductUseCase,
-    product: ProductDto
+    product: Product
 ) : ViewModel() {
 
-    private val _recommendationFlow: MutableSharedFlow<RecommendationDto> = MutableSharedFlow()
-    val recommendationFlow: Flow<RecommendationDto> = _recommendationFlow
+    private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow()
+    val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
-    private val _currentProductFlow: MutableStateFlow<ProductDto> = MutableStateFlow(product)
-    val currentProductFlow: Flow<ProductDto> = _currentProductFlow
+    private val _currentProductFlow: MutableStateFlow<Product> = MutableStateFlow(product)
+    val currentProductFlow: Flow<Product> = _currentProductFlow
 
     private var _countCartProductFlow: MutableStateFlow<Int> =
         MutableStateFlow(getCartProductUseCase(product.id)?.quantity ?: 1)
     var countCartProductFlow: Flow<Int> = _countCartProductFlow
 
-    fun updateProduct(product: ProductDto) {
+    fun updateProduct(product: Product) {
         _countCartProductFlow.update { getCartProductUseCase(product.id)?.quantity ?: 1 }
         _currentProductFlow.update { product }
     }

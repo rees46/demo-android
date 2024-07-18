@@ -1,18 +1,18 @@
 package rees46.demo_android.feature.search.domain.usecase
 
-import rees46.demo_android.feature.search.domain.models.CategoryDto
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
-import rees46.demo_android.feature.productDetails.domain.repository.ProductRepository
+import rees46.demo_android.feature.productDetails.domain.models.Product
+import rees46.demo_android.feature.search.domain.repository.SearchRepository
+import rees46.demo_android.feature.search.domain.models.Category
 
 class SearchProductsUseCase (
-    private val productRepository: ProductRepository
+    private val searchRepository: SearchRepository
 ) {
 
     operator fun invoke(
         query: String,
-        onGetProducts: (List<ProductDto>) -> Unit,
-        onGetCategories: (List<CategoryDto>) -> Unit
+        onGetProducts: (List<Product>) -> Unit,
+        onGetCategories: (List<Category>) -> Unit
     ) {
-        productRepository.searchProducts(query, onGetProducts, onGetCategories)
+        searchRepository.searchProducts(query, onGetProducts, onGetCategories)
     }
 }

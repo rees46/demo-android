@@ -1,8 +1,8 @@
-package rees46.demo_android.feature.recommendationBlock.domain.models
+package rees46.demo_android.feature.recommendationBlock.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.data.models.ProductDto
 
 @Parcelize
 data class RecommendationDto(

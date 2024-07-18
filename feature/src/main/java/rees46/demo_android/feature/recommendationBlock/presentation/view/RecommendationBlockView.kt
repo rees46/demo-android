@@ -8,27 +8,27 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.recommendationBlock.presentation.adapter.CardProductsAdapter
-import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
+import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs), CardProductsAdapter.ClickListener {
 
     interface ClickListener {
-        fun onCardProductClick(product: ProductDto)
+        fun onCardProductClick(product: Product)
     }
 
-    var onCardProductClick: (ProductDto) -> Unit = {  }
-    var onShowAllClick: (List<ProductDto>) -> Unit = {  }
+    var onCardProductClick: (Product) -> Unit = {  }
+    var onShowAllClick: (List<Product>) -> Unit = {  }
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
     private lateinit var cardProductsRecyclerView: RecyclerView
     private lateinit var cardProductsAdapter: CardProductsAdapter
 
-    private val products: MutableList<ProductDto> = ArrayList()
+    private val products: MutableList<Product> = ArrayList()
     private var listener: ClickListener? = null
 
     init {
@@ -54,7 +54,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         showAllTextView.setOnClickListener { onShowAllClick.invoke(products) }
     }
 
-    fun update(recommendation: RecommendationDto) {
+    fun update(recommendation: Recommendation) {
         this.products.clear()
         addCardProducts(recommendation.products)
 
@@ -62,7 +62,7 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addCardProducts(products: Collection<ProductDto>) {
+    fun addCardProducts(products: Collection<Product>) {
         this.products.addAll(products)
 
         Handler(context.mainLooper).post {
@@ -76,7 +76,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         this.listener = listener
     }
 
-    override fun onCardProductClick(product: ProductDto) {
+    override fun onCardProductClick(product: Product) {
         onCardProductClick.invoke(product)
     }
 

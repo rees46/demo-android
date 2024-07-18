@@ -1,6 +1,6 @@
 package rees46.demo_android.feature.productDetails.domain.usecase
 
-import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
+import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
 
 class GetRecommendationForProductUseCase (
@@ -10,8 +10,12 @@ class GetRecommendationForProductUseCase (
     operator fun invoke(
         recommenderCode: String,
         productId: String,
-        onGetRecommendation: (RecommendationDto) -> Unit
+        onGetRecommendation: (Recommendation) -> Unit
     ) {
-        recommendationRepository.getRecommendationForProduct(recommenderCode, productId, onGetRecommendation)
+        recommendationRepository.getRecommendationForProduct(
+            recommenderCode = recommenderCode,
+            productId = productId,
+            onGetRecommendation = onGetRecommendation
+        )
     }
 }

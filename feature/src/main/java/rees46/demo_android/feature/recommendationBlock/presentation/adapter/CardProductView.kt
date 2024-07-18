@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ImageUtils
-import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class CardProductView @JvmOverloads constructor(
     context: Context,
@@ -43,7 +43,7 @@ class CardProductView @JvmOverloads constructor(
         oldPriceTextView.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
     }
 
-    internal fun updateProduct(product: ProductDto) {
+    internal fun updateProduct(product: Product) {
         ImageUtils.updateImage(this, productImageView, product.pictureUrl)
 
         productNameTextView.text = product.name
