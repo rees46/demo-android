@@ -6,23 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import rees46.demo_android.feature.products.presentation.adapter.CardProductsAdapter
 import rees46.demo_android.databinding.FragmentProductsBinding
+import rees46.demo_android.feature.navigation.Navigator
+import rees46.demo_android.feature.navigation.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.product.domain.models.ProductDto
 
 class ProductsFragment : Fragment(), CardProductsAdapter.ClickListener {
-
-    private val args by navArgs<ProductsFragmentArgs>()
 
     private val viewModel: ProductsViewModel by viewModel()
 
     private lateinit var binding: FragmentProductsBinding
 
     private val gridLayoutCount = 2
+
+    private val navigator by lazy {
+        get<Navigator> {
+            parametersOf(findNavController())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +47,10 @@ class ProductsFragment : Fragment(), CardProductsAdapter.ClickListener {
 
     private fun setupViews() {
         binding.cardProductsRecyclerView.apply {
-            adapter = CardProductsAdapter(requireContext(), args.products.toList(), this@ProductsFragment)
+//            val products = arguments?.getParcelable<Collection<ProductDto>>("products")
+//            products?.let { products ->
+//                adapter = CardProductsAdapter(requireContext(), products, this@ProductsFragment)
+//            }
             layoutManager = GridLayoutManager(context, gridLayoutCount)
         }
     }
@@ -50,8 +60,6 @@ class ProductsFragment : Fragment(), CardProductsAdapter.ClickListener {
     }
 
     private fun navigateProductFragment(product: ProductDto) {
-        findNavController().navigate(
-            directions = ProductsFragmentDirections.actionProductsFragmentToProductDetailsFragment(product)
-        )
+        navigator.navigate(ProductDetails(product))
     }
 }

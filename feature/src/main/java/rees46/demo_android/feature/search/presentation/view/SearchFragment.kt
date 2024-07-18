@@ -9,10 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.backPressedInvoke
 import rees46.demo_android.databinding.FragmentSearchBinding
+import rees46.demo_android.feature.navigation.Navigator
+import rees46.demo_android.feature.navigation.ProductDetails
 import rees46.demo_android.feature.search.presentation.adapter.SearchResultAdapter
 import rees46.demo_android.feature.search.presentation.adapter.SearchResultCategoriesAdapter
 import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
@@ -23,10 +27,14 @@ class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
 
+    private val navigator by lazy {
+        get<Navigator> {
+            parametersOf(findNavController())
+        }
+    }
+
     private val searchResultAdapter = SearchResultAdapter { product ->
-        findNavController().navigate(
-            directions = SearchFragmentDirections.actionSearchFragmentToProductDetailsFragment(product)
-        )
+        navigator.navigate(ProductDetails(product))
     }
 
     private val searchResultCategoriesAdapter = SearchResultCategoriesAdapter { _ -> }

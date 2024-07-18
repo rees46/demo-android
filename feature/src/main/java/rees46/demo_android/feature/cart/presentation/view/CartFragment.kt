@@ -10,12 +10,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.feature.product.domain.models.CartProductDto
 import rees46.demo_android.feature.product.domain.models.ProductDto
 import rees46.demo_android.feature.cart.presentation.adapter.CartProductsAdapter
 import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
+import rees46.demo_android.feature.navigation.Navigator
+import rees46.demo_android.feature.navigation.ProductDetails
+import rees46.demo_android.feature.navigation.ProductsDetails
 
 class CartFragment : Fragment() {
 
@@ -24,6 +29,12 @@ class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
 
     private lateinit var cartProductsAdapter: CartProductsAdapter
+
+    private val navigator by lazy {
+        get<Navigator> {
+            parametersOf(findNavController())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -90,14 +101,10 @@ class CartFragment : Fragment() {
     }
 
     private fun navigateProductFragment(product: ProductDto) {
-        findNavController().navigate(
-            directions = CartFragmentDirections.actionCartFragmentToProductDetailsFragment(product)
-        )
+        navigator.navigate(ProductDetails(product))
     }
 
     private fun navigateProductsFragment(products: List<ProductDto>) {
-        findNavController().navigate(
-            directions = CartFragmentDirections.actionCartFragmentToProductsFragment(products.toTypedArray())
-        )
+        navigator.navigate(ProductsDetails(products))
     }
 }

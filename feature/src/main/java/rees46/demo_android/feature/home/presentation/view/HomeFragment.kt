@@ -10,12 +10,17 @@ import androidx.navigation.fragment.findNavController
 import com.personalizatio.SDK
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.feature.product.domain.models.ProductDto
 import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
+import rees46.demo_android.feature.navigation.Navigator
+import rees46.demo_android.feature.navigation.ProductDetails
+import rees46.demo_android.feature.navigation.ProductsDetails
 
 class HomeFragment : Fragment() {
 
@@ -24,6 +29,12 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val sdk: SDK by inject()
+
+    private val navigator by lazy {
+        get<Navigator> {
+            parametersOf(findNavController())
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,14 +76,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateProductFragment(product: ProductDto) {
-        findNavController().navigate(
-            directions = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(product)
-        )
+        navigator.navigate(ProductDetails(product))
     }
 
     private fun navigateProductsFragment(products: List<ProductDto>) {
-        findNavController().navigate(
-            directions = HomeFragmentDirections.actionHomeFragmentToProductsFragment(products.toTypedArray())
-        )
+        navigator.navigate(ProductsDetails(products))
     }
 }

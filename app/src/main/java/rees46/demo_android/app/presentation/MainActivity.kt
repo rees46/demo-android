@@ -1,4 +1,4 @@
-package rees46.demo_android.feature
+package rees46.demo_android.app.presentation
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,18 +8,22 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.MenuProvider
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import rees46.demo_android.R
-import rees46.demo_android.databinding.ActivityMainBinding
+import org.koin.android.ext.android.get
+import org.koin.core.parameter.parametersOf
+import rees46.demo_android.app.R
+import rees46.demo_android.app.databinding.ActivityMainBinding
+import rees46.demo_android.feature.navigation.Navigator
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val navController: NavController by lazy {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navHostFragment.navController
+    private val navigator by lazy {
+        get<Navigator> {
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            parametersOf(navHostFragment.navController)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +44,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigationView() {
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> navController.navigate(R.id.homeFragment)
-                R.id.category -> navController.navigate(R.id.categoryFragment)
-                R.id.cart -> navController.navigate(R.id.cartFragment)
-                R.id.settings -> navController.navigate(R.id.settingsFragment)
+                R.id.home -> navigator.navigate(R.id.homeFragment)
+                R.id.category -> navigator.navigate(R.id.categoryFragment)
+                R.id.cart -> navigator.navigate(R.id.cartFragment)
+                R.id.settings -> navigator.navigate(R.id.settingsFragment)
             }
 
             true
@@ -65,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 if(menuItem.itemId == R.id.menu_top_app_search) {
                     supportActionBar?.hide()
                     binding.bottomNavigation.visibility = View.GONE
-                    navController.navigate(R.id.searchFragment)
+                    navigator.navigate(R.id.searchFragment)
                 }
 
                 return false

@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import rees46.demo_android.feature.navigation.Navigator
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.product.domain.models.ProductDto
 import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto

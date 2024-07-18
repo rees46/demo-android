@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Demoandroid.Starting"
         tools:targetApi="31">
         <activity
-            android:name="rees46.demo_android.feature.MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -20,10 +18,9 @@ import rees46.demo_android.feature.product.domain.models.ProductDto
 
 class ProductDetailsFragment : Fragment() {
 
-    private val args by navArgs<ProductDetailsFragmentArgs>()
-
     private val viewModel: ProductDetailsViewModel by viewModel {
-        parametersOf(args.product)
+        val product = arguments?.getParcelable<ProductDto>("product")
+        parametersOf(product)
     }
 
     private lateinit var binding: FragmentProductDetailsBinding
@@ -39,6 +36,7 @@ class ProductDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupViews()
         setupViewModel()
     }
@@ -102,8 +100,8 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun navigateProductsFragment(products: List<ProductDto>) {
-        findNavController().navigate(
-            directions = ProductDetailsFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
-        )
+//        findNavController().navigate(
+//            directions = ProductDetailsFragmentDirections.actionCardProductFragmentToProductsFragment(products.toTypedArray())
+//        )
     }
 }
