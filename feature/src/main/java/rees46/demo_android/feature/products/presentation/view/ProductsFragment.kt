@@ -47,10 +47,10 @@ class ProductsFragment : Fragment(), ProductsAdapter.ClickListener {
 
     private fun setupViews() {
         binding.cardProductsRecyclerView.apply {
-//            val products = arguments?.getParcelable<Collection<ProductDto>>("products")
-//            products?.let { products ->
-//                adapter = CardProductsAdapter(requireContext(), products, this@ProductsFragment)
-//            }
+            val products = arguments?.getParcelableArrayList<ProductDto>("products")
+            adapter = products?.let {
+                ProductsAdapter(requireContext(), it, this@ProductsFragment)
+            }
             layoutManager = GridLayoutManager(context, gridLayoutCount)
         }
     }
