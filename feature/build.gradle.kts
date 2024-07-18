@@ -1,8 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
-    id("com.google.gms.google-services")
     id("kotlin-parcelize")
 }
 
@@ -11,11 +10,8 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "rees46.demo_android"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
     }
 
     buildTypes {

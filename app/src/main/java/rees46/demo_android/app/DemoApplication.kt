@@ -1,4 +1,4 @@
-package rees46.demo_android.feature
+package rees46.demo_android.app
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

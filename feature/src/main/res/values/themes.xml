@@ -1,20 +1,4 @@
 <resources>
-    <style name="Base.Theme.Demoandroid" parent="Theme.Material3.Light.NoActionBar">
-    </style>
-
-    <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid">
-        <item name="android:fontFamily">@font/inter</item>
-        <item name="android:textColor">@color/default_textColor</item>
-        <item name="colorPrimaryDark">@color/black</item>
-    </style>
-
-    <style name="Theme.Demoandroid.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@android:color/black</item>
-        <item name="windowSplashScreenIconBackgroundColor">@android:color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launch_screen</item>
-        <item name="postSplashScreenTheme">@style/Theme.Demoandroid</item>
-    </style>
-
     <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/inter</item>
         <item name="android:textColor">@color/black</item>
