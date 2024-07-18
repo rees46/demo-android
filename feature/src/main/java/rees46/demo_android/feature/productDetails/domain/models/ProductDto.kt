@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.product.domain.models
+package rees46.demo_android.feature.productDetails.domain.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

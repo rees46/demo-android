@@ -1,8 +1,8 @@
 package rees46.demo_android.feature.cart.domain.repository
 
 import kotlinx.coroutines.flow.MutableStateFlow
-import rees46.demo_android.feature.product.domain.models.CartProductDto
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
 interface CartRepository {
 

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.feature.search.domain.models.CategoryDto
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 import rees46.demo_android.feature.search.domain.usecase.SearchProductsUseCase
 import rees46.demo_android.feature.search.domain.usecase.SearchRecommendedProductsUseCase
 

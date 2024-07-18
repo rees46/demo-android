@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
-import rees46.demo_android.feature.product.domain.models.CartProductDto
+import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
 import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
 import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
 import rees46.demo_android.feature.cart.domain.usecase.GetCartSumPriceUseCase

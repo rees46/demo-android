@@ -10,9 +10,9 @@ import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.ImageUtils
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
-class CardProductView @JvmOverloads constructor(
+class ProductView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
@@ -26,7 +26,7 @@ class CardProductView @JvmOverloads constructor(
     private lateinit var shopButton: Button
 
     init {
-        inflate(context, R.layout.view_products_item, this)
+        inflate(context, R.layout.view_product_item, this)
 
         initViews()
         setupView()

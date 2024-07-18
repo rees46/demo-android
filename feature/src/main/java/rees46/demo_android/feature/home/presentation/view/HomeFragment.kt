@@ -15,12 +15,12 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
-import rees46.demo_android.feature.navigation.Navigator
-import rees46.demo_android.feature.navigation.ProductDetails
-import rees46.demo_android.feature.navigation.ProductsDetails
+import rees46.demo_android.feature.Navigator
+import rees46.demo_android.feature.ProductDetails
+import rees46.demo_android.feature.ProductsDetails
 
 class HomeFragment : Fragment() {
 

@@ -14,7 +14,7 @@ import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
 class ProductDetailsFragment : Fragment() {
 

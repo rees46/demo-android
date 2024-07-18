@@ -1,6 +1,6 @@
-package rees46.demo_android.feature.navigation
+package rees46.demo_android.feature
 
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
 interface Navigator {
     fun navigate(destination: Destination)

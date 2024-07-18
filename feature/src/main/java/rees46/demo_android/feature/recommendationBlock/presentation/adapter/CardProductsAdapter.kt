@@ -3,7 +3,7 @@ package rees46.demo_android.feature.recommendationBlock.presentation.adapter
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
 class CardProductsAdapter(
     private val context: Context,

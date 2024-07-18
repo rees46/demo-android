@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.feature.products.presentation.adapter.CardProductsAdapter
+import rees46.demo_android.feature.products.presentation.adapter.ProductsAdapter
 import rees46.demo_android.databinding.FragmentProductsBinding
-import rees46.demo_android.feature.navigation.Navigator
-import rees46.demo_android.feature.navigation.ProductDetails
+import rees46.demo_android.feature.Navigator
+import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
-class ProductsFragment : Fragment(), CardProductsAdapter.ClickListener {
+class ProductsFragment : Fragment(), ProductsAdapter.ClickListener {
 
     private val viewModel: ProductsViewModel by viewModel()
 

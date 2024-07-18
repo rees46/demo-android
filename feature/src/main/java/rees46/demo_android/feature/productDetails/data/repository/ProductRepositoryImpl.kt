@@ -1,10 +1,10 @@
-package rees46.demo_android.feature.product.data.repository
+package rees46.demo_android.feature.productDetails.data.repository
 
 import com.personalizatio.SDK
-import rees46.demo_android.feature.product.data.utils.ProductUtils.toCategories
-import rees46.demo_android.feature.product.data.utils.ProductUtils.toProducts
-import rees46.demo_android.feature.product.domain.models.ProductDto
-import rees46.demo_android.feature.product.domain.repository.ProductRepository
+import rees46.demo_android.feature.productDetails.data.utils.ProductUtils.toCategories
+import rees46.demo_android.feature.productDetails.data.utils.ProductUtils.toProducts
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.repository.ProductRepository
 import rees46.demo_android.feature.search.domain.models.CategoryDto
 
 class ProductRepositoryImpl (

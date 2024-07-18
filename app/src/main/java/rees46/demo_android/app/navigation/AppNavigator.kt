@@ -1,13 +1,12 @@
 package rees46.demo_android.app.navigation
 
-import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import rees46.demo_android.app.R
-import rees46.demo_android.feature.navigation.Destination
-import rees46.demo_android.feature.navigation.Navigator
-import rees46.demo_android.feature.navigation.ProductDetails
-import rees46.demo_android.feature.navigation.ProductsDetails
+import rees46.demo_android.feature.Destination
+import rees46.demo_android.feature.Navigator
+import rees46.demo_android.feature.ProductDetails
+import rees46.demo_android.feature.ProductsDetails
 
 class AppNavigator(private val navController: NavController) : Navigator {
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import rees46.demo_android.feature.product.domain.models.CartProductDto
+import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
 
 class CartProductsAdapter(
     private val context: Context,

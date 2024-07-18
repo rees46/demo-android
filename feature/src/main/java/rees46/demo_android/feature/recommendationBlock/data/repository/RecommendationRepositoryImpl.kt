@@ -3,7 +3,7 @@ package rees46.demo_android.feature.recommendationBlock.data.repository
 import com.personalizatio.SDK
 import com.personalizatio.Params
 import com.personalizatio.api.responses.recommendation.GetExtendedRecommendationResponse
-import rees46.demo_android.feature.product.data.utils.ProductUtils.toProducts
+import rees46.demo_android.feature.productDetails.data.utils.ProductUtils.toProducts
 import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
 import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
 

@@ -10,7 +10,6 @@ import rees46.demo_android.core.di.sdkModule
 import rees46.demo_android.feature.cart.di.cartModule
 import rees46.demo_android.feature.category.di.categoryModule
 import rees46.demo_android.feature.home.di.homeModule
-import rees46.demo_android.feature.product.di.productModule
 import rees46.demo_android.feature.productDetails.di.productDetailsModule
 import rees46.demo_android.feature.products.di.productsModule
 import rees46.demo_android.feature.recommendationBlock.di.recommendationBlockModule
@@ -37,7 +36,6 @@ class DemoApplication : Application() {
                     recommendationBlockModule,
                     cartModule,
                     categoryModule,
-                    productModule,
                     productDetailsModule,
                     productsModule,
                     settingsModule,

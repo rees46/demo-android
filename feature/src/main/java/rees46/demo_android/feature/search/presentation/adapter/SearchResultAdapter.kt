@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.core.utils.ImageUtils
 import rees46.demo_android.databinding.ViewSearchResultItemBinding
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
 class SearchResultAdapter(
     private val onSelectItem: (ProductDto) -> Unit

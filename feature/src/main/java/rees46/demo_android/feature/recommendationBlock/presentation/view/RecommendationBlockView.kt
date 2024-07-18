@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import rees46.demo_android.R
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 import rees46.demo_android.feature.recommendationBlock.presentation.adapter.CardProductsAdapter
 import rees46.demo_android.feature.recommendationBlock.domain.models.RecommendationDto
 

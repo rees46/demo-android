@@ -2,8 +2,8 @@ package rees46.demo_android.feature.cart.data.models
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import rees46.demo_android.feature.product.domain.models.CartProductDto
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.CartProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 
 // TODO: removed after implementation getting cart in sdk
 class Cart {

@@ -13,7 +13,7 @@ import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.app.R
 import rees46.demo_android.app.databinding.ActivityMainBinding
-import rees46.demo_android.feature.navigation.Navigator
+import rees46.demo_android.feature.Navigator
 
 class MainActivity : AppCompatActivity() {
 

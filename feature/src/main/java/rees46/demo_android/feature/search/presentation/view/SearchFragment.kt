@@ -15,8 +15,8 @@ import org.koin.core.parameter.parametersOf
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.backPressedInvoke
 import rees46.demo_android.databinding.FragmentSearchBinding
-import rees46.demo_android.feature.navigation.Navigator
-import rees46.demo_android.feature.navigation.ProductDetails
+import rees46.demo_android.feature.Navigator
+import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.search.presentation.adapter.SearchResultAdapter
 import rees46.demo_android.feature.search.presentation.adapter.SearchResultCategoriesAdapter
 import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel

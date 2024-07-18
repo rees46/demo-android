@@ -1,8 +1,8 @@
-package rees46.demo_android.feature.product.data.utils
+package rees46.demo_android.feature.productDetails.data.utils
 
 import com.personalizatio.api.responses.product.Product
 import com.personalizatio.api.responses.search.Category
-import rees46.demo_android.feature.product.domain.models.ProductDto
+import rees46.demo_android.feature.productDetails.domain.models.ProductDto
 import rees46.demo_android.feature.search.domain.models.CategoryDto
 import kotlin.random.Random
 
