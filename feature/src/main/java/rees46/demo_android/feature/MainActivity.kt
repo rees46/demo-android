@@ -8,21 +8,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.MenuProvider
-import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import rees46.demo_android.R
-import rees46.demo_android.feature.search.presentation.adapter.SearchResultAdapter
-import rees46.demo_android.feature.search.presentation.adapter.SearchResultCategoriesAdapter
 import rees46.demo_android.databinding.ActivityMainBinding
-import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
 
 class MainActivity : AppCompatActivity() {
-
-    private val searchViewModel: SearchViewModel by viewModel()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -30,10 +21,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navHostFragment.navController
     }
-
-    private val searchResultAdapter = SearchResultAdapter { product ->
-    }
-    private val searchResultCategoriesAdapter = SearchResultCategoriesAdapter { _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -44,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         setupTopAppBar()
         setupBottomNavigationView()
         createOptionMenu()
-        setupSearchResultView()
-        setupSearchView()
     }
 
     private fun setupTopAppBar() {
@@ -77,50 +62,21 @@ class MainActivity : AppCompatActivity() {
                     return true
                 }
 
+                if(menuItem.itemId == R.id.menu_top_app_search) {
+                    supportActionBar?.hide()
+                    binding.bottomNavigation.visibility = View.GONE
+                    navController.navigate(R.id.searchFragment)
+                }
+
                 return false
             }
         })
     }
 
-    private fun setupSearchResultView() {
-        setupSearchResultProductsView()
-        setupSearchResultCategoriesView()
-    }
-
-    private fun setupSearchView() {
-        binding.searchView.run {
-            setupWithSearchBar(binding.topAppBar)
-            editText.addTextChangedListener {
-                searchViewModel.searchProduct(query = it?.toString() ?: "")
-            }
-        }
-    }
-
-    private fun setupSearchResultProductsView() {
-        binding.searchResultRecyclerView.adapter = searchResultAdapter
-        lifecycleScope.launch {
-            searchViewModel.searchResultItems.collect {
-                binding.suitableProductsText.text =
-                    getString(if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products)
-
-                searchResultAdapter.submitList(it)
-            }
-        }
-    }
-
-    private fun setupSearchResultCategoriesView() {
-        binding.searchResultCategoriesRecyclerView.adapter = searchResultCategoriesAdapter
-        lifecycleScope.launch {
-            searchViewModel.searchResultCategoriesItems.collect {
-                binding.suitableCategoriesText.visibility =
-                    if(it.isEmpty()) View.GONE else View.VISIBLE
-
-                searchResultCategoriesAdapter.submitList(it)
-            }
-        }
-    }
-
     override fun onBackPressed() {
+        supportActionBar?.show()
+        binding.bottomNavigation.visibility = View.VISIBLE
+
         if (supportFragmentManager.backStackEntryCount == 0) {
             super.onBackPressed()
         } else {
