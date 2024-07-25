@@ -3,7 +3,6 @@ package rees46.demo_android.feature.productDetails.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -21,7 +20,7 @@ class ProductDetailsViewModel(
     product: Product
 ) : ViewModel() {
 
-    private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow(replay = 1)
+    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation())
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     private val _currentProductFlow: MutableStateFlow<Product> = MutableStateFlow(product)
