@@ -6,9 +6,9 @@ import rees46.demo_android.app.navigation.AppNavigator
 import rees46.demo_android.feature.Navigator
 
 val appModule = module {
-    single<Navigator> { (activity: NavController) ->
+    single<Navigator> { (navController: NavController) ->
         AppNavigator(
-            activity
+            navController
         )
     }
 }
