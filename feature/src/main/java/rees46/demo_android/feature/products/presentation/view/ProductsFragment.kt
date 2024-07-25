@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import rees46.demo_android.core.utils.NavigationUtils
 import rees46.demo_android.core.utils.ViewUtils
 import rees46.demo_android.feature.products.presentation.adapter.ProductsAdapter
 import rees46.demo_android.databinding.FragmentProductsBinding
@@ -53,7 +54,7 @@ class ProductsFragment : Fragment(), ProductsAdapter.OnClickListener {
 
     private fun setupViews() {
         binding.productsRecyclerView.apply {
-            val products = arguments?.getParcelableArrayList<Product>("products")
+            val products = arguments?.getParcelableArrayList<Product>(NavigationUtils.PRODUCTS_ARGUMENT_FIELD)
             adapter = products?.let {
                 ProductsAdapter(
                     context = requireContext(),
