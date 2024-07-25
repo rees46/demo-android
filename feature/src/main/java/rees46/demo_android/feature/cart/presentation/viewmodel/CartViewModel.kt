@@ -13,14 +13,13 @@ import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendat
 import rees46.demo_android.feature.recommendationBlock.domain.usecase.GetRecommendationUseCase
 
 class CartViewModel(
-    private val getCartProductsUseCase: GetCartProductsUseCase,
+    getCartProductsUseCase: GetCartProductsUseCase,
     private val removeProductFromCartUseCase: RemoveProductFromCartUseCase,
     getCartSumPriceUseCase: GetCartSumPriceUseCase,
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    private val _cartProductsFlow: MutableSharedFlow<MutableList<CartProduct>> = MutableSharedFlow()
-    val cartProductsFlow: Flow<MutableList<CartProduct>> = _cartProductsFlow
+    val cartProductsFlow: Flow<MutableList<CartProduct>> = getCartProductsUseCase.execute()
 
     private val _recommendationFlow: MutableSharedFlow<Recommendation> = MutableSharedFlow(replay = 1)
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
@@ -36,20 +35,8 @@ class CartViewModel(
         )
     }
 
-    fun updateCarts() {
-        updateCartProducts()
-    }
-
     fun removeProduct(cartProduct: CartProduct) {
         removeProductFromCartUseCase.execute(cartProduct.product.id)
-
-        updateCartProducts()
-    }
-
-    private fun updateCartProducts() {
-        viewModelScope.launch {
-            _cartProductsFlow.emit(getCartProductsUseCase.execute())
-        }
     }
 
     companion object {

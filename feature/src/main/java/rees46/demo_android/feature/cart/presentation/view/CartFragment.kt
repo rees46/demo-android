@@ -66,7 +66,6 @@ class CartFragment : Fragment() {
                 binding.totalValueText.text = "$it"
             }
         }
-        viewModel.updateCarts()
     }
 
     private fun updateCart(newList: MutableList<CartProduct>) {

@@ -8,12 +8,12 @@ import rees46.demo_android.feature.productDetails.domain.models.Product
 // TODO: removed after implementation getting cart in sdk
 class Cart {
 
-    val cartProducts: ArrayList<CartProduct> = arrayListOf()
+    val cartProductsFlow: MutableStateFlow<MutableList<CartProduct>> = MutableStateFlow(mutableListOf())
 
     var cartSumPrice: MutableStateFlow<Double> = MutableStateFlow(0.0)
 
     fun getCartProduct(productId: String) : CartProduct? {
-        return cartProducts.find { product -> product.product.id == productId }
+        return cartProductsFlow.value.find { product -> product.product.id == productId }
     }
 
     fun addProduct(product: Product, quantity: Int) {
@@ -24,12 +24,16 @@ class Cart {
 
         val cartProduct = getCartProduct(product.id)
         if(cartProduct == null) {
-            cartProducts.add(
-                CartProduct(
-                    product = product,
-                    quantity = quantity
-                )
-            )
+            cartProductsFlow.update {
+                cartProductsFlow.value.toMutableList().apply {
+                    this.add(
+                        CartProduct(
+                            product = product,
+                            quantity = quantity
+                        )
+                    )
+                }
+            }
         }
         else {
             cartProduct.quantity += quantity
@@ -45,6 +49,10 @@ class Cart {
             } ?: currentSum
         }
 
-        cartProducts.removeIf { product -> product.product.id == productId }
+        cartProductsFlow.update {
+            cartProductsFlow.value.toMutableList().apply {
+                this.removeIf { product -> product.product.id == productId }
+            }
+        }
     }
 }
