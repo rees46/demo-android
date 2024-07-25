@@ -40,10 +40,13 @@ val cartModule = module {
             sdk = get()
         )
     }
+    single<Cart> {
+        Cart()
+    }
     single<CartRepository> {
         CartRepositoryImpl(
             cartApi = get(),
-            cart = Cart()
+            cart = get()
         )
     }
 }
