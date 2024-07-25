@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.NavHostFragment
 import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
@@ -16,7 +17,7 @@ import rees46.demo_android.app.R
 import rees46.demo_android.app.databinding.ActivityMainBinding
 import rees46.demo_android.feature.Navigator
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     private lateinit var binding: ActivityMainBinding
 
