@@ -58,10 +58,11 @@ class CartFragment : Fragment() {
     }
 
     private fun setupViewModels() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.cartProductsFlow.collectLatest(::updateCart)
         }
-        lifecycleScope.launch {
+
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.sumPriceFlow.collectLatest {
                 binding.totalValueText.text = "$it"
             }
@@ -71,7 +72,7 @@ class CartFragment : Fragment() {
     private fun updateCart(newList: MutableList<CartProduct>) {
         updateCartView(newList.isEmpty())
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             cartProductsAdapter.submitList(newList)
         }
     }
@@ -90,9 +91,10 @@ class CartFragment : Fragment() {
     }
 
     private fun initRecommendationBlockView() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
         }
+
         binding.recommendationBlock.apply {
             onCardProductClick = ::navigateProductFragment
             onShowAllClick = ::navigateProductsFragment

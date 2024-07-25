@@ -52,15 +52,15 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.currentProductFlow.collect(::updateCardProductView)
         }
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
         }
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.countCartProductFlow.collect(::updateCount)
         }
     }

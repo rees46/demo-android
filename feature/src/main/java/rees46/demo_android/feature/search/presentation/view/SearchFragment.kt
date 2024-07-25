@@ -74,7 +74,8 @@ class SearchFragment : Fragment() {
 
     private fun setupSearchResultProductsView() {
         binding.searchResultRecyclerView.adapter = searchResultAdapter
-        lifecycleScope.launch {
+
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.searchResultItems.collect {
                 val resString = if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
                 binding.suitableProductsText.text = getString(resString)
@@ -86,7 +87,8 @@ class SearchFragment : Fragment() {
 
     private fun setupSearchResultCategoriesView() {
         binding.searchResultCategoriesRecyclerView.adapter = searchResultCategoriesAdapter
-        lifecycleScope.launch {
+
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.searchResultCategoriesItems.collect {
                 binding.suitableCategoriesText.isVisible = it.isEmpty()
 

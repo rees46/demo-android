@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
 
     private fun initRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
         recommendationBlockView.apply {
-            lifecycleScope.launch {
+            viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.recommendationFlow.collectLatest(::update)
             }
             onCardProductClick = ::navigateProductFragment
