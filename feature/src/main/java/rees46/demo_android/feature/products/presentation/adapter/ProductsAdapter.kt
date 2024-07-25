@@ -16,11 +16,13 @@ class ProductsAdapter(
         fun onCardProductClick(product: Product)
     }
 
-    inner class ViewHolder(private val view: ProductView, private val listener: OnClickListener)
-        : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(
+        private val productView: ProductView,
+        private val listener: OnClickListener
+    ) : RecyclerView.ViewHolder(productView) {
 
         fun bind(product: Product) {
-            view.apply {
+            productView.apply {
                 updateProduct(product)
 
                 setOnClickListener {
@@ -30,17 +32,26 @@ class ProductsAdapter(
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val cardProductView = ProductView(
+    override fun onCreateViewHolder(
+        viewGroup: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val productView = ProductView(
             context = context,
             productViewSettings = productViewSettings,
             attrs = null
         )
 
-        return ViewHolder(cardProductView, listener)
+        return ViewHolder(
+            productView = productView,
+            listener = listener
+        )
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        viewHolder: ViewHolder,
+        position: Int
+    ) {
         viewHolder.bind(products[position])
     }
 

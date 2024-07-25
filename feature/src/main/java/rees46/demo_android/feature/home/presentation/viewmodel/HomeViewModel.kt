@@ -12,7 +12,7 @@ class HomeViewModel(
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation())
+    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     init {

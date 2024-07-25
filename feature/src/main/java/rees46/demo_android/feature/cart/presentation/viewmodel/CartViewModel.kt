@@ -21,7 +21,7 @@ class CartViewModel(
 
     val cartProductsFlow: Flow<MutableList<CartProduct>> = getCartProductsUseCase.execute()
 
-    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation())
+    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     val sumPriceFlow: Flow<Double> = getCartSumPriceUseCase.execute()

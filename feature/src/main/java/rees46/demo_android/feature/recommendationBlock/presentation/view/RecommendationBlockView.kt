@@ -57,7 +57,9 @@ class RecommendationBlockView @JvmOverloads constructor(
         )
         productsRecyclerView.adapter = productsAdapter
 
-        showAllTextView.setOnClickListener { onShowAllClick.invoke(products) }
+        showAllTextView.setOnClickListener {
+            onShowAllClick.invoke(products)
+        }
     }
 
     fun update(recommendation: Recommendation) {
@@ -94,7 +96,10 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     private fun setupProductViewSettings() {
         productViewSettings = ProductViewSettings(
-            width = ViewUtils.convertDpToPixel(140f, context).toInt(),
+            width = ViewUtils.convertDpToPixel(
+                dp = 140f,
+                context = context
+            ).toInt(),
             showButton = false
         )
     }

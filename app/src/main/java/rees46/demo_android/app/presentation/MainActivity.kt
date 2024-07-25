@@ -70,18 +70,23 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 override fun handleOnBackPressed() {
                     navigator.popBackStack()
 
-                    with(binding.bottomNavigation) {
-                        when (navigator.getCurrentDestination()) {
-                            R.id.homeFragment -> selectedItemId = R.id.home
-                            R.id.categoryFragment -> selectedItemId = R.id.category
-                            R.id.cartFragment -> selectedItemId = R.id.cart
-                            R.id.settingsFragment -> selectedItemId = R.id.settingsFragment
-                        }
-                    }
+                    changeSelectedBottomItem()
                 }
             }
         )
     }
+
+    private fun changeSelectedBottomItem() {
+        with(binding.bottomNavigation) {
+            when (navigator.getCurrentDestination()) {
+                R.id.homeFragment -> selectedItemId = R.id.home
+                R.id.categoryFragment -> selectedItemId = R.id.category
+                R.id.cartFragment -> selectedItemId = R.id.cart
+                R.id.settingsFragment -> selectedItemId = R.id.settingsFragment
+            }
+        }
+    }
+
 
     private fun createOptionMenu() {
         addMenuProvider(object : MenuProvider {

@@ -16,7 +16,10 @@ class CartApi(
         listener: OnApiCallbackListener
     ) {
         val productItemParams = ProductItemParams(product.id)
-            .set(ProductItemParams.PARAMETER.AMOUNT, quantity)
+            .set(
+                column = ProductItemParams.PARAMETER.AMOUNT,
+                value = quantity
+            )
 
         sdk.trackEventManager.track(
             event = Params.TrackEvent.VIEW,

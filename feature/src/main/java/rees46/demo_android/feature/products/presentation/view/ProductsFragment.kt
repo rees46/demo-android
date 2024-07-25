@@ -45,7 +45,10 @@ class ProductsFragment : Fragment(), ProductsAdapter.OnClickListener {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         setupProductViewSettings()
@@ -77,7 +80,10 @@ class ProductsFragment : Fragment(), ProductsAdapter.OnClickListener {
 
     private fun setupProductViewSettings() {
         productViewSettings = ProductViewSettings(
-            width = ViewUtils.convertDpToPixel(171f, requireContext()).toInt(),
+            width = ViewUtils.convertDpToPixel(
+                dp = 171f,
+                context = requireContext()
+            ).toInt(),
             showButton = true
         )
     }

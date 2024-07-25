@@ -20,7 +20,7 @@ class ProductDetailsViewModel(
     product: Product
 ) : ViewModel() {
 
-    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation())
+    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
     val recommendationFlow: Flow<Recommendation> = _recommendationFlow
 
     private val _currentProductFlow: MutableStateFlow<Product> = MutableStateFlow(product)

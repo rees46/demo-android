@@ -8,7 +8,7 @@ import rees46.demo_android.feature.cart.domain.repository.CartRepository
 import rees46.demo_android.feature.cart.domain.models.CartProduct
 import rees46.demo_android.feature.productDetails.domain.models.Product
 
-class CartRepositoryImpl (
+class CartRepositoryImpl(
     private val cartApi: CartApi,
     private val cart: Cart
 ) : CartRepository {
@@ -26,21 +26,25 @@ class CartRepositoryImpl (
         cartApi.addProduct(
             product = product,
             quantity = quantity,
-            listener = SdkUtils.createOnApiCallbackListener {
-                cart.addProduct(
-                    product = product,
-                    quantity = quantity
-                )
-            }
+            listener = SdkUtils.createOnApiCallbackListener(
+                onSuccess = {
+                    cart.addProduct(
+                        product = product,
+                        quantity = quantity
+                    )
+                }
+            )
         )
     }
 
     override fun removeProduct(productId: String) {
         cartApi.removeProduct(
             productId = productId,
-            listener = SdkUtils.createOnApiCallbackListener {
-                cart.removeProduct(productId)
-            }
+            listener = SdkUtils.createOnApiCallbackListener(
+                onSuccess = {
+                    cart.removeProduct(productId)
+                }
+            )
         )
     }
 

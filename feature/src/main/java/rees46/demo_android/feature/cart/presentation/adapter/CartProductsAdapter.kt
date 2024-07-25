@@ -15,12 +15,21 @@ class CartProductsAdapter(
     AsyncDifferConfig.Builder(CartProductDiffCallback()).build()
 ) {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val cartProductView = CartProductView(context, null)
+    override fun onCreateViewHolder(
+        viewGroup: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val cartProductView = CartProductView(
+            context = context,
+            attrs = null
+        )
         return ViewHolder(cartProductView)
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        viewHolder: ViewHolder,
+        position: Int
+    ) {
         getItem(position).run(viewHolder::bind)
     }
 

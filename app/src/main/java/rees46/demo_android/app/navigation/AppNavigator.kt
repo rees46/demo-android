@@ -1,5 +1,7 @@
 package rees46.demo_android.app.navigation
 
+import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import rees46.demo_android.app.R
@@ -15,11 +17,17 @@ class AppNavigator(private val navController: NavController) : Navigator {
         when(destination) {
             is ProductDetails -> {
                 val bundle = bundleOf(NavigationUtils.PRODUCT_ARGUMENT_FIELD to destination.product)
-                navController.navigate(R.id.productDetailsFragment, bundle)
+                navigate(
+                    resId = R.id.productDetailsFragment,
+                    args = bundle
+                )
             }
             is ProductsDetails -> {
                 val bundle = bundleOf(NavigationUtils.PRODUCTS_ARGUMENT_FIELD to destination.products)
-                navController.navigate(R.id.productsFragment, bundle)
+                navigate(
+                    resId = R.id.productsFragment,
+                    args = bundle
+                )
             }
             else -> {}
         }
@@ -35,4 +43,11 @@ class AppNavigator(private val navController: NavController) : Navigator {
 
     override fun getCurrentDestination() : Int? =
         navController.currentDestination?.id
+
+    private fun navigate(@IdRes resId: Int, args: Bundle?) {
+        navController.navigate(
+            resId = resId,
+            args = args
+        )
+    }
 }

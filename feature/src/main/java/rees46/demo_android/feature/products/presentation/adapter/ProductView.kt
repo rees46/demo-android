@@ -1,5 +1,6 @@
 package rees46.demo_android.feature.products.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
@@ -14,7 +15,8 @@ import rees46.demo_android.R
 import rees46.demo_android.core.utils.updateImage
 import rees46.demo_android.feature.productDetails.domain.models.Product
 
-class ProductView @JvmOverloads constructor(
+@SuppressLint("ViewConstructor")
+class ProductView(
     context: Context,
     private val productViewSettings: ProductViewSettings,
     attrs: AttributeSet? = null

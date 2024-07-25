@@ -45,15 +45,22 @@ class CartFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
+
         setupViews()
         setupViewModels()
         initRecommendationBlockView()
     }
 
     private fun setupViews() {
-        cartProductsAdapter = CartProductsAdapter(requireContext(), ::removeProduct)
+        cartProductsAdapter = CartProductsAdapter(
+            context = requireContext(),
+            onClickRemoveCart = ::removeProduct
+        )
         binding.cartProductsRecyclerView.adapter = cartProductsAdapter
     }
 

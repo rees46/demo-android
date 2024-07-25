@@ -7,7 +7,11 @@ import org.json.JSONObject
 
 object SdkUtils {
 
-    fun initialize(sdk: SDK, context: Context, shopId: String? = SHOP_ID) {
+    fun initialize(
+        sdk: SDK,
+        context: Context,
+        shopId: String? = SHOP_ID
+    ) {
         sdk.initialize(
             context = context,
             shopId = shopId ?: SHOP_ID,

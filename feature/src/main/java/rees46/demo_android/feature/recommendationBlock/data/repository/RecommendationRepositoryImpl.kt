@@ -48,9 +48,13 @@ class RecommendationRepositoryImpl (
         )
     }
 
-    private fun createRecommendationParams(productId: String, parameter: Params.Parameter = Params.Parameter.ITEM): Params {
-        return Params().apply { put(parameter, productId) }
-    }
+    private fun createRecommendationParams(
+        productId: String,
+        parameter: Params.Parameter = Params.Parameter.ITEM
+    ) = Params().put(
+            param = parameter,
+            value = productId
+        )
 
     private fun RecommendationDto.toRecommendation() : Recommendation =
         Recommendation(

@@ -11,16 +11,24 @@ import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class SearchResultAdapter(
     private val onSelectItem: (Product) -> Unit
-) :
-    ListAdapter<Product, SearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
+) : ListAdapter<Product, SearchResultAdapter.ViewHolder>(SearchResultItemCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding = ViewSearchResultItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val itemBinding = ViewSearchResultItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false)
 
         return ViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ViewHolder,
+        position: Int
+    ) {
         getItem(position).apply(holder::bind)
     }
 
@@ -40,11 +48,17 @@ class SearchResultAdapter(
     }
 
     internal class SearchResultItemCallback : DiffUtil.ItemCallback<Product>() {
-        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
+        override fun areItemsTheSame(
+            oldItem: Product,
+            newItem: Product
+        ): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
+        override fun areContentsTheSame(
+            oldItem: Product,
+            newItem: Product
+        ): Boolean {
             return oldItem.id == newItem.id
         }
     }

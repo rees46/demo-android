@@ -10,18 +10,25 @@ import rees46.demo_android.feature.search.domain.models.Category
 
 class SearchResultCategoriesAdapter(
     private val onSelectItem: (Category) -> Unit
-) :
-    ListAdapter<Category, SearchResultCategoriesAdapter.ViewHolder>(
-        SearchResultItemCallback()
-    ) {
+) : ListAdapter<Category, SearchResultCategoriesAdapter.ViewHolder>(SearchResultItemCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding = ViewSearchResultCategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val itemBinding = ViewSearchResultCategoryItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
 
         return ViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ViewHolder,
+        position: Int
+    ) {
         getItem(position).apply(holder::bind)
     }
 
@@ -39,11 +46,17 @@ class SearchResultCategoriesAdapter(
     }
 
     internal class SearchResultItemCallback : DiffUtil.ItemCallback<Category>() {
-        override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
+        override fun areItemsTheSame(
+            oldItem: Category,
+            newItem: Category
+        ): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
+        override fun areContentsTheSame(
+            oldItem: Category,
+            newItem: Category
+        ): Boolean {
             return oldItem.id == newItem.id
         }
     }

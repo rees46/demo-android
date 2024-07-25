@@ -36,7 +36,9 @@ class SearchViewModel(
 
     private fun emptySearch() {
         searchRecommendedProductsUseCase.execute(
-            onGetProducts = { handleProductResult(it) }
+            onGetProducts = {
+                handleProductResult(it)
+            }
         )
     }
 
