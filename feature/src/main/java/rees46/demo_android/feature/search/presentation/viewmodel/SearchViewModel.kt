@@ -3,7 +3,7 @@ package rees46.demo_android.feature.search.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.search.domain.models.Category
@@ -15,15 +15,11 @@ class SearchViewModel(
     private val searchRecommendedProductsUseCase: SearchRecommendedProductsUseCase
 ) : ViewModel() {
 
-    private val _searchResultItems: MutableSharedFlow<MutableList<Product>> =
-        MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultItems: Flow<MutableList<Product>> =
-        _searchResultItems
+    private val _searchResultItems: MutableStateFlow<MutableList<Product>> = MutableStateFlow(mutableListOf())
+    val searchResultItems: Flow<MutableList<Product>> = _searchResultItems
 
-    private val _searchResultCategoriesItems: MutableSharedFlow<MutableList<Category>> =
-        MutableSharedFlow(extraBufferCapacity = 1)
-    val searchResultCategoriesItems: Flow<MutableList<Category>> =
-        _searchResultCategoriesItems
+    private val _searchResultCategoriesItems: MutableStateFlow<MutableList<Category>> = MutableStateFlow(mutableListOf())
+    val searchResultCategoriesItems: Flow<MutableList<Category>> = _searchResultCategoriesItems
 
     fun searchProduct(query: String = "") {
         if (query.isEmpty()) {
