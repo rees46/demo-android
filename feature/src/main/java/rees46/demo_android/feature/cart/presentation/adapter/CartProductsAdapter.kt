@@ -35,7 +35,6 @@ class CartProductsAdapter(
 
     override fun submitList(list: MutableList<CartProduct>?) {
         super.submitList(list)
-        notifyDataSetChanged()
     }
 
     inner class ViewHolder(private val view: CartProductView) : RecyclerView.ViewHolder(view) {
