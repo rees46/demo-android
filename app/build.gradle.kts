@@ -54,4 +54,5 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(project(":core"))
     implementation(project(":feature"))
+    implementation(project(":sdkRees46"))
 }

@@ -1,12 +1,13 @@
 package rees46.demo_android.app
 
 import android.app.Application
-import android.content.Context
+import com.personalizatio.SDK
+import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 import rees46.demo_android.app.di.appModule
 import rees46.demo_android.core.di.sdkModule
+import rees46.demo_android.core.utils.SdkUtils
 import rees46.demo_android.feature.cart.di.cartModule
 import rees46.demo_android.feature.category.di.categoryModule
 import rees46.demo_android.feature.home.di.homeModule
@@ -21,17 +22,13 @@ class DemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val m = module {
-            single<Context> { this@DemoApplication }
-        }
-
         startKoin {
             androidContext(this@DemoApplication)
 
             modules(
                 listOf(
                     appModule,
-                    sdkModule(this@DemoApplication),
+                    sdkModule,
                     homeModule,
                     recommendationBlockModule,
                     cartModule,
@@ -43,5 +40,8 @@ class DemoApplication : Application() {
                 )
             )
         }
+
+        val sdk = getKoin().get<SDK>()
+        SdkUtils.initialize(sdk, this@DemoApplication)
     }
 }
