@@ -41,7 +41,19 @@ class DemoApplication : Application() {
             )
         }
 
+        initializeSdk()
+    }
+
+    private fun initializeSdk() {
         val sdk = getKoin().get<SDK>()
-        SdkUtils.initialize(sdk, this@DemoApplication)
+        SdkUtils.initialize(
+            sdk = sdk,
+            context = this@DemoApplication,
+            shopId = SHOP_ID
+        )
+    }
+
+    companion object {
+        private const val SHOP_ID = "357382bf66ac0ce2f1722677c59511"
     }
 }
