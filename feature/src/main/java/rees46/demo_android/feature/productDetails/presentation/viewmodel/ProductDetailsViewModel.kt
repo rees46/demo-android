@@ -17,6 +17,7 @@ class ProductDetailsViewModel(
     private val addProductToCartUseCase: AddProductToCartUseCase,
     private val getCartProductUseCase: GetCartProductUseCase,
     private val getRecommendationForProductUseCase: GetRecommendationForProductUseCase,
+    private val recommendedCode: String,
     product: Product
 ) : ViewModel() {
 
@@ -37,7 +38,7 @@ class ProductDetailsViewModel(
 
     fun updateRecommendationBlock(productId: String) {
         getRecommendationForProductUseCase.execute(
-            recommenderCode = RECOMMENDER_CODE,
+            recommenderCode = recommendedCode,
             productId = productId,
             onGetRecommendation = {
                 viewModelScope.launch { _recommendationFlow.emit(it) }
@@ -66,9 +67,5 @@ class ProductDetailsViewModel(
         if (_countCartProductFlow.value > 1) {
             _countCartProductFlow.update { it.dec() }
         }
-    }
-
-    companion object {
-        var RECOMMENDER_CODE = "a043dbc2f852ffe18861a2cdfc364ef2"
     }
 }

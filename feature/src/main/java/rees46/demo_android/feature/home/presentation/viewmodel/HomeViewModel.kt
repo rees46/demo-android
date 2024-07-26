@@ -9,7 +9,8 @@ import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendat
 import rees46.demo_android.feature.recommendationBlock.domain.usecase.GetRecommendationUseCase
 
 class HomeViewModel(
-    getRecommendationUseCase: GetRecommendationUseCase
+    getRecommendationUseCase: GetRecommendationUseCase,
+    recommenderCode: String
 ) : ViewModel() {
 
     private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
@@ -17,14 +18,10 @@ class HomeViewModel(
 
     init {
         getRecommendationUseCase.execute(
-            recommenderCode = RECOMMENDER_CODE,
+            recommenderCode = recommenderCode,
             onGetRecommendation = {
                 viewModelScope.launch { _recommendationFlow.emit(it) }
             }
         )
-    }
-
-    companion object {
-        var RECOMMENDER_CODE = "a043dbc2f852ffe18861a2cdfc364ef2"
     }
 }

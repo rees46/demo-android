@@ -4,7 +4,7 @@ import android.content.Context
 import com.personalizatio.SDK
 import com.personalizatio.api.OnApiCallbackListener
 import org.json.JSONObject
-import rees46.demo_android.core.SdkSettings
+import rees46.demo_android.core.settings.SdkSettings
 
 object SdkUtils {
 

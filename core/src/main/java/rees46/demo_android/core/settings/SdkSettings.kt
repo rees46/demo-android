@@ -1,4 +1,4 @@
-package rees46.demo_android.core
+package rees46.demo_android.core.settings
 
 object SdkSettings {
     const val API_URL = "https://api.rees46.ru/"
