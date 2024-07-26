@@ -10,17 +10,23 @@ object SdkUtils {
     fun initialize(
         sdk: SDK,
         context: Context,
-        shopId: String? = SHOP_ID
+        shopId: String = SHOP_ID,
+        apiUrl: String = SDK_API_URL,
+        preferencesKey: String = SDK_PREFERENCES_KEY,
+        tag: String = SDK_TAG,
+        stream: String = SDK_STREAM,
+        notificationType: String = NOTIFICATION_TYPE,
+        notificationId: String = NOTIFICATION_ID
     ) {
         sdk.initialize(
             context = context,
-            shopId = shopId ?: SHOP_ID,
-            apiUrl = SDK_API_URL,
-            preferencesKey = SDK_PREFERENCES_KEY,
-            tag = SDK_TAG,
-            stream = SDK_STREAM,
-            notificationType = NOTIFICATION_TYPE,
-            notificationId = NOTIFICATION_ID
+            shopId = shopId,
+            apiUrl = apiUrl,
+            preferencesKey = preferencesKey,
+            tag = tag,
+            stream = stream,
+            notificationType = notificationType,
+            notificationId = notificationId
         )
     }
 

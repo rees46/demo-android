@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.personalizatio.SDK
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import rees46.demo_android.core.utils.SdkUtils
 import rees46.demo_android.databinding.FragmentSettingsBinding
 import rees46.demo_android.feature.settings.presentation.viewmodel.SettingsViewModel
 
@@ -39,8 +40,12 @@ class SettingsFragment : Fragment() {
 
     private fun setupViews() {
         binding.uploadButton.setOnClickListener {
-            val storeId = binding.storeKeyTextInput.text?.toString()
-            rees46.demo_android.core.utils.SdkUtils.initialize(sdk, requireContext(), storeId)
+            val storeId = binding.storeKeyTextInput.text?.toString() ?: ""
+            SdkUtils.initialize(
+                sdk = sdk,
+                context = requireContext(),
+                shopId = storeId
+            )
         }
     }
 }
