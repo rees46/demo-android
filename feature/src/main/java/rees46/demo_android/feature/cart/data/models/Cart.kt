@@ -23,11 +23,6 @@ class Cart {
         product: Product,
         quantity: Int
     ) {
-        cartSumPrice.update { currentSum ->
-            val result: Double = currentSum + (product.price ?: 0.0)
-            result
-        }
-
         val cartProduct = getCartProduct(product.id)
         if (cartProduct == null) {
             cartProductsFlow.update {
@@ -43,26 +38,30 @@ class Cart {
         } else {
             cartProduct.quantity += quantity
         }
+
+        updateCartSumPrice()
     }
 
     fun removeProduct(productId: String) {
-        cartSumPrice.update { currentSum ->
-            val cartProduct = getCartProduct(productId)
-
-            val quantity = cartProduct?.quantity ?: 0
-
-            cartProduct?.product?.price?.let {
-                currentSum - (it * quantity)
-            } ?: currentSum
-        }
-
         cartProductsFlow.update {
             cartProductsFlow.value.toMutableList().apply {
                 this.removeIf { product ->
                     product.product.id == productId
                 }
+            }
+        }
 
+        updateCartSumPrice()
+    }
+
+    private fun updateCartSumPrice() {
+        cartSumPrice.update {
+            cartProductsFlow.value.sumOf { cartProduct ->
+                getCartProductPrice(cartProduct)
             }
         }
     }
+
+    private fun getCartProductPrice(cartProduct: CartProduct) =
+        (cartProduct.product.price ?: 0.0) * cartProduct.quantity
 }

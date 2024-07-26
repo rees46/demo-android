@@ -19,6 +19,9 @@ class CartRepositoryImpl(
     override fun getCartProduct(productId: String): CartProduct? =
         cart.getCartProduct(productId)
 
+    override fun getSumPrice(): Flow<Double> =
+        cart.cartSumPrice
+
     override fun addProduct(
         product: Product,
         quantity: Int
@@ -47,7 +50,4 @@ class CartRepositoryImpl(
             )
         )
     }
-
-    override fun getSumPrice(): Flow<Double> =
-        cart.cartSumPrice
 }
