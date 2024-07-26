@@ -26,8 +26,8 @@ class Cart {
         val cartProduct = getCartProduct(product.id)
         if (cartProduct == null) {
             cartProductsFlow.update {
-                cartProductsFlow.value.toMutableList().apply {
-                    this.add(
+                it.toMutableList().apply {
+                    add(
                         CartProduct(
                             product = product,
                             quantity = quantity
@@ -44,8 +44,8 @@ class Cart {
 
     fun removeProduct(productId: String) {
         cartProductsFlow.update {
-            cartProductsFlow.value.toMutableList().apply {
-                this.removeIf { product ->
+            it.toMutableList().apply {
+                removeIf { product ->
                     product.product.id == productId
                 }
             }
