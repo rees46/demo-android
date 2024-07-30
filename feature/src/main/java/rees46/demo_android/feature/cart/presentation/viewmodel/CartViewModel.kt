@@ -2,8 +2,9 @@ package rees46.demo_android.feature.cart.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import rees46.demo_android.feature.cart.domain.models.CartProduct
 import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
@@ -19,12 +20,12 @@ class CartViewModel(
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    val cartProductsFlow: Flow<MutableList<CartProduct>> = getCartProductsUseCase.execute()
+    val cartProductsFlow: StateFlow<MutableList<CartProduct>> = getCartProductsUseCase.execute()
 
-    private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
-    val recommendationFlow: Flow<Recommendation> = _recommendationFlow
+    private val _recommendationFlow = MutableStateFlow(Recommendation("", emptyList()))
+    val recommendationFlow: StateFlow<Recommendation> = _recommendationFlow.asStateFlow()
 
-    val sumPriceFlow: Flow<Double> = getCartSumPriceUseCase.execute()
+    val sumPriceFlow: StateFlow<Double> = getCartSumPriceUseCase.execute()
 
     init {
         getRecommendationUseCase.execute(

@@ -1,6 +1,6 @@
 package rees46.demo_android.feature.cart.data.repository
 
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import rees46.demo_android.core.utils.SdkUtils
 import rees46.demo_android.feature.cart.data.api.CartApi
 import rees46.demo_android.feature.cart.data.models.Cart
@@ -13,13 +13,13 @@ class CartRepositoryImpl(
     private val cart: Cart
 ) : CartRepository {
 
-    override fun getCartProducts(): Flow<MutableList<CartProduct>> =
+    override fun getCartProducts(): StateFlow<MutableList<CartProduct>> =
         cart.cartProductsFlow
 
     override fun getCartProduct(productId: String): CartProduct? =
         cart.getCartProduct(productId)
 
-    override fun getSumPrice(): Flow<Double> =
+    override fun getSumPrice(): StateFlow<Double> =
         cart.cartSumPrice
 
     override fun addProduct(

@@ -2,8 +2,9 @@ package rees46.demo_android.feature.productDetails.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
@@ -22,14 +23,13 @@ class ProductDetailsViewModel(
 ) : ViewModel() {
 
     private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
-    val recommendationFlow: Flow<Recommendation> = _recommendationFlow
+    val recommendationFlow: StateFlow<Recommendation> = _recommendationFlow.asStateFlow()
 
     private val _currentProductFlow: MutableStateFlow<Product> = MutableStateFlow(product)
-    val currentProductFlow: Flow<Product> = _currentProductFlow
+    val currentProductFlow: StateFlow<Product> = _currentProductFlow.asStateFlow()
 
-    private var _countCartProductFlow: MutableStateFlow<Int> =
-        MutableStateFlow(getCartProductUseCase.execute(product.id)?.quantity ?: 1)
-    var countCartProductFlow: Flow<Int> = _countCartProductFlow
+    private var _countCartProductFlow: MutableStateFlow<Int> = MutableStateFlow(getCartProductUseCase.execute(product.id)?.quantity ?: 1)
+    var countCartProductFlow: StateFlow<Int> = _countCartProductFlow.asStateFlow()
 
     fun updateProduct(product: Product) {
         _countCartProductFlow.update { getCartProductUseCase.execute(product.id)?.quantity ?: 1 }
