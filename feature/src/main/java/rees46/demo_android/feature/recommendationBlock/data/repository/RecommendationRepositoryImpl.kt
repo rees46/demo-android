@@ -1,14 +1,14 @@
 package rees46.demo_android.feature.recommendationBlock.data.repository
 
 import com.personalizatio.Params
-import rees46.demo_android.feature.search.data.repository.SearchRepositoryImpl.Companion.toProducts
 import rees46.demo_android.feature.recommendationBlock.data.api.RecommendationApi
-import rees46.demo_android.feature.recommendationBlock.data.models.RecommendationDto
+import rees46.demo_android.feature.recommendationBlock.data.mappers.RecommendationMapper
 import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
 
 class RecommendationRepositoryImpl (
-    private val recommendationApi: RecommendationApi
+    private val recommendationApi: RecommendationApi,
+    private val recommendationMapper: RecommendationMapper
 ) : RecommendationRepository {
 
     override fun getRecommendation(
@@ -43,7 +43,7 @@ class RecommendationRepositoryImpl (
             recommenderCode = recommenderCode,
             params = params,
             onGetRecommendation = {
-                onGetRecommendation.invoke(it.toRecommendation())
+                onGetRecommendation.invoke(recommendationMapper.toRecommendation(it))
             }
         )
     }
@@ -54,11 +54,5 @@ class RecommendationRepositoryImpl (
     ) = Params().put(
             param = parameter,
             value = productId
-        )
-
-    private fun RecommendationDto.toRecommendation() : Recommendation =
-        Recommendation(
-            title = title,
-            products = products.toProducts()
         )
 }
