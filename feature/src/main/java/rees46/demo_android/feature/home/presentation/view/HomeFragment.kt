@@ -51,20 +51,16 @@ class HomeFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        initStories()
+        with(binding.storiesView) {
+            sdk.initializeStoriesView(this)
+            settings.icon_size = 80
+            settings.label_font_size = 0
+        }
 
         with(binding) {
             initRecommendationBlockView(newArrivalsRecommendationBlockView)
             initRecommendationBlockView(topTrendsRecommendationBlockView)
             initRecommendationBlockView(youLikeRecommendationBlockView)
-        }
-    }
-
-    private fun initStories() {
-        with(binding.storiesView) {
-            sdk.initializeStoriesView(this)
-            settings.icon_size = 80
-            settings.label_font_size = 0
         }
     }
 
