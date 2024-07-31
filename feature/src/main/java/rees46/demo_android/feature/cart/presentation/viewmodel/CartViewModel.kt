@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import rees46.demo_android.core.settings.RecommendationSettings
 import rees46.demo_android.feature.cart.domain.models.CartProduct
 import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
 import rees46.demo_android.feature.cart.domain.usecase.GetCartSumPriceUseCase
@@ -29,7 +30,7 @@ class CartViewModel(
 
     init {
         getRecommendationUseCase.invoke(
-            recommenderCode = RECOMMENDER_CODE,
+            recommenderCode = RecommendationSettings.CART_RECOMMENDED_CODE,
             onGetRecommendation = {
                 viewModelScope.launch { _recommendationFlow.emit(it) }
             }
@@ -38,9 +39,5 @@ class CartViewModel(
 
     fun removeProduct(cartProduct: CartProduct) {
         removeProductFromCartUseCase.invoke(cartProduct.product.id)
-    }
-
-    companion object {
-        var RECOMMENDER_CODE = "2dbebc39bee259b118bcc0ac3fa74a42"
     }
 }
