@@ -8,5 +8,3 @@ var sdkModule = module {
         SDK()
     }
 }
-
-
