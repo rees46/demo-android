@@ -1,6 +1,5 @@
 package rees46.demo_android.feature.productDetails.domain.models
 
-import android.graphics.Bitmap
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
@@ -13,7 +12,7 @@ data class Product(
     val priceFormatted: String,
     val priceFull: Double?,
     val priceFullFormatted: String?,
-    val picture: Bitmap,
+    val pictureUrl: String,
     val description: String,
     val rating: Float
 ) : Parcelable

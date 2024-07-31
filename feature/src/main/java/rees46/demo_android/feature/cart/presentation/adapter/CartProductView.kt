@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import rees46.demo_android.R
+import rees46.demo_android.core.utils.updateImage
 import rees46.demo_android.feature.cart.domain.models.CartProduct
 
 class CartProductView @JvmOverloads constructor(
@@ -40,7 +41,7 @@ class CartProductView @JvmOverloads constructor(
     internal fun updateCartProduct(cartProduct: CartProduct) {
         this.cartProduct = cartProduct
 
-        productImageView.setImageBitmap(cartProduct.product.picture)
+        productImageView.updateImage(cartProduct.product.pictureUrl)
 
         productNameTextView.text = cartProduct.product.name
         producerNameTextView.text = cartProduct.product.producerName

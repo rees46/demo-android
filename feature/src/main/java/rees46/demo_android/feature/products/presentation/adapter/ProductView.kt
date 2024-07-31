@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import rees46.demo_android.R
+import rees46.demo_android.core.utils.updateImage
 import rees46.demo_android.feature.productDetails.domain.models.Product
 
 @SuppressLint("ViewConstructor")
@@ -58,7 +59,7 @@ class ProductView(
     }
 
     internal fun updateProduct(product: Product) {
-        productImageView.setImageBitmap(product.picture)
+        productImageView.updateImage(product.pictureUrl)
 
         productNameTextView.text = product.name
         producerNameTextView.text = product.producerName
