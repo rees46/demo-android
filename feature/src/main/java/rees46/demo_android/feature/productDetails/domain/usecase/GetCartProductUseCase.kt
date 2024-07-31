@@ -7,7 +7,7 @@ class GetCartProductUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    fun execute(
+    fun invoke(
         productId: String
     ): CartProduct? =
         cartRepository.getCartProduct(productId)

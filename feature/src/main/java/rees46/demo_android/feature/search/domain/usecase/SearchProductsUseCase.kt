@@ -8,7 +8,7 @@ class SearchProductsUseCase (
     private val searchRepository: SearchRepository
 ) {
 
-    fun execute(
+    fun invoke(
         query: String,
         onGetProducts: (List<Product>) -> Unit,
         onGetCategories: (List<Category>) -> Unit

@@ -20,15 +20,15 @@ class CartViewModel(
     getRecommendationUseCase: GetRecommendationUseCase
 ) : ViewModel() {
 
-    val cartProductsFlow: StateFlow<MutableList<CartProduct>> = getCartProductsUseCase.execute()
+    val cartProductsFlow: StateFlow<MutableList<CartProduct>> = getCartProductsUseCase.invoke()
 
     private val _recommendationFlow = MutableStateFlow(Recommendation("", emptyList()))
     val recommendationFlow: StateFlow<Recommendation> = _recommendationFlow.asStateFlow()
 
-    val sumPriceFlow: StateFlow<Double> = getCartSumPriceUseCase.execute()
+    val sumPriceFlow: StateFlow<Double> = getCartSumPriceUseCase.invoke()
 
     init {
-        getRecommendationUseCase.execute(
+        getRecommendationUseCase.invoke(
             recommenderCode = RECOMMENDER_CODE,
             onGetRecommendation = {
                 viewModelScope.launch { _recommendationFlow.emit(it) }
@@ -37,7 +37,7 @@ class CartViewModel(
     }
 
     fun removeProduct(cartProduct: CartProduct) {
-        removeProductFromCartUseCase.execute(cartProduct.product.id)
+        removeProductFromCartUseCase.invoke(cartProduct.product.id)
     }
 
     companion object {

@@ -7,7 +7,7 @@ class SearchRecommendedProductsUseCase (
     private val searchRepository: SearchRepository
 ) {
 
-    fun execute(
+    fun invoke(
         onGetProducts: (List<Product>) -> Unit
     ) {
         searchRepository.searchRecommendedProducts(onGetProducts)

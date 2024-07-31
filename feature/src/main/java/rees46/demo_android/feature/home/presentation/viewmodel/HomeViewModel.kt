@@ -18,7 +18,7 @@ class HomeViewModel(
     val recommendationFlow: StateFlow<Recommendation> = _recommendationFlow.asStateFlow()
 
     init {
-        getRecommendationUseCase.execute(
+        getRecommendationUseCase.invoke(
             recommenderCode = recommenderCode,
             onGetRecommendation = {
                 viewModelScope.launch { _recommendationFlow.emit(it) }

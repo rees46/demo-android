@@ -6,7 +6,7 @@ class RemoveProductFromCartUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    fun execute(productId: String) {
+    fun invoke(productId: String) {
         cartRepository.removeProduct(productId)
     }
 }

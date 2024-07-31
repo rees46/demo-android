@@ -7,7 +7,7 @@ class AddProductToCartUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    fun execute(
+    fun invoke(
         product: Product,
         quantity: Int
     ) {

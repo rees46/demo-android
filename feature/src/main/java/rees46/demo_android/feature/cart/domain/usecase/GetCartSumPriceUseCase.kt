@@ -7,6 +7,6 @@ class GetCartSumPriceUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    fun execute(): StateFlow<Double> =
+    fun invoke(): StateFlow<Double> =
         cartRepository.getSumPrice()
 }

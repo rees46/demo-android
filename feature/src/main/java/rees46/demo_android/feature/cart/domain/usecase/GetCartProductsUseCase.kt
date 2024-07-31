@@ -8,6 +8,6 @@ class GetCartProductsUseCase (
     private val cartRepository: CartRepository
 ) {
 
-    fun execute(): StateFlow<MutableList<CartProduct>> =
+    fun invoke(): StateFlow<MutableList<CartProduct>> =
         cartRepository.getCartProducts()
 }
