@@ -19,20 +19,21 @@ class ProductDetailsViewModel(
     private val getCartProductUseCase: GetCartProductUseCase,
     private val getRecommendationForProductUseCase: GetRecommendationForProductUseCase,
     private val recommendedCode: String,
-    product: Product
+    product: Product?
 ) : ViewModel() {
 
     private val _recommendationFlow: MutableStateFlow<Recommendation> = MutableStateFlow(Recommendation("", emptyList()))
     val recommendationFlow: StateFlow<Recommendation> = _recommendationFlow.asStateFlow()
 
-    private val _currentProductFlow: MutableStateFlow<Product> = MutableStateFlow(product)
-    val currentProductFlow: StateFlow<Product> = _currentProductFlow.asStateFlow()
+    private val _currentProductFlow: MutableStateFlow<Product?> = MutableStateFlow(product)
+    val currentProductFlow: StateFlow<Product?> = _currentProductFlow.asStateFlow()
 
-    private var _countCartProductFlow: MutableStateFlow<Int> = MutableStateFlow(getCartProductUseCase.invoke(product.id)?.quantity ?: 1)
+    private var _countCartProductFlow: MutableStateFlow<Int> =
+        MutableStateFlow(if(product != null) getCartProductUseCase.invoke(product.id)?.quantity ?: 1 else 0)
     var countCartProductFlow: StateFlow<Int> = _countCartProductFlow.asStateFlow()
 
-    fun updateProduct(product: Product) {
-        _countCartProductFlow.update { getCartProductUseCase.invoke(product.id)?.quantity ?: 1 }
+    fun updateProduct(product: Product?) {
+        _countCartProductFlow.update { product?.let { getCartProductUseCase.invoke(product.id)?.quantity ?: 1 } ?:0 }
         _currentProductFlow.update { product }
     }
 
@@ -55,10 +56,12 @@ class ProductDetailsViewModel(
     }
 
     private fun addToCart() {
-        addProductToCartUseCase.invoke(
-            product = _currentProductFlow.value,
-            quantity = _countCartProductFlow.value
-        )
+        _currentProductFlow.value?.let { product ->
+            addProductToCartUseCase.invoke(
+                product = product,
+                quantity = _countCartProductFlow.value
+            )
+        }
     }
 
     private fun increaseCount() = _countCartProductFlow.update { it.inc() }

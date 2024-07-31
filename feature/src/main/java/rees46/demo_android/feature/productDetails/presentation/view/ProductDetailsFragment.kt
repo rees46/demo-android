@@ -90,22 +90,24 @@ class ProductDetailsFragment : Fragment() {
         }
     }
 
-    private fun updateProduct(product: Product) {
+    private fun updateProduct(product: Product?) {
         viewModel.updateProduct(product)
     }
 
-    private fun updateCardProductView(product: Product) {
-        viewModel.updateRecommendationBlock(product.id)
+    private fun updateCardProductView(product: Product?) {
+        product?.let {
+            viewModel.updateRecommendationBlock(product.id)
 
-        binding.apply {
-            productImage.updateImage(product.pictureUrl)
+            binding.apply {
+                productImage.updateImage(product.pictureUrl)
 
-            productNameText.text = product.name
-            producerNameText.text = product.producerName
-            priceText.text = product.priceFormatted
-            oldPriceText.text = product.priceFullFormatted
-            descriptionText.text = product.description
-            productRatingBar.rating = product.rating
+                productNameText.text = product.name
+                producerNameText.text = product.producerName
+                priceText.text = product.priceFormatted
+                oldPriceText.text = product.priceFullFormatted
+                descriptionText.text = product.description
+                productRatingBar.rating = product.rating
+            }
         }
     }
 
