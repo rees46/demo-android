@@ -58,13 +58,11 @@
                 android:hint="@string/you_story_key" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <include layout="@layout/view_upload_button"
             android:id="@+id/upload_button"
-            style="@style/BlackButton"
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:layout_marginTop="@dimen/settings_default_offset"
-            android:text="@string/upload" />
+            android:layout_marginTop="@dimen/settings_default_offset" />
 
         <TextView
             android:layout_width="match_parent"

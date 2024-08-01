@@ -116,23 +116,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/total_text">
 
-                    <com.google.android.material.button.MaterialButton
+                    <include layout="@layout/view_continue_shopping_button"
                         android:id="@+id/continue_shopping"
-                        style="@style/WhiteButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:text="@string/continue_shopping" />
+                        android:layout_weight="1" />
 
-                    <com.google.android.material.button.MaterialButton
+                    <include layout="@layout/view_checkout_shopping_button"
                         android:id="@+id/checkout_button"
-                        style="@style/BlackButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:text="@string/checkout" />
+                        android:layout_weight="1" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 

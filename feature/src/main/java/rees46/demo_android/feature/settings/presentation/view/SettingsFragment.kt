@@ -39,7 +39,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupViews() {
-        binding.uploadButton.setOnClickListener {
+        binding.uploadButton.root.setOnClickListener {
             val storeId = binding.storeKeyTextInput.text?.toString() ?: ""
             SdkUtils.initialize(
                 sdk = sdk,
