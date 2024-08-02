@@ -1,12 +1,11 @@
-package com.rees46.demo_android.ui.recyclerView
+package com.rees46.demo_android.ui.recyclerView.base.view.adapter
 
-import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
 
-abstract class ItemAdapter<IV: ItemView> (
-    private val context: Context,
-    private val items: List<Item>,
+abstract class ItemAdapter<I: Item, IV: ItemView> (
+    private val items: List<I>,
     private val listener: OnClickListener
 ) : RecyclerView.Adapter<ItemViewHolder>() {
 

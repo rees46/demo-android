@@ -7,22 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.rees46.demo_android.ui.recyclerView.Item
-import com.rees46.demo_android.ui.recyclerView.ItemAdapter
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.NavigationUtils
-import rees46.demo_android.core.utils.ViewUtils
-import rees46.demo_android.feature.products.presentation.adapter.ProductsAdapter
 import rees46.demo_android.databinding.FragmentProductsBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.products.presentation.adapter.ProductItem
-import rees46.demo_android.feature.products.presentation.adapter.ProductViewSettings
+import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.scroll.view.adapter.ProductsAdapter
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
@@ -40,8 +38,6 @@ class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
         }
     }
 
-    private lateinit var productViewSettings: ProductViewSettings
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,7 +53,6 @@ class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupProductViewSettings()
         setupViews()
     }
 
@@ -68,7 +63,6 @@ class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
                 ProductsAdapter(
                     context = requireContext(),
                     productItems = productItemMapper.toProductItems(products),
-                    productViewSettings = productViewSettings,
                     listener = this@ProductsFragment
                 )
             }
@@ -78,16 +72,6 @@ class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
 
     private fun navigateProductFragment(product: Product) {
         navigator.navigate(ProductDetails(product))
-    }
-
-    private fun setupProductViewSettings() {
-        productViewSettings = ProductViewSettings(
-            width = ViewUtils.convertDpToPixel(
-                dp = 171f,
-                context = requireContext()
-            ).toInt(),
-            showButton = true
-        )
     }
 
     override fun onItemClick(item: Item) {

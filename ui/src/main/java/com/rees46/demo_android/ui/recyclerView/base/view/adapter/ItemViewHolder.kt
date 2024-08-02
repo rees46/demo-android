@@ -1,7 +1,8 @@
-package com.rees46.demo_android.ui.recyclerView
+package com.rees46.demo_android.ui.recyclerView.base.view.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.rees46.demo_android.ui.recyclerView.ItemAdapter.OnClickListener
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter.OnClickListener
 
 open class ItemViewHolder(
     private val view: ItemView,

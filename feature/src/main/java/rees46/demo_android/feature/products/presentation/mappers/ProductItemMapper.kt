@@ -1,7 +1,7 @@
 package rees46.demo_android.feature.products.presentation.mappers
 
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.products.presentation.adapter.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 
 class ProductItemMapper {
 

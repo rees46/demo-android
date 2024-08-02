@@ -1,6 +1,6 @@
-package rees46.demo_android.feature.products.presentation.adapter
+package com.rees46.demo_android.ui.recyclerView.products.base.models
 
-import com.rees46.demo_android.ui.recyclerView.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
 
 data class ProductItem(
     val id: String,

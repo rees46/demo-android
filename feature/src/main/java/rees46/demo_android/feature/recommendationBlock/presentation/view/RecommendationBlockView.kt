@@ -2,20 +2,16 @@ package rees46.demo_android.feature.recommendationBlock.presentation.view
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Handler
 import android.util.AttributeSet
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
-import com.rees46.demo_android.ui.recyclerView.Item
-import com.rees46.demo_android.ui.recyclerView.ItemAdapter
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter
 import rees46.demo_android.R
-import rees46.demo_android.core.utils.ViewUtils
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.products.presentation.adapter.ProductItem
-import rees46.demo_android.feature.products.presentation.adapter.ProductViewSettings
-import rees46.demo_android.feature.products.presentation.adapter.ProductsAdapter
+import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.recommendationBlock.view.RecommendationProductsRecyclerView
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 
@@ -26,23 +22,17 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
-    private lateinit var productsRecyclerView: RecyclerView
-    private lateinit var productsAdapter: ProductsAdapter
-
-    private val productItems: MutableList<ProductItem> = ArrayList()
+    private lateinit var productsRecyclerView: RecommendationProductsRecyclerView
 
     private var onCardProductClick: (Product) -> Unit = {  }
     private var onShowAllClick: (List<Product>) -> Unit = {  }
 
     private lateinit var productItemMapper: ProductItemMapper
-    private lateinit var productViewSettings: ProductViewSettings
 
     init {
         inflate(context, R.layout.view_recommendation_block, this)
 
         initViews()
-
-        setupProductViewSettings()
 
         changeView(false)
     }
@@ -66,21 +56,14 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     private fun setupViews() {
-        productsAdapter = ProductsAdapter(
-            context = context,
-            productItems = productItems,
-            productViewSettings = productViewSettings,
-            listener = this
-        )
-        productsRecyclerView.adapter = productsAdapter
+        productsRecyclerView.setup(this)
 
         showAllTextView.setOnClickListener {
-            onShowAllClick.invoke(productItemMapper.toProducts(productItems))
+            onShowAllClick.invoke(productItemMapper.toProducts(productsRecyclerView.productItems))
         }
     }
 
     fun update(recommendation: Recommendation) {
-        this.productItems.clear()
         addCardProducts(recommendation.products)
 
         setHeaderText(recommendation.title)
@@ -89,11 +72,7 @@ class RecommendationBlockView @JvmOverloads constructor(
     @SuppressLint("NotifyDataSetChanged")
     fun addCardProducts(product: Collection<Product>) {
         val productItems = productItemMapper.toProductItems(product)
-        this.productItems.addAll(productItems)
-
-        Handler(context.mainLooper).post {
-            productsAdapter.notifyDataSetChanged()
-        }
+        productsRecyclerView.addProductItems(productItems)
 
         changeView(true)
     }
@@ -106,16 +85,6 @@ class RecommendationBlockView @JvmOverloads constructor(
         headerTextView.isVisible = show
         showAllTextView.isVisible = show
         productsRecyclerView.isVisible = show
-    }
-
-    private fun setupProductViewSettings() {
-        productViewSettings = ProductViewSettings(
-            width = ViewUtils.convertDpToPixel(
-                dp = 140f,
-                context = context
-            ).toInt(),
-            showButton = false
-        )
     }
 
     override fun onItemClick(item: Item) {
