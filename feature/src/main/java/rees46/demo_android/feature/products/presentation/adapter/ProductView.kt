@@ -8,19 +8,23 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatRatingBar
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import com.rees46.demo_android.ui.recyclerView.Item
+import com.rees46.demo_android.ui.recyclerView.ItemAdapter
+import com.rees46.demo_android.ui.recyclerView.ItemView
 import rees46.demo_android.R
 import rees46.demo_android.core.utils.updateImage
-import rees46.demo_android.feature.productDetails.domain.models.Product
 
 @SuppressLint("ViewConstructor")
 class ProductView(
     context: Context,
     private val productViewSettings: ProductViewSettings,
     attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs) {
+) : ItemView(
+    context = context,
+    attrs = attrs
+) {
 
     private lateinit var productImageView: ImageView
     private lateinit var producerNameTextView: TextView
@@ -58,12 +62,18 @@ class ProductView(
         }
     }
 
-    internal fun updateProduct(product: Product) {
-        productImageView.updateImage(product.pictureUrl)
+    override fun bind(item: Item, listener: ItemAdapter.OnClickListener) {
+       setOnClickListener {
+            listener.onItemClick(item)
+        }
 
-        productNameTextView.text = product.name
-        producerNameTextView.text = product.producerName
-        priceTextView.text = product.priceFormatted
-        ratingBar.rating = product.rating
+        with(item as ProductItem) {
+            productImageView.updateImage(pictureUrl)
+
+            productNameTextView.text = name
+            producerNameTextView.text = producerName
+            priceTextView.text = priceFormatted
+            ratingBar.rating = rating
+        }
     }
 }

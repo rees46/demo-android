@@ -59,4 +59,5 @@ dependencies {
     implementation(libs.glide)
     implementation(project(":sdkRees46"))
     implementation(project(":core"))
+    implementation(project(":ui"))
 }

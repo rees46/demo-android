@@ -21,10 +21,12 @@ import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.ProductsDetails
 import rees46.demo_android.feature.productDetails.domain.models.Product
+import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
+    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -58,19 +60,22 @@ class HomeFragment : Fragment() {
         }
 
         with(binding) {
-            initRecommendationBlockView(newArrivalsRecommendationBlockView)
-            initRecommendationBlockView(topTrendsRecommendationBlockView)
-            initRecommendationBlockView(youLikeRecommendationBlockView)
+            setupRecommendationBlockView(newArrivalsRecommendationBlockView)
+            setupRecommendationBlockView(topTrendsRecommendationBlockView)
+            setupRecommendationBlockView(youLikeRecommendationBlockView)
         }
     }
 
-    private fun initRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
+    private fun setupRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
         recommendationBlockView.apply {
+            setup(
+                productItemMapper = productItemMapper,
+                onCardProductClick = ::navigateProductFragment,
+                onShowAllClick = ::navigateProductsFragment
+            )
             viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.recommendationFlow.collectLatest(::update)
             }
-            onCardProductClick = ::navigateProductFragment
-            onShowAllClick = ::navigateProductsFragment
         }
     }
 

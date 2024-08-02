@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.NavigationUtils
@@ -20,6 +22,8 @@ import rees46.demo_android.feature.ProductsDetails
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
+import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 
 class ProductDetailsFragment : Fragment() {
 
@@ -29,6 +33,8 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentProductDetailsBinding
+
+    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
 
     private val navigator by lazy {
         get<Navigator> {
@@ -61,10 +67,6 @@ class ProductDetailsFragment : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.countCartProductFlow.collect(::updateCount)
         }
     }
@@ -74,10 +76,20 @@ class ProductDetailsFragment : Fragment() {
 
         binding.apply {
             oldPriceText.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
+        }
 
-            recommendationBlock.apply {
-                onCardProductClick = ::updateProduct
+        setupRecommendationBlockView()
+    }
+
+    private fun setupRecommendationBlockView() {
+        binding.recommendationBlock.apply {
+            setup(
+                productItemMapper = productItemMapper,
+                onCardProductClick = ::updateProduct,
                 onShowAllClick = ::navigateProductsFragment
+            )
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.recommendationFlow.collectLatest(::update)
             }
         }
     }

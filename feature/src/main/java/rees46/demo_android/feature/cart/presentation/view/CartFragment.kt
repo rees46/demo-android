@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentCartBinding
@@ -21,10 +22,12 @@ import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.ProductsDetails
 import rees46.demo_android.feature.cart.domain.models.CartProduct
 import rees46.demo_android.feature.productDetails.domain.models.Product
+import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class CartFragment : Fragment() {
 
     private val viewModel: CartViewModel by viewModel()
+    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
 
     private lateinit var binding: FragmentCartBinding
 
@@ -53,7 +56,6 @@ class CartFragment : Fragment() {
 
         setupViews()
         setupViewModels()
-        initRecommendationBlockView()
     }
 
     private fun setupViews() {
@@ -62,6 +64,8 @@ class CartFragment : Fragment() {
             onClickRemoveCart = ::removeProduct
         )
         binding.cartProductsRecyclerView.adapter = cartProductsAdapter
+
+        setupRecommendationBlockView()
     }
 
     private fun setupViewModels() {
@@ -97,14 +101,16 @@ class CartFragment : Fragment() {
         viewModel.removeProduct(cartProduct)
     }
 
-    private fun initRecommendationBlockView() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.recommendationFlow.collect(binding.recommendationBlock::update)
-        }
-
+    private fun setupRecommendationBlockView() {
         binding.recommendationBlock.apply {
-            onCardProductClick = ::navigateProductFragment
-            onShowAllClick = ::navigateProductsFragment
+            setup(
+                productItemMapper = productItemMapper,
+                onCardProductClick = ::navigateProductFragment,
+                onShowAllClick = ::navigateProductsFragment
+            )
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.recommendationFlow.collect(::update)
+            }
         }
     }
 
