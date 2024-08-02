@@ -1,7 +1,7 @@
 package com.rees46.demo_android.ui.recyclerView.base.models
 
-open class Item {
+abstract class Item {
 
-    open fun areContentsTheSame(oldValue: Item): Boolean =
-        this == oldValue
+    abstract fun areItemsTheSame(oldValue: Item): Boolean
+    abstract fun areContentsTheSame(newItem: Item): Boolean
 }

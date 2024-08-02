@@ -72,11 +72,10 @@
             android:textColor="@color/default_subTextColor"
             android:textSize="11sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.rees46.demo_android.ui.recyclerView.search.view.SearchProductsRecyclerView
             android:id="@+id/search_result_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

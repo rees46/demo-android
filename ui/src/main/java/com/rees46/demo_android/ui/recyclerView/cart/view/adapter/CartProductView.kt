@@ -6,7 +6,6 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem

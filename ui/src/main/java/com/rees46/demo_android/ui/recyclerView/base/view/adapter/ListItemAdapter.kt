@@ -1,5 +1,6 @@
 package com.rees46.demo_android.ui.recyclerView.base.view.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncDifferConfig
@@ -11,7 +12,7 @@ abstract class ListItemAdapter<I: Item, IV: ItemView> (
     private val context: Context,
     private val items: List<I>,
     private val listener: OnItemClickListener
-) : ListAdapter<I, ItemViewHolder>(
+) : ListAdapter<I, ListItemViewHolder>(
     AsyncDifferConfig.Builder(DiffCallback<I>()).build()
 ) {
 
@@ -20,20 +21,20 @@ abstract class ListItemAdapter<I: Item, IV: ItemView> (
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
-    ): ItemViewHolder {
+    ): ListItemViewHolder {
         val itemView = createItemView()
             .apply {
                 setup()
             }
 
-        return ItemViewHolder(
+        return ListItemViewHolder(
             view = itemView,
             listener = listener
         )
     }
 
     override fun onBindViewHolder(
-        viewHolder: ItemViewHolder,
+        viewHolder: ListItemViewHolder,
         position: Int
     ) {
         viewHolder.bind(items[position])
@@ -47,7 +48,7 @@ abstract class ListItemAdapter<I: Item, IV: ItemView> (
         override fun areItemsTheSame(
             oldItem: I,
             newItem: I
-        ): Boolean = oldItem == newItem
+        ): Boolean = newItem.areItemsTheSame(oldItem)
 
         override fun areContentsTheSame(
             oldItem: I,

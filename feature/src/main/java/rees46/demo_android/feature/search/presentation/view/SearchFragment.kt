@@ -1,6 +1,8 @@
 package rees46.demo_android.feature.search.presentation.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +11,13 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.R
@@ -18,13 +25,14 @@ import rees46.demo_android.core.utils.backPressedInvoke
 import rees46.demo_android.databinding.FragmentSearchBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
-import rees46.demo_android.feature.search.presentation.adapter.SearchResultAdapter
+import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 import rees46.demo_android.feature.search.presentation.adapter.SearchResultCategoriesAdapter
 import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(), OnItemClickListener {
 
     private val viewModel: SearchViewModel by viewModel()
+    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
 
     private lateinit var binding: FragmentSearchBinding
 
@@ -32,10 +40,6 @@ class SearchFragment : Fragment() {
         get<Navigator> {
             parametersOf(findNavController())
         }
-    }
-
-    private val searchResultAdapter = SearchResultAdapter { product ->
-        navigator.navigate(ProductDetails(product))
     }
 
     private val searchResultCategoriesAdapter = SearchResultCategoriesAdapter { _ -> }
@@ -76,14 +80,17 @@ class SearchFragment : Fragment() {
     }
 
     private fun setupSearchResultProductsView() {
-        binding.searchResultRecyclerView.adapter = searchResultAdapter
+        binding.searchResultRecyclerView.setup(this)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.searchResultItems.collect {
+            viewModel.searchResultItems.collectLatest {
                 val resString = if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
                 binding.suitableProductsText.text = getString(resString)
 
-                searchResultAdapter.submitList(it)
+                val productItems = productItemMapper.toProductItems(it)
+                Handler(requireContext().mainLooper).post {
+                    binding.searchResultRecyclerView.updateItems(productItems)
+                }
             }
         }
     }
@@ -98,5 +105,11 @@ class SearchFragment : Fragment() {
                 searchResultCategoriesAdapter.submitList(it)
             }
         }
+    }
+
+    override fun onItemClick(item: Item) {
+        val product = productItemMapper.toProduct(item as ProductItem)
+
+        navigator.navigate(ProductDetails(product))
     }
 }
