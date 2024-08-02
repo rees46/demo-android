@@ -9,7 +9,9 @@ import rees46.demo_android.feature.cart.domain.repository.CartRepository
 import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
 import rees46.demo_android.feature.cart.domain.usecase.GetCartSumPriceUseCase
 import rees46.demo_android.feature.cart.domain.usecase.RemoveProductFromCartUseCase
+import rees46.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
 import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
+import kotlin.math.sin
 
 val cartModule = module {
     viewModel {
@@ -18,6 +20,11 @@ val cartModule = module {
             removeProductFromCartUseCase = get(),
             getCartSumPriceUseCase = get(),
             getRecommendationUseCase = get()
+        )
+    }
+    single {
+        CartProductItemMapper(
+            productItemMapper = get()
         )
     }
     single {

@@ -46,11 +46,10 @@
                 android:layout_marginHorizontal="@dimen/default_offset"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.rees46.demo_android.ui.recyclerView.cart.view.CartProductsRecyclerView
                     android:id="@+id/cart_products_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="5"
                     tools:listitem="@layout/view_cart_product_item" />
             </androidx.appcompat.widget.LinearLayoutCompat>

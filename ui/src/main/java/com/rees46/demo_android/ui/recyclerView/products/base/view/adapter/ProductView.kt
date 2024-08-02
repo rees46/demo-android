@@ -11,8 +11,8 @@ import androidx.appcompat.widget.AppCompatRatingBar
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 import com.rees46.ui.R
 import rees46.demo_android.core.utils.ViewUtils
@@ -67,8 +67,8 @@ abstract class ProductView(
         }
     }
 
-    override fun bind(item: Item, listener: ItemAdapter.OnClickListener) {
-       setOnClickListener {
+    override fun bind(item: Item, listener: OnItemClickListener) {
+        setOnClickListener {
             listener.onItemClick(item)
         }
 

@@ -8,6 +8,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -15,23 +18,23 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.feature.cart.presentation.adapter.CartProductsAdapter
+import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductsAdapter
 import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.ProductsDetails
 import rees46.demo_android.feature.cart.domain.models.CartProduct
+import rees46.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
-class CartFragment : Fragment() {
+class CartFragment : Fragment(), OnItemClickListener {
 
     private val viewModel: CartViewModel by viewModel()
     private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
+    private val cartProductItemMapper: CartProductItemMapper by inject<CartProductItemMapper>()
 
     private lateinit var binding: FragmentCartBinding
-
-    private lateinit var cartProductsAdapter: CartProductsAdapter
 
     private val navigator by lazy {
         get<Navigator> {
@@ -59,11 +62,7 @@ class CartFragment : Fragment() {
     }
 
     private fun setupViews() {
-        cartProductsAdapter = CartProductsAdapter(
-            context = requireContext(),
-            onClickRemoveCart = ::removeProduct
-        )
-        binding.cartProductsRecyclerView.adapter = cartProductsAdapter
+        binding.cartProductsRecyclerView.setup(this)
 
         setupRecommendationBlockView()
     }
@@ -80,11 +79,12 @@ class CartFragment : Fragment() {
         }
     }
 
-    private fun updateCart(newList: MutableList<CartProduct>) {
-        updateCartView(newList.isEmpty())
+    private fun updateCart(cartProducts: MutableList<CartProduct>) {
+        updateCartView(cartProducts.isEmpty())
 
         viewLifecycleOwner.lifecycleScope.launch {
-            cartProductsAdapter.submitList(newList)
+            val cartProductItems = cartProductItemMapper.toCartProductItems(cartProducts)
+            binding.cartProductsRecyclerView.updateItems(cartProductItems)
         }
     }
 
@@ -120,5 +120,10 @@ class CartFragment : Fragment() {
 
     private fun navigateProductsFragment(products: List<Product>) {
         navigator.navigate(ProductsDetails(products))
+    }
+
+    override fun onItemClick(item: Item) {
+        val cartProduct = cartProductItemMapper.toCartProduct(item as CartProductItem)
+        removeProduct(cartProduct)
     }
 }

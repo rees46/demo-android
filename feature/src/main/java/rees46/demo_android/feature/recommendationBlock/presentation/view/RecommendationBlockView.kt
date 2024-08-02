@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter
+import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import rees46.demo_android.R
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
@@ -18,7 +18,7 @@ import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendat
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs), ItemAdapter.OnClickListener {
+) : ConstraintLayout(context, attrs), OnItemClickListener {
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView

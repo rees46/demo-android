@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_offset">16dp</dimen>
+    <dimen name="half_default_offset">8dp</dimen>
+    <dimen name="cart_cartProduct_producerName_textSize">12sp</dimen>
+    <dimen name="cart_cartProduct_productName_textSize">16sp</dimen>
+    <dimen name="cart_cartProduct_price_textSize">16sp</dimen>
+</resources>

@@ -14,5 +14,5 @@ abstract class ItemView(
 
     abstract fun setup()
 
-    abstract fun bind(item: Item, listener: ItemAdapter.OnClickListener)
+    abstract fun bind(item: Item, listener: OnItemClickListener)
 }
