@@ -18,7 +18,6 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentCartBinding
-import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductsAdapter
 import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails

@@ -8,12 +8,12 @@ data class CartProductItem(
     var quantity: Int
 ) : Item() {
 
-    override fun areItemsTheSame(oldValue: Item): Boolean {
-        val cartProductItem = oldValue as CartProductItem
+    override fun areItemsTheSame(anotherItem: Item): Boolean {
+        val cartProductItem = anotherItem as CartProductItem
 
         return productItem.id == cartProductItem.productItem.id
     }
 
-    override fun areContentsTheSame(newItem: Item): Boolean =
-        this == newItem
+    override fun areContentsTheSame(anotherItem: Item): Boolean =
+        this == anotherItem
 }

@@ -9,6 +9,7 @@ import rees46.demo_android.feature.search.domain.repository.SearchRepository
 import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
 import rees46.demo_android.feature.search.domain.usecase.SearchProductsUseCase
 import rees46.demo_android.feature.search.domain.usecase.SearchRecommendedProductsUseCase
+import rees46.demo_android.feature.search.presentation.mappers.SearchItemMapper
 
 val searchModule = module {
     viewModel {
@@ -26,6 +27,9 @@ val searchModule = module {
         SearchMapper(
             productMapper = get()
         )
+    }
+    single {
+        SearchItemMapper()
     }
     single<SearchRepository> {
         SearchRepositoryImpl(

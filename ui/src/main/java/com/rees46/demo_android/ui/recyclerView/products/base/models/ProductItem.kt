@@ -16,17 +16,12 @@ data class ProductItem(
     val rating: Float
 ) : Item() {
 
-    override fun areItemsTheSame(oldValue: Item): Boolean {
-        val productItem = oldValue as ProductItem
-
-        Log.w("ProductItem", "areItemsTheSame: " + id + " & " + productItem.id + " = " + (id == productItem.id))
+    override fun areItemsTheSame(anotherItem: Item): Boolean {
+        val productItem = anotherItem as ProductItem
 
         return id == productItem.id
     }
 
-    override fun areContentsTheSame(newItem: Item): Boolean  {
-        Log.w("ProductItem", "areContentsTheSame: " + this + " & " + newItem + " = " + (this == newItem))
-
-        return this == newItem
-    }
+    override fun areContentsTheSame(anotherItem: Item): Boolean =
+        this == anotherItem
 }

@@ -3,24 +3,24 @@ package com.rees46.demo_android.ui.recyclerView.search.view.adapter
 import android.content.Context
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.search.models.CategoryItem
 
-class SearchProductsAdapter(
+class SearchCategoriesAdapter(
     private val context: Context,
-    private val searchProductItems: List<ProductItem>,
+    private val searchCategoryItems: List<CategoryItem>,
     private val listener: OnItemClickListener
-) : ListItemAdapter<ProductItem, SearchProductView>(
+) : ListItemAdapter<CategoryItem, SearchCategoryView>(
     context = context,
-    items = searchProductItems,
+    items = searchCategoryItems,
     listener = listener
 ) {
 
-    override fun submitList(list: MutableList<ProductItem>?) {
+    override fun submitList(list: MutableList<CategoryItem>?) {
         super.submitList(list)
     }
 
-    override fun createItemView(): SearchProductView =
-        SearchProductView(
+    override fun createItemView(): SearchCategoryView =
+        SearchCategoryView(
             context = context
         )
 }

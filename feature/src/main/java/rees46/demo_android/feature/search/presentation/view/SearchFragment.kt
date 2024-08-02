@@ -2,7 +2,6 @@ package rees46.demo_android.feature.search.presentation.view
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,13 +25,15 @@ import rees46.demo_android.databinding.FragmentSearchBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
-import rees46.demo_android.feature.search.presentation.adapter.SearchResultCategoriesAdapter
+import rees46.demo_android.feature.search.presentation.mappers.SearchItemMapper
 import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
 
 class SearchFragment : Fragment(), OnItemClickListener {
 
     private val viewModel: SearchViewModel by viewModel()
+
     private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
+    private val searchItemMapper: SearchItemMapper by inject<SearchItemMapper>()
 
     private lateinit var binding: FragmentSearchBinding
 
@@ -41,8 +42,6 @@ class SearchFragment : Fragment(), OnItemClickListener {
             parametersOf(findNavController())
         }
     }
-
-    private val searchResultCategoriesAdapter = SearchResultCategoriesAdapter { _ -> }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -96,13 +95,16 @@ class SearchFragment : Fragment(), OnItemClickListener {
     }
 
     private fun setupSearchResultCategoriesView() {
-        binding.searchResultCategoriesRecyclerView.adapter = searchResultCategoriesAdapter
+        binding.searchResultCategoriesRecyclerView.setup(this)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.searchResultCategoriesItems.collect {
                 binding.suitableCategoriesText.isVisible = it.isEmpty()
 
-                searchResultCategoriesAdapter.submitList(it)
+                val categoriesItems = searchItemMapper.toCategoryItems(it)
+                Handler(requireContext().mainLooper).post {
+                    binding.searchResultCategoriesRecyclerView.updateItems(categoriesItems)
+                }
             }
         }
     }

@@ -56,12 +56,11 @@
             android:textColor="@color/default_subTextColor"
             android:textSize="11sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.rees46.demo_android.ui.recyclerView.search.view.SearchCategoriesRecyclerView
             android:id="@+id/search_result_categories_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/suitable_products_text"

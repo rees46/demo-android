@@ -23,7 +23,6 @@ import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
-import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 
 class ProductDetailsFragment : Fragment() {
 
