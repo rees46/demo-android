@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemAdapter
 import org.koin.android.ext.android.get
@@ -20,7 +19,6 @@ import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
-import com.rees46.demo_android.ui.recyclerView.products.scroll.view.adapter.ProductsAdapter
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
@@ -29,8 +27,6 @@ class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
     private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
 
     private lateinit var binding: FragmentProductsBinding
-
-    private val gridLayoutCount = 2
 
     private val navigator by lazy {
         get<Navigator> {
@@ -58,15 +54,12 @@ class ProductsFragment : Fragment(), ItemAdapter.OnClickListener {
 
     private fun setupViews() {
         binding.productsRecyclerView.apply {
+            setup(this@ProductsFragment)
             val products = arguments?.getParcelableArrayList<Product>(NavigationUtils.PRODUCTS_ARGUMENT_FIELD)
-            adapter = products?.let {
-                ProductsAdapter(
-                    context = requireContext(),
-                    productItems = productItemMapper.toProductItems(products),
-                    listener = this@ProductsFragment
-                )
+            products?.let {
+                val productItems = productItemMapper.toProductItems(products)
+                addProductItems(productItems)
             }
-            layoutManager = GridLayoutManager(context, gridLayoutCount)
         }
     }
 

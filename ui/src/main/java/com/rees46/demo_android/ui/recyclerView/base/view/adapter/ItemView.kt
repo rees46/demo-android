@@ -12,5 +12,7 @@ abstract class ItemView(
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
+    abstract fun setup()
+
     abstract fun bind(item: Item, listener: ItemAdapter.OnClickListener)
 }

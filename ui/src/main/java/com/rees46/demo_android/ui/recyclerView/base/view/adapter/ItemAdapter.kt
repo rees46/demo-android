@@ -20,6 +20,9 @@ abstract class ItemAdapter<I: Item, IV: ItemView> (
         viewType: Int
     ): ItemViewHolder {
         val itemView = createItemView()
+            .apply {
+                setup()
+            }
 
         return ItemViewHolder(
             view = itemView,

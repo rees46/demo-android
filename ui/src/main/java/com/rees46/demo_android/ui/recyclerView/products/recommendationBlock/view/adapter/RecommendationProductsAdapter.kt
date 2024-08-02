@@ -17,7 +17,5 @@ class RecommendationProductsAdapter(
     override fun createItemView(): ItemView =
         RecommendationProductView(
             context = context
-        ).apply {
-            setup()
-        }
+        )
 }

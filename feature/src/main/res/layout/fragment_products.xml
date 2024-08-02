@@ -20,11 +20,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.rees46.demo_android.ui.recyclerView.products.scroll.view.ScrollProductsRecyclerView
                 android:id="@+id/products_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:itemCount="5"
                 tools:listitem="@layout/view_product_item" />
         </androidx.appcompat.widget.LinearLayoutCompat>
