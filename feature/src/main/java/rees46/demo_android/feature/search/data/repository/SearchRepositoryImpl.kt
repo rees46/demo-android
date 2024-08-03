@@ -1,10 +1,9 @@
 package rees46.demo_android.feature.search.data.repository
 
 import rees46.demo_android.feature.search.data.api.SearchApi
-import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.search.data.mappers.SearchMapper
 import rees46.demo_android.feature.search.domain.repository.SearchRepository
-import rees46.demo_android.feature.search.domain.models.Category
+import rees46.demo_android.feature.search.domain.models.Search
 
 class SearchRepositoryImpl (
     private val productApi: SearchApi,
@@ -13,24 +12,22 @@ class SearchRepositoryImpl (
 
     override fun searchProducts(
         query: String,
-        onGetProducts: (List<Product>) -> Unit,
-        onGetCategories: (List<Category>) -> Unit
+        onGetSearch: (Search) -> Unit
     ) {
         productApi.search(
             query = query,
             onSearch = { searchDto ->
-                onGetProducts.invoke(searchMapper.toProducts(searchDto))
-                onGetCategories.invoke(searchMapper.toCategories(searchDto))
+                onGetSearch.invoke(searchMapper.toSearch(searchDto))
             }
         )
     }
 
     override fun searchRecommendedProducts(
-        onGetProducts: (List<Product>) -> Unit
+        onGetSearch: (Search) -> Unit
     ) {
         productApi.searchBlank(
             onSearch = { searchDto ->
-                onGetProducts(searchMapper.toProducts(searchDto))
+                onGetSearch(searchMapper.toSearch(searchDto))
             }
         )
     }

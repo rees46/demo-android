@@ -4,15 +4,23 @@ import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 
 data class SearchItem(
-    val productItem: ProductItem,
-    val categoryItem: CategoryItem
+    val productItems: List<ProductItem>,
+    val categoryItems: List<CategoryItem>
 ): Item() {
 
     override fun areItemsTheSame(anotherItem: Item): Boolean {
         val searchItem = anotherItem as SearchItem
 
-        return productItem.areItemsTheSame(searchItem.productItem)
-                && categoryItem.areItemsTheSame(searchItem.categoryItem)
+        with(searchItem) {
+            for (index in 0..productItems.size) {
+                if (!productItems[index].areItemsTheSame(productItems[index])
+                    || !categoryItems[index].areItemsTheSame(categoryItems[index])) {
+                    return false
+                }
+            }
+        }
+
+        return true
     }
 
     override fun areContentsTheSame(anotherItem: Item): Boolean =

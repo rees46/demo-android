@@ -7,7 +7,6 @@ import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.search.models.CategoryItem
-import com.rees46.demo_android.ui.recyclerView.search.models.SearchItem
 import com.rees46.ui.R
 
 class SearchCategoryView @JvmOverloads constructor(
@@ -33,8 +32,8 @@ class SearchCategoryView @JvmOverloads constructor(
     }
 
     override fun bind(item: Item, listener: OnItemClickListener) {
-        val searchItem = item as SearchItem
-        with(searchItem.categoryItem) {
+        val categoryItem = item as CategoryItem
+        with(categoryItem) {
             categoryNameTextView.text = name
 
             rootView.setOnClickListener{

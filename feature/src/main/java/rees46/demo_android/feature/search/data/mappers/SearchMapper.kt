@@ -1,20 +1,20 @@
 package rees46.demo_android.feature.search.data.mappers
 
 import rees46.demo_android.feature.productDetails.data.mappers.ProductMapper
-import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.search.data.models.CategoryDto
 import rees46.demo_android.feature.search.data.models.SearchDto
 import rees46.demo_android.feature.search.domain.models.Category
+import rees46.demo_android.feature.search.domain.models.Search
 
 class SearchMapper(
     private val productMapper: ProductMapper
 ) {
 
-    fun toCategories(searchDto: SearchDto): List<Category> =
-        searchDto.categories.map { toCategory(it) }
-
-    fun toProducts(searchDto: SearchDto): List<Product> =
-        productMapper.toProducts(searchDto.products)
+    fun toSearch(searchDto: SearchDto): Search =
+        Search(
+            products = productMapper.toProducts(searchDto.products),
+            categories = toCategories(searchDto.categories)
+        )
 
     private fun toCategory(categoryDto: CategoryDto): Category =
         with(categoryDto) {
@@ -26,4 +26,7 @@ class SearchMapper(
                 count = count
             )
         }
+
+    private fun toCategories(categoriesDto: List<CategoryDto>): List<Category> =
+        categoriesDto.map { toCategory(it) }
 }

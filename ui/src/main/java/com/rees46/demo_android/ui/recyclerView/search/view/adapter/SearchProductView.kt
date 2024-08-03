@@ -8,7 +8,6 @@ import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
-import com.rees46.demo_android.ui.recyclerView.search.models.SearchItem
 import com.rees46.ui.R
 import rees46.demo_android.core.utils.updateImage
 
@@ -39,8 +38,7 @@ class SearchProductView @JvmOverloads constructor(
     }
 
     override fun bind(item: Item, listener: OnItemClickListener) {
-        val searchItem = item as SearchItem
-        with(searchItem.productItem) {
+        with(item as ProductItem) {
             productNameTextView.text = name
             priceTextView.text = priceFormatted
             productImageView.updateImage(pictureUrl)

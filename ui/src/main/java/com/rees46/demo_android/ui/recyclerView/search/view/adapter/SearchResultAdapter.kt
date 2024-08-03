@@ -29,6 +29,10 @@ class SearchResultAdapter<I: Item>(
                 SearchProductView(
                     context = context
                 )
+            ItemEnum.CART_PRODUCT ->
+                SearchCategoryView(
+                    context = context
+                )
         }
 
         itemView.setup()

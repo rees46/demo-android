@@ -1,8 +1,7 @@
 package rees46.demo_android.feature.search.domain.usecase
 
-import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.search.domain.repository.SearchRepository
-import rees46.demo_android.feature.search.domain.models.Category
+import rees46.demo_android.feature.search.domain.models.Search
 
 class SearchProductsUseCase (
     private val searchRepository: SearchRepository
@@ -10,9 +9,8 @@ class SearchProductsUseCase (
 
     fun invoke(
         query: String,
-        onGetProducts: (List<Product>) -> Unit,
-        onGetCategories: (List<Category>) -> Unit
+        onGetSearch: (Search) -> Unit
     ) {
-        searchRepository.searchProducts(query, onGetProducts, onGetCategories)
+        searchRepository.searchProducts(query, onGetSearch)
     }
 }

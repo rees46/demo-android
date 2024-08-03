@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rees46.demo_android.ui.recyclerView.base.ItemEnum
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
@@ -74,36 +75,24 @@ class SearchFragment : Fragment(), OnItemClickListener {
             viewModel.searchProduct(query = it?.toString() ?: "")
         }
 
-        setupSearchResultProductsView()
-        setupSearchResultCategoriesView()
+        setupSearchResultView()
     }
 
-    private fun setupSearchResultProductsView() {
-        binding.searchResultRecyclerView.setup(this)
+    private fun setupSearchResultView() {
+        binding.searchResultRecyclerView.setup(this, ItemEnum.SEARCH_PRODUCT)
+        binding.searchResultCategoriesRecyclerView.setup(this, ItemEnum.SEARCH_CATEGORY)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.searchResultItems.collectLatest {
-                val resString = if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
+                val resString = if(it.products.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
                 binding.suitableProductsText.text = getString(resString)
 
-                val searchItems = searchItemMapper.productsToSearchItems(it)
+                binding.suitableCategoriesText.isVisible = it.categories.isEmpty()
+
+                val searchItem = searchItemMapper.toSearchItem(it)
                 Handler(requireContext().mainLooper).post {
-                    binding.searchResultRecyclerView.updateItems(searchItems)
-                }
-            }
-        }
-    }
-
-    private fun setupSearchResultCategoriesView() {
-        binding.searchResultCategoriesRecyclerView.setup(this)
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.searchResultCategoriesItems.collect {
-                binding.suitableCategoriesText.isVisible = it.isEmpty()
-
-                val searchItems = searchItemMapper.categoriesToSearchItems(it)
-                Handler(requireContext().mainLooper).post {
-                    binding.searchResultCategoriesRecyclerView.updateItems(searchItems)
+                    binding.searchResultRecyclerView.updateItems(searchItem.productItems)
+                    binding.searchResultCategoriesRecyclerView.updateItems(searchItem.categoryItems)
                 }
             }
         }
