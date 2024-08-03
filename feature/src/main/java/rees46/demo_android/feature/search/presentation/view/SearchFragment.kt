@@ -88,8 +88,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
 
                 binding.suitableCategoriesText.isVisible = it.categories.isEmpty()
 
-                val searchItem = searchItemMapper.toSearchItem(it)
                 Handler(requireContext().mainLooper).post {
+                    val searchItem = searchItemMapper.toSearchItem(it)
                     binding.searchResultRecyclerView.updateProductItems(searchItem.productItems)
                     binding.searchResultCategoriesRecyclerView.updateCategoryItems(searchItem.categoryItems)
                 }

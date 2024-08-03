@@ -2,9 +2,11 @@ package rees46.demo_android.feature.recommendationBlock.presentation.view
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
@@ -71,8 +73,10 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     @SuppressLint("NotifyDataSetChanged")
     fun addCardProducts(product: Collection<Product>) {
-        val productItems = productItemMapper.toProductItems(product)
-        productsRecyclerView.addProductItems(productItems)
+        Handler(context.mainLooper).post {
+            val productItems = productItemMapper.toProductItems(product)
+            productsRecyclerView.updateItems(productItems)
+        }
 
         changeView(true)
     }

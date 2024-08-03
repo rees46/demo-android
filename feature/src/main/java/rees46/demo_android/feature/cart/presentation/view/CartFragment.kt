@@ -1,6 +1,7 @@
 package rees46.demo_android.feature.cart.presentation.view
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,7 +83,10 @@ class CartFragment : Fragment(), OnItemClickListener {
         updateCartView(cartProducts.isEmpty())
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val cartProductItems = cartProductItemMapper.toCartProductItems(cartProducts)
+
+        }
+        val cartProductItems = cartProductItemMapper.toCartProductItems(cartProducts)
+        Handler(requireContext().mainLooper).post {
             binding.cartProductsRecyclerView.updateItems(cartProductItems)
         }
     }

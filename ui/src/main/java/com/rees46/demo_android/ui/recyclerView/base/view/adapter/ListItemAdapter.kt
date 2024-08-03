@@ -9,29 +9,31 @@ import com.rees46.demo_android.ui.recyclerView.base.models.Item
 abstract class ListItemAdapter<I: Item, IV: ItemView> (
     val items: List<I>,
     private val listener: OnItemClickListener
-) : ListAdapter<I, ItemViewHolder>(AsyncDifferConfig.Builder(DiffCallback<I>()).build()),
-    ItemAdapter<I, IV> {
+) : ListAdapter<I, ItemViewHolder>(AsyncDifferConfig.Builder(DiffCallback<I>()).build()) {
+
+    abstract fun createItemView(): ItemView
 
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
-    ): ItemViewHolder =
-        createViewHolder(
+    ): ItemViewHolder {
+        val itemView = createItemView()
+            .apply {
+                setup()
+            }
+
+        return ItemViewHolder(
+            view = itemView,
             listener = listener
         )
+    }
 
     override fun onBindViewHolder(
         viewHolder: ItemViewHolder,
         position: Int
     ) {
-        bindHolder(
-            viewHolder = viewHolder,
-            position = position
-        )
+        viewHolder.bind(items[position])
     }
-
-    override fun getItem(position: Int): I =
-        items[position]
 
     override fun getItemCount(): Int {
         return items.size

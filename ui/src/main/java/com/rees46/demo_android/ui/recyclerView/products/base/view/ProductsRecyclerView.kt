@@ -1,9 +1,8 @@
 package com.rees46.demo_android.ui.recyclerView.products.base.view
 
 import android.content.Context
-import android.os.Handler
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerView
+import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 import com.rees46.demo_android.ui.recyclerView.products.base.view.adapter.ProductItemView
 
@@ -11,7 +10,7 @@ abstract class ProductsRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RecyclerView<ProductItem, ProductItemView>(
+) : ListRecyclerView<ProductItem, ProductItemView>(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr
@@ -19,12 +18,10 @@ abstract class ProductsRecyclerView @JvmOverloads constructor(
 
     val productItems: MutableList<ProductItem> = ArrayList()
 
-    fun addProductItems(productItems: Collection<ProductItem>) {
+    fun updateItems(productItems: List<ProductItem>) {
         this.productItems.clear()
         this.productItems.addAll(productItems)
 
-        Handler(context.mainLooper).post {
-            adapter?.notifyDataSetChanged()
-        }
+        listAdapter?.submitList(productItems)
     }
 }

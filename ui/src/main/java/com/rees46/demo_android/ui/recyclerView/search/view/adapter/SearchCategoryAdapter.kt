@@ -17,7 +17,5 @@ class SearchCategoryAdapter(
     override fun createItemView(): SearchCategoryItemView =
         SearchCategoryItemView(
             context = context
-        ).apply {
-            setup()
-        }
+        )
 }

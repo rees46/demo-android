@@ -12,7 +12,7 @@ abstract class ItemView(
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
-    abstract fun setup()
+    open fun setup() { }
 
     abstract fun bind(item: Item, listener: OnItemClickListener)
 }

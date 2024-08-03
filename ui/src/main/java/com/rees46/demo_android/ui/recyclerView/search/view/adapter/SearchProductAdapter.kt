@@ -17,7 +17,5 @@ class SearchProductAdapter(
     override fun createItemView(): SearchProductItemView =
         SearchProductItemView(
             context = context
-        ).apply {
-            setup()
-        }
+        )
 }

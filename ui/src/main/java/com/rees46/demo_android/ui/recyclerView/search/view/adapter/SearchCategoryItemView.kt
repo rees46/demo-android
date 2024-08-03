@@ -19,9 +19,6 @@ class SearchCategoryItemView @JvmOverloads constructor(
     private var binding: ViewSearchCategoryItemBinding =
         ViewSearchCategoryItemBinding.inflate(LayoutInflater.from(context), this, true)
 
-    override fun setup() {
-    }
-
     override fun bind(item: Item, listener: OnItemClickListener) {
         with(binding) {
             with(item as CategoryItem) {

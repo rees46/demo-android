@@ -1,6 +1,7 @@
 package rees46.demo_android.feature.products.presentation.view
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,8 +58,10 @@ class ProductsFragment : Fragment(), OnItemClickListener {
             setup(this@ProductsFragment)
             val products = arguments?.getParcelableArrayList<Product>(NavigationUtils.PRODUCTS_ARGUMENT_FIELD)
             products?.let {
-                val productItems = productItemMapper.toProductItems(products)
-                addProductItems(productItems)
+                Handler(requireContext().mainLooper).post {
+                    val productItems = productItemMapper.toProductItems(products)
+                    updateItems(productItems)
+                }
             }
         }
     }

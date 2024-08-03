@@ -21,9 +21,6 @@ class SearchProductItemView @JvmOverloads constructor(
     private var binding: ViewSearchProductItemBinding =
         ViewSearchProductItemBinding.inflate(LayoutInflater.from(context), this, true)
 
-    override fun setup() {
-    }
-
     override fun bind(item: Item, listener: OnItemClickListener) {
         with(binding) {
             with(item as ProductItem) {

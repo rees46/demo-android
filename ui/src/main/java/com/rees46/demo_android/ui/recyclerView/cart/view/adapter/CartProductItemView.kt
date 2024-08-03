@@ -21,9 +21,6 @@ class CartProductItemView @JvmOverloads constructor(
     private var binding: ViewCartProductItemBinding =
         ViewCartProductItemBinding.inflate(LayoutInflater.from(context), this, true)
 
-    override fun setup() {
-    }
-
     override fun bind(item: Item, listener: OnItemClickListener) {
         with(binding) {
             removeButton.setOnClickListener {
