@@ -1,4 +1,4 @@
-package com.rees46.demo_android.ui.recyclerView.cart.view
+package com.rees46.demo_android.ui.recyclerView.search.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,28 +6,28 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
-import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductView
-import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductsAdapter
+import com.rees46.demo_android.ui.recyclerView.search.models.CategoryItem
+import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchCategoryAdapter
+import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchCategoryView
 
-class CartProductsRecyclerView @JvmOverloads constructor(
+class SearchCategoriesRecyclerView @JvmOverloads constructor(
     private val context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ListRecyclerView<CartProductItem, CartProductView>(
+) : ListRecyclerView<CategoryItem, SearchCategoryView>(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr
 ) {
 
-    private val cartProductItems: MutableList<CartProductItem> = ArrayList()
+    private val categoryItems: MutableList<CategoryItem> = arrayListOf()
 
     override fun createAdapter(
         listener: OnItemClickListener
-    ): ListItemAdapter<CartProductItem, CartProductView> =
-       CartProductsAdapter(
+    ): ListItemAdapter<CategoryItem, SearchCategoryView> =
+        SearchCategoryAdapter(
            context = context,
-           cartProductItems = cartProductItems,
+           items = categoryItems,
            listener = listener
        )
 
@@ -37,10 +37,10 @@ class CartProductsRecyclerView @JvmOverloads constructor(
                 orientation = VERTICAL
             }
 
-    fun updateItems(cartProductItems: List<CartProductItem>) {
-        this.cartProductItems.clear()
-        this.cartProductItems.addAll(cartProductItems)
+    fun updateCategoryItems(categoryItems: List<CategoryItem>) {
+        this.categoryItems.clear()
+        this.categoryItems.addAll(categoryItems)
 
-        listAdapter?.submitList(cartProductItems)
+        listAdapter?.submitList(categoryItems)
     }
 }

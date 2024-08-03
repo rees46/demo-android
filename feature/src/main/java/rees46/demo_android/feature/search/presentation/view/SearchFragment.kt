@@ -10,7 +10,6 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.recyclerView.base.ItemEnum
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
@@ -79,8 +78,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
     }
 
     private fun setupSearchResultView() {
-        binding.searchResultRecyclerView.setup(this, ItemEnum.SEARCH_PRODUCT)
-        binding.searchResultCategoriesRecyclerView.setup(this, ItemEnum.SEARCH_CATEGORY)
+        binding.searchResultRecyclerView.setup(this)
+        binding.searchResultCategoriesRecyclerView.setup(this)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.searchResultItems.collectLatest {
@@ -91,8 +90,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
 
                 val searchItem = searchItemMapper.toSearchItem(it)
                 Handler(requireContext().mainLooper).post {
-                    binding.searchResultRecyclerView.updateItems(searchItem.productItems)
-                    binding.searchResultCategoriesRecyclerView.updateItems(searchItem.categoryItems)
+                    binding.searchResultRecyclerView.updateProductItems(searchItem.productItems)
+                    binding.searchResultCategoriesRecyclerView.updateCategoryItems(searchItem.categoryItems)
                 }
             }
         }

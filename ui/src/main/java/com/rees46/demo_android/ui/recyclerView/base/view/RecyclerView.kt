@@ -21,7 +21,9 @@ abstract class RecyclerView<I: Item, IV: ItemView> @JvmOverloads constructor(
         this.layoutManager = createLayoutManager()
     }
 
-    abstract fun createAdapter(listener: OnItemClickListener): RecyclerItemAdapter<I, IV>
+    abstract fun createAdapter(
+        listener: OnItemClickListener
+    ): RecyclerItemAdapter<I, IV>
 
     abstract fun createLayoutManager(): LayoutManager
 }

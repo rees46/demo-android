@@ -2,7 +2,6 @@ package com.rees46.demo_android.ui.recyclerView.base.view
 
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.base.ItemEnum
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
@@ -17,12 +16,10 @@ abstract class ListRecyclerView<I: Item, IV: ItemView> @JvmOverloads constructor
     protected var listAdapter: ListItemAdapter<I, IV>? = null
 
     fun setup(
-        listener: OnItemClickListener,
-        itemEnum: ItemEnum
+        listener: OnItemClickListener
     ) {
         listAdapter = createAdapter(
-            listener = listener,
-            itemEnum = itemEnum
+            listener = listener
         )
         adapter = listAdapter
 
@@ -30,8 +27,7 @@ abstract class ListRecyclerView<I: Item, IV: ItemView> @JvmOverloads constructor
     }
 
     abstract fun createAdapter(
-        listener: OnItemClickListener,
-        itemEnum: ItemEnum
+        listener: OnItemClickListener
     ): ListItemAdapter<I, IV>
 
     abstract fun createLayoutManager(): LayoutManager

@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.recyclerView.base.ItemEnum
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
@@ -62,7 +61,7 @@ class CartFragment : Fragment(), OnItemClickListener {
     }
 
     private fun setupViews() {
-        binding.cartProductsRecyclerView.setup(this, ItemEnum.CART_PRODUCT)
+        binding.cartProductsRecyclerView.setup(this)
 
         setupRecommendationBlockView()
     }
