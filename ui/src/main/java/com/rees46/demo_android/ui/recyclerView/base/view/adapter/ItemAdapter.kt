@@ -1,19 +1,13 @@
 package com.rees46.demo_android.ui.recyclerView.base.view.adapter
 
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 
-abstract class ItemAdapter<I: Item, IV: ItemView> (
-    private val items: List<I>,
-    private val listener: OnItemClickListener
-) : RecyclerView.Adapter<ItemViewHolder>() {
+interface ItemAdapter<I: Item, IV: ItemView> {
 
-    abstract fun createItemView(): ItemView
+    fun createItemView(): ItemView
 
-    override fun onCreateViewHolder(
-        viewGroup: ViewGroup,
-        viewType: Int
+    fun createViewHolder(
+        listener: OnItemClickListener
     ): ItemViewHolder {
         val itemView = createItemView()
             .apply {
@@ -26,14 +20,14 @@ abstract class ItemAdapter<I: Item, IV: ItemView> (
         )
     }
 
-    override fun onBindViewHolder(
+    fun bindHolder(
         viewHolder: ItemViewHolder,
         position: Int
     ) {
-        viewHolder.bind(items[position])
+        viewHolder.bind(
+            item = getItem(position)
+        )
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    fun getItem(position: Int): Item
 }

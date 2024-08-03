@@ -1,6 +1,5 @@
 package com.rees46.demo_android.ui.recyclerView.products.base.models
 
-import android.util.Log
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 
 data class ProductItem(

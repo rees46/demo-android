@@ -29,7 +29,9 @@ val searchModule = module {
         )
     }
     single {
-        SearchItemMapper()
+        SearchItemMapper(
+            productItemMapper = get()
+        )
     }
     single<SearchRepository> {
         SearchRepositoryImpl(

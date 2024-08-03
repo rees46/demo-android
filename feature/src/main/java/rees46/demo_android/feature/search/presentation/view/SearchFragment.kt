@@ -86,9 +86,9 @@ class SearchFragment : Fragment(), OnItemClickListener {
                 val resString = if(it.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
                 binding.suitableProductsText.text = getString(resString)
 
-                val productItems = productItemMapper.toProductItems(it)
+                val searchItems = searchItemMapper.productsToSearchItems(it)
                 Handler(requireContext().mainLooper).post {
-                    binding.searchResultRecyclerView.updateItems(productItems)
+                    binding.searchResultRecyclerView.updateItems(searchItems)
                 }
             }
         }
@@ -101,9 +101,9 @@ class SearchFragment : Fragment(), OnItemClickListener {
             viewModel.searchResultCategoriesItems.collect {
                 binding.suitableCategoriesText.isVisible = it.isEmpty()
 
-                val categoriesItems = searchItemMapper.toCategoryItems(it)
+                val searchItems = searchItemMapper.categoriesToSearchItems(it)
                 Handler(requireContext().mainLooper).post {
-                    binding.searchResultCategoriesRecyclerView.updateItems(categoriesItems)
+                    binding.searchResultCategoriesRecyclerView.updateItems(searchItems)
                 }
             }
         }

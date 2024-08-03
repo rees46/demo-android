@@ -39,6 +39,6 @@ class CartProductsRecyclerView @JvmOverloads constructor(
         this.cartProductItems.clear()
         this.cartProductItems.addAll(cartProductItems)
 
-        listAdapter?.submitList(cartProductItems)
+        //listAdapter?.submitList(cartProductItems)
     }
 }
