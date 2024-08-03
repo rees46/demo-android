@@ -7,14 +7,14 @@ import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
-import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductView
+import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductItemView
 import com.rees46.demo_android.ui.recyclerView.cart.view.adapter.CartProductsAdapter
 
 class CartProductsRecyclerView @JvmOverloads constructor(
     private val context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ListRecyclerView<CartProductItem, CartProductView>(
+) : ListRecyclerView<CartProductItem, CartProductItemView>(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr
@@ -24,7 +24,7 @@ class CartProductsRecyclerView @JvmOverloads constructor(
 
     override fun createAdapter(
         listener: OnItemClickListener
-    ): ListItemAdapter<CartProductItem, CartProductView> =
+    ): ListItemAdapter<CartProductItem, CartProductItemView> =
        CartProductsAdapter(
            context = context,
            cartProductItems = cartProductItems,

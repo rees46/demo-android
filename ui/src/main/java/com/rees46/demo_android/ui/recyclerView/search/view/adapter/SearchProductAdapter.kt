@@ -9,14 +9,13 @@ class SearchProductAdapter(
     private val context: Context,
     items: List<ProductItem>,
     listener: OnItemClickListener
-) : ListItemAdapter<ProductItem, SearchProductView>(
-    context = context,
+) : ListItemAdapter<ProductItem, SearchProductItemView>(
     items = items,
     listener = listener
 ) {
 
-    override fun createItemView(): SearchProductView =
-        SearchProductView(
+    override fun createItemView(): SearchProductItemView =
+        SearchProductItemView(
             context = context
         ).apply {
             setup()

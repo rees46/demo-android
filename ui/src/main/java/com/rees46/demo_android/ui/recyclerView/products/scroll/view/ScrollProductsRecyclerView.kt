@@ -28,7 +28,6 @@ class ScrollProductsRecyclerView @JvmOverloads constructor(
         GridLayoutManager(context, GRID_LAYOUT_COUNT)
 
     companion object {
-
         private const val GRID_LAYOUT_COUNT = 2
     }
 }

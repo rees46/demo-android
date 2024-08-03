@@ -7,7 +7,7 @@ import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 abstract class ProductsAdapter(
     items: List<ProductItem>,
     listener: OnItemClickListener
-) : RecyclerItemAdapter<ProductItem, ProductView>(
+) : RecyclerItemAdapter<ProductItem, ProductItemView>(
     items = items,
     listener = listener
 )

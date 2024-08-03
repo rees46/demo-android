@@ -16,8 +16,7 @@ class ScrollProductsAdapter(
 ) {
 
     override fun createItemView(): ItemView =
-        ScrollProductView(
-            context = context,
-            attrs = null
+        ScrollProductItemView(
+            context = context
         )
 }

@@ -1,6 +1,5 @@
 package com.rees46.demo_android.ui.recyclerView.base.view.adapter
 
-import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 
 abstract class ListItemAdapter<I: Item, IV: ItemView> (
-    private val context: Context,
     val items: List<I>,
     private val listener: OnItemClickListener
 ) : ListAdapter<I, ItemViewHolder>(AsyncDifferConfig.Builder(DiffCallback<I>()).build()),

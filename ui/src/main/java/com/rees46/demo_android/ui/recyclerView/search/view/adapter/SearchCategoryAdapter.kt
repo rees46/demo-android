@@ -9,14 +9,13 @@ class SearchCategoryAdapter(
     private val context: Context,
     items: List<CategoryItem>,
     listener: OnItemClickListener
-) : ListItemAdapter<CategoryItem, SearchCategoryView>(
-    context = context,
+) : ListItemAdapter<CategoryItem, SearchCategoryItemView>(
     items = items,
     listener = listener
 ) {
 
-    override fun createItemView(): SearchCategoryView =
-        SearchCategoryView(
+    override fun createItemView(): SearchCategoryItemView =
+        SearchCategoryItemView(
             context = context
         ).apply {
             setup()

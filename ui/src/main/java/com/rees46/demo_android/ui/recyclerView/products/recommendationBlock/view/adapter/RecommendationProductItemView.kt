@@ -3,13 +3,13 @@ package com.rees46.demo_android.ui.recyclerView.products.recommendationBlock.vie
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.products.base.view.adapter.ProductView
+import com.rees46.demo_android.ui.recyclerView.products.base.view.adapter.ProductItemView
 
 @SuppressLint("ViewConstructor")
-class RecommendationProductView(
+class RecommendationProductItemView(
     context: Context,
     attrs: AttributeSet? = null
-) : ProductView(
+) : ProductItemView(
     context = context,
     attrs = attrs
 ) {

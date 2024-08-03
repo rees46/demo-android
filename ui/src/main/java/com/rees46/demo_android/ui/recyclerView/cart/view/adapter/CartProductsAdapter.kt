@@ -9,14 +9,13 @@ class CartProductsAdapter(
     private val context: Context,
     cartProductItems: List<CartProductItem>,
     listener: OnItemClickListener
-) : ListItemAdapter<CartProductItem, CartProductView>(
-    context = context,
+) : ListItemAdapter<CartProductItem, CartProductItemView>(
     items = cartProductItems,
     listener = listener
 ) {
 
-    override fun createItemView(): CartProductView =
-        CartProductView(
+    override fun createItemView(): CartProductItemView =
+        CartProductItemView(
             context = context
         )
 }

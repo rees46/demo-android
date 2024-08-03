@@ -16,7 +16,7 @@ class RecommendationProductsAdapter(
 ) {
 
     override fun createItemView(): ItemView =
-        RecommendationProductView(
+        RecommendationProductItemView(
             context = context
         )
 }

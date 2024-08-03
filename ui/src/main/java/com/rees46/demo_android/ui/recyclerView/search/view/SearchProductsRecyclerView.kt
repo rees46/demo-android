@@ -8,13 +8,13 @@ import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchProductAdapter
-import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchProductView
+import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchProductItemView
 
 class SearchProductsRecyclerView @JvmOverloads constructor(
     private val context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ListRecyclerView<ProductItem, SearchProductView>(
+) : ListRecyclerView<ProductItem, SearchProductItemView>(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr
@@ -24,7 +24,7 @@ class SearchProductsRecyclerView @JvmOverloads constructor(
 
     override fun createAdapter(
         listener: OnItemClickListener
-    ): ListItemAdapter<ProductItem, SearchProductView> =
+    ): ListItemAdapter<ProductItem, SearchProductItemView> =
         SearchProductAdapter(
            context = context,
            items = productItems,
