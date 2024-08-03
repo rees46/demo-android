@@ -14,14 +14,4 @@ abstract class ProductsRecyclerView @JvmOverloads constructor(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr
-) {
-
-    val productItems: MutableList<ProductItem> = ArrayList()
-
-    fun updateItems(productItems: List<ProductItem>) {
-        this.productItems.clear()
-        this.productItems.addAll(productItems)
-
-        listAdapter?.submitList(productItems)
-    }
-}
+)

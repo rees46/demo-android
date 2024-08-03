@@ -61,7 +61,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         productsRecyclerView.setup(this)
 
         showAllTextView.setOnClickListener {
-            onShowAllClick.invoke(productItemMapper.toProducts(productsRecyclerView.productItems))
+            onShowAllClick.invoke(productItemMapper.toProducts(productsRecyclerView.items))
         }
     }
 

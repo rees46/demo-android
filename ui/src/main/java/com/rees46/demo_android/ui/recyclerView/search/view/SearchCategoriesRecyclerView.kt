@@ -20,14 +20,12 @@ class SearchCategoriesRecyclerView @JvmOverloads constructor(
     defStyleAttr = defStyleAttr
 ) {
 
-    private val categoryItems: MutableList<CategoryItem> = arrayListOf()
-
     override fun createAdapter(
         listener: OnItemClickListener
     ): ListItemAdapter<CategoryItem, SearchCategoryItemView> =
         SearchCategoryAdapter(
            context = context,
-           items = categoryItems,
+           items = items,
            listener = listener
        )
 
@@ -36,11 +34,4 @@ class SearchCategoriesRecyclerView @JvmOverloads constructor(
             .apply {
                 orientation = VERTICAL
             }
-
-    fun updateCategoryItems(categoryItems: List<CategoryItem>) {
-        this.categoryItems.clear()
-        this.categoryItems.addAll(categoryItems)
-
-        listAdapter?.submitList(categoryItems)
-    }
 }

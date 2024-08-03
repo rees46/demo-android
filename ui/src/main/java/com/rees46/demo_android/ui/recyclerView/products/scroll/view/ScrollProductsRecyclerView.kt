@@ -20,7 +20,7 @@ class ScrollProductsRecyclerView @JvmOverloads constructor(
     override fun createAdapter(listener: OnItemClickListener): ScrollProductsAdapter =
         ScrollProductsAdapter(
             context = context,
-            productItems = productItems,
+            productItems = items,
             listener = listener
         )
 

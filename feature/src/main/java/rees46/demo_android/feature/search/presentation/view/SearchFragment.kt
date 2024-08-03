@@ -90,8 +90,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
 
                 Handler(requireContext().mainLooper).post {
                     val searchItem = searchItemMapper.toSearchItem(it)
-                    binding.searchResultRecyclerView.updateProductItems(searchItem.productItems)
-                    binding.searchResultCategoriesRecyclerView.updateCategoryItems(searchItem.categoryItems)
+                    binding.searchResultRecyclerView.updateItems(searchItem.productItems)
+                    binding.searchResultCategoriesRecyclerView.updateItems(searchItem.categoryItems)
                 }
             }
         }

@@ -20,7 +20,7 @@ class RecommendationProductsRecyclerView @JvmOverloads constructor(
     override fun createAdapter(listener: OnItemClickListener): RecommendationProductsAdapter =
         RecommendationProductsAdapter(
             context = context,
-            productItems = productItems,
+            productItems = items,
             listener = listener
         )
 

@@ -1,7 +1,6 @@
 package com.rees46.demo_android.ui.recyclerView.cart.view
 
 import android.content.Context
-import android.os.Handler
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
@@ -21,14 +20,12 @@ class CartProductsRecyclerView @JvmOverloads constructor(
     defStyleAttr = defStyleAttr
 ) {
 
-    private val cartProductItems: MutableList<CartProductItem> = ArrayList()
-
     override fun createAdapter(
         listener: OnItemClickListener
     ): ListItemAdapter<CartProductItem, CartProductItemView> =
        CartProductsAdapter(
            context = context,
-           cartProductItems = cartProductItems,
+           cartProductItems = items,
            listener = listener
        )
 
@@ -37,11 +34,4 @@ class CartProductsRecyclerView @JvmOverloads constructor(
             .apply {
                 orientation = VERTICAL
             }
-
-    fun updateItems(cartProductItems: List<CartProductItem>) {
-        this.cartProductItems.clear()
-        this.cartProductItems.addAll(cartProductItems)
-
-        listAdapter?.submitList(cartProductItems)
-    }
 }

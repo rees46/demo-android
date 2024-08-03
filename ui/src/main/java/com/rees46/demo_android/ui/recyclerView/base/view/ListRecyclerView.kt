@@ -13,7 +13,9 @@ abstract class ListRecyclerView<I: Item, IV: ItemView> @JvmOverloads constructor
     defStyleAttr: Int = 0
 ) : androidx.recyclerview.widget.RecyclerView(context, attrs, defStyleAttr) {
 
-    protected var listAdapter: ListItemAdapter<I, IV>? = null
+    private var listAdapter: ListItemAdapter<I, IV>? = null
+
+    val items: MutableList<I> = arrayListOf()
 
     fun setup(
         listener: OnItemClickListener
@@ -21,8 +23,8 @@ abstract class ListRecyclerView<I: Item, IV: ItemView> @JvmOverloads constructor
         listAdapter = createAdapter(
             listener = listener
         )
-        adapter = listAdapter
 
+        this.adapter = listAdapter
         this.layoutManager = createLayoutManager()
     }
 
@@ -31,4 +33,11 @@ abstract class ListRecyclerView<I: Item, IV: ItemView> @JvmOverloads constructor
     ): ListItemAdapter<I, IV>
 
     abstract fun createLayoutManager(): LayoutManager
+
+    fun updateItems(items: List<I>) {
+        this.items.clear()
+        this.items.addAll(items)
+
+        listAdapter?.submitList(items)
+    }
 }

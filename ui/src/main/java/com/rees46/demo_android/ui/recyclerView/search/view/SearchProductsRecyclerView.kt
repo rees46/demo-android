@@ -20,14 +20,12 @@ class SearchProductsRecyclerView @JvmOverloads constructor(
     defStyleAttr = defStyleAttr
 ) {
 
-    private val productItems: MutableList<ProductItem> = arrayListOf()
-
     override fun createAdapter(
         listener: OnItemClickListener
     ): ListItemAdapter<ProductItem, SearchProductItemView> =
         SearchProductAdapter(
            context = context,
-           items = productItems,
+           items = items,
            listener = listener
        )
 
@@ -36,11 +34,4 @@ class SearchProductsRecyclerView @JvmOverloads constructor(
             .apply {
                 orientation = VERTICAL
             }
-
-    fun updateProductItems(productItems: List<ProductItem>) {
-        this.productItems.clear()
-        this.productItems.addAll(productItems)
-
-        listAdapter?.submitList(productItems)
-    }
 }
