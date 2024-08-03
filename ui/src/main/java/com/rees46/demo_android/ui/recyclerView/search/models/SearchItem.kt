@@ -11,18 +11,21 @@ data class SearchItem(
     override fun areItemsTheSame(anotherItem: Item): Boolean {
         val searchItem = anotherItem as SearchItem
 
-        with(searchItem) {
-            for (index in 0..productItems.size) {
-                if (!productItems[index].areItemsTheSame(productItems[index])
-                    || !categoryItems[index].areItemsTheSame(categoryItems[index])) {
-                    return false
-                }
+        return areItemsTheSame(productItems, searchItem.productItems)
+                && areItemsTheSame(categoryItems, anotherItem.categoryItems)
+    }
+
+    override fun areContentsTheSame(anotherItem: Item): Boolean =
+        this == anotherItem
+
+    private fun areItemsTheSame(items: List<Item>, anotherItems: List<Item>): Boolean {
+        for (i in 0..items.size) {
+            if(i >= anotherItems.size) return false
+            if (!items[i].areItemsTheSame(categoryItems[i])) {
+                return false
             }
         }
 
         return true
     }
-
-    override fun areContentsTheSame(anotherItem: Item): Boolean =
-        this == anotherItem
 }
