@@ -34,10 +34,10 @@ abstract class ProductItemView @JvmOverloads constructor(
         with(binding) {
             oldPriceText.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
 
-            shopButton.root.isVisible = isShopVisible
+            shopButton.isVisible = isShopVisible
 
             productImage.updateLayoutParams {
-                width = ViewUtils.convertDpToPixel(
+                width = ViewUtils.convertDpToPx(
                     dp = layoutWidth,
                     context = context
                 ).toInt()

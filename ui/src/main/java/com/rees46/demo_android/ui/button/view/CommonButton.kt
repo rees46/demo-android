@@ -15,8 +15,10 @@ import rees46.demo_android.core.utils.ViewUtils
 @SuppressLint("ViewConstructor")
 open class CommonButton @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0,
+    val attrs: AttributeSet? = null,
+    val defStyleAttr: Int = 0,
+    private val textSizeRes: Int = R.dimen.default_button_textSize,
+    private val widthRes: Int? = null,
     @ColorRes private val backgroundColorRes: Int,
     @ColorRes private val textColorRes: Int
 ) : MaterialButton(context, attrs, defStyleAttr)  {
@@ -26,7 +28,7 @@ open class CommonButton @JvmOverloads constructor(
     }
 
     private fun setupView() {
-        textSize = ViewUtils.convertResToDp(R.dimen.default_button_textSize, context).toFloat()
+        textSize = ViewUtils.convertResToDp(textSizeRes, context)
         setTypeface(null, Typeface.BOLD)
         textAlignment = View.TEXT_ALIGNMENT_CENTER
         gravity = Gravity.CENTER
@@ -43,5 +45,16 @@ open class CommonButton @JvmOverloads constructor(
             button = this,
             colorRes = textColorRes
         )
+
+        strokeWidth = ViewUtils.convertResToDp(R.dimen.default_button_strokeWidth, context).toInt()
+
+        strokeColor = ColorUtils.getColorList(
+            context = context,
+            colorRes = R.color.black
+        )
+
+        if(widthRes != null) {
+            width = ViewUtils.convertResToPx(widthRes, context).toInt()
+        }
     }
 }

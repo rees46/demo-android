@@ -6,13 +6,13 @@ import androidx.annotation.DimenRes
 
 object ViewUtils {
 
-    fun convertDpToPixel(
+    fun convertDpToPx(
         dp: Float,
         context: Context
     ): Float =
         dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
 
-    fun convertPixelToDp(
+    fun convertPxToDp(
         px: Float,
         context: Context
     ): Float =
@@ -21,6 +21,14 @@ object ViewUtils {
     fun convertResToDp(
         @DimenRes id: Int,
         context: Context
-    ) =
-        convertPixelToDp(context.resources.getDimension(id), context)
+    ): Float =
+        convertPxToDp(context.resources.getDimension(id), context)
+
+    fun convertResToPx(
+        @DimenRes id: Int,
+        context: Context
+    ): Float {
+        val dp = convertResToDp(id, context)
+        return convertDpToPx(dp, context)
+    }
 }

@@ -13,4 +13,6 @@
     <dimen name="product_productName_textSize">16sp</dimen>
     <dimen name="product_oldPrice_textSize">12sp</dimen>
     <dimen name="product_price_textSize">14sp</dimen>
+    <dimen name="product_shop_button_textSize">12sp</dimen>
+    <dimen name="product_shop_button_width">62dp</dimen>
 </resources>
