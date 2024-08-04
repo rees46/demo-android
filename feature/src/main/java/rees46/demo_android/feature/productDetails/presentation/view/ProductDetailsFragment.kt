@@ -96,8 +96,10 @@ class ProductDetailsFragment : Fragment() {
     private fun setupCardAction(onCardActionClick: (ProductAction) -> Unit) {
         binding.apply {
             addToCartButton.setOnClickListener { onCardActionClick.invoke(ProductAction.ADD) }
-            minusButton.setOnClickListener { onCardActionClick.invoke(ProductAction.DECREASE) }
-            plusButton.setOnClickListener { onCardActionClick.invoke(ProductAction.INCREASE) }
+            countCard.setOnClickListener(
+                onMinusClick = { onCardActionClick.invoke(ProductAction.DECREASE) },
+                onPlusClick = { onCardActionClick.invoke(ProductAction.INCREASE) }
+            )
         }
     }
 
@@ -123,7 +125,7 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun updateCount(count: Int) {
-        binding.countInCartText.text = count.toString()
+       binding.countCard.updateCount(count)
     }
 
     private fun navigateProductsFragment(products: List<Product>) {

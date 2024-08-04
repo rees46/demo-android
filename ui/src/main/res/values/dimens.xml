@@ -16,4 +16,5 @@
     <dimen name="product_shop_button_textSize">12sp</dimen>
     <dimen name="product_shop_button_width">62dp</dimen>
     <dimen name="error_default_offset">20dp</dimen>
+    <dimen name="count_card_default_offset">20dp</dimen>
 </resources>
