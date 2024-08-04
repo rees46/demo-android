@@ -28,9 +28,10 @@
         android:gravity="center"
         android:layout_marginTop="@dimen/settings_default_offset" />
 
-    <include layout="@layout/view_go_home_button"
+    <com.rees46.demo_android.ui.button.view.CommonBlackButton
         android:id="@+id/go_home_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:text="@string/go_home"
         android:layout_marginTop="@dimen/settings_default_offset" />
 </LinearLayout>

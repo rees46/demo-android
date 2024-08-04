@@ -183,11 +183,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <include layout="@layout/view_add_to_cart_button"
+            <com.rees46.demo_android.ui.button.view.CommonBlackButton
                 android:id="@+id/add_to_cart_button"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="@dimen/default_offset"
+                android:text="@string/add_to_cart"
                 app:layout_constraintBottom_toBottomOf="@+id/count_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/count_card"

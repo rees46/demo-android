@@ -6,8 +6,6 @@
     <dimen name="half_default_offset">8dp</dimen>
     <dimen name="small_default_offset">4dp</dimen>
     <dimen name="header_textSize">32sp</dimen>
-    <dimen name="default_button_cornerRadius">6dp</dimen>
-    <dimen name="default_button_textSize">16sp</dimen>
     <dimen name="stories_header_textSize">24sp</dimen>
     <dimen name="recommendationBlock_header_textSize">24sp</dimen>
     <dimen name="recommendationBlock_showAll_textSize">14sp</dimen>

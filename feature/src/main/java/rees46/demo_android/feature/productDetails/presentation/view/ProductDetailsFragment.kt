@@ -95,7 +95,7 @@ class ProductDetailsFragment : Fragment() {
 
     private fun setupCardAction(onCardActionClick: (ProductAction) -> Unit) {
         binding.apply {
-            addToCartButton.root.setOnClickListener { onCardActionClick.invoke(ProductAction.ADD) }
+            addToCartButton.setOnClickListener { onCardActionClick.invoke(ProductAction.ADD) }
             minusButton.setOnClickListener { onCardActionClick.invoke(ProductAction.DECREASE) }
             plusButton.setOnClickListener { onCardActionClick.invoke(ProductAction.INCREASE) }
         }

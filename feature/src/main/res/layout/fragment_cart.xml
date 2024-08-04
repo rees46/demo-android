@@ -109,23 +109,25 @@
                 <LinearLayout
                     android:id="@+id/buttons_layout"
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="@dimen/default_offset"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/total_text">
 
-                    <include layout="@layout/view_continue_shopping_button"
+                    <com.rees46.demo_android.ui.button.view.CommonWhiteButton
                         android:id="@+id/continue_shopping"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/continue_shopping"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1" />
 
-                    <include layout="@layout/view_checkout_shopping_button"
+                    <com.rees46.demo_android.ui.button.view.CommonBlackButton
                         android:id="@+id/checkout_button"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/checkout"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1" />
                 </LinearLayout>
