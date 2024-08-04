@@ -15,7 +15,7 @@
     <dimen name="recommendationBlock_cardProduct_price_textSize">14sp</dimen>
     <dimen name="cart_shipping_textSize">16sp</dimen>
     <dimen name="cart_price_textSize">16sp</dimen>
-    <dimen name="settings_default_offset">20dp</dimen>
     <dimen name="card_product_default_offset">20dp</dimen>
     <dimen name="card_product_medium_offset">12dp</dimen>
+    <dimen name="settings_default_offset">20dp</dimen>
 </resources>

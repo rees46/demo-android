@@ -23,8 +23,5 @@
     <string name="upload">Upload</string>
     <string name="shop">Shop</string>
     <string name="reviews"><u>46 reviews</u></string>
-    <string name="error_header">Something \nwent wrong.</string>
-    <string name="error_description">Page not found.</string>
-    <string name="go_home">Go home</string>
     <string name="checkout">Checkout</string>
 </resources>

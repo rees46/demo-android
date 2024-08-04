@@ -26,12 +26,12 @@
         android:textColor="@color/default_textColor"
         android:textSize="18sp"
         android:gravity="center"
-        android:layout_marginTop="@dimen/settings_default_offset" />
+        android:layout_marginTop="@dimen/error_default_offset" />
 
     <com.rees46.demo_android.ui.button.view.CommonBlackButton
         android:id="@+id/go_home_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/go_home"
-        android:layout_marginTop="@dimen/settings_default_offset" />
+        android:layout_marginTop="@dimen/error_default_offset" />
 </LinearLayout>
