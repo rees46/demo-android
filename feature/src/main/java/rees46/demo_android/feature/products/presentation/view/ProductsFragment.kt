@@ -13,13 +13,13 @@ import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.core.utils.NavigationUtils
 import rees46.demo_android.databinding.FragmentProductsBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import rees46.demo_android.core.utils.NavigationUtils
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductsFragment : Fragment(), OnItemClickListener {

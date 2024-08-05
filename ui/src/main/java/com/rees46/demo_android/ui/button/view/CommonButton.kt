@@ -8,9 +8,9 @@ import android.view.Gravity
 import android.view.View
 import androidx.annotation.ColorRes
 import com.google.android.material.button.MaterialButton
-import com.rees46.demo_android.ui.utils.ColorUtils
+import com.rees46.demo_android.ui.utils.ViewColorUtils
 import com.rees46.ui.R
-import rees46.demo_android.core.utils.ViewUtils
+import com.rees46.demo_android.ui.utils.DimensionsConverter
 
 @SuppressLint("ViewConstructor")
 open class CommonButton @JvmOverloads constructor(
@@ -28,33 +28,33 @@ open class CommonButton @JvmOverloads constructor(
     }
 
     private fun setupView() {
-        textSize = ViewUtils.convertResToDp(textSizeRes, context)
+        textSize = DimensionsConverter.convertResToDp(textSizeRes, context)
         setTypeface(null, Typeface.BOLD)
         textAlignment = View.TEXT_ALIGNMENT_CENTER
         gravity = Gravity.CENTER
 
         setCornerRadiusResource(R.dimen.default_button_cornerRadius)
 
-        ColorUtils.setBackgroundButtonColor(
+        ViewColorUtils.setBackgroundButtonColor(
             context = context,
             button = this,
             colorRes = backgroundColorRes
         )
-        ColorUtils.setTextButtonColor(
+        ViewColorUtils.setTextButtonColor(
             context = context,
             button = this,
             colorRes = textColorRes
         )
 
-        strokeWidth = ViewUtils.convertResToDp(R.dimen.default_button_strokeWidth, context).toInt()
+        strokeWidth = DimensionsConverter.convertResToDp(R.dimen.default_button_strokeWidth, context).toInt()
 
-        strokeColor = ColorUtils.getColorList(
+        strokeColor = ViewColorUtils.getColorList(
             context = context,
             colorRes = R.color.black
         )
 
         if(widthRes != null) {
-            width = ViewUtils.convertResToPx(widthRes, context).toInt()
+            width = DimensionsConverter.convertResToPx(widthRes, context).toInt()
         }
     }
 }

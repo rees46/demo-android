@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 
-object ColorUtils {
+object ViewColorUtils {
 
     fun getColorList(
         context: Context,

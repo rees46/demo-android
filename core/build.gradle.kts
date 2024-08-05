@@ -40,7 +40,6 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.material)
-    implementation(libs.glide)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.compat)

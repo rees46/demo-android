@@ -1,10 +1,10 @@
-package rees46.demo_android.core.utils
+package com.rees46.demo_android.ui.utils
 
 import android.content.Context
 import android.util.DisplayMetrics
 import androidx.annotation.DimenRes
 
-object ViewUtils {
+object DimensionsConverter {
 
     fun convertDpToPx(
         dp: Float,

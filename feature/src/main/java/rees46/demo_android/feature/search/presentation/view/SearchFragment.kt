@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rees46.demo_android.ui.extensions.backPressedInvoke
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
@@ -20,7 +21,6 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.R
-import rees46.demo_android.core.utils.backPressedInvoke
 import rees46.demo_android.databinding.FragmentSearchBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails

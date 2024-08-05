@@ -3,13 +3,12 @@ package com.rees46.demo_android.ui.recyclerView.search.view.adapter
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import com.rees46.demo_android.ui.extensions.updateImage
 import com.rees46.demo_android.ui.recyclerView.base.models.Item
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
 import com.rees46.ui.databinding.ViewSearchProductItemBinding
-import rees46.demo_android.core.utils.updateImage
-
 class SearchProductItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null

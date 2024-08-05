@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rees46.demo_android.ui.extensions.updateImage
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -15,7 +16,6 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.utils.NavigationUtils
-import rees46.demo_android.core.utils.updateImage
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductsDetails

@@ -1,4 +1,4 @@
-package rees46.demo_android.core.utils
+package com.rees46.demo_android.ui.extensions
 
 import androidx.fragment.app.Fragment
 
