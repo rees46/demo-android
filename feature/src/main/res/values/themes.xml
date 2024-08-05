@@ -1,11 +1,13 @@
 <resources>
-    <style name="HeaderText" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/header_textColor</item>
-        <item name="android:textSize">@dimen/header_textSize</item>
-        <item name="android:textStyle">bold</item>
+    <style name="Widget.Theme.Demoandroid.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black</item>
     </style>
 
     <style name="SearchView" parent="Widget.Material3.SearchView">
         <item name="backgroundTint">@color/white</item>
+    </style>
+
+    <style name="RatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressTint">@color/yellow</item>
     </style>
 </resources>

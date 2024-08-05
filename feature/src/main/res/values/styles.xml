@@ -1,9 +1,4 @@
 <resources>
-
-    <style name="Widget.Theme.Demoandroid.ButtonBar.Fullscreen" parent="">
-        <item name="android:background">@color/black</item>
-    </style>
-
     <style name="DrawerMenuButton" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textColor">@color/black</item>
         <item name="android:textAlignment">textStart</item>
@@ -11,5 +6,11 @@
         <item name="iconTint">@color/black</item>
         <item name="iconGravity">end</item>
         <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="HeaderText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/header_textColor</item>
+        <item name="android:textSize">@dimen/header_textSize</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

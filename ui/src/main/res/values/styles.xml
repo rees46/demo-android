@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/inter</item>
@@ -7,9 +8,5 @@
 
     <style name="SuggestTextBold" parent="SuggestTextRegular">
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="RatingBar" parent="Widget.AppCompat.RatingBar.Small">
-        <item name="android:progressTint">@color/yellow</item>
     </style>
 </resources>
