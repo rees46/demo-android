@@ -19,7 +19,7 @@ import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
-import rees46.demo_android.core.utils.NavigationUtils
+import rees46.demo_android.core.settings.NavigationSettings
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductsFragment : Fragment(), OnItemClickListener {
@@ -56,7 +56,7 @@ class ProductsFragment : Fragment(), OnItemClickListener {
     private fun setupViews() {
         binding.productsRecyclerView.apply {
             setup(this@ProductsFragment)
-            val products = arguments?.getParcelableArrayList<Product>(NavigationUtils.PRODUCTS_ARGUMENT_FIELD)
+            val products = arguments?.getParcelableArrayList<Product>(NavigationSettings.PRODUCTS_ARGUMENT_FIELD)
             products?.let {
                 Handler(requireContext().mainLooper).post {
                     val productItems = productItemMapper.toProductItems(products)

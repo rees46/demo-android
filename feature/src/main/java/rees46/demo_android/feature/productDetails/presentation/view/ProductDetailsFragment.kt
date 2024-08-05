@@ -15,7 +15,7 @@ import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.core.utils.NavigationUtils
+import rees46.demo_android.core.settings.NavigationSettings
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
 import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductsDetails
@@ -27,7 +27,7 @@ import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapp
 class ProductDetailsFragment : Fragment() {
 
     private val viewModel: ProductDetailsViewModel by viewModel {
-        val product = arguments?.getParcelable<Product>(NavigationUtils.PRODUCT_ARGUMENT_FIELD)
+        val product = arguments?.getParcelable<Product>(NavigationSettings.PRODUCT_ARGUMENT_FIELD)
         parametersOf(product)
     }
 
