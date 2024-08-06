@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/producer_name_text"
+        style="@style/ProductDetails.ProductName"
+        android:layout_marginTop="@dimen/card_product_default_offset"
+        tools:text="Producer name" />
+
+    <TextView
+        android:id="@+id/product_name_text"
+        style="@style/ProductDetails.ProducerName"
+        tools:text="Producer name" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/card_product_medium_offset">
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/product_rating_bar"
+            style="@style/ProductDetails.RatingBar" />
+
+        <TextView
+            android:id="@+id/reviews_text"
+            style="@style/ProductDetails.Reviews"
+            android:layout_marginStart="12dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/description_text"
+        style="@style/ProductDetails.Description"
+        tools:text="Description text"
+        android:layout_marginTop="@dimen/card_product_medium_offset" />
+
+    <TextView
+        android:id="@+id/old_price_text"
+        style="@style/ProductDetails.OldPrice"
+        tools:text="$ 1000"
+        android:layout_marginTop="@dimen/card_product_default_offset" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/price_text"
+            style="@style/ProductDetails.Price"
+            tools:text="$ 759"
+            android:layout_marginTop="@dimen/small_default_offset" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            style="@style/ProductDetails.SaleCard"
+            android:layout_marginStart="@dimen/default_offset">
+
+            <TextView
+                android:id="@+id/sale_text"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="4dp"
+                style="@style/ProductDetails.SaleCard.Text"
+                android:text="-35%"
+                tools:ignore="HardcodedText" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>

@@ -1,6 +1,5 @@
 package rees46.demo_android.feature.productDetails.presentation.view
 
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -73,10 +72,6 @@ class ProductDetailsFragment : Fragment() {
     private fun setupViews() {
         setupCardAction(viewModel::proceedCartAction)
 
-        binding.apply {
-            oldPriceText.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
-        }
-
         setupRecommendationBlockView()
     }
 
@@ -114,12 +109,7 @@ class ProductDetailsFragment : Fragment() {
             binding.apply {
                 productImage.updateImage(product.pictureUrl)
 
-                productNameText.text = product.name
-                producerNameText.text = product.producerName
-                priceText.text = product.priceFormatted
-                oldPriceText.text = product.priceFullFormatted
-                descriptionText.text = product.description
-                productRatingBar.rating = product.rating
+                binding.productDetailsView.setProduct(product)
             }
         }
     }
