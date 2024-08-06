@@ -46,7 +46,7 @@
                 android:layout_marginHorizontal="@dimen/default_offset"
                 android:orientation="vertical">
 
-                <com.rees46.demo_android.ui.recyclerView.cart.view.CartProductsRecyclerView
+                <rees46.demo_android.feature.cart.presentation.view.recyclerView.CartProductsRecyclerView
                     android:id="@+id/cart_products_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

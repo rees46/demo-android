@@ -1,15 +1,16 @@
-package com.rees46.demo_android.ui.recyclerView.cart.view.adapter
+package rees46.demo_android.feature.cart.presentation.adapter
 
 import android.content.Context
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
+import rees46.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
+import rees46.demo_android.feature.cart.presentation.view.recyclerView.CartProductItemView
 
 class CartProductsAdapter(
     private val context: Context,
-    cartProductItems: List<CartProductItem>,
+    cartProductItems: List<CartProductRecyclerViewItem>,
     listener: OnItemClickListener
-) : ListItemAdapter<CartProductItem, CartProductItemView>(
+) : ListItemAdapter<CartProductRecyclerViewItem, CartProductItemView>(
     items = cartProductItems,
     listener = listener
 ) {

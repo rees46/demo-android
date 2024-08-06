@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
+import rees46.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -126,7 +126,7 @@ class CartFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(item: RecyclerViewItem) {
-        val cartProduct = cartProductItemMapper.toCartProduct(item as CartProductItem)
+        val cartProduct = cartProductItemMapper.toCartProduct(item as CartProductRecyclerViewItem)
         removeProduct(cartProduct)
     }
 }
