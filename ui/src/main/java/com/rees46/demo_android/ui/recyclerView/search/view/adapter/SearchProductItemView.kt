@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.rees46.demo_android.ui.extensions.updateImage
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
@@ -20,7 +20,7 @@ class SearchProductItemView @JvmOverloads constructor(
     private var binding: ViewSearchProductItemBinding =
         ViewSearchProductItemBinding.inflate(LayoutInflater.from(context), this, true)
 
-    override fun bind(item: Item, listener: OnItemClickListener) {
+    override fun bind(item: RecyclerViewItem, listener: OnItemClickListener) {
         with(binding) {
             with(item as ProductItem) {
                 productNameText.text = name

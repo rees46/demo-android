@@ -4,9 +4,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
-abstract class ListItemAdapter<I: Item, IV: ItemView> (
+abstract class ListItemAdapter<I: RecyclerViewItem, IV: ItemView> (
     val items: List<I>,
     private val listener: OnItemClickListener
 ) : ListAdapter<I, ItemViewHolder>(AsyncDifferConfig.Builder(DiffCallback<I>()).build()) {
@@ -39,7 +39,7 @@ abstract class ListItemAdapter<I: Item, IV: ItemView> (
         return items.size
     }
 
-    private class DiffCallback<I: Item> : DiffUtil.ItemCallback<I>() {
+    private class DiffCallback<I: RecyclerViewItem> : DiffUtil.ItemCallback<I>() {
         override fun areItemsTheSame(
             oldItem: I,
             newItem: I

@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import com.rees46.demo_android.ui.extensions.updateImage
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
@@ -45,7 +45,7 @@ abstract class ProductItemView @JvmOverloads constructor(
         }
     }
 
-    override fun bind(item: Item, listener: OnItemClickListener) {
+    override fun bind(item: RecyclerViewItem, listener: OnItemClickListener) {
         setOnClickListener {
             listener.onItemClick(item)
         }

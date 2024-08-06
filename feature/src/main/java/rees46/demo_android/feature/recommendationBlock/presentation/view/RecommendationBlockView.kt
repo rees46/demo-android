@@ -6,9 +6,8 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import rees46.demo_android.R
 import rees46.demo_android.feature.productDetails.domain.models.Product
@@ -91,7 +90,7 @@ class RecommendationBlockView @JvmOverloads constructor(
         productsRecyclerView.isVisible = show
     }
 
-    override fun onItemClick(item: Item) {
+    override fun onItemClick(item: RecyclerViewItem) {
         val product = productItemMapper.toProduct(item as ProductItem)
         onCardProductClick.invoke(product)
     }

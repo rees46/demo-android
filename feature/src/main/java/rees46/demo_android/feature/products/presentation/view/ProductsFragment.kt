@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -70,7 +70,7 @@ class ProductsFragment : Fragment(), OnItemClickListener {
         navigator.navigate(ProductDetails(product))
     }
 
-    override fun onItemClick(item: Item) {
+    override fun onItemClick(item: RecyclerViewItem) {
         val product = productItemMapper.toProduct(item as ProductItem)
         navigateProductFragment(product)
     }

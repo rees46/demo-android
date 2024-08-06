@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.rees46.demo_android.ui.extensions.updateImage
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
@@ -21,7 +21,7 @@ class CartProductItemView @JvmOverloads constructor(
     private var binding: ViewCartProductItemBinding =
         ViewCartProductItemBinding.inflate(LayoutInflater.from(context), this, true)
 
-    override fun bind(item: Item, listener: OnItemClickListener) {
+    override fun bind(item: RecyclerViewItem, listener: OnItemClickListener) {
         with(binding) {
             removeButton.setOnClickListener {
                 listener.onItemClick(item)

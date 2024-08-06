@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.recyclerView.base.models.Item
+import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.cart.models.CartProductItem
 import kotlinx.coroutines.flow.collectLatest
@@ -125,7 +125,7 @@ class CartFragment : Fragment(), OnItemClickListener {
         navigator.navigate(ProductsDetails(products))
     }
 
-    override fun onItemClick(item: Item) {
+    override fun onItemClick(item: RecyclerViewItem) {
         val cartProduct = cartProductItemMapper.toCartProduct(item as CartProductItem)
         removeProduct(cartProduct)
     }
