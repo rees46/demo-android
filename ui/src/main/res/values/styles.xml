@@ -9,4 +9,8 @@
     <style name="SuggestTextBold" parent="SuggestTextRegular">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="RatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressTint">@color/yellow</item>
+    </style>
 </resources>

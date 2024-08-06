@@ -1,13 +1,13 @@
 package rees46.demo_android.feature.products.presentation.mappers
 
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 
 class ProductItemMapper {
 
-    fun toProductItem(product: Product): ProductItem =
+    fun toProductItem(product: Product): ProductRecyclerViewItem =
         with(product) {
-            ProductItem(
+            ProductRecyclerViewItem(
                 id = id,
                 name = name,
                 producerName = producerName,
@@ -21,10 +21,10 @@ class ProductItemMapper {
             )
         }
 
-    fun toProductItems(products: Collection<Product>): List<ProductItem> =
+    fun toProductItems(products: Collection<Product>): List<ProductRecyclerViewItem> =
         products.map { toProductItem(it) }
 
-    fun toProduct(productItem: ProductItem): Product =
+    fun toProduct(productItem: ProductRecyclerViewItem): Product =
         with(productItem) {
             Product(
                 id = id,
@@ -40,6 +40,6 @@ class ProductItemMapper {
             )
         }
 
-    fun toProducts(productItems: Collection<ProductItem>): List<Product> =
+    fun toProducts(productItems: Collection<ProductRecyclerViewItem>): List<Product> =
         productItems.map { toProduct(it) }
 }

@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.rees46.demo_android.ui.extensions.backPressedInvoke
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -98,7 +98,7 @@ class SearchFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(item: RecyclerViewItem) {
-        val product = productItemMapper.toProduct(item as ProductItem)
+        val product = productItemMapper.toProduct(item as ProductRecyclerViewItem)
 
         navigator.navigate(ProductDetails(product))
     }

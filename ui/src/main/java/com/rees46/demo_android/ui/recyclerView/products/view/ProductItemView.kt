@@ -1,4 +1,4 @@
-package com.rees46.demo_android.ui.recyclerView.products.base.view.adapter
+package com.rees46.demo_android.ui.recyclerView.products.view
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,7 +11,7 @@ import com.rees46.demo_android.ui.extensions.updateImage
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 import com.rees46.demo_android.ui.utils.DimensionsConverter
 import com.rees46.ui.databinding.ViewProductItemBinding
 
@@ -50,7 +50,7 @@ abstract class ProductItemView @JvmOverloads constructor(
             listener.onItemClick(item)
         }
 
-        val productItem = item as ProductItem
+        val productItem = item as ProductRecyclerViewItem
 
         with(binding) {
             with(productItem) {

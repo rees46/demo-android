@@ -1,10 +1,10 @@
 package rees46.demo_android.feature.cart.presentation.models
 
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 
 data class CartProductRecyclerViewItem(
-    val productItem: ProductItem,
+    val productItem: ProductRecyclerViewItem,
     var quantity: Int
 ) : RecyclerViewItem() {
 

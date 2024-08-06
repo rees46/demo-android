@@ -1,11 +1,11 @@
-package com.rees46.demo_android.ui.recyclerView.products.scroll.view
+package rees46.demo_android.feature.products.presentation.view.recyclerView
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.GridLayoutManager
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.base.view.ProductsRecyclerView
-import com.rees46.demo_android.ui.recyclerView.products.scroll.view.adapter.ScrollProductsAdapter
+import com.rees46.demo_android.ui.recyclerView.products.view.ProductsRecyclerView
+import rees46.demo_android.feature.products.presentation.adapter.ScrollProductsAdapter
 
 class ScrollProductsRecyclerView @JvmOverloads constructor(
     private val context: Context,

@@ -1,9 +1,9 @@
-package com.rees46.demo_android.ui.recyclerView.products.scroll.view.adapter
+package rees46.demo_android.feature.products.presentation.view.recyclerView
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.products.base.view.adapter.ProductItemView
+import com.rees46.demo_android.ui.recyclerView.products.view.ProductItemView
 
 @SuppressLint("ViewConstructor")
 class ScrollProductItemView(

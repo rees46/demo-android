@@ -1,14 +1,15 @@
-package com.rees46.demo_android.ui.recyclerView.products.scroll.view.adapter
+package rees46.demo_android.feature.products.presentation.adapter
 
 import android.content.Context
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
-import com.rees46.demo_android.ui.recyclerView.products.base.view.adapter.ProductsAdapter
+import com.rees46.demo_android.ui.recyclerView.products.adapter.ProductsAdapter
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import rees46.demo_android.feature.products.presentation.view.recyclerView.ScrollProductItemView
 
 class ScrollProductsAdapter(
     private val context: Context,
-    productItems: List<ProductItem>,
+    productItems: List<ProductRecyclerViewItem>,
     listener: OnItemClickListener
 ) : ProductsAdapter(
     items = productItems,

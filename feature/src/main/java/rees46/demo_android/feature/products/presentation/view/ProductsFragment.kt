@@ -18,7 +18,7 @@ import rees46.demo_android.feature.Navigator
 import rees46.demo_android.feature.ProductDetails
 import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 import rees46.demo_android.core.settings.NavigationSettings
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
@@ -71,7 +71,7 @@ class ProductsFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(item: RecyclerViewItem) {
-        val product = productItemMapper.toProduct(item as ProductItem)
+        val product = productItemMapper.toProduct(item as ProductRecyclerViewItem)
         navigateProductFragment(product)
     }
 }

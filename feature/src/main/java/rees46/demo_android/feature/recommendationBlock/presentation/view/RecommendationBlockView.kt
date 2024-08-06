@@ -11,8 +11,8 @@ import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
 import rees46.demo_android.R
 import rees46.demo_android.feature.productDetails.domain.models.Product
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
-import com.rees46.demo_android.ui.recyclerView.products.recommendationBlock.view.RecommendationProductsRecyclerView
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import rees46.demo_android.feature.recommendationBlock.presentation.view.recyclerView.RecommendationProductsRecyclerView
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
 
@@ -91,7 +91,7 @@ class RecommendationBlockView @JvmOverloads constructor(
     }
 
     override fun onItemClick(item: RecyclerViewItem) {
-        val product = productItemMapper.toProduct(item as ProductItem)
+        val product = productItemMapper.toProduct(item as ProductRecyclerViewItem)
         onCardProductClick.invoke(product)
     }
 }

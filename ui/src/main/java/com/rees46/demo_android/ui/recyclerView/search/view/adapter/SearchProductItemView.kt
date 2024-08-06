@@ -7,7 +7,7 @@ import com.rees46.demo_android.ui.extensions.updateImage
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.base.models.ProductItem
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 import com.rees46.ui.databinding.ViewSearchProductItemBinding
 class SearchProductItemView @JvmOverloads constructor(
     context: Context,
@@ -22,7 +22,7 @@ class SearchProductItemView @JvmOverloads constructor(
 
     override fun bind(item: RecyclerViewItem, listener: OnItemClickListener) {
         with(binding) {
-            with(item as ProductItem) {
+            with(item as ProductRecyclerViewItem) {
                 productNameText.text = name
                 priceText.text = priceFormatted
                 productImageView.updateImage(pictureUrl)

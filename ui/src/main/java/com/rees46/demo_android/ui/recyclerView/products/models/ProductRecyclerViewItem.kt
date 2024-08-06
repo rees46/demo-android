@@ -1,8 +1,8 @@
-package com.rees46.demo_android.ui.recyclerView.products.base.models
+package com.rees46.demo_android.ui.recyclerView.products.models
 
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
-data class ProductItem(
+data class ProductRecyclerViewItem(
     val id: String,
     val name: String,
     val producerName: String,
@@ -16,7 +16,7 @@ data class ProductItem(
 ) : RecyclerViewItem() {
 
     override fun areItemsTheSame(anotherItem: RecyclerViewItem): Boolean {
-        val productItem = anotherItem as ProductItem
+        val productItem = anotherItem as ProductRecyclerViewItem
 
         return id == productItem.id
     }
