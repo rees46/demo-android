@@ -4,20 +4,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/background_color_primary">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/background_color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black">
+            android:background="@color/background_color_opposite_primary">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="5dp"
                     android:src="@drawable/ic_app"
-                    app:tint="@color/white" />
+                    app:tint="@color/background_color_primary" />
 
                 <TextView
                     android:id="@+id/header"
@@ -40,7 +40,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
                     android:text="@string/app_header"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color_opposite_primary"
                     android:textSize="20sp" />
             </LinearLayout>
         </FrameLayout>
@@ -70,9 +70,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:saveEnabled="false"
-        app:background="@color/black"
-        app:backgroundTint="@color/black"
-        app:itemBackground="@color/black"
+        app:background="@color/background_color_opposite_primary"
+        app:backgroundTint="@color/background_color_opposite_primary"
+        app:itemBackground="@color/background_color_opposite_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

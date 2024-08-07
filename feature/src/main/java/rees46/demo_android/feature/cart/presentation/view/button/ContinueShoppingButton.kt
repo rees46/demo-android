@@ -14,6 +14,6 @@ open class ContinueShoppingButton @JvmOverloads constructor(
     attrs = attrs,
     defStyleAttr = defStyleAttr,
     textRes = rees46.demo_android.R.string.continue_shopping,
-    backgroundColorRes = R.color.white,
-    textColorRes = R.color.black
+    backgroundColorRes = R.color.text_color_opposite_primary,
+    textColorRes = R.color.text_color_primary
 )

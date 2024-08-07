@@ -35,7 +35,7 @@
                 android:layout_height="200dp"
                 android:gravity="center"
                 android:text="@string/empty_shopping_cart"
-                android:textColor="@color/default_subTextColor"
+                android:textColor="@color/text_color_secondary"
                 android:textSize="@dimen/text_size_cart_shipping"
                 android:visibility="gone" />
 
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:text="Free"
                     android:textAlignment="textEnd"
-                    android:textColor="@color/cart_shipping_textColor"
+                    android:textColor="@color/text_color_primary"
                     android:textSize="@dimen/text_size_cart_shipping"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/shipping"
                     android:textAlignment="textEnd"
-                    android:textColor="@color/cart_shipping_textColor"
+                    android:textColor="@color/text_color_primary"
                     android:textSize="@dimen/text_size_cart_shipping"
                     app:layout_constraintEnd_toStartOf="@id/shipping_value_text"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:text="$ 2365"
                     android:textAlignment="textEnd"
-                    android:textColor="@color/cart_price_textColor"
+                    android:textColor="@color/text_color_primary"
                     android:textSize="@dimen/text_size_cart_price"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/total"
                     android:textAlignment="textEnd"
-                    android:textColor="@color/cart_price_textColor"
+                    android:textColor="@color/text_color_primary"
                     android:textSize="@dimen/text_size_cart_price"
                     app:layout_constraintEnd_toStartOf="@id/shipping_value_text"
                     app:layout_constraintTop_toBottomOf="@id/shipping_text" />

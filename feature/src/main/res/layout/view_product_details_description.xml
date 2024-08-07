@@ -60,7 +60,7 @@
             android:textAlignment="textStart"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:textColor="@color/default_textColor" />
+            android:textColor="@color/text_color_primary" />
 
         <rees46.demo_android.feature.productDetails.presentation.view.description.ProductDetailsSaleCardView
             android:id="@+id/saleCardView"

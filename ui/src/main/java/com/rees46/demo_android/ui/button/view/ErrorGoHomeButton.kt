@@ -13,6 +13,6 @@ open class ErrorGoHomeButton @JvmOverloads constructor(
     attrs = attrs,
     defStyleAttr = defStyleAttr,
     textRes = R.string.go_home,
-    backgroundColorRes = R.color.black,
-    textColorRes = R.color.white
+    backgroundColorRes = R.color.background_color_opposite_primary,
+    textColorRes = R.color.text_color_opposite_primary
 )

@@ -44,6 +44,6 @@ open class BaseButton @JvmOverloads constructor(
         setBackgroundColor(context, backgroundColorRes)
 
         setStrokeWidthResource(R.dimen.stroke_width_default_button)
-        setStrokeColorResource(R.color.black)
+        setStrokeColorResource(R.color.color_primary)
     }
 }

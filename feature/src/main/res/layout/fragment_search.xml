@@ -17,7 +17,7 @@
         app:boxCornerRadiusBottomStart="@dimen/corner_radius_default_button"
         app:boxCornerRadiusTopEnd="@dimen/corner_radius_default_button"
         app:boxCornerRadiusTopStart="@dimen/corner_radius_default_button"
-        app:boxStrokeColor="@color/default_subTextColor"
+        app:boxStrokeColor="@color/text_color_secondary"
         app:hintEnabled="false"
         app:layout_constraintEnd_toStartOf="@+id/cancel_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/cancel_button"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/background_color_primary"
         android:src="@drawable/ic_cross"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/suitable_categories"
-            android:textColor="@color/default_subTextColor"
+            android:textColor="@color/text_color_secondary"
             android:textSize="11sp" />
 
         <rees46.demo_android.feature.search.presentation.view.recyclerView.SearchCategoriesRecyclerView
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             android:text="@string/suitable_products"
-            android:textColor="@color/default_subTextColor"
+            android:textColor="@color/text_color_secondary"
             android:textSize="11sp" />
 
         <rees46.demo_android.feature.search.presentation.view.recyclerView.SearchProductsRecyclerView

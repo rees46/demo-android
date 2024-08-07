@@ -13,7 +13,7 @@ class ProductShopButton @JvmOverloads constructor(
     attrs = attrs,
     defStyleAttr = defStyleAttr,
     textRes = R.string.shop,
-    backgroundColorRes = R.color.black,
-    textColorRes = R.color.white,
+    backgroundColorRes = R.color.background_color_opposite_primary,
+    textColorRes = R.color.text_color_opposite_primary,
     textSizeRes = R.dimen.text_size_product_shop_button
 )

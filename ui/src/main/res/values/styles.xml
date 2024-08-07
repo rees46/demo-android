@@ -2,7 +2,7 @@
 <resources>
     <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/inter</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/text_color_primary</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -11,6 +11,6 @@
     </style>
 
     <style name="RatingBar" parent="Widget.AppCompat.RatingBar.Small">
-        <item name="android:progressTint">@color/yellow</item>
+        <item name="android:progressTint">@color/rating_bar_color_primary</item>
     </style>
 </resources>

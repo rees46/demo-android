@@ -14,6 +14,6 @@ open class CheckoutButton @JvmOverloads constructor(
     attrs = attrs,
     defStyleAttr = defStyleAttr,
     textRes = rees46.demo_android.R.string.checkout,
-    backgroundColorRes = R.color.black,
-    textColorRes = R.color.white
+    backgroundColorRes = R.color.background_color_opposite_primary,
+    textColorRes = R.color.text_color_opposite_primary
 )

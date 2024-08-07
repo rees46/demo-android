@@ -29,7 +29,7 @@
             android:layout_marginHorizontal="@dimen/margin_default"
             android:layout_marginLeft="@dimen/margin_default"
             android:text="Item name"
-            android:textColor="@color/cart_cartProduct_producerName_textColor"
+            android:textColor="@color/text_color_secondary"
             android:textSize="@dimen/text_size_cart_product_producer_name"
             android:maxLines="1"
             android:ellipsize="end" />
@@ -41,7 +41,7 @@
             android:layout_marginHorizontal="@dimen/margin_default"
             android:layout_marginTop="4dp"
             android:text="Item name"
-            android:textColor="@color/cart_cartProduct_productName_textColor"
+            android:textColor="@color/text_color_primary"
             android:textSize="@dimen/text_size_cart_product_product_name"
             android:textStyle="bold"
             android:maxLines="1"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:textColor="@color/cart_cartProduct_price_textColor"
+            android:textColor="@color/text_color_primary"
             android:textSize="@dimen/text_size_cart_product_price"
             android:textStyle="bold"
             tools:text="x1" />
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_default"
             android:text="$ Price"
-            android:textColor="@color/cart_cartProduct_price_textColor"
+            android:textColor="@color/text_color_primary"
             android:textSize="@dimen/text_size_cart_product_price"
             android:textStyle="bold" />
 
