@@ -1,35 +1,38 @@
-package com.rees46.demo_android.ui.recyclerView.base.view.adapter
+package com.rees46.demo_android.ui.recyclerView.base.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemView
+import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemViewHolder
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 
-abstract class ListItemAdapter<I: RecyclerViewItem, IV: ItemView> (
+abstract class ListItemAdapter<I: RecyclerViewItem, IV: RecyclerItemView> (
     val items: List<I>,
     private val listener: OnItemClickListener
-) : ListAdapter<I, ItemViewHolder>(AsyncDifferConfig.Builder(DiffCallback<I>()).build()) {
+) : ListAdapter<I, RecyclerItemViewHolder>(AsyncDifferConfig.Builder(DiffCallback<I>()).build()) {
 
-    abstract fun createItemView(): ItemView
+    abstract fun createItemView(): RecyclerItemView
 
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
-    ): ItemViewHolder {
+    ): RecyclerItemViewHolder {
         val itemView = createItemView()
             .apply {
                 setup()
             }
 
-        return ItemViewHolder(
+        return RecyclerItemViewHolder(
             view = itemView,
             listener = listener
         )
     }
 
     override fun onBindViewHolder(
-        viewHolder: ItemViewHolder,
+        viewHolder: RecyclerItemViewHolder,
         position: Int
     ) {
         viewHolder.bind(items[position])

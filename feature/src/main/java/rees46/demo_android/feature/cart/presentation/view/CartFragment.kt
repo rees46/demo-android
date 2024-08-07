@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import rees46.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

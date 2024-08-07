@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import rees46.demo_android.R
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem

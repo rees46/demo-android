@@ -9,8 +9,8 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import com.rees46.demo_android.ui.extensions.updateImage
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemView
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 import com.rees46.demo_android.ui.utils.DimensionsConverter
 import com.rees46.ui.databinding.ViewProductItemBinding
@@ -19,7 +19,7 @@ import com.rees46.ui.databinding.ViewProductItemBinding
 abstract class ProductItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
-) : ItemView(
+) : RecyclerItemView(
     context = context,
     attrs = attrs
 ) {

@@ -5,15 +5,15 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.rees46.demo_android.ui.extensions.updateImage
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ItemView
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemView
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import rees46.demo_android.databinding.ViewCartProductItemBinding
 import rees46.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
 
 class CartProductItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
-) : ItemView(
+) : RecyclerItemView(
     context = context,
     attrs = attrs
 ) {

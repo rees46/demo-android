@@ -1,13 +1,14 @@
-package com.rees46.demo_android.ui.recyclerView.base.view.adapter
+package com.rees46.demo_android.ui.recyclerView.base.view
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
 @SuppressLint("ViewConstructor")
-abstract class ItemView(
+abstract class RecyclerItemView(
     context: Context,
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {

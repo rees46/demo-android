@@ -1,4 +1,4 @@
-package com.rees46.demo_android.ui.recyclerView.base.view.adapter
+package com.rees46.demo_android.ui.recyclerView.base.listener
 
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 

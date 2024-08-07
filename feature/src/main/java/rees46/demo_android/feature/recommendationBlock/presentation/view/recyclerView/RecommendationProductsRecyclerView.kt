@@ -3,7 +3,7 @@ package rees46.demo_android.feature.recommendationBlock.presentation.view.recycl
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
+import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.view.ProductsRecyclerView
 
 class RecommendationProductsRecyclerView @JvmOverloads constructor(
