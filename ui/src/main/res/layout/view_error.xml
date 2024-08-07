@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingHorizontal="@dimen/padding_default"
+    android:paddingTop="@dimen/padding_default"
+    android:paddingBottom="48dp">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_header"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_primary"
+        android:textSize="32sp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_description"
+        android:textColor="@color/text_color_primary"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_error_default_offset" />
+
+    <com.rees46.demo_android.ui.button.view.ErrorGoHomeButton
+        android:id="@+id/go_home_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/margin_error_default_offset" />
+</LinearLayout>

@@ -1,0 +1,26 @@
+<resources>
+    <style name="Base.Theme.Demoandroid" parent="Theme.Material3.Light.NoActionBar">
+    </style>
+
+    <style name="Theme.Demoandroid" parent="Base.Theme.Demoandroid">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textColor">@color/text_color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
+    </style>
+
+    <style name="Theme.Demoandroid.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background_color_opposite_primary</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/background_color_primary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launch_screen</item>
+        <item name="postSplashScreenTheme">@style/Theme.Demoandroid</item>
+    </style>
+
+    <style name="HomeBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@color/background_color_opposite_primary</item>
+        <item name="background">@color/background_color_opposite_primary</item>
+        <item name="itemRippleColor">@color/color_primary</item>
+        <item name="itemIconTint">@color/main_bottom_navigation_item_color</item>
+        <item name="itemTextColor">@color/main_bottom_navigation_item_color</item>
+        <item name="itemIconSize">@dimen/icon_size_main_bottom_navigation</item>
+    </style>
+</resources>

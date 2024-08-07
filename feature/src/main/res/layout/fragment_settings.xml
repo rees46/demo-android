@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/margin_default">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/store_settings"
+        style="@style/HeaderText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_title"
+            android:textStyle="bold"
+            android:textColor="@color/text_color_primary"
+            android:textSize="24sp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_description"
+            android:textAlignment="center"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/margin_default_settings" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/text_color_secondary"
+            app:hintEnabled="false"
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius_default_button"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius_default_button"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius_default_button"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius_default_button"
+            android:layout_marginTop="@dimen/margin_default_settings">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/store_key_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/you_story_key" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <rees46.demo_android.feature.settings.presentation.view.button.UploadButton
+            android:id="@+id/upload_button"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginTop="@dimen/margin_default_settings" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_upload_description"
+            android:textAlignment="center"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="13sp"
+            android:layout_marginTop="@dimen/margin_default_settings" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_top_app_search"
+        android:icon="@drawable/ic_top_bar_search"
+        android:title="@string/main_top_app_bar_search"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_top_app_cart"
+        android:icon="@drawable/ic_top_bar_cart"
+        android:title="@string/main_top_app_bar_cart"
+        app:showAsAction="ifRoom"/>
+</menu>

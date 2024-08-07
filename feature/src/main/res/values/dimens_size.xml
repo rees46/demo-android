@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_size_main_bottom_navigation">32dp</dimen>
+
+    <dimen name="width_products_layout">171dp</dimen>
+    <dimen name="width_recommendation_block_layout">140dp</dimen>
+</resources>

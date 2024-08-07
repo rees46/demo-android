@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="corner_radius_default_button">6dp</dimen>
+
+    <dimen name="stroke_width_default_button">1dp</dimen>
+</resources>

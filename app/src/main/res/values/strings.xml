@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DEMO STORE</string>
+
+    <string name="main_navigation_home">home</string>
+    <string name="main_navigation_category">category</string>
+    <string name="main_navigation_cart">cart</string>
+    <string name="main_navigation_settings">settings</string>
+
+    <string name="main_top_app_bar_cart">cart</string>
+    <string name="main_top_app_bar_search">search</string>
+</resources>

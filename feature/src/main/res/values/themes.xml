@@ -1,0 +1,9 @@
+<resources>
+    <style name="Widget.Theme.Demoandroid.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/background_color_opposite_primary</item>
+    </style>
+
+    <style name="SearchView" parent="Widget.Material3.SearchView">
+        <item name="backgroundTint">@color/background_color_primary</item>
+    </style>
+</resources>

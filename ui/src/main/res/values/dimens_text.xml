@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_default_button">16sp</dimen>
+    <dimen name="text_size_default_old_price">12sp</dimen>
+    <dimen name="text_size_cart_product_producer_name">12sp</dimen>
+    <dimen name="text_size_cart_product_product_name">16sp</dimen>
+    <dimen name="text_size_cart_product_price">16sp</dimen>
+    <dimen name="text_size_product_producer_name">12sp</dimen>
+    <dimen name="text_size_product_product_name">16sp</dimen>
+    <dimen name="text_size_product_price">14sp</dimen>
+    <dimen name="text_size_product_details_producer_name">16sp</dimen>
+    <dimen name="text_size_product_details_product_name">24sp</dimen>
+    <dimen name="text_size_product_details_description">13sp</dimen>
+    <dimen name="text_size_product_details_reviews">13sp</dimen>
+    <dimen name="text_size_product_shop_button">12sp</dimen>
+</resources>

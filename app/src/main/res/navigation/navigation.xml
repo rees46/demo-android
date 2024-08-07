@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="rees46.demo_android.feature.home.presentation.view.HomeFragment"
+        android:label="HomeFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="rees46.demo_android.feature.cart.presentation.view.CartFragment"
+        android:label="CartFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="rees46.demo_android.feature.category.presentation.view.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="rees46.demo_android.feature.settings.presentation.view.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="rees46.demo_android.feature.productDetails.presentation.view.ProductDetailsFragment"
+        android:label="ProductDetailsFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="rees46.demo_android.feature.products.presentation.view.ProductsFragment"
+        android:label="ProductsFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="rees46.demo_android.feature.search.presentation.view.SearchFragment"
+        android:label="SearchFragment" >
+    </fragment>
+</navigation>

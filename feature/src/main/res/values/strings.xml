@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">demo-android</string>
+    <string name="app_header">DEMO<b>STORE</b></string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="stories">Stories</string>
+    <string name="shopping_cart">Shopping cart</string>
+    <string name="empty_shopping_cart">Your shopping cart is empty</string>
+    <string name="shipping">Shipping:</string>
+    <string name="total">Total:</string>
+    <string name="continue_shopping">Continue shopping</string>
+    <string name="suitable_categories">SUITABLE CATEGORIES</string>
+    <string name="suitable_products">SUITABLE PRODUCTS</string>
+    <string name="suitable_products_not_found">Products not found</string>
+    <string name="show_all"><![CDATA[Show all >]]></string>
+    <string name="store_settings">Store settings</string>
+    <string name="settings_title">Try your own products</string>
+    <string name="settings_description">If you want to try a demo store with your products, you can put here your store key. To get the key, sign up on rees46.ru.</string>
+    <string name="settings_upload_description">This process may take some time.</string>
+    <string name="you_story_key">You story key</string>
+    <string name="upload">Upload</string>
+    <string name="shop">Shop</string>
+    <string name="reviews"><u>46 reviews</u></string>
+    <string name="checkout">Checkout</string>
+</resources>

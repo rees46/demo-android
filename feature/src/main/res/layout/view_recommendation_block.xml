@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/view_recommendation_block"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingVertical="@dimen/padding_default">
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Recommendation"
+        android:fontFamily="@font/inter"
+        android:textStyle="bold"
+        android:textColor="@color/text_color_primary"
+        android:textSize="@dimen/text_size_recommendation_block_header"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/padding_default"
+        app:layout_constraintEnd_toStartOf="@+id/show_all_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/show_all_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_all"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="@dimen/text_size_recommendation_block_show_all"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:paddingStart="@dimen/padding_default"
+        app:layout_constraintBottom_toBottomOf="@+id/header_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <rees46.demo_android.feature.recommendationBlock.presentation.view.recyclerView.RecommendationProductsRecyclerView
+        android:id="@+id/products_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_text"
+        tools:listitem="@layout/view_product_item" />
+</androidx.constraintlayout.widget.ConstraintLayout>
