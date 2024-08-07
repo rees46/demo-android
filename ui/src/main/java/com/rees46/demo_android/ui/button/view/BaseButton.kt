@@ -7,18 +7,19 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
 import com.google.android.material.button.MaterialButton
 import com.rees46.demo_android.ui.utils.ViewColorUtils
 import com.rees46.ui.R
 import com.rees46.demo_android.ui.utils.DimensionsConverter
 
 @SuppressLint("ViewConstructor")
-open class CommonButton @JvmOverloads constructor(
+open class BaseButton @JvmOverloads constructor(
     context: Context,
     val attrs: AttributeSet? = null,
     val defStyleAttr: Int = 0,
     private val textSizeRes: Int = R.dimen.default_button_textSize,
-    private val widthRes: Int? = null,
+    @StringRes private val textRes: Int,
     @ColorRes private val backgroundColorRes: Int,
     @ColorRes private val textColorRes: Int
 ) : MaterialButton(context, attrs, defStyleAttr)  {
@@ -28,6 +29,7 @@ open class CommonButton @JvmOverloads constructor(
     }
 
     private fun setupView() {
+        setText(textRes)
         textSize = DimensionsConverter.convertResToDp(textSizeRes, context)
         setTypeface(null, Typeface.BOLD)
         textAlignment = View.TEXT_ALIGNMENT_CENTER
@@ -52,9 +54,5 @@ open class CommonButton @JvmOverloads constructor(
             context = context,
             colorRes = R.color.black
         )
-
-        if(widthRes != null) {
-            width = DimensionsConverter.convertResToPx(widthRes, context).toInt()
-        }
     }
 }

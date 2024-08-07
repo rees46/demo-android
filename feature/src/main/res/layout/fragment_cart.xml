@@ -115,19 +115,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/total_text">
 
-                    <com.rees46.demo_android.ui.button.view.CommonWhiteButton
+                    <rees46.demo_android.feature.cart.presentation.view.button.ContinueShoppingButton
                         android:id="@+id/continue_shopping"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="@string/continue_shopping"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1" />
 
-                    <com.rees46.demo_android.ui.button.view.CommonBlackButton
+                    <rees46.demo_android.feature.cart.presentation.view.button.CheckoutButton
                         android:id="@+id/checkout_button"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="@string/checkout"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1" />
                 </LinearLayout>

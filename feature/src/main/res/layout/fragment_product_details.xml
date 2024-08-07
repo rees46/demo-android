@@ -39,11 +39,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
-                <com.rees46.demo_android.ui.button.view.CommonBlackButton
+                <rees46.demo_android.feature.productDetails.presentation.view.button.AddToCartButton
                     android:id="@+id/add_to_cart_button"
+                    android:layout_height="55dp"
+                    android:layout_width="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/default_offset"
-                    style="@style/ProductDetails.AddToCardButton" />
+                    android:layout_marginStart="@dimen/default_offset" />
             </LinearLayout>
         </LinearLayout>
 

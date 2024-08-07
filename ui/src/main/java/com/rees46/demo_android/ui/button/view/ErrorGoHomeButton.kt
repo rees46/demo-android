@@ -4,14 +4,15 @@ import android.content.Context
 import android.util.AttributeSet
 import com.rees46.ui.R
 
-class ProductShopBlackButton @JvmOverloads constructor(
+open class ErrorGoHomeButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : CommonBlackButton(
+    defStyleAttr: Int = 0,
+) : BaseButton(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr,
-    textSizeRes = R.dimen.product_shop_button_textSize,
-    widthRes = R.dimen.product_shop_button_width
+    textRes = R.string.go_home,
+    backgroundColorRes = R.color.black,
+    textColorRes = R.color.white
 )
