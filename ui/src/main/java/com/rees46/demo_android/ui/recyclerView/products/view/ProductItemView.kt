@@ -2,17 +2,17 @@ package com.rees46.demo_android.ui.recyclerView.products.view
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import androidx.annotation.DimenRes
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import com.rees46.demo_android.ui.extensions.convertDimenResToPx
 import com.rees46.demo_android.ui.extensions.updateImage
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemView
 import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
-import com.rees46.demo_android.ui.utils.DimensionsConverter
 import com.rees46.ui.databinding.ViewProductItemBinding
 
 @SuppressLint("ViewConstructor")
@@ -25,7 +25,8 @@ abstract class ProductItemView @JvmOverloads constructor(
 ) {
 
     abstract var isShopVisible: Boolean
-    abstract var layoutWidth: Float
+    @get:DimenRes
+    abstract var layoutWidthRes: Int
 
     private var binding: ViewProductItemBinding =
         ViewProductItemBinding.inflate(LayoutInflater.from(context), this, true)
@@ -35,10 +36,7 @@ abstract class ProductItemView @JvmOverloads constructor(
             shopButton.isVisible = isShopVisible
 
             productImage.updateLayoutParams {
-                width = DimensionsConverter.convertDpToPx(
-                    dp = layoutWidth,
-                    context = context
-                ).toInt()
+                width = context.convertDimenResToPx(layoutWidthRes).toInt()
             }
         }
     }

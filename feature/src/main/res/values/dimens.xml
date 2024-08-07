@@ -9,6 +9,8 @@
     <dimen name="stories_header_textSize">24sp</dimen>
     <dimen name="productDetails_oldPrice_textSize">18sp</dimen>
     <dimen name="productItem_oldPrice_textSize">12sp</dimen>
+    <dimen name="products_layout_width">171dp</dimen>
+    <dimen name="recommendationBlock_layout_width">140dp</dimen>
     <dimen name="recommendationBlock_header_textSize">24sp</dimen>
     <dimen name="recommendationBlock_showAll_textSize">14sp</dimen>
     <dimen name="recommendationBlock_cardProduct_producerName_textSize">12sp</dimen>

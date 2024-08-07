@@ -4,15 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
+import androidx.annotation.DimenRes
+import com.rees46.demo_android.ui.extensions.convertDimenResToDp
 import com.rees46.ui.R
-import com.rees46.demo_android.ui.utils.DimensionsConverter
 
 @SuppressLint("ViewConstructor")
 open class OldPriceText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-    private val textSizeRes: Int = R.dimen.default_oldPrice_textSize
+    @DimenRes private val textSizeRes: Int = R.dimen.default_oldPrice_textSize
 ) : androidx.appcompat.widget.AppCompatTextView(context, attrs, defStyleAttr)  {
 
     init {
@@ -21,7 +22,8 @@ open class OldPriceText @JvmOverloads constructor(
 
     private fun setupView() {
         paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
-        textSize = DimensionsConverter.convertResToDp(textSizeRes, context)
+
+        textSize = context.convertDimenResToDp(textSizeRes)
     }
 
     fun updateText(value: String) {
