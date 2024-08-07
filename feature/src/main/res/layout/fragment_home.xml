@@ -12,13 +12,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginVertical="@dimen/default_offset">
+        android:layout_marginVertical="@dimen/margin_default">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="@dimen/default_offset">
+            android:layout_marginBottom="@dimen/margin_default">
 
             <TextView
                 android:layout_width="match_parent"
@@ -27,9 +27,8 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/inter"
                 android:textColor="@color/stories_header_textColor"
-                android:textSize="@dimen/stories_header_textSize"
-                android:layout_marginEnd="@dimen/default_offset"
-                android:layout_marginStart="@dimen/default_offset" />
+                android:textSize="@dimen/text_size_stories_header"
+                android:layout_marginHorizontal="@dimen/margin_default" />
 
             <com.personalizatio.stories.views.StoriesView
                 android:id="@+id/stories_view"
@@ -42,7 +41,7 @@
                 android:id="@+id/new_arrivals_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/half_default_offset" />
+                android:layout_marginTop="@dimen/margin_half_default" />
 
             <rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
                 android:id="@+id/top_trends_recommendation_block_view"

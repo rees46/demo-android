@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="@dimen/default_offset">
+    android:layout_margin="@dimen/margin_default">
 
     <TextView
         android:id="@+id/header_text"
@@ -38,18 +38,18 @@
             android:textAlignment="center"
             android:textColor="@color/default_textColor"
             android:textSize="18sp"
-            android:layout_marginTop="@dimen/settings_default_offset" />
+            android:layout_marginTop="@dimen/margin_default_settings" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeColor="@color/default_subTextColor"
             app:hintEnabled="false"
-            app:boxCornerRadiusBottomEnd="@dimen/default_button_cornerRadius"
-            app:boxCornerRadiusBottomStart="@dimen/default_button_cornerRadius"
-            app:boxCornerRadiusTopEnd="@dimen/default_button_cornerRadius"
-            app:boxCornerRadiusTopStart="@dimen/default_button_cornerRadius"
-            android:layout_marginTop="@dimen/settings_default_offset">
+            app:boxCornerRadiusBottomEnd="@dimen/corner_radius_default_button"
+            app:boxCornerRadiusBottomStart="@dimen/corner_radius_default_button"
+            app:boxCornerRadiusTopEnd="@dimen/corner_radius_default_button"
+            app:boxCornerRadiusTopStart="@dimen/corner_radius_default_button"
+            android:layout_marginTop="@dimen/margin_default_settings">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/store_key_text_input"
@@ -62,7 +62,7 @@
             android:id="@+id/upload_button"
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:layout_marginTop="@dimen/settings_default_offset" />
+            android:layout_marginTop="@dimen/margin_default_settings" />
 
         <TextView
             android:layout_width="match_parent"
@@ -71,6 +71,6 @@
             android:textAlignment="center"
             android:textColor="@color/default_subTextColor"
             android:textSize="13sp"
-            android:layout_marginTop="@dimen/settings_default_offset" />
+            android:layout_marginTop="@dimen/margin_default_settings" />
     </LinearLayout>
 </LinearLayout>

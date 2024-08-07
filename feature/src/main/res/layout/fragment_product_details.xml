@@ -8,14 +8,14 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/default_offset"
+        android:layout_marginTop="@dimen/margin_default"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginHorizontal="@dimen/default_offset">
+            android:layout_marginHorizontal="@dimen/margin_default">
 
             <ImageView
                 android:id="@+id/product_image"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="@dimen/card_product_default_offset">
+                android:layout_marginTop="@dimen/margin_default_between_product_details">
 
                 <rees46.demo_android.feature.productDetails.presentation.view.countCard.CountCardView
                     android:id="@+id/count_card"
@@ -44,7 +44,7 @@
                     android:layout_height="55dp"
                     android:layout_width="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/default_offset" />
+                    android:layout_marginStart="@dimen/margin_default" />
             </LinearLayout>
         </LinearLayout>
 
@@ -52,6 +52,6 @@
             android:id="@+id/recommendation_block"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_product_default_offset" />
+            android:layout_marginTop="@dimen/margin_default_between_product_details" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

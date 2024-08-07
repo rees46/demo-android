@@ -13,7 +13,7 @@ open class OldPriceText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
-    @DimenRes private val textSizeRes: Int = R.dimen.default_oldPrice_textSize
+    @DimenRes private val textSizeRes: Int = R.dimen.text_size_default_old_price
 ) : androidx.appcompat.widget.AppCompatTextView(context, attrs, defStyleAttr)  {
 
     init {

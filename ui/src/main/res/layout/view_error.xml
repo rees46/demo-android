@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingHorizontal="@dimen/default_offset"
-    android:paddingTop="@dimen/default_offset"
+    android:paddingHorizontal="@dimen/padding_default"
+    android:paddingTop="@dimen/padding_default"
     android:paddingBottom="48dp">
 
     <TextView
@@ -27,11 +27,11 @@
         android:textColor="@color/default_textColor"
         android:textSize="18sp"
         android:gravity="center"
-        android:layout_marginTop="@dimen/error_default_offset" />
+        android:layout_marginTop="@dimen/margin_error_default_offset" />
 
     <com.rees46.demo_android.ui.button.view.ErrorGoHomeButton
         android:id="@+id/go_home_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="@dimen/error_default_offset" />
+        android:layout_marginTop="@dimen/margin_error_default_offset" />
 </LinearLayout>

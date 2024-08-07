@@ -11,7 +11,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/default_offset"
+        android:layout_marginVertical="@dimen/margin_default"
         android:fillViewport="true"
         android:orientation="vertical">
 
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/shopping_cart"
                 android:visibility="gone"
-                android:layout_marginLeft="@dimen/default_offset"
+                android:layout_marginLeft="@dimen/margin_default"
                 style="@style/HeaderText" />
 
             <TextView
@@ -36,14 +36,14 @@
                 android:gravity="center"
                 android:text="@string/empty_shopping_cart"
                 android:textColor="@color/default_subTextColor"
-                android:textSize="@dimen/cart_shipping_textSize"
+                android:textSize="@dimen/text_size_cart_shipping"
                 android:visibility="gone" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/recycler_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/default_offset"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:orientation="vertical">
 
                 <rees46.demo_android.feature.cart.presentation.view.recyclerView.CartProductsRecyclerView
@@ -58,7 +58,7 @@
                 android:id="@+id/cart_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/default_offset">
+                android:layout_marginHorizontal="@dimen/margin_default">
 
                 <TextView
                     android:id="@+id/shipping_value_text"
@@ -67,7 +67,7 @@
                     android:text="Free"
                     android:textAlignment="textEnd"
                     android:textColor="@color/cart_shipping_textColor"
-                    android:textSize="@dimen/cart_shipping_textSize"
+                    android:textSize="@dimen/text_size_cart_shipping"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -79,7 +79,7 @@
                     android:text="@string/shipping"
                     android:textAlignment="textEnd"
                     android:textColor="@color/cart_shipping_textColor"
-                    android:textSize="@dimen/cart_shipping_textSize"
+                    android:textSize="@dimen/text_size_cart_shipping"
                     app:layout_constraintEnd_toStartOf="@id/shipping_value_text"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +90,7 @@
                     android:text="$ 2365"
                     android:textAlignment="textEnd"
                     android:textColor="@color/cart_price_textColor"
-                    android:textSize="@dimen/cart_price_textSize"
+                    android:textSize="@dimen/text_size_cart_price"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/shipping_value_text" />
@@ -102,7 +102,7 @@
                     android:text="@string/total"
                     android:textAlignment="textEnd"
                     android:textColor="@color/cart_price_textColor"
-                    android:textSize="@dimen/cart_price_textSize"
+                    android:textSize="@dimen/text_size_cart_price"
                     app:layout_constraintEnd_toStartOf="@id/shipping_value_text"
                     app:layout_constraintTop_toBottomOf="@id/shipping_text" />
 
@@ -110,7 +110,7 @@
                     android:id="@+id/buttons_layout"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="@dimen/default_offset"
+                    android:layout_marginTop="@dimen/margin_default"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/total_text">

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="96dp"
     android:orientation="horizontal"
-    android:paddingVertical="@dimen/half_default_offset"
+    android:paddingVertical="@dimen/padding_half_default"
     android:gravity="center_vertical">
 
     <ImageView
@@ -26,11 +26,11 @@
             android:id="@+id/producer_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_offset"
-            android:layout_marginLeft="@dimen/default_offset"
+            android:layout_marginHorizontal="@dimen/margin_default"
+            android:layout_marginLeft="@dimen/margin_default"
             android:text="Item name"
             android:textColor="@color/cart_cartProduct_producerName_textColor"
-            android:textSize="@dimen/cart_cartProduct_producerName_textSize"
+            android:textSize="@dimen/text_size_cart_product_producer_name"
             android:maxLines="1"
             android:ellipsize="end" />
 
@@ -38,11 +38,11 @@
             android:id="@+id/product_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_offset"
+            android:layout_marginHorizontal="@dimen/margin_default"
             android:layout_marginTop="4dp"
             android:text="Item name"
             android:textColor="@color/cart_cartProduct_productName_textColor"
-            android:textSize="@dimen/cart_cartProduct_productName_textSize"
+            android:textSize="@dimen/text_size_cart_product_product_name"
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end" />
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:textColor="@color/cart_cartProduct_price_textColor"
-            android:textSize="@dimen/cart_cartProduct_price_textSize"
+            android:textSize="@dimen/text_size_cart_product_price"
             android:textStyle="bold"
             tools:text="x1" />
 
@@ -68,10 +68,10 @@
             android:id="@+id/price_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_offset"
+            android:layout_marginEnd="@dimen/margin_default"
             android:text="$ Price"
             android:textColor="@color/cart_cartProduct_price_textColor"
-            android:textSize="@dimen/cart_cartProduct_price_textSize"
+            android:textSize="@dimen/text_size_cart_product_price"
             android:textStyle="bold" />
 
         <ImageButton

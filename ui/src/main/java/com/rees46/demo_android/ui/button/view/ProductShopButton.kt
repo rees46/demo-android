@@ -15,5 +15,5 @@ class ProductShopButton @JvmOverloads constructor(
     textRes = R.string.shop,
     backgroundColorRes = R.color.black,
     textColorRes = R.color.white,
-    textSizeRes = R.dimen.product_shop_button_textSize
+    textSizeRes = R.dimen.text_size_product_shop_button
 )

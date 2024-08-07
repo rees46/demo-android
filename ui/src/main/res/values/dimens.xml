@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="default_offset">16dp</dimen>
-    <dimen name="half_default_offset">8dp</dimen>
-    <dimen name="small_default_offset">4dp</dimen>
-    <dimen name="default_button_cornerRadius">6dp</dimen>
-    <dimen name="default_button_textSize">16sp</dimen>
-    <dimen name="default_button_strokeWidth">1dp</dimen>
-    <dimen name="default_oldPrice_textSize">12sp</dimen>
-    <dimen name="cart_cartProduct_producerName_textSize">12sp</dimen>
-    <dimen name="cart_cartProduct_productName_textSize">16sp</dimen>
-    <dimen name="cart_cartProduct_price_textSize">16sp</dimen>
-    <dimen name="product_producerName_textSize">12sp</dimen>
-    <dimen name="product_productName_textSize">16sp</dimen>
-    <dimen name="product_oldPrice_textSize">12sp</dimen>
-    <dimen name="product_price_textSize">14sp</dimen>
-    <dimen name="product_shop_button_textSize">12sp</dimen>
-    <dimen name="product_shop_button_width">62dp</dimen>
-    <dimen name="error_default_offset">20dp</dimen>
-    <dimen name="count_card_default_offset">20dp</dimen>
+    <dimen name="corner_radius_default_button">6dp</dimen>
+
+    <dimen name="stroke_width_default_button">1dp</dimen>
 </resources>

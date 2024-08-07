@@ -16,5 +16,5 @@ class ScrollProductItemView(
 ) {
 
     override var isShopVisible: Boolean = true
-    override var layoutWidthRes: Int = R.dimen.products_layout_width
+    override var layoutWidthRes: Int = R.dimen.width_products_layout
 }

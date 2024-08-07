@@ -14,5 +14,5 @@ class OldPriceText @JvmOverloads constructor(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr,
-    textSizeRes = R.dimen.productDetails_oldPrice_textSize,
+    textSizeRes = R.dimen.text_size_product_details_old_price,
 )

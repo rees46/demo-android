@@ -16,5 +16,5 @@ class RecommendationProductItemView(
 ) {
 
     override var isShopVisible: Boolean = false
-    override var layoutWidthRes: Int = R.dimen.recommendationBlock_layout_width
+    override var layoutWidthRes: Int = R.dimen.width_recommendation_block_layout
 }

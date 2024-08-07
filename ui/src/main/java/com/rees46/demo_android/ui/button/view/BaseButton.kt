@@ -20,7 +20,7 @@ open class BaseButton @JvmOverloads constructor(
     context: Context,
     val attrs: AttributeSet? = null,
     val defStyleAttr: Int = 0,
-    @DimenRes private val textSizeRes: Int = R.dimen.default_button_textSize,
+    @DimenRes private val textSizeRes: Int = R.dimen.text_size_default_button,
     @StringRes private val textRes: Int,
     @ColorRes private val backgroundColorRes: Int,
     @ColorRes private val textColorRes: Int
@@ -39,11 +39,11 @@ open class BaseButton @JvmOverloads constructor(
 
         gravity = Gravity.CENTER
 
-        setCornerRadiusResource(R.dimen.default_button_cornerRadius)
+        setCornerRadiusResource(R.dimen.corner_radius_default_button)
 
         setBackgroundColor(context, backgroundColorRes)
 
-        setStrokeWidthResource(R.dimen.default_button_strokeWidth)
+        setStrokeWidthResource(R.dimen.stroke_width_default_button)
         setStrokeColorResource(R.color.black)
     }
 }
