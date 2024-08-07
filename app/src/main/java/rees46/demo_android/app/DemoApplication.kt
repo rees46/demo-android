@@ -5,7 +5,7 @@ import com.personalizatio.SDK
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import rees46.demo_android.app.di.appModule
+import rees46.demo_android.app.di.navigatorModule
 import rees46.demo_android.core.di.sdkModule
 import rees46.demo_android.core.utils.SdkUtils
 import rees46.demo_android.feature.cart.di.cartModule
@@ -27,7 +27,7 @@ class DemoApplication : Application() {
 
             modules(
                 listOf(
-                    appModule,
+                    navigatorModule,
                     sdkModule,
                     homeModule,
                     recommendationBlockModule,

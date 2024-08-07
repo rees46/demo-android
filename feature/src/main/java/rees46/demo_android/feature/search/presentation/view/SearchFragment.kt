@@ -22,9 +22,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.R
 import rees46.demo_android.databinding.FragmentSearchBinding
-import rees46.demo_android.feature.Navigator
-import rees46.demo_android.feature.ProductDetails
-import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.ProductDetails
+import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
 import rees46.demo_android.feature.search.presentation.mappers.SearchItemMapper
 import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
 
@@ -32,8 +32,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
 
     private val viewModel: SearchViewModel by viewModel()
 
-    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
     private val searchItemMapper: SearchItemMapper by inject<SearchItemMapper>()
+    private val navigationProductMapper: NavigationProductMapper by inject<NavigationProductMapper>()
 
     private lateinit var binding: FragmentSearchBinding
 
@@ -98,8 +98,7 @@ class SearchFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(item: RecyclerViewItem) {
-        val product = productItemMapper.toProduct(item as ProductRecyclerViewItem)
-
-        navigator.navigate(ProductDetails(product))
+        val navigationProduct = navigationProductMapper.toNavigationProduct(item as ProductRecyclerViewItem)
+        navigator.navigate(ProductDetails(navigationProduct))
     }
 }

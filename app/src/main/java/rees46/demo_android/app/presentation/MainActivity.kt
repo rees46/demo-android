@@ -15,7 +15,7 @@ import org.koin.android.ext.android.get
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.app.R
 import rees46.demo_android.app.databinding.ActivityMainBinding
-import rees46.demo_android.feature.Navigator
+import com.rees46.demo_android.navigation.Navigator
 
 class MainActivity : AppCompatActivity(), LifecycleOwner {
 

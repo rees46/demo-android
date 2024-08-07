@@ -20,11 +20,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentCartBinding
 import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
-import rees46.demo_android.feature.Navigator
-import rees46.demo_android.feature.ProductDetails
-import rees46.demo_android.feature.ProductsDetails
+import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.ProductDetails
+import com.rees46.demo_android.navigation.ProductsDetails
 import rees46.demo_android.feature.cart.domain.models.CartProduct
 import rees46.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
+import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
@@ -33,6 +34,7 @@ class CartFragment : Fragment(), OnItemClickListener {
     private val viewModel: CartViewModel by viewModel()
     private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
     private val cartProductItemMapper: CartProductItemMapper by inject<CartProductItemMapper>()
+    private val navigationProductMapper: NavigationProductMapper by inject<NavigationProductMapper>()
 
     private lateinit var binding: FragmentCartBinding
 
@@ -118,11 +120,13 @@ class CartFragment : Fragment(), OnItemClickListener {
     }
 
     private fun navigateProductFragment(product: Product) {
-        navigator.navigate(ProductDetails(product))
+        val navigationProduct = navigationProductMapper.toNavigationProduct(product)
+        navigator.navigate(ProductDetails(navigationProduct))
     }
 
     private fun navigateProductsFragment(products: List<Product>) {
-        navigator.navigate(ProductsDetails(products))
+        val navigationProducts = navigationProductMapper.toNavigationProducts(products)
+        navigator.navigate(ProductsDetails(navigationProducts))
     }
 
     override fun onItemClick(item: RecyclerViewItem) {

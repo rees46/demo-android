@@ -1,22 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.gms.google-services")
-    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "rees46.demo_android.app"
+    namespace = "com.rees46.demo_android.navigation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "rees46.demo_android"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,9 +31,6 @@ android {
     kotlinOptions {
         jvmTarget = "22"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -51,9 +44,5 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.core.splashscreen)
     implementation(project(":core"))
-    implementation(project(":feature"))
-    implementation(project(":navigation"))
-    implementation(project(":sdkRees46"))
 }

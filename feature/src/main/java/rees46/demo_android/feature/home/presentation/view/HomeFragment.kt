@@ -17,9 +17,10 @@ import org.koin.core.parameter.parametersOf
 import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
-import rees46.demo_android.feature.Navigator
-import rees46.demo_android.feature.ProductDetails
-import rees46.demo_android.feature.ProductsDetails
+import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.ProductDetails
+import com.rees46.demo_android.navigation.ProductsDetails
+import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
@@ -27,6 +28,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
     private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
+    private val navigationProductMapper: NavigationProductMapper by inject<NavigationProductMapper>()
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -80,10 +82,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateProductFragment(product: Product) {
-        navigator.navigate(ProductDetails(product))
+        val navigationProduct = navigationProductMapper.toNavigationProduct(product)
+        navigator.navigate(ProductDetails(navigationProduct))
     }
 
     private fun navigateProductsFragment(products: List<Product>) {
-        navigator.navigate(ProductsDetails(products))
+        val navigationProducts = navigationProductMapper.toNavigationProducts(products)
+        navigator.navigate(ProductsDetails(navigationProducts))
     }
 }

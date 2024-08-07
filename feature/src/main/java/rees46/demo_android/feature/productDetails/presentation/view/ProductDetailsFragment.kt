@@ -16,8 +16,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.settings.NavigationSettings
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
-import rees46.demo_android.feature.Navigator
-import rees46.demo_android.feature.ProductsDetails
+import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.models.NavigationProduct
+import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
 import rees46.demo_android.feature.productDetails.domain.models.Product
@@ -26,13 +27,14 @@ import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapp
 class ProductDetailsFragment : Fragment() {
 
     private val viewModel: ProductDetailsViewModel by viewModel {
-        val product = arguments?.getParcelable<Product>(NavigationSettings.PRODUCT_ARGUMENT_FIELD)
-        parametersOf(product)
+        val navigationProduct = arguments?.getParcelable<NavigationProduct>(NavigationSettings.PRODUCT_ARGUMENT_FIELD)
+        parametersOf(navigationProductMapper.toProduct(navigationProduct))
     }
 
     private lateinit var binding: FragmentProductDetailsBinding
 
     private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
+    private val navigationProductMapper: NavigationProductMapper by inject<NavigationProductMapper>()
 
     private val navigator by lazy {
         get<Navigator> {
@@ -119,6 +121,7 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun navigateProductsFragment(products: List<Product>) {
-        navigator.navigate(ProductsDetails(products))
+        val navigationProducts = navigationProductMapper.toNavigationProducts(products)
+        navigator.navigate(com.rees46.demo_android.navigation.ProductsDetails(navigationProducts))
     }
 }

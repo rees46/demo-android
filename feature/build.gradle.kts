@@ -60,4 +60,5 @@ dependencies {
     implementation(project(":sdkRees46"))
     implementation(project(":core"))
     implementation(project(":ui"))
+    implementation(project(":navigation"))
 }
