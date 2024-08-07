@@ -1,7 +1,7 @@
 package rees46.demo_android.feature.search.presentation.mappers
 
-import com.rees46.demo_android.ui.recyclerView.search.models.CategoryItem
-import com.rees46.demo_android.ui.recyclerView.search.models.SearchItem
+import rees46.demo_android.feature.search.presentation.models.CategoryRecyclerViewItem
+import rees46.demo_android.feature.search.presentation.models.SearchRecyclerViewItem
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 import rees46.demo_android.feature.search.domain.models.Category
 import rees46.demo_android.feature.search.domain.models.Search
@@ -11,14 +11,14 @@ class SearchItemMapper(
 ) {
 
     fun toSearchItem(search: Search) =
-        SearchItem(
+        SearchRecyclerViewItem(
             productItems = productItemMapper.toProductItems(search.products),
             categoryItems = toCategoryItems(search.categories)
         )
 
-    private fun toCategoryItem(category: Category): CategoryItem =
+    private fun toCategoryItem(category: Category): CategoryRecyclerViewItem =
         with(category) {
-            CategoryItem(
+            CategoryRecyclerViewItem(
                 id = id,
                 name = name,
                 parent = parent,
@@ -27,6 +27,6 @@ class SearchItemMapper(
             )
         }
 
-    private fun toCategoryItems(categories: Collection<Category>): List<CategoryItem> =
+    private fun toCategoryItems(categories: Collection<Category>): List<CategoryRecyclerViewItem> =
         categories.map { toCategoryItem(it) }
 }

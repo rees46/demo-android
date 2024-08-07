@@ -1,15 +1,16 @@
-package com.rees46.demo_android.ui.recyclerView.search.view.adapter
+package rees46.demo_android.feature.search.presentation.adapter
 
 import android.content.Context
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.search.models.CategoryItem
+import rees46.demo_android.feature.search.presentation.models.CategoryRecyclerViewItem
+import rees46.demo_android.feature.search.presentation.view.recyclerView.SearchCategoryItemView
 
 class SearchCategoryAdapter(
     private val context: Context,
-    items: List<CategoryItem>,
+    items: List<CategoryRecyclerViewItem>,
     listener: OnItemClickListener
-) : ListItemAdapter<CategoryItem, SearchCategoryItemView>(
+) : ListItemAdapter<CategoryRecyclerViewItem, SearchCategoryItemView>(
     items = items,
     listener = listener
 ) {

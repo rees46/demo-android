@@ -1,8 +1,8 @@
-package com.rees46.demo_android.ui.recyclerView.search.models
+package rees46.demo_android.feature.search.presentation.models
 
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
-data class CategoryItem(
+data class CategoryRecyclerViewItem(
     val id: String,
     val name: String,
     val parent: String?,
@@ -11,7 +11,7 @@ data class CategoryItem(
 ): RecyclerViewItem() {
 
     override fun areItemsTheSame(anotherItem: RecyclerViewItem): Boolean {
-        val categoryItem = anotherItem as CategoryItem
+        val categoryItem = anotherItem as CategoryRecyclerViewItem
 
         return id == categoryItem.id
     }

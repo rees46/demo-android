@@ -1,4 +1,4 @@
-package com.rees46.demo_android.ui.recyclerView.search.view
+package rees46.demo_android.feature.search.presentation.view.recyclerView
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,15 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.ListItemAdapter
 import com.rees46.demo_android.ui.recyclerView.base.view.adapter.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.search.models.CategoryItem
-import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchCategoryAdapter
-import com.rees46.demo_android.ui.recyclerView.search.view.adapter.SearchCategoryItemView
+import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import rees46.demo_android.feature.search.presentation.adapter.SearchProductAdapter
 
-class SearchCategoriesRecyclerView @JvmOverloads constructor(
+class SearchProductsRecyclerView @JvmOverloads constructor(
     private val context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : ListRecyclerView<CategoryItem, SearchCategoryItemView>(
+) : ListRecyclerView<ProductRecyclerViewItem, SearchProductItemView>(
     context = context,
     attrs = attrs,
     defStyleAttr = defStyleAttr
@@ -22,8 +21,8 @@ class SearchCategoriesRecyclerView @JvmOverloads constructor(
 
     override fun createAdapter(
         listener: OnItemClickListener
-    ): ListItemAdapter<CategoryItem, SearchCategoryItemView> =
-        SearchCategoryAdapter(
+    ): ListItemAdapter<ProductRecyclerViewItem, SearchProductItemView> =
+        SearchProductAdapter(
            context = context,
            items = items,
            listener = listener

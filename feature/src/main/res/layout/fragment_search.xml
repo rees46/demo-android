@@ -56,7 +56,7 @@
             android:textColor="@color/default_subTextColor"
             android:textSize="11sp" />
 
-        <com.rees46.demo_android.ui.recyclerView.search.view.SearchCategoriesRecyclerView
+        <rees46.demo_android.feature.search.presentation.view.recyclerView.SearchCategoriesRecyclerView
             android:id="@+id/search_result_categories_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             android:textColor="@color/default_subTextColor"
             android:textSize="11sp" />
 
-        <com.rees46.demo_android.ui.recyclerView.search.view.SearchProductsRecyclerView
+        <rees46.demo_android.feature.search.presentation.view.recyclerView.SearchProductsRecyclerView
             android:id="@+id/search_result_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,15 +1,15 @@
-package com.rees46.demo_android.ui.recyclerView.search.models
+package rees46.demo_android.feature.search.presentation.models
 
 import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 
-data class SearchItem(
+data class SearchRecyclerViewItem(
     val productItems: List<ProductRecyclerViewItem>,
-    val categoryItems: List<CategoryItem>
+    val categoryItems: List<CategoryRecyclerViewItem>
 ): RecyclerViewItem() {
 
     override fun areItemsTheSame(anotherItem: RecyclerViewItem): Boolean {
-        val searchItem = anotherItem as SearchItem
+        val searchItem = anotherItem as SearchRecyclerViewItem
 
         return areItemsTheSame(productItems, searchItem.productItems)
                 && areItemsTheSame(categoryItems, anotherItem.categoryItems)
