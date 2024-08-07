@@ -16,12 +16,6 @@ class ProductDetailsDescriptionView @JvmOverloads constructor(
    private var binding: ViewProductDetailsDescriptionBinding =
         ViewProductDetailsDescriptionBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
-        binding.apply {
-           // oldPriceText.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
-        }
-    }
-
     fun setProduct(product: Product) {
         binding.apply {
             productNameText.text = product.name
@@ -30,6 +24,7 @@ class ProductDetailsDescriptionView @JvmOverloads constructor(
             descriptionText.text = product.description
             productRatingBar.rating = product.rating
             oldPriceText.updateText(product.priceFullFormatted.toString())
+            saleCardView.setValue(product.sale)
         }
     }
 }

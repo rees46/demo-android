@@ -52,7 +52,8 @@ fun Product.toProduct(): ProductDto {
         priceFullFormatted = priceFullFormatted,
         pictureUrl = picture,
         description = description,
-        rating = getRating()
+        rating = getRating(),
+        sale = getSale()
     )
 }
 
@@ -62,6 +63,10 @@ fun List<Product>.toProducts(): List<ProductDto> =
 // TODO: replaced by real data
 private fun getRating() =
     Random.nextFloat() * 5
+
+// TODO: replaced by real data
+private fun getSale() =
+    (1 + Random.nextFloat() * 50).toInt()
 
 private fun Category.toCategory(): CategoryDto {
     return CategoryDto(

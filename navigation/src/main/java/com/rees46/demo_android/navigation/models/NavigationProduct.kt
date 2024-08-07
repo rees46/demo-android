@@ -14,5 +14,6 @@ data class NavigationProduct(
     val priceFullFormatted: String?,
     val pictureUrl: String,
     val description: String,
-    val rating: Float
+    val rating: Float,
+    val sale: Int
 ) : Parcelable

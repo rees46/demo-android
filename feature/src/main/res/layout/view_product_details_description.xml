@@ -48,26 +48,25 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/small_default_offset">
 
         <TextView
             android:id="@+id/price_text"
-            style="@style/ProductDetails.Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             tools:text="$ 759"
-            android:layout_marginTop="@dimen/small_default_offset" />
+            android:gravity="center_vertical"
+            android:textAlignment="textStart"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/default_textColor" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
-            style="@style/ProductDetails.SaleCard"
-            android:layout_marginStart="@dimen/default_offset">
-
-            <TextView
-                android:id="@+id/sale_text"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginVertical="4dp"
-                style="@style/ProductDetails.SaleCard.Text"
-                android:text="-35%"
-                tools:ignore="HardcodedText" />
-        </com.google.android.material.card.MaterialCardView>
+        <rees46.demo_android.feature.productDetails.presentation.view.description.ProductDetailsSaleCardView
+            android:id="@+id/saleCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginStart="12dp" />
     </LinearLayout>
 </LinearLayout>

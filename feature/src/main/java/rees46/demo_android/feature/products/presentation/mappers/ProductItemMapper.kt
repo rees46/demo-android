@@ -17,7 +17,8 @@ class ProductItemMapper {
                 priceFullFormatted = priceFullFormatted,
                 pictureUrl = pictureUrl,
                 description = description,
-                rating = rating
+                rating = rating,
+                sale = sale
             )
         }
 
@@ -36,7 +37,8 @@ class ProductItemMapper {
                 priceFullFormatted = priceFullFormatted,
                 pictureUrl = pictureUrl,
                 description = description,
-                rating = rating
+                rating = rating,
+                sale = sale
             )
         }
 

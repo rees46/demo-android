@@ -12,7 +12,8 @@ data class ProductRecyclerViewItem(
     val priceFullFormatted: String?,
     val pictureUrl: String,
     val description: String,
-    val rating: Float
+    val rating: Float,
+    val sale: Int
 ) : RecyclerViewItem() {
 
     override fun areItemsTheSame(anotherItem: RecyclerViewItem): Boolean {
