@@ -58,12 +58,6 @@
         <item name="android:textColor">@color/default_textColor</item>
     </style>
 
-    <style name="ProductDetails.OldPrice">
-        <item name="android:layout_gravity">left</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/default_subTextColor</item>
-    </style>
-
     <style name="ProductDetails.Price">
         <item name="android:layout_gravity">left</item>
         <item name="android:textSize">24sp</item>

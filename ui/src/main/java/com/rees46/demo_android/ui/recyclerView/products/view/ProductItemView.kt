@@ -32,8 +32,6 @@ abstract class ProductItemView @JvmOverloads constructor(
 
     override fun setup() {
         with(binding) {
-            oldPriceText.paintFlags += Paint.STRIKE_THRU_TEXT_FLAG
-
             shopButton.isVisible = isShopVisible
 
             productImage.updateLayoutParams {
@@ -60,6 +58,7 @@ abstract class ProductItemView @JvmOverloads constructor(
                 producerNameText.text = producerName
                 priceText.text = priceFormatted
                 productRatingBar.rating = rating
+                oldPriceText.updateText(priceFullFormatted.toString())
             }
         }
     }

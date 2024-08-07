@@ -6,6 +6,7 @@
     <dimen name="default_button_cornerRadius">6dp</dimen>
     <dimen name="default_button_textSize">16sp</dimen>
     <dimen name="default_button_strokeWidth">1dp</dimen>
+    <dimen name="default_oldPrice_textSize">12sp</dimen>
     <dimen name="cart_cartProduct_producerName_textSize">12sp</dimen>
     <dimen name="cart_cartProduct_productName_textSize">16sp</dimen>
     <dimen name="cart_cartProduct_price_textSize">16sp</dimen>

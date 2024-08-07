@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/default_offset">
 
     <ImageView
@@ -54,15 +55,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_name_text" />
 
-    <TextView
+    <com.rees46.demo_android.ui.text.view.OldPriceText
         android:id="@+id/old_price_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/half_default_offset"
-        android:text="$ 1000"
-        android:textColor="@color/product_oldPrice_textColor"
-        android:textSize="@dimen/product_oldPrice_textSize"
-        android:maxLines="1"
+        tools:text="$ 1000"
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toStartOf="@+id/shop_button"
         app:layout_constraintHorizontal_bias="0.0"
