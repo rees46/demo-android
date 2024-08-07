@@ -9,7 +9,8 @@ import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.google.android.material.button.MaterialButton
-import com.rees46.demo_android.ui.utils.ViewColorUtils
+import com.rees46.demo_android.ui.extensions.setBackgroundColor
+import com.rees46.demo_android.ui.extensions.setTextColor
 import com.rees46.ui.R
 import com.rees46.demo_android.ui.utils.DimensionsConverter
 
@@ -33,26 +34,15 @@ open class BaseButton @JvmOverloads constructor(
         textSize = DimensionsConverter.convertResToDp(textSizeRes, context)
         setTypeface(null, Typeface.BOLD)
         textAlignment = View.TEXT_ALIGNMENT_CENTER
+        setTextColor(context, textColorRes)
+
         gravity = Gravity.CENTER
 
         setCornerRadiusResource(R.dimen.default_button_cornerRadius)
 
-        ViewColorUtils.setBackgroundButtonColor(
-            context = context,
-            button = this,
-            colorRes = backgroundColorRes
-        )
-        ViewColorUtils.setTextButtonColor(
-            context = context,
-            button = this,
-            colorRes = textColorRes
-        )
+        setBackgroundColor(context, backgroundColorRes)
 
-        strokeWidth = DimensionsConverter.convertResToDp(R.dimen.default_button_strokeWidth, context).toInt()
-
-        strokeColor = ViewColorUtils.getColorList(
-            context = context,
-            colorRes = R.color.black
-        )
+        setStrokeWidthResource(R.dimen.default_button_strokeWidth)
+        setStrokeColorResource(R.color.black)
     }
 }
