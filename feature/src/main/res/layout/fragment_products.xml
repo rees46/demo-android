@@ -9,7 +9,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_default"
+        android:layout_marginVertical="@dimen/margin_default"
         android:paddingBottom="@dimen/padding_default"
         android:fillViewport="true"
         android:orientation="vertical">

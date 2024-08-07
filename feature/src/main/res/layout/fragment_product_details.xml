@@ -19,7 +19,10 @@
 
             <ImageView
                 android:id="@+id/product_image"
-                style="@style/ProductDetails.Image" />
+                android:layout_width="match_parent"
+                android:layout_height="342dp"
+                android:scaleType="fitXY"
+                android:layout_gravity="center" />
 
             <rees46.demo_android.feature.productDetails.presentation.view.description.ProductDetailsDescriptionView
                 android:id="@+id/productDetailsView"
