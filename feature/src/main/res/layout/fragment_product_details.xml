@@ -33,7 +33,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="@dimen/card_product_default_offset">
 
-                <com.rees46.demo_android.ui.countCard.view.CountCardView
+                <rees46.demo_android.feature.productDetails.presentation.view.countCard.CountCardView
                     android:id="@+id/count_card"
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"

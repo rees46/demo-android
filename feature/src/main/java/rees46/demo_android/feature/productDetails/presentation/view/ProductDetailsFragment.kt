@@ -117,7 +117,7 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun updateCount(count: Int) {
-       binding.countCard.updateCount(count)
+       binding.countCard.setCount(count)
     }
 
     private fun navigateProductsFragment(products: List<Product>) {

@@ -1,11 +1,11 @@
-package com.rees46.demo_android.ui.countCard.view
+package rees46.demo_android.feature.productDetails.presentation.view.countCard
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import com.google.android.material.card.MaterialCardView
-import com.rees46.ui.databinding.ViewCountCardBinding
+import rees46.demo_android.databinding.ViewCountCardBinding
 
 @SuppressLint("ViewConstructor")
 open class CountCardView @JvmOverloads constructor(
@@ -17,7 +17,7 @@ open class CountCardView @JvmOverloads constructor(
     private var binding: ViewCountCardBinding =
         ViewCountCardBinding.inflate(LayoutInflater.from(context), this, true)
 
-    fun updateCount(count: Int) {
+    fun setCount(count: Int) {
         binding.valueText.text = count.toString()
     }
 
