@@ -1,9 +1,9 @@
 package rees46.demo_android.feature.cart.data.api
 
-import com.personalizatio.Params
-import com.personalizatio.SDK
-import com.personalizatio.api.OnApiCallbackListener
-import com.personalizatio.api.params.ProductItemParams
+import com.personalization.Params
+import com.personalization.SDK
+import com.personalization.api.OnApiCallbackListener
+import com.personalization.api.params.ProductItemParams
 import rees46.demo_android.feature.productDetails.domain.models.Product
 
 class CartApi(

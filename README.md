@@ -7,10 +7,11 @@ REES46 Demo Android - application to demonstrate working with SDK.
 ## Configure
 
 Versions:
+REES46 SDK 2.0.19
 Java 22
 Kotlin 2.0.0
 Gradle 8.8
-Android Gradle Plugin 8.5.1
+Android Gradle Plugin 8.5.2
 
 Copy `google-services.json` file from [Firebase console](https://console.firebase.google.com/u/0/) to app module.
 

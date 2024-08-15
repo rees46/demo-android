@@ -1,7 +1,7 @@
 package rees46.demo_android.app
 
 import android.app.Application
-import com.personalizatio.SDK
+import com.personalization.SDK
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
