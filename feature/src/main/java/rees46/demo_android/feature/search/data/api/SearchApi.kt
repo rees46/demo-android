@@ -1,8 +1,8 @@
 package rees46.demo_android.feature.search.data.api
 
-import com.personalizatio.SDK
-import com.personalizatio.api.responses.product.Product
-import com.personalizatio.api.responses.search.Category
+import com.personalization.SDK
+import com.personalization.api.responses.product.Product
+import com.personalization.api.responses.search.Category
 import rees46.demo_android.feature.productDetails.data.models.ProductDto
 import rees46.demo_android.feature.search.data.models.SearchDto
 import rees46.demo_android.feature.search.data.models.CategoryDto

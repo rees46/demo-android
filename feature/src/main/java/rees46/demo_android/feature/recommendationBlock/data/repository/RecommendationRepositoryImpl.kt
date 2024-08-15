@@ -1,6 +1,6 @@
 package rees46.demo_android.feature.recommendationBlock.data.repository
 
-import com.personalizatio.Params
+import com.personalization.Params
 import rees46.demo_android.feature.recommendationBlock.data.api.RecommendationApi
 import rees46.demo_android.feature.recommendationBlock.data.mappers.RecommendationMapper
 import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation

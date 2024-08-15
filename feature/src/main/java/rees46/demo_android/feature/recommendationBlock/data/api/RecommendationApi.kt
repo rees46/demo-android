@@ -1,8 +1,8 @@
 package rees46.demo_android.feature.recommendationBlock.data.api
 
-import com.personalizatio.Params
-import com.personalizatio.SDK
-import com.personalizatio.api.responses.recommendation.GetExtendedRecommendationResponse
+import com.personalization.Params
+import com.personalization.SDK
+import com.personalization.api.responses.recommendation.GetExtendedRecommendationResponse
 import rees46.demo_android.feature.recommendationBlock.data.models.RecommendationDto
 import rees46.demo_android.feature.search.data.api.toProducts
 

@@ -30,7 +30,7 @@
                 android:textSize="@dimen/text_size_stories_header"
                 android:layout_marginHorizontal="@dimen/margin_default" />
 
-            <com.personalizatio.stories.views.StoriesView
+            <com.personalization.stories.views.StoriesView
                 android:id="@+id/stories_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
