@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.getRoot())
 
+        setupNavigator()
         setupTopAppBar()
         setupBottomNavigationView()
         setupPopBackStack()
@@ -58,9 +59,22 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
     }
 
     private fun switchBottomTab(id: Int) {
-        if(navigator.getCurrentDestination() == id) return
+        if(navigator.getCurrentDestinationId() == id) return
 
         navigator.navigate(id)
+    }
+
+    private fun setupNavigator() {
+        navigator.addOnDestinationChangedListener { _, destination, _ ->
+            if(navigator.getPreviousDestinationId() == R.id.searchFragment) {
+                showBars(true)
+                return@addOnDestinationChangedListener
+            }
+
+            if(destination.id == R.id.searchFragment) {
+                showBars(false)
+            }
+        }
     }
 
     private fun setupPopBackStack() {
@@ -68,6 +82,10 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
             owner = this,
             onBackPressedCallback = object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
+                    if(navigator.getCurrentDestinationId() == R.id.searchFragment) {
+                        showBars(true)
+                    }
+
                     navigator.popBackStack()
 
                     changeSelectedBottomItem()
@@ -78,7 +96,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     private fun changeSelectedBottomItem() {
         with(binding.bottomNavigation) {
-            when (navigator.getCurrentDestination()) {
+            when (navigator.getCurrentDestinationId()) {
                 R.id.homeFragment -> selectedItemId = R.id.home
                 R.id.categoryFragment -> selectedItemId = R.id.category
                 R.id.cartFragment -> selectedItemId = R.id.cart
@@ -101,8 +119,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                         true
                     }
                     R.id.menu_top_app_search -> {
-                        supportActionBar?.hide()
-                        binding.bottomNavigation.isVisible = false
                         navigator.navigate(R.id.searchFragment)
                         true
                     }
@@ -110,5 +126,16 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 }
             }
         })
+    }
+
+    private fun showBars(isShow: Boolean) {
+        if(isShow) {
+            supportActionBar?.show()
+        }
+        else {
+            supportActionBar?.hide()
+        }
+
+        binding.bottomNavigation.isVisible = isShow
     }
 }

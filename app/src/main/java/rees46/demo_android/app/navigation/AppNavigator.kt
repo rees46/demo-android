@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
+import androidx.navigation.NavController.OnDestinationChangedListener
 import com.rees46.demo_android.navigation.Destination
 import com.rees46.demo_android.navigation.Navigator
 import com.rees46.demo_android.navigation.ProductDetails
@@ -41,8 +42,15 @@ class AppNavigator(private val navController: NavController) : Navigator {
         navController.popBackStack()
     }
 
-    override fun getCurrentDestination() : Int? =
+    override fun getCurrentDestinationId() : Int? =
         navController.currentDestination?.id
+
+    override fun getPreviousDestinationId() : Int? =
+        navController.previousBackStackEntry?.destination?.id
+
+    override fun addOnDestinationChangedListener(listener: OnDestinationChangedListener) {
+        navController.addOnDestinationChangedListener(listener)
+    }
 
     private fun navigate(@IdRes resId: Int, args: Bundle?) {
         navController.navigate(
