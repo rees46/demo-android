@@ -15,7 +15,6 @@
     </style>
 
     <style name="SuggestTextRegular" parent="Widget.AppCompat.TextView">
-        <item name="fontFamily">@font/inter</item>
         <item name="android:textColor">@color/text_color_primary</item>
         <item name="android:textSize">14sp</item>
     </style>

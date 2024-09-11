@@ -13,7 +13,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Recommendation"
-        android:fontFamily="@font/inter"
         android:textStyle="bold"
         android:textColor="@color/text_color_primary"
         android:textSize="@dimen/text_size_recommendation_block_header"

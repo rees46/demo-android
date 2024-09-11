@@ -25,13 +25,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/stories"
                 android:textStyle="bold"
-                android:fontFamily="@font/inter"
                 android:textColor="@color/text_color_primary"
                 android:textSize="@dimen/text_size_stories_header"
                 android:layout_marginHorizontal="@dimen/margin_default" />
 
             <com.personalization.stories.views.StoriesView
-                android:id="@+id/stories_view"
+                android:id="@+id/stories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:code="fcaa8d3168ab7d7346e4b4f1a1c92214"
