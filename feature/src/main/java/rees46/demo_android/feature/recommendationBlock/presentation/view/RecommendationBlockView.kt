@@ -18,15 +18,15 @@ import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendat
 
 class RecommendationBlockView @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null
+    attrs: AttributeSet? = null,
 ) : ConstraintLayout(context, attrs), OnItemClickListener {
 
     private lateinit var headerTextView: TextView
     private lateinit var showAllTextView: TextView
     private lateinit var productsRecyclerView: RecommendationProductsRecyclerView
 
-    private var onCardProductClick: (Product) -> Unit = {  }
-    private var onShowAllClick: (List<Product>) -> Unit = {  }
+    private var onCardProductClick: (Product) -> Unit = { }
+    private var onShowAllClick: (List<Product>) -> Unit = { }
 
     private lateinit var productItemMapper: ProductItemMapper
 
@@ -40,14 +40,16 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     internal fun setup(
         productItemMapper: ProductItemMapper,
-        onCardProductClick: (Product) -> Unit = {  },
-        onShowAllClick: (List<Product>) -> Unit = {  }
+        titleId: Int = R.string.recommender_title,
+        onCardProductClick: (Product) -> Unit = { },
+        onShowAllClick: (List<Product>) -> Unit = { },
     ) {
         this.productItemMapper = productItemMapper
         this.onCardProductClick = onCardProductClick
         this.onShowAllClick = onShowAllClick
 
         setupViews()
+        setHeaderText(text = context.getString(titleId))
     }
 
     private fun initViews() {
@@ -66,8 +68,6 @@ class RecommendationBlockView @JvmOverloads constructor(
 
     fun update(recommendation: Recommendation) {
         addCardProducts(recommendation.products)
-
-        setHeaderText(recommendation.title)
     }
 
     @SuppressLint("NotifyDataSetChanged")

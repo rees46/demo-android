@@ -21,4 +21,7 @@
     <string name="shop">Shop</string>
     <string name="reviews"><u>46 reviews</u></string>
     <string name="checkout">Checkout</string>
+    <string name="arrivals_title">New arrivals</string>
+    <string name="trends_title">Top trends</string>
+    <string name="recommender_title">Recommender title</string>
 </resources>
