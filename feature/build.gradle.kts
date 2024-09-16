@@ -1,5 +1,5 @@
 plugins {
-    id("com.example.convention")
+    id("com.example.build.config")
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")

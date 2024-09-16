@@ -1,5 +1,5 @@
 plugins {
-    id("com.example.convention")
+    id("com.example.build.config")
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")

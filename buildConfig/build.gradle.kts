@@ -19,8 +19,8 @@ dependencies {
 gradlePlugin {
     plugins {
         register("conventionPlugin") {
-            id = "com.example.convention"
-            implementationClass = "ConventionPlugin"
+            id = "com.example.build.config"
+            implementationClass = "AppBuildConfig"
         }
     }
 }

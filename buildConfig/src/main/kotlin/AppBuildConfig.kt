@@ -7,7 +7,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class ConventionPlugin : Plugin<Project> {
+class AppBuildConfig : Plugin<Project> {
 
     override fun apply(project: Project) {
         project.plugins.withId(ANDROID_APPLICATION_LIB) {
