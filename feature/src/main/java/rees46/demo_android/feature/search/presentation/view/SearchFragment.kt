@@ -83,7 +83,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.searchResultItems.collectLatest {
-                val resString = if(it.products.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
+                val resString =
+                    if (it.products.isEmpty()) R.string.suitable_products_not_found else R.string.suitable_products
                 binding.suitableProductsText.text = getString(resString)
 
                 binding.suitableCategoriesText.isVisible = it.categories.isEmpty()
@@ -98,7 +99,11 @@ class SearchFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(item: RecyclerViewItem) {
-        val navigationProduct = navigationProductMapper.toNavigationProduct(item as ProductRecyclerViewItem)
-        navigator.navigate(ProductDetails(navigationProduct))
+        if (item is ProductRecyclerViewItem) {
+            val navigationProduct = navigationProductMapper.toNavigationProduct(item)
+            navigator.navigate(ProductDetails(navigationProduct))
+        } else {
+            // Handle other item types if necessary
+        }
     }
 }

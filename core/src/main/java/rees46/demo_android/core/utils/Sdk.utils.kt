@@ -16,6 +16,7 @@ object SdkUtils {
         sdk.initialize(
             context = context,
             shopId = shopId,
+            shopSecretKey = "",
             apiUrl = SdkSettings.API_URL,
             preferencesKey = SdkSettings.PREFERENCES_KEY,
             tag = SdkSettings.TAG,
@@ -28,7 +29,7 @@ object SdkUtils {
     fun createOnApiCallbackListener(onSuccess: () -> Unit): OnApiCallbackListener {
         return object : OnApiCallbackListener() {
             override fun onSuccess(response: JSONObject?) {
-                if(isResponseSuccess(response)) {
+                if (isResponseSuccess(response)) {
                     onSuccess()
                 }
             }

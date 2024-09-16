@@ -1,4 +1,5 @@
 plugins {
+    id("com.example.build.config")
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("androidx.navigation.safeargs.kotlin")
@@ -7,28 +8,6 @@ plugins {
 
 android {
     namespace = "rees46.demo_android"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_22
-        targetCompatibility = JavaVersion.VERSION_22
-    }
-    kotlinOptions {
-        jvmTarget = "22"
-    }
     buildFeatures {
         viewBinding = true
     }
@@ -57,7 +36,7 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.gson)
     implementation(libs.glide)
-    implementation(project(":sdkRees46"))
+    implementation(libs.rees46.sdk)
     implementation(project(":core"))
     implementation(project(":ui"))
     implementation(project(":navigation"))

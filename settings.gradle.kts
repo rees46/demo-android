@@ -10,6 +10,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    includeBuild("buildConfig")
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -21,7 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "demo-android"
 
-include(":sdkRees46")
 include(":feature")
 include(":data")
 include(":domain")

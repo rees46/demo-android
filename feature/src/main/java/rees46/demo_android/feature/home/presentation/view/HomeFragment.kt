@@ -20,6 +20,7 @@ import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
 import com.rees46.demo_android.navigation.Navigator
 import com.rees46.demo_android.navigation.ProductDetails
 import com.rees46.demo_android.navigation.ProductsDetails
+import rees46.demo_android.R
 import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
@@ -55,25 +56,39 @@ class HomeFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding.storiesView) {
-            sdk.initializeStoriesView(this)
-            settings.icon_size = 80
-            settings.label_font_size = 0
-        }
+//        with(binding.stories) {
+//            setId(1234)
+//            sdk.initializeStoriesView(this)
+//            settings.icon_size = 80
+//            settings.label_font_size = 0
+//        }
 
         with(binding) {
-            setupRecommendationBlockView(newArrivalsRecommendationBlockView)
-            setupRecommendationBlockView(topTrendsRecommendationBlockView)
-            setupRecommendationBlockView(youLikeRecommendationBlockView)
+            setupRecommendationBlockView(
+                recommendationBlockView = newArrivalsRecommendationBlockView,
+                title = R.string.arrivals_title
+            )
+            setupRecommendationBlockView(
+                recommendationBlockView = topTrendsRecommendationBlockView,
+                title = R.string.trends_title,
+            )
+            setupRecommendationBlockView(
+                recommendationBlockView = youLikeRecommendationBlockView,
+                title = R.string.recommender_title
+            )
         }
     }
 
-    private fun setupRecommendationBlockView(recommendationBlockView: RecommendationBlockView) {
+    private fun setupRecommendationBlockView(
+        recommendationBlockView: RecommendationBlockView,
+        title: Int
+    ) {
         recommendationBlockView.apply {
             setup(
                 productItemMapper = productItemMapper,
+                titleId = title,
                 onCardProductClick = ::navigateProductFragment,
-                onShowAllClick = ::navigateProductsFragment
+                onShowAllClick = ::navigateProductsFragment,
             )
             viewLifecycleOwner.lifecycleScope.launch {
                 viewModel.recommendationFlow.collectLatest(::update)
