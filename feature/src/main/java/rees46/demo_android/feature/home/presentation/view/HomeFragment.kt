@@ -55,13 +55,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-
-//        with(binding.stories) {
-//            setId(1234)
-//            sdk.initializeStoriesView(this)
-//            settings.icon_size = 80
-//            settings.label_font_size = 0
-//        }
+        sdk.initializeStoriesView(binding.story)
 
         with(binding) {
             setupRecommendationBlockView(
