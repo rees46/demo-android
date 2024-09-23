@@ -4,4 +4,5 @@
     <dimen name="margin_half_default">8dp</dimen>
     <dimen name="margin_quarter_default">4dp</dimen>
     <dimen name="margin_error_default_offset">20dp</dimen>
+    <dimen name="margin_large">50dp</dimen>
 </resources>
