@@ -35,7 +35,7 @@ class NewFeaturesFragment : Fragment() {
         val debugMessage =
             "И мы к вам с хорошими новостями. Совсем скоро мы проведем вебинар по поиску на сайте — там будет масса полезной информации, которая поможет бустануть конверсию и повысить лояльность аудитории. Приходите!"
         val debugImageUrl =
-            "https://devldesigns.com.au/cdn/shop/files/shut_up_take_money_stkr.png?v=1687693461&width=1445"
+            "https://ih1.redbubble.net/image.2487413451.3407/fmp,x_small,gloss,study,product,750x1000.jpg"
         val buttonNegative = "Cancel"
         val buttonPositive = "OK"
         with(binding) {
