@@ -25,4 +25,8 @@
     <string name="arrivals_title">New arrivals</string>
     <string name="trends_title">Top trends</string>
     <string name="recommender_title">Recommender title</string>
+    <string name="alert_dialog_title">Wow, that\'s something!</string>
+    <string name="alert_dialog_button_accept">Accept</string>
+    <string name="alert_dialog_button_decline">Decline</string>
+    <string name="alert_dialog_message">We have something new for you. Thanks to such notifications, you can show the user all sorts of things. For example, news about a new promotion, notify him about a change in the status of a product or about the integration of new features into your application. And this is only a small part of how you can use this feature!</string>
 </resources>
