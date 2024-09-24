@@ -34,63 +34,110 @@ class NewFeaturesFragment : Fragment() {
     private fun handleInAppNotifications() {
         with(binding) {
 
+            val title = getString(R.string.alert_dialog_title)
+            val message = getString(R.string.alert_dialog_message)
+            val buttonAccept = getString(R.string.alert_dialog_button_accept)
+            val buttonDecline = getString(R.string.alert_dialog_button_decline)
+            val imageUrl =
+                "https://ih1.redbubble.net/image.2487413451.3407/fmp,x_small,gloss,study,product,750x1000.jpg"
+
             alertDialogButton.setOnClickListener {
-                sdk.inAppNotificationManager.showAlertDialog(
-                    fragmentManager = childFragmentManager,
-                    title = requireContext().getString(R.string.alert_dialog_title),
-                    message = requireContext().getString(R.string.alert_dialog_message),
-                    buttonText = requireContext().getString(R.string.alert_dialog_button_accept)
-                )
+                showAlertDialog(title, message, buttonAccept)
             }
 
             fullScreenDialogButton.setOnClickListener {
-                sdk.inAppNotificationManager.showFullScreenDialog(
-                    fragmentManager = childFragmentManager,
-                    title = requireContext().getString(R.string.alert_dialog_title),
-                    message = requireContext().getString(R.string.alert_dialog_message),
-                    imageUrl = "https://ih1.redbubble.net/image.2487413451.3407/fmp,x_small,gloss,study,product,750x1000.jpg",
-                    buttonNegativeText = requireContext().getString(R.string.alert_dialog_button_decline),
-                    buttonPositiveText = requireContext().getString(R.string.alert_dialog_button_accept),
-                    onNegativeClick = {
-                        Log.d(requireContext().javaClass.name, ": onNegativeClick")
-                    },
-                    onPositiveClick = {
-                        Log.d(requireContext().javaClass.name, ": onPositiveClick")
-                    },
+                showFullScreenDialog(
+                    title = title,
+                    message = message,
+                    imageUrl = imageUrl,
+                    buttonNegativeText = buttonDecline,
+                    buttonPositiveText = buttonAccept
                 )
             }
 
             bottomSheetDialogButton.setOnClickListener {
-                sdk.inAppNotificationManager.showBottomSheetDialog(
-                    fragmentManager = childFragmentManager,
-                    title = requireContext().getString(R.string.alert_dialog_title),
-                    message = requireContext().getString(R.string.alert_dialog_message),
-                    imageUrl = "https://ih1.redbubble.net/image.2487413451.3407/fmp,x_small,gloss,study,product,750x1000.jpg",
-                    buttonNegativeText = requireContext().getString(R.string.alert_dialog_button_decline),
-                    buttonPositiveText = requireContext().getString(R.string.alert_dialog_button_accept),
-                    onNegativeClick = {
-                        Log.d(requireContext().javaClass.name, ": onNegativeClick")
-                    },
-                    onPositiveClick = {
-                        Log.d(requireContext().javaClass.name, ": onPositiveClick")
-                    },
+                showBottomSheetDialog(
+                    title = title,
+                    message = message,
+                    imageUrl = imageUrl,
+                    buttonNegativeText = buttonDecline,
+                    buttonPositiveText = buttonAccept
                 )
             }
 
             snackBarButton.setOnClickListener {
-                sdk.inAppNotificationManager.showSnackBar(
-                    view = requireView(),
-                    message = requireContext().getString(R.string.alert_dialog_title),
-                    buttonNegativeText = requireContext().getString(R.string.alert_dialog_button_decline),
-                    buttonPositiveText = requireContext().getString(R.string.alert_dialog_button_accept),
-                    onNegativeClick = {
-                        Log.d(requireContext().javaClass.name, ": onNegativeClick")
-                    },
-                    onPositiveClick = {
-                        Log.d(requireContext().javaClass.name, ": onPositiveClick")
-                    },
+                showSnackBar(
+                    message = title,
+                    buttonNegativeText = buttonDecline,
+                    buttonPositiveText = buttonAccept
                 )
             }
         }
+    }
+
+    private fun showAlertDialog(title: String, message: String, buttonText: String) {
+        sdk.inAppNotificationManager.showAlertDialog(
+            fragmentManager = childFragmentManager,
+            title = title,
+            message = message,
+            buttonText = buttonText
+        )
+    }
+
+    private fun showFullScreenDialog(
+        title: String,
+        message: String,
+        imageUrl: String,
+        buttonNegativeText: String,
+        buttonPositiveText: String
+    ) {
+        sdk.inAppNotificationManager.showFullScreenDialog(
+            fragmentManager = childFragmentManager,
+            title = title,
+            message = message,
+            imageUrl = imageUrl,
+            buttonNegativeText = buttonNegativeText,
+            buttonPositiveText = buttonPositiveText,
+            onNegativeClick = { logClick("onNegativeClick") },
+            onPositiveClick = { logClick("onPositiveClick") }
+        )
+    }
+
+    private fun showBottomSheetDialog(
+        title: String,
+        message: String,
+        imageUrl: String,
+        buttonNegativeText: String,
+        buttonPositiveText: String
+    ) {
+        sdk.inAppNotificationManager.showBottomSheetDialog(
+            fragmentManager = childFragmentManager,
+            title = title,
+            message = message,
+            imageUrl = imageUrl,
+            buttonNegativeText = buttonNegativeText,
+            buttonPositiveText = buttonPositiveText,
+            onNegativeClick = { logClick("onNegativeClick") },
+            onPositiveClick = { logClick("onPositiveClick") }
+        )
+    }
+
+    private fun showSnackBar(
+        message: String,
+        buttonNegativeText: String,
+        buttonPositiveText: String
+    ) {
+        sdk.inAppNotificationManager.showSnackBar(
+            view = requireView(),
+            message = message,
+            buttonNegativeText = buttonNegativeText,
+            buttonPositiveText = buttonPositiveText,
+            onNegativeClick = { logClick("onNegativeClick") },
+            onPositiveClick = { logClick("onPositiveClick") }
+        )
+    }
+
+    private fun logClick(action: String) {
+        Log.d(NewFeaturesFragment::class.java.simpleName, action)
     }
 }
