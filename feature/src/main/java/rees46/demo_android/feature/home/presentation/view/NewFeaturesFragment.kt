@@ -12,6 +12,7 @@ import rees46.demo_android.R
 import rees46.demo_android.databinding.FragmentNewFeaturesBinding
 
 class NewFeaturesFragment : Fragment() {
+
     private lateinit var binding: FragmentNewFeaturesBinding
 
     private val sdk: SDK by inject()
@@ -31,7 +32,6 @@ class NewFeaturesFragment : Fragment() {
     }
 
     private fun handleInAppNotifications() {
-        //TODO remove
         with(binding) {
 
             alertDialogButton.setOnClickListener {
