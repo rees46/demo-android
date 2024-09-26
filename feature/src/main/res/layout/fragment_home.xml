@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/fragment_home"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:id="@+id/fragment_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_default"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginVertical="@dimen/margin_default">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/margin_default">
+            android:layout_marginBottom="@dimen/margin_large"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:text="@string/stories"
-                android:textStyle="bold"
                 android:textColor="@color/text_color_primary"
                 android:textSize="@dimen/text_size_stories_header"
-                android:layout_marginHorizontal="@dimen/margin_default" />
+                android:textStyle="bold" />
 
             <com.personalization.stories.views.StoriesView
+                android:id="@+id/story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:code="fcaa8d3168ab7d7346e4b4f1a1c92214"
@@ -50,6 +50,22 @@
                 android:id="@+id/you_like_recommendation_block_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/newFeatures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/margin_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/new_features_title"
+                android:textColor="@color/color_blue"
+                android:textSize="@dimen/text_size_cart_shipping" />
+
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

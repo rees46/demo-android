@@ -18,6 +18,7 @@ import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
 import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.InAppNotifications
 import com.rees46.demo_android.navigation.ProductDetails
 import com.rees46.demo_android.navigation.ProductsDetails
 import rees46.demo_android.R
@@ -55,13 +56,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-
-//        with(binding.stories) {
-//            setId(1234)
-//            sdk.initializeStoriesView(this)
-//            settings.icon_size = 80
-//            settings.label_font_size = 0
-//        }
+        sdk.initializeStoriesView(binding.story)
 
         with(binding) {
             setupRecommendationBlockView(
@@ -76,6 +71,10 @@ class HomeFragment : Fragment() {
                 recommendationBlockView = youLikeRecommendationBlockView,
                 title = R.string.recommender_title
             )
+
+            newFeatures.setOnClickListener {
+                navigateToInAppNotificationsFragment()
+            }
         }
     }
 
@@ -94,6 +93,10 @@ class HomeFragment : Fragment() {
                 viewModel.recommendationFlow.collectLatest(::update)
             }
         }
+    }
+
+    private fun navigateToInAppNotificationsFragment() {
+        navigator.navigate(InAppNotifications)
     }
 
     private fun navigateProductFragment(product: Product) {

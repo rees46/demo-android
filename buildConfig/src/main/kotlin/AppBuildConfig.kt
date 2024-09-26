@@ -136,15 +136,15 @@ class AppBuildConfig : Plugin<Project> {
 
     private fun AppExtension.configureJavaAndKotlinOptions() {
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
+            sourceCompatibility = JavaVersion.VERSION_20
+            targetCompatibility = JavaVersion.VERSION_20
         }
     }
 
     private fun LibraryExtension.configureJavaAndKotlinOptions() {
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
+            sourceCompatibility = JavaVersion.VERSION_20
+            targetCompatibility = JavaVersion.VERSION_20
         }
     }
 
@@ -156,7 +156,7 @@ class AppBuildConfig : Plugin<Project> {
         private const val TARGET_SDK = 34
         private const val VERSION_CODE = 1
         private const val VERSION_NAME = "1.0.0"
-        private const val JVM_TARGET = "17"
+        private const val JVM_TARGET = "20"
 
         private const val RELEASE_TYPE = "release"
         private const val RELEASE_CONFIG = "releaseConfig"
