@@ -38,8 +38,8 @@
         android:label="SearchFragment" >
     </fragment>
     <fragment
-        android:id="@+id/newFeaturesFragment"
-        android:name="rees46.demo_android.feature.home.presentation.view.NewFeaturesFragment"
-        android:label="NewFeatures" >
+        android:id="@+id/inAppNotificationsFragment"
+        android:name="rees46.demo_android.feature.home.presentation.view.InAppNotificationsFragment"
+        android:label="InAppNotifications">
     </fragment>
 </navigation>

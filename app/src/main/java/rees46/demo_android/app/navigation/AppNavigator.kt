@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavController.OnDestinationChangedListener
 import com.rees46.demo_android.navigation.Destination
 import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.NewFeatures
+import com.rees46.demo_android.navigation.InAppNotifications
 import com.rees46.demo_android.navigation.ProductDetails
 import com.rees46.demo_android.navigation.ProductsDetails
 import rees46.demo_android.app.R
@@ -35,7 +35,7 @@ class AppNavigator(private val navController: NavController) : Navigator {
                 )
             }
 
-            is NewFeatures -> navigate(R.id.newFeaturesFragment)
+            is InAppNotifications -> navigate(R.id.inAppNotificationsFragment)
             else -> {}
         }
     }

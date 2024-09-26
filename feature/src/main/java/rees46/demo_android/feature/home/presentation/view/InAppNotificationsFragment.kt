@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import com.personalization.SDK
 import org.koin.android.ext.android.inject
 import rees46.demo_android.R
-import rees46.demo_android.databinding.FragmentNewFeaturesBinding
+import rees46.demo_android.databinding.FragmentInAppNotificationsBinding
 
-class NewFeaturesFragment : Fragment() {
+class InAppNotificationsFragment : Fragment() {
 
-    private lateinit var binding: FragmentNewFeaturesBinding
+    private lateinit var binding: FragmentInAppNotificationsBinding
 
     private val sdk: SDK by inject()
 
@@ -22,7 +22,7 @@ class NewFeaturesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNewFeaturesBinding.inflate(inflater, container, false)
+        binding = FragmentInAppNotificationsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -138,6 +138,6 @@ class NewFeaturesFragment : Fragment() {
     }
 
     private fun logClick(action: String) {
-        Log.d(NewFeaturesFragment::class.java.simpleName, action)
+        Log.d(InAppNotificationsFragment::class.java.simpleName, action)
     }
 }

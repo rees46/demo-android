@@ -3,7 +3,7 @@
     <string name="app_header">DEMO<b>STORE</b></string>
     <string name="add_to_cart">Add to cart</string>
     <string name="stories">Stories</string>
-    <string name="new_features_title">Want\'s to see new features?</string>
+    <string name="new_features_title">Want\'s to see in-app notifications?</string>
     <string name="shopping_cart">Shopping cart</string>
     <string name="empty_shopping_cart">Your shopping cart is empty</string>
     <string name="shipping">Shipping:</string>

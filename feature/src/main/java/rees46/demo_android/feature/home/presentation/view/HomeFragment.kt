@@ -18,7 +18,7 @@ import rees46.demo_android.databinding.FragmentHomeBinding
 import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
 import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.NewFeatures
+import com.rees46.demo_android.navigation.InAppNotifications
 import com.rees46.demo_android.navigation.ProductDetails
 import com.rees46.demo_android.navigation.ProductsDetails
 import rees46.demo_android.R
@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
             )
 
             newFeatures.setOnClickListener {
-                navigateToNewFeaturesFragment()
+                navigateToInAppNotificationsFragment()
             }
         }
     }
@@ -95,8 +95,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun navigateToNewFeaturesFragment() {
-        navigator.navigate(NewFeatures)
+    private fun navigateToInAppNotificationsFragment() {
+        navigator.navigate(InAppNotifications)
     }
 
     private fun navigateProductFragment(product: Product) {
