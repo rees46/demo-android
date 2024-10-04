@@ -2,9 +2,11 @@
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
+import java.io.File
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.internal.file.impl.DefaultFileMetadata.file
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class AppBuildConfig : Plugin<Project> {
@@ -66,10 +68,12 @@ class AppBuildConfig : Plugin<Project> {
     private fun AppExtension.configureSigningConfigs() {
         signingConfigs {
             create(RELEASE_CONFIG) {
-                // Configuration for releaseConfig
+                storeFile = File("/Users/borystrubitsun/StudioProjects/demo-android/signingKey.jks") // Укажите путь к вашему keystore файлу
+                storePassword = "rees46_demo_shop"
+                keyAlias = "rees46_demo_shop"
+                keyPassword = "rees46_demo_shop"
             }
             create(DEBUG_CONFIG) {
-                // Configuration for debugConfig
             }
         }
     }
