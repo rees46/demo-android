@@ -4,6 +4,7 @@ import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.util.Properties
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
@@ -25,27 +26,42 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     private fun configureAppExtension(androidExtension: AppExtension, project: Project) {
+        // Загрузка версии из файла version.properties
+        val versionPropsFile = File(project.rootProject.projectDir, "version.properties")
+        val versionProps = Properties()
+        if (versionPropsFile.exists()) {
+            versionProps.load(FileInputStream(versionPropsFile))
+        }
+
+        val currentVersionCode = versionProps["VERSION_CODE"].toString().toInt()
+        val currentVersionName = versionProps["VERSION_NAME"].toString()
+
         androidExtension.apply {
             compileSdkVersion(TARGET_SDK)
-            configureDefaultConfig()
+            defaultConfig {
+                applicationId = APPLICATION_ID
+                minSdk = MIN_SDK
+                targetSdk = TARGET_SDK
+                versionCode = currentVersionCode
+                versionName = currentVersionName
+                viewBinding {
+                    enable = true
+                }
+            }
             flavorDimensions(DIMENSION_FLAVORS)
             configureProductFlavors()
             configureSigningConfigs(project)
             configureBuildTypes()
             configurePackagingOptions()
             configureJavaAndKotlinOptions()
-        }
-    }
 
-    private fun AppExtension.configureDefaultConfig() {
-        defaultConfig {
-            applicationId = APPLICATION_ID
-            minSdk = MIN_SDK
-            targetSdk = TARGET_SDK
-            versionCode = VERSION_CODE
-            versionName = VERSION_NAME
-            viewBinding {
-                enable = true
+            project.tasks.register("incrementVersion") {
+                doLast {
+                    val newVersionCode = currentVersionCode + 1
+                    versionProps["VERSION_CODE"] = newVersionCode.toString()
+                    versionProps.store(FileOutputStream(versionPropsFile), null)
+                    println("Version updated to: $newVersionCode")
+                }
             }
         }
     }
@@ -54,7 +70,6 @@ class AppBuildConfig : Plugin<Project> {
         productFlavors {
             create(DEV_FLAVOR) {
                 dimension = DIMENSION_FLAVORS
-                // applicationIdSuffix = APPLICATION_DEV_SUFFIX
             }
             create(STAGE_FLAVOR) {
                 dimension = DIMENSION_FLAVORS
@@ -160,13 +175,14 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     companion object {
+        private const val VERSION_CODE = 2
+        private const val VERSION_NAME = "1.0.1"
+
         private const val APPLICATION_ID = "rees46.demo_android"
         private const val ANDROID_APPLICATION_LIB = "com.android.application"
         private const val ANDROID_LIB = "com.android.library"
         private const val MIN_SDK = 24
         private const val TARGET_SDK = 34
-        private const val VERSION_CODE = 1
-        private const val VERSION_NAME = "1.0.0"
         private const val JVM_TARGET = "20"
 
         private const val RELEASE_TYPE = "release"
