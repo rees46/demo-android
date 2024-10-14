@@ -3,17 +3,18 @@
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.internal.file.impl.DefaultFileMetadata.file
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class AppBuildConfig : Plugin<Project> {
 
     override fun apply(project: Project) {
         project.plugins.withId(ANDROID_APPLICATION_LIB) {
-            configureAppExtension(project.extensions.getByType(AppExtension::class.java))
+            configureAppExtension(project.extensions.getByType(AppExtension::class.java), project)
         }
 
         project.plugins.withId(ANDROID_LIB) {
@@ -23,13 +24,13 @@ class AppBuildConfig : Plugin<Project> {
         configureKotlinCompile(project)
     }
 
-    private fun configureAppExtension(androidExtension: AppExtension) {
+    private fun configureAppExtension(androidExtension: AppExtension, project: Project) {
         androidExtension.apply {
             compileSdkVersion(TARGET_SDK)
             configureDefaultConfig()
             flavorDimensions(DIMENSION_FLAVORS)
             configureProductFlavors()
-            configureSigningConfigs()
+            configureSigningConfigs(project)
             configureBuildTypes()
             configurePackagingOptions()
             configureJavaAndKotlinOptions()
@@ -65,13 +66,19 @@ class AppBuildConfig : Plugin<Project> {
         }
     }
 
-    private fun AppExtension.configureSigningConfigs() {
+    private fun AppExtension.configureSigningConfigs(project: Project) {
+        val localProperties = Properties()
+        val localPropertiesFile = project.rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localProperties.load(FileInputStream(localPropertiesFile))
+        }
+
         signingConfigs {
             create(RELEASE_CONFIG) {
-                storeFile = File("/Users/borystrubitsun/StudioProjects/demo-android/signingKey.jks") // Укажите путь к вашему keystore файлу
-                storePassword = "rees46_demo_shop"
-                keyAlias = "rees46_demo_shop"
-                keyPassword = "rees46_demo_shop"
+                storeFile = File(localProperties.getProperty("RELEASE_STORE_FILE"))
+                storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD")
+                keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS")
+                keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD")
             }
             create(DEBUG_CONFIG) {
             }
@@ -171,7 +178,6 @@ class AppBuildConfig : Plugin<Project> {
         private const val STAGE_FLAVOR = "stage"
         private const val PROD_FLAVOR = "prod"
         private const val DIMENSION_FLAVORS = "medical"
-        private const val APPLICATION_DEV_SUFFIX = ".debug"
         private const val APPLICATION_STAGE_SUFFIX = ".test"
 
         private const val PROGUARD_ANDROID_TXT = "proguard-android-optimize.txt"

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.personalization.SDK
 import org.koin.android.ext.android.inject
@@ -32,94 +33,76 @@ class InAppNotificationsFragment : Fragment() {
     }
 
     private fun handleInAppNotifications() {
+        sdk.initializeFragmentManager(fragmentManager = parentFragmentManager)
         with(binding) {
+            val debugFullScreenMessage =
+                resources.getString(R.string.alert_dialog_full_screen_message)
+            val buttonNegative = resources.getString(R.string.alert_dialog_button_decline_title)
+            val buttonPositive = resources.getString(R.string.alert_dialog_button_accept_title)
+            val debugMessage = resources.getString(R.string.alert_dialog_message)
+            val debugTitle = resources.getString(R.string.alert_dialog_title)
 
-            val title = getString(R.string.alert_dialog_title)
-            val message = getString(R.string.alert_dialog_message)
-            val buttonAccept = getString(R.string.alert_dialog_button_accept)
-            val buttonDecline = getString(R.string.alert_dialog_button_decline)
-            val imageUrl =
-                "https://ih1.redbubble.net/image.2487413451.3407/fmp,x_small,gloss,study,product,750x1000.jpg"
+            val buttonPositiveColor =
+                ContextCompat.getColor(requireContext(), R.color.buttonAcceptColor)
+            val buttonNegativeColor = ContextCompat.getColor(requireContext(), R.color.colorGray)
+
+            val debugImageUrl =
+                "https://mir-s3-cdn-cf.behance.net/projects/404/01d316151239201.Y3JvcCwzMzA0LDI1ODUsMzQzLDA.png"
 
             alertDialogButton.setOnClickListener {
-                showAlertDialog(title, message, buttonAccept)
+                sdk.showAlertDialog(
+                    title = debugTitle,
+                    message = debugMessage,
+                    imageUrl = debugImageUrl,
+                    buttonNegativeText = buttonNegative,
+                    buttonPositiveText = buttonPositive,
+                    buttonNegativeColor = buttonNegativeColor,
+                    buttonPositiveColor = buttonPositiveColor,
+                    onNegativeClick = {},
+                    onPositiveClick = {},
+                )
             }
 
             fullScreenDialogButton.setOnClickListener {
-                showFullScreenDialog(
-                    title = title,
-                    message = message,
-                    imageUrl = imageUrl,
-                    buttonNegativeText = buttonDecline,
-                    buttonPositiveText = buttonAccept
+                sdk.showFullScreenDialog(
+                    title = debugTitle,
+                    message = debugFullScreenMessage,
+                    imageUrl = debugImageUrl,
+                    buttonNegativeText = buttonNegative,
+                    buttonPositiveText = buttonPositive,
+                    buttonNegativeColor = buttonNegativeColor,
+                    buttonPositiveColor = buttonPositiveColor,
+                    onNegativeClick = {
+                    },
+                    onPositiveClick = {
+                    },
                 )
             }
 
             bottomSheetDialogButton.setOnClickListener {
-                showBottomSheetDialog(
-                    title = title,
-                    message = message,
-                    imageUrl = imageUrl,
-                    buttonNegativeText = buttonDecline,
-                    buttonPositiveText = buttonAccept
+                sdk.showBottomSheetDialog(
+                    title = debugTitle,
+                    message = debugMessage,
+                    imageUrl = debugImageUrl,
+                    buttonNegativeText = null,
+                    buttonPositiveText = buttonPositive,
+                    buttonNegativeColor = buttonNegativeColor,
+                    buttonPositiveColor = buttonPositiveColor,
+                    onNegativeClick = {
+                    },
+                    onPositiveClick = {
+                    },
                 )
             }
 
             snackBarButton.setOnClickListener {
                 showSnackBar(
-                    message = title,
-                    buttonNegativeText = buttonDecline,
-                    buttonPositiveText = buttonAccept
+                    message = debugTitle,
+                    buttonNegativeText = buttonPositive,
+                    buttonPositiveText = buttonNegative
                 )
             }
         }
-    }
-
-    private fun showAlertDialog(title: String, message: String, buttonText: String) {
-        sdk.inAppNotificationManager.showAlertDialog(
-            fragmentManager = childFragmentManager,
-            title = title,
-            message = message,
-            buttonText = buttonText
-        )
-    }
-
-    private fun showFullScreenDialog(
-        title: String,
-        message: String,
-        imageUrl: String,
-        buttonNegativeText: String,
-        buttonPositiveText: String
-    ) {
-        sdk.inAppNotificationManager.showFullScreenDialog(
-            fragmentManager = childFragmentManager,
-            title = title,
-            message = message,
-            imageUrl = imageUrl,
-            buttonNegativeText = buttonNegativeText,
-            buttonPositiveText = buttonPositiveText,
-            onNegativeClick = { logClick("onNegativeClick") },
-            onPositiveClick = { logClick("onPositiveClick") }
-        )
-    }
-
-    private fun showBottomSheetDialog(
-        title: String,
-        message: String,
-        imageUrl: String,
-        buttonNegativeText: String,
-        buttonPositiveText: String
-    ) {
-        sdk.inAppNotificationManager.showBottomSheetDialog(
-            fragmentManager = childFragmentManager,
-            title = title,
-            message = message,
-            imageUrl = imageUrl,
-            buttonNegativeText = buttonNegativeText,
-            buttonPositiveText = buttonPositiveText,
-            onNegativeClick = { logClick("onNegativeClick") },
-            onPositiveClick = { logClick("onPositiveClick") }
-        )
     }
 
     private fun showSnackBar(
