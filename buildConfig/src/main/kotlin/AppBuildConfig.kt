@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import java.io.File
@@ -26,15 +24,15 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     private fun configureAppExtension(androidExtension: AppExtension, project: Project) {
-        // Загрузка версии из файла version.properties
+        // Загрузка версий из файла version.properties
         val versionPropsFile = File(project.rootProject.projectDir, "version.properties")
         val versionProps = Properties()
         if (versionPropsFile.exists()) {
             versionProps.load(FileInputStream(versionPropsFile))
         }
 
-        val currentVersionCode = versionProps["VERSION_CODE"].toString().toInt()
-        val currentVersionName = versionProps["VERSION_NAME"].toString()
+        val currentVersionCode = versionProps[VERSION_CODE]?.toString()?.toInt() ?: 1
+        val currentVersionName = versionProps[VERSION_NAME]?.toString() ?: "1.0.0"
 
         androidExtension.apply {
             compileSdkVersion(TARGET_SDK)
@@ -55,15 +53,33 @@ class AppBuildConfig : Plugin<Project> {
             configurePackagingOptions()
             configureJavaAndKotlinOptions()
 
-            project.tasks.register("incrementVersion") {
+            project.tasks.register(INCREMENT_VERSION) {
                 doLast {
-                    val newVersionCode = currentVersionCode + 1
-                    versionProps["VERSION_CODE"] = newVersionCode.toString()
-                    versionProps.store(FileOutputStream(versionPropsFile), null)
-                    println("Version updated to: $newVersionCode")
+                    incrementVersion(versionProps, versionPropsFile)
                 }
             }
         }
+    }
+
+    private fun incrementVersion(versionProps: Properties, versionPropsFile: File) {
+        val currentVersionCode = versionProps[VERSION_CODE]?.toString()?.toInt() ?: 1
+        val newVersionCode = currentVersionCode + 1
+
+        val currentVersionName = versionProps[VERSION_NAME]?.toString() ?: "1.0.0"
+        val versionNameParts = currentVersionName.split(".").toMutableList()
+
+        if (versionNameParts.size == 3) {
+            val patchVersion = versionNameParts[2].toIntOrNull() ?: 0
+            versionNameParts[2] = (patchVersion + 1).toString()
+        }
+
+        val newVersionName = versionNameParts.joinToString(".")
+
+        versionProps[VERSION_CODE] = newVersionCode.toString()
+        versionProps[VERSION_NAME] = newVersionName
+        versionProps.store(FileOutputStream(versionPropsFile), null)
+
+        println("Version updated to: versionCode=$newVersionCode, versionName=$newVersionName")
     }
 
     private fun AppExtension.configureProductFlavors() {
@@ -83,7 +99,7 @@ class AppBuildConfig : Plugin<Project> {
 
     private fun AppExtension.configureSigningConfigs(project: Project) {
         val localProperties = Properties()
-        val localPropertiesFile = project.rootProject.file("local.properties")
+        val localPropertiesFile = project.rootProject.file(LOCAL_PROPERTIES_FILE)
         if (localPropertiesFile.exists()) {
             localProperties.load(FileInputStream(localPropertiesFile))
         }
@@ -175,8 +191,10 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     companion object {
-        private const val VERSION_CODE = 2
-        private const val VERSION_NAME = "1.0.1"
+        private const val VERSION_CODE = "VERSION_CODE"
+        private const val VERSION_NAME = "VERSION_NAME"
+        private const val INCREMENT_VERSION = "incrementVersion"
+        private const val LOCAL_PROPERTIES_FILE = "local.properties"
 
         private const val APPLICATION_ID = "rees46.demo_android"
         private const val ANDROID_APPLICATION_LIB = "com.android.application"
