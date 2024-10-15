@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
 import java.io.File
@@ -24,7 +26,6 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     private fun configureAppExtension(androidExtension: AppExtension, project: Project) {
-        // Загрузка версий из файла version.properties
         val versionPropsFile = File(project.rootProject.projectDir, "version.properties")
         val versionProps = Properties()
         if (versionPropsFile.exists()) {
@@ -53,10 +54,16 @@ class AppBuildConfig : Plugin<Project> {
             configurePackagingOptions()
             configureJavaAndKotlinOptions()
 
-            project.tasks.register(INCREMENT_VERSION) {
+            project.tasks.register("incrementVersion") {
                 doLast {
                     incrementVersion(versionProps, versionPropsFile)
                 }
+            }
+
+            project.tasks.register("publishProdReleaseToPlay") {
+                dependsOn("incrementVersion")
+                dependsOn("bundleProdRelease")
+                finalizedBy("publishProdReleaseBundle")
             }
         }
     }
