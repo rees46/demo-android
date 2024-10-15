@@ -29,6 +29,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 navigationRuntimeKtx = "2.7.7"
 rees46Sdk = "2.0.34"
+tripletPluginVersion = "3.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -67,4 +68,4 @@ rees46-sdk = { module = "com.rees46:rees46-sdk", version.ref = "rees46Sdk" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-
+triplet-plugin = { id = "com.github.triplet.play", version.ref = "tripletPluginVersion" }
