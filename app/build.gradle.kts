@@ -17,7 +17,7 @@ android {
     namespace = "rees46.demo_android.app"
 
     defaultConfig {
-        applicationId =  "rees46.demo_android"
+        applicationId =  "rees46.demo_shop"
     }
 }
 
