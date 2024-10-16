@@ -29,20 +29,20 @@ jobs:
 
       - name: Create Keystore file
         run: |
-          echo "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 --decode > app/keystore.jks
+          echo "${{ secrets.KEYSTORE_AS_BASE64 }}" | base64 --decode > app/keystore.jks
 
       - name: Build Release AAB
         run: ./gradlew bundleProdRelease
         env:
           SIGNING_STORE_FILE: app/keystore.jks
-          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
 
       - name: Deploy to Google Play Internal Testing
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}
           packageName: "rees46.demo_shop"
           releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
           track: "internal"
