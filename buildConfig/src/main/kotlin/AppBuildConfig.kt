@@ -54,16 +54,15 @@ class AppBuildConfig : Plugin<Project> {
             configurePackagingOptions()
             configureJavaAndKotlinOptions()
 
-            project.tasks.register("incrementVersion") {
+            project.tasks.register(PUBLISH_TO_ITERNAL_TESTING) {
+                dependsOn(RELEASE_BUNDLE)
+                finalizedBy(PUBLISH_RELEASE_BUNDLE)
+            }
+
+            project.tasks.register(INCREMENT_VERSION) {
                 doLast {
                     incrementVersion(versionProps, versionPropsFile)
                 }
-            }
-
-            project.tasks.register("publishProdReleaseToPlay") {
-                dependsOn("incrementVersion")
-                dependsOn("bundleProdRelease")
-                finalizedBy("publishProdReleaseBundle")
             }
         }
     }
@@ -113,10 +112,10 @@ class AppBuildConfig : Plugin<Project> {
 
         signingConfigs {
             create(RELEASE_CONFIG) {
-                storeFile = File(localProperties.getProperty("RELEASE_STORE_FILE"))
-                storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD")
-                keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS")
-                keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD")
+                storeFile = File(localProperties.getProperty(RELEASE_STORE_FILE))
+                storePassword = localProperties.getProperty(RELEASE_STORE_PASSWORD)
+                keyAlias = localProperties.getProperty(RELEASE_KEY_ALIAS)
+                keyPassword = localProperties.getProperty(RELEASE_KEY_PASSWORD)
             }
             create(DEBUG_CONFIG) {
             }
@@ -198,28 +197,37 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     companion object {
-        private const val VERSION_CODE = "VERSION_CODE"
-        private const val VERSION_NAME = "VERSION_NAME"
-        private const val INCREMENT_VERSION = "incrementVersion"
+        private const val PUBLISH_TO_ITERNAL_TESTING = "publishProdReleaseToPlay"
+        private const val PUBLISH_RELEASE_BUNDLE = "publishProdReleaseBundle"
         private const val LOCAL_PROPERTIES_FILE = "local.properties"
+        private const val INCREMENT_VERSION = "incrementVersion"
+        private const val RELEASE_BUNDLE = "bundleProdRelease"
 
-        private const val APPLICATION_ID = "rees46.demo_android"
+        private const val VERSION_NAME = "VERSION_NAME"
+        private const val VERSION_CODE = "VERSION_CODE"
+
+        private const val RELEASE_STORE_PASSWORD = "RELEASE_STORE_PASSWORD"
+        private const val RELEASE_KEY_PASSWORD = "RELEASE_KEY_PASSWORD"
+        private const val RELEASE_STORE_FILE = "RELEASE_STORE_FILE"
+        private const val RELEASE_KEY_ALIAS = "RELEASE_KEY_ALIAS"
+
         private const val ANDROID_APPLICATION_LIB = "com.android.application"
+        private const val APPLICATION_ID = "rees46.demo_android"
         private const val ANDROID_LIB = "com.android.library"
-        private const val MIN_SDK = 24
-        private const val TARGET_SDK = 34
         private const val JVM_TARGET = "20"
+        private const val TARGET_SDK = 34
+        private const val MIN_SDK = 24
 
-        private const val RELEASE_TYPE = "release"
         private const val RELEASE_CONFIG = "releaseConfig"
-        private const val DEBUG_TYPE = "debug"
         private const val DEBUG_CONFIG = "debugConfig"
+        private const val RELEASE_TYPE = "release"
+        private const val DEBUG_TYPE = "debug"
 
-        private const val DEV_FLAVOR = "dev"
         private const val STAGE_FLAVOR = "stage"
         private const val PROD_FLAVOR = "prod"
-        private const val DIMENSION_FLAVORS = "medical"
+        private const val DEV_FLAVOR = "dev"
         private const val APPLICATION_STAGE_SUFFIX = ".test"
+        private const val DIMENSION_FLAVORS = "demoShop"
 
         private const val PROGUARD_ANDROID_TXT = "proguard-android-optimize.txt"
         private const val PROGUARD_RULES = "proguard-rules.pro"
