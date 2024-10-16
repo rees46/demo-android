@@ -8,7 +8,7 @@ REES46 Demo Android - application to demonstrate working with SDK.
 
 Versions:
 - REES46 SDK 2.0.20
-- Java 22
+- Java 20
 - Kotlin 2.0.0
 - Gradle 8.8
 - Android Gradle Plugin 8.5.2

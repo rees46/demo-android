@@ -2,6 +2,10 @@
 
 import com.android.build.gradle.AppExtension
 import com.android.build.gradle.LibraryExtension
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.util.Properties
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,7 +15,7 @@ class AppBuildConfig : Plugin<Project> {
 
     override fun apply(project: Project) {
         project.plugins.withId(ANDROID_APPLICATION_LIB) {
-            configureAppExtension(project.extensions.getByType(AppExtension::class.java))
+            configureAppExtension(project.extensions.getByType(AppExtension::class.java), project)
         }
 
         project.plugins.withId(ANDROID_LIB) {
@@ -21,37 +25,73 @@ class AppBuildConfig : Plugin<Project> {
         configureKotlinCompile(project)
     }
 
-    private fun configureAppExtension(androidExtension: AppExtension) {
+    private fun configureAppExtension(androidExtension: AppExtension, project: Project) {
+        val versionPropsFile = File(project.rootProject.projectDir, "version.properties")
+        val versionProps = Properties()
+        if (versionPropsFile.exists()) {
+            versionProps.load(FileInputStream(versionPropsFile))
+        }
+
+        val currentVersionCode = versionProps[VERSION_CODE]?.toString()?.toInt() ?: 1
+        val currentVersionName = versionProps[VERSION_NAME]?.toString() ?: "1.0.0"
+
         androidExtension.apply {
             compileSdkVersion(TARGET_SDK)
-            configureDefaultConfig()
+            defaultConfig {
+                applicationId = APPLICATION_ID
+                minSdk = MIN_SDK
+                targetSdk = TARGET_SDK
+                versionCode = currentVersionCode
+                versionName = currentVersionName
+                viewBinding {
+                    enable = true
+                }
+            }
             flavorDimensions(DIMENSION_FLAVORS)
             configureProductFlavors()
-            configureSigningConfigs()
+            configureSigningConfigs(project)
             configureBuildTypes()
             configurePackagingOptions()
             configureJavaAndKotlinOptions()
+
+            project.tasks.register(PUBLISH_TO_ITERNAL_TESTING) {
+                dependsOn(RELEASE_BUNDLE)
+                finalizedBy(PUBLISH_RELEASE_BUNDLE)
+            }
+
+            project.tasks.register(INCREMENT_VERSION) {
+                doLast {
+                    incrementVersion(versionProps, versionPropsFile)
+                }
+            }
         }
     }
 
-    private fun AppExtension.configureDefaultConfig() {
-        defaultConfig {
-            applicationId = APPLICATION_ID
-            minSdk = MIN_SDK
-            targetSdk = TARGET_SDK
-            versionCode = VERSION_CODE
-            versionName = VERSION_NAME
-            viewBinding {
-                enable = true
-            }
+    private fun incrementVersion(versionProps: Properties, versionPropsFile: File) {
+        val currentVersionCode = versionProps[VERSION_CODE]?.toString()?.toInt() ?: 1
+        val newVersionCode = currentVersionCode + 1
+
+        val currentVersionName = versionProps[VERSION_NAME]?.toString() ?: "1.0.0"
+        val versionNameParts = currentVersionName.split(".").toMutableList()
+
+        if (versionNameParts.size == 3) {
+            val patchVersion = versionNameParts[2].toIntOrNull() ?: 0
+            versionNameParts[2] = (patchVersion + 1).toString()
         }
+
+        val newVersionName = versionNameParts.joinToString(".")
+
+        versionProps[VERSION_CODE] = newVersionCode.toString()
+        versionProps[VERSION_NAME] = newVersionName
+        versionProps.store(FileOutputStream(versionPropsFile), null)
+
+        println("Version updated to: versionCode=$newVersionCode, versionName=$newVersionName")
     }
 
     private fun AppExtension.configureProductFlavors() {
         productFlavors {
             create(DEV_FLAVOR) {
                 dimension = DIMENSION_FLAVORS
-                // applicationIdSuffix = APPLICATION_DEV_SUFFIX
             }
             create(STAGE_FLAVOR) {
                 dimension = DIMENSION_FLAVORS
@@ -63,13 +103,21 @@ class AppBuildConfig : Plugin<Project> {
         }
     }
 
-    private fun AppExtension.configureSigningConfigs() {
+    private fun AppExtension.configureSigningConfigs(project: Project) {
+        val localProperties = Properties()
+        val localPropertiesFile = project.rootProject.file(LOCAL_PROPERTIES_FILE)
+        if (localPropertiesFile.exists()) {
+            localProperties.load(FileInputStream(localPropertiesFile))
+        }
+
         signingConfigs {
             create(RELEASE_CONFIG) {
-                // Configuration for releaseConfig
+                storeFile = File(localProperties.getProperty(RELEASE_STORE_FILE))
+                storePassword = localProperties.getProperty(RELEASE_STORE_PASSWORD)
+                keyAlias = localProperties.getProperty(RELEASE_KEY_ALIAS)
+                keyPassword = localProperties.getProperty(RELEASE_KEY_PASSWORD)
             }
             create(DEBUG_CONFIG) {
-                // Configuration for debugConfig
             }
         }
     }
@@ -149,26 +197,37 @@ class AppBuildConfig : Plugin<Project> {
     }
 
     companion object {
-        private const val APPLICATION_ID = "rees46.demo_android"
+        private const val PUBLISH_TO_ITERNAL_TESTING = "publishProdReleaseToPlay"
+        private const val PUBLISH_RELEASE_BUNDLE = "publishProdReleaseBundle"
+        private const val LOCAL_PROPERTIES_FILE = "local.properties"
+        private const val INCREMENT_VERSION = "incrementVersion"
+        private const val RELEASE_BUNDLE = "bundleProdRelease"
+
+        private const val VERSION_NAME = "VERSION_NAME"
+        private const val VERSION_CODE = "VERSION_CODE"
+
+        private const val RELEASE_STORE_PASSWORD = "RELEASE_STORE_PASSWORD"
+        private const val RELEASE_KEY_PASSWORD = "RELEASE_KEY_PASSWORD"
+        private const val RELEASE_STORE_FILE = "RELEASE_STORE_FILE"
+        private const val RELEASE_KEY_ALIAS = "RELEASE_KEY_ALIAS"
+
         private const val ANDROID_APPLICATION_LIB = "com.android.application"
+        private const val APPLICATION_ID = "rees46.demo_android"
         private const val ANDROID_LIB = "com.android.library"
-        private const val MIN_SDK = 24
-        private const val TARGET_SDK = 34
-        private const val VERSION_CODE = 1
-        private const val VERSION_NAME = "1.0.0"
         private const val JVM_TARGET = "20"
+        private const val TARGET_SDK = 34
+        private const val MIN_SDK = 24
 
-        private const val RELEASE_TYPE = "release"
         private const val RELEASE_CONFIG = "releaseConfig"
-        private const val DEBUG_TYPE = "debug"
         private const val DEBUG_CONFIG = "debugConfig"
+        private const val RELEASE_TYPE = "release"
+        private const val DEBUG_TYPE = "debug"
 
-        private const val DEV_FLAVOR = "dev"
         private const val STAGE_FLAVOR = "stage"
         private const val PROD_FLAVOR = "prod"
-        private const val DIMENSION_FLAVORS = "medical"
-        private const val APPLICATION_DEV_SUFFIX = ".debug"
+        private const val DEV_FLAVOR = "dev"
         private const val APPLICATION_STAGE_SUFFIX = ".test"
+        private const val DIMENSION_FLAVORS = "demoShop"
 
         private const val PROGUARD_ANDROID_TXT = "proguard-android-optimize.txt"
         private const val PROGUARD_RULES = "proguard-rules.pro"

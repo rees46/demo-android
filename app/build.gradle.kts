@@ -2,15 +2,22 @@ plugins {
     id("com.example.build.config")
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.triplet.plugin)
     id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
+}
+
+play {
+    serviceAccountCredentials = file("play-account.json")
+    track = "internal"
+    defaultToAppBundles = true
 }
 
 android {
     namespace = "rees46.demo_android.app"
 
     defaultConfig {
-        applicationId =  "rees46.demo_android"
+        applicationId =  "rees46.demo_shop"
     }
 }
 
@@ -26,9 +33,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.dagger)
     implementation(libs.rees46.sdk)
-    annotationProcessor(libs.dagger.compiler)
     implementation(project(":core"))
     implementation(project(":feature"))
     implementation(project(":navigation"))
