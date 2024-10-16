@@ -19,5 +19,5 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.compat)
-    implementation("com.rees46:rees46-sdk:2.0.32")
+    implementation(libs.rees46.sdk)
 }
