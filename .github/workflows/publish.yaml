@@ -13,8 +13,8 @@ jobs:
       releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
       PROPERTIES_FILE: "version.properties"
     secrets:
-      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}
-      SIGNING_STORE_FILE: "app/keystore.jks"
+      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}  # Google Play Auth for service account
+      KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }}          # Keystore for singing release bundle
       SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
       SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
