@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish_and_version_bump:
-    uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yml@master
+    uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
     with:
       packageName: "rees46.demo_shop"
       releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
