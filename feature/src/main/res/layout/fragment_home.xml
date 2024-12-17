@@ -51,19 +51,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/newFeatures"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="@dimen/margin_default"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/new_features_title"
-                android:textColor="@color/color_blue"
-                android:textSize="@dimen/text_size_cart_shipping" />
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
