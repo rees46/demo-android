@@ -28,7 +28,7 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 navigationRuntimeKtx = "2.7.7"
-rees46Sdk = "2.0.34"
+rees46Sdk = "2.0.44"
 tripletPluginVersion = "3.11.0"
 
 [libraries]

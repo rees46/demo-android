@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class ProductDto(
     val id: String,
     val name: String,
-    val producerName: String,
+    val producerName: String?,
     val price: Double?,
     val priceFormatted: String,
     val priceFull: Double?,

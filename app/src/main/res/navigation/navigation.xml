@@ -37,9 +37,4 @@
         android:name="rees46.demo_android.feature.search.presentation.view.SearchFragment"
         android:label="SearchFragment" >
     </fragment>
-    <fragment
-        android:id="@+id/inAppNotificationsFragment"
-        android:name="rees46.demo_android.feature.home.presentation.view.InAppNotificationsFragment"
-        android:label="InAppNotifications">
-    </fragment>
 </navigation>

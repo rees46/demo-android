@@ -16,13 +16,11 @@ object SdkUtils {
         sdk.initialize(
             context = context,
             shopId = shopId,
-            shopSecretKey = "",
             apiUrl = SdkSettings.API_URL,
             preferencesKey = SdkSettings.PREFERENCES_KEY,
             tag = SdkSettings.TAG,
             stream = SdkSettings.STREAM,
-            notificationType = SdkSettings.NOTIFICATION_TYPE,
-            notificationId = SdkSettings.NOTIFICATION_ID
+            needReInitialization = true
         )
     }
 

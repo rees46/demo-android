@@ -7,7 +7,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavController.OnDestinationChangedListener
 import com.rees46.demo_android.navigation.Destination
 import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.InAppNotifications
 import com.rees46.demo_android.navigation.ProductDetails
 import com.rees46.demo_android.navigation.ProductsDetails
 import rees46.demo_android.app.R
@@ -18,25 +17,24 @@ class AppNavigator(private val navController: NavController) : Navigator {
     override fun navigate(destination: Destination) {
         when (destination) {
             is ProductDetails -> {
-                val bundle =
-                    bundleOf(NavigationSettings.PRODUCT_ARGUMENT_FIELD to destination.navigationProduct)
                 navigate(
                     resId = R.id.productDetailsFragment,
-                    args = bundle
+                    args = bundleOf(
+                        NavigationSettings.PRODUCT_ARGUMENT_FIELD to destination.navigationProduct
+                    )
                 )
             }
 
             is ProductsDetails -> {
-                val bundle =
-                    bundleOf(NavigationSettings.PRODUCTS_ARGUMENT_FIELD to destination.navigationProducts)
                 navigate(
                     resId = R.id.productsFragment,
-                    args = bundle
+                    args = bundleOf(
+                        NavigationSettings.PRODUCTS_ARGUMENT_FIELD to destination.navigationProducts
+                    )
                 )
             }
 
-            is InAppNotifications -> navigate(R.id.inAppNotificationsFragment)
-            else -> {}
+            else -> Unit
         }
     }
 
@@ -48,14 +46,16 @@ class AppNavigator(private val navController: NavController) : Navigator {
         navController.popBackStack()
     }
 
-    override fun getCurrentDestinationId(): Int? =
-        navController.currentDestination?.id
+    override fun getCurrentDestinationId(): Int? {
+        return navController.currentDestination?.id
+    }
 
-    override fun getPreviousDestinationId(): Int? =
-        navController.previousBackStackEntry?.destination?.id
+    override fun getPreviousDestinationId(): Int? {
+        return navController.previousBackStackEntry?.destination?.id
+    }
 
     override fun addOnDestinationChangedListener(listener: OnDestinationChangedListener) {
-        navController.addOnDestinationChangedListener(listener)
+        navController.addOnDestinationChangedListener(listener = listener)
     }
 
     private fun navigate(@IdRes resId: Int, args: Bundle?) {

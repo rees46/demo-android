@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.models.NavigationProduct
 import com.rees46.demo_android.ui.extensions.updateImage
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -16,25 +19,29 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import rees46.demo_android.core.settings.NavigationSettings
 import rees46.demo_android.databinding.FragmentProductDetailsBinding
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.models.NavigationProduct
 import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
+import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.productDetails.presentation.ProductAction
 import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
-import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductDetailsFragment : Fragment() {
 
     private val viewModel: ProductDetailsViewModel by viewModel {
-        val navigationProduct = arguments?.getParcelable<NavigationProduct>(NavigationSettings.PRODUCT_ARGUMENT_FIELD)
+        val navigationProduct = arguments?.let {
+            BundleCompat.getParcelable(
+                /* in = */ it,
+                /* key = */ NavigationSettings.PRODUCT_ARGUMENT_FIELD,
+                /* clazz = */ NavigationProduct::class.java
+            )
+        }
         parametersOf(navigationProductMapper.toProduct(navigationProduct))
     }
 
     private lateinit var binding: FragmentProductDetailsBinding
 
-    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
     private val navigationProductMapper: NavigationProductMapper by inject<NavigationProductMapper>()
+    private val productItemMapper: ProductItemMapper by inject<ProductItemMapper>()
 
     private val navigator by lazy {
         get<Navigator> {
@@ -117,7 +124,7 @@ class ProductDetailsFragment : Fragment() {
     }
 
     private fun updateCount(count: Int) {
-       binding.countCard.setCount(count)
+        binding.countCard.setCount(count)
     }
 
     private fun navigateProductsFragment(products: List<Product>) {

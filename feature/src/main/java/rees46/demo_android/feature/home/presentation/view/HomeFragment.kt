@@ -8,23 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.personalization.SDK
+import com.rees46.demo_android.navigation.Navigator
+import com.rees46.demo_android.navigation.ProductDetails
+import com.rees46.demo_android.navigation.ProductsDetails
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
-import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.InAppNotifications
-import com.rees46.demo_android.navigation.ProductDetails
-import com.rees46.demo_android.navigation.ProductsDetails
 import rees46.demo_android.R
+import rees46.demo_android.databinding.FragmentHomeBinding
+import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
 import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
 import rees46.demo_android.feature.productDetails.domain.models.Product
 import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 
 class HomeFragment : Fragment() {
 
@@ -71,11 +70,12 @@ class HomeFragment : Fragment() {
                 recommendationBlockView = youLikeRecommendationBlockView,
                 title = R.string.recommender_title
             )
-
-            newFeatures.setOnClickListener {
-                navigateToInAppNotificationsFragment()
-            }
         }
+        initializeFragmentManager()
+    }
+
+    private fun initializeFragmentManager() {
+        sdk.initializeFragmentManager(childFragmentManager)
     }
 
     private fun setupRecommendationBlockView(
@@ -93,10 +93,6 @@ class HomeFragment : Fragment() {
                 viewModel.recommendationFlow.collectLatest(::update)
             }
         }
-    }
-
-    private fun navigateToInAppNotificationsFragment() {
-        navigator.navigate(InAppNotifications)
     }
 
     private fun navigateProductFragment(product: Product) {
