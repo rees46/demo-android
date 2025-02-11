@@ -10,7 +10,9 @@ jobs:
     uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
     with:
       packageName: "rees46.demo_shop"
-      releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
+      releaseFiles: |
+        app/build/outputs/apk/prod/release/app-prod-release.apk,
+        app/build/outputs/bundle/prodRelease/app-prod-release.aab
       PROPERTIES_FILE: "version.properties"
     secrets:
       PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}  # Google Play Auth for service account
