@@ -26,5 +26,3 @@ For detailed information on methods used from the SDK, please refer to the docum
 ![home (1)](https://github.com/user-attachments/assets/2d16d6f6-d821-442e-b850-1b6ed1b8dbf4)
 ![2](https://github.com/user-attachments/assets/b7994bb1-5aa0-4178-a257-bab0f740145b)
 ![cart](https://github.com/user-attachments/assets/37a21ca8-904b-4819-859f-93643968634a)
-
-test
