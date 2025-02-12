@@ -23,10 +23,10 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleProdRelease
         env:
-          SIGNING_STORE_FILE: app/keystore.jks
-          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_FILE: demo-android/signingKey.jks
+          SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
