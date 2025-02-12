@@ -19,14 +19,14 @@ jobs:
           java-version: '20'
           distribution: 'zulu'
 
-      # Building release apk
+      # Building release APK
       - name: Build Release APK
         run: ./gradlew assembleProdRelease
         env:
-          SIGNING_STORE_FILE: demo-android/signingKey.jks
+          SIGNING_STORE_FILE: app/keystore.jks
           SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
-          SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_STORE_PASSWORD }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
