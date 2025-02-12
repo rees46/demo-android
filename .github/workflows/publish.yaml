@@ -13,11 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug environment
+        run: env | sort
+
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_AS_BASE64 }}" | base64 -d > app/keystore.jks
+          ls -lah app/keystore.jks
+
       - name: Set up JDK 20
         uses: actions/setup-java@v4
         with:
           java-version: '20'
           distribution: 'zulu'
+
+      - name: Create Keystore file
+        run: |
+          echo "${{ secrets.KEYSTORE_AS_BASE64 }}" | base64 --decode > app/keystore.jks
 
       # Building release APK
       - name: Build Release APK
@@ -42,7 +54,7 @@ jobs:
       PROPERTIES_FILE: "version.properties"
     secrets:
       PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}  # Google Play Auth for service account
-      KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }}          # Keystore for singing release bundle
+      KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }}          # Keystore for signing release bundle
       SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
       SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
