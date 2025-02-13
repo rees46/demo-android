@@ -85,6 +85,7 @@ jobs:
 
   publish_and_version_bump:
     uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
+    needs: [setup_google_services, setup_signing_keys]
     with:
       packageName: "rees46.demo_shop"
       releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
