@@ -18,11 +18,11 @@ jobs:
 
       - name: Decode and create google-services.json
         run: |
-          echo "$GOOGLE_SERVICES_FILE_AS_BASE64" | base64 -d > app/google-services.json
-          ls -la app/
+          mkdir -p app/src/prod/
+          echo "$GOOGLE_SERVICES_JSON" | base64 -d > app/src/prod/google-services.json
+          ls -la app/src/prod/
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}
-
 
       - name: Decode Keystore
         run: |
