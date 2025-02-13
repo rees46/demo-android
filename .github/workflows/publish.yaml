@@ -18,7 +18,7 @@ jobs:
 
       - name: Decode and create google-services.json
         run: |
-          mkdir -p app/src/prod/
+          mkdir -p app/src/prod/release
           echo "$GOOGLE_SERVICES_JSON" | base64 -d > app/src/prod/release/google-services.json
           ls -la app/src/prod/release
         env:
