@@ -26,8 +26,8 @@ jobs:
 
       - name: Decode Keystore
         run: |
-          echo "${{ secrets.KEYSTORE_AS_BASE64 }}" | base64 -d > app/keystore.jks
-          ls -lah app/keystore.jks
+          echo "${{ secrets.KEYSTORE_AS_BASE64 }}" | base64 -d > keystore.jks
+#          ls -lah keystore.jks
 
       - name: Set up JDK 20
         uses: actions/setup-java@v4
