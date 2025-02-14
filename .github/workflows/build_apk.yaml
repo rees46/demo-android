@@ -1,4 +1,4 @@
-name: Publish to Play Store and Bump Version
+name: Build APK
 
 on:
   push:
