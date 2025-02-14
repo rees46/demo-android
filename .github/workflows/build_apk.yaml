@@ -40,7 +40,7 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleProdRelease
         env:
-          SIGNING_STORE_FILE: app/keystore.jks
+          SIGNING_STORE_FILE: keystore.jks
           SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
