@@ -37,10 +37,15 @@ jobs:
           java-version: '20'
           distribution: 'zulu'
 
+      - name: Debug signing environment
+        run: |
+          echo "SIGNING_STORE_FILE=$SIGNING_STORE_FILE"
+          ls -l $SIGNING_STORE_FILE
+
       - name: Build Release APK
         run: ./gradlew assembleProdRelease
         env:
-          SIGNING_STORE_FILE: keystore.jks
+          SIGNING_STORE_FILE: ${{ github.workspace }}/app/keystore.jks
           SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
