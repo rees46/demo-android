@@ -12,21 +12,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ github.token }}
 
       - name: Decode and create google-services.json
         run: |
           mkdir -p app/src/prod/release
           echo "$GOOGLE_SERVICES_JSON" | base64 -d > app/src/prod/release/google-services.json
-          ls -la app/src/prod/release
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}
 
       - name: Decode Keystore
         run: |
           echo "$KEYSTORE_AS_BASE64" | base64 --decode > app/keystore.jks
-          ls -lah app/keystore.jks
         env:
           KEYSTORE_AS_BASE64: ${{ secrets.GOOGLE_PLAY_SIGNING_KEY_FILE_AS_BASE64 }}
 
@@ -44,17 +40,8 @@ jobs:
           SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
 
-      - name: Commit and Push APK
+      - name: Prepare release directory
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p release
+          cp app/build/outputs/apk/prod/release/app-prod-release.apk release/
 
-          git add app/build/outputs/apk/prod/release/app-prod-release.apk
-
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "🤖 Auto-update APK [ci skip]"
-            git push https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
-          fi
-      
