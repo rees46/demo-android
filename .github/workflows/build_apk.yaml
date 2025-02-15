@@ -9,11 +9,12 @@ on:
 jobs:
   build_release_apk:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Decode and create google-services.json
         run: |
@@ -49,14 +50,10 @@ jobs:
 
       - name: Commit and Push APK
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add release/app-prod-release.apk
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: add release APK [skip ci]"
-            git push origin HEAD:${{ github.ref }}
-          fi
+          git commit -m "chore: add release APK [skip ci]"
+
+          git push
