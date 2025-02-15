@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - stage
 
 jobs:
   publish_and_version_bump:
