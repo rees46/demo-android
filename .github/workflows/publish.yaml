@@ -7,15 +7,30 @@ on:
       - stage
 
 jobs:
+  prepare_google_services:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Decode and create google-services.json
+        run: |
+          mkdir -p app/src/prod/release
+          echo "$GOOGLE_SERVICES_JSON" | base64 -d > app/src/prod/release/google-services.json
+          ls -la app/src/prod/release
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}
+
   publish_and_version_bump:
+    needs: prepare_google_services
     uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
     with:
       packageName: "rees46.demo_shop"
       releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
       PROPERTIES_FILE: "version.properties"
     secrets:
-      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}  # Google Play Auth for service account
-      KEYSTORE_AS_BASE64: ${{ secrets.GOOGLE_PLAY_SIGNING_KEY_FILE_AS_BASE64 }}          # Keystore for singing release bundle
+      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}
+      KEYSTORE_AS_BASE64: ${{ secrets.GOOGLE_PLAY_SIGNING_KEY_FILE_AS_BASE64 }}
       SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
       SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
