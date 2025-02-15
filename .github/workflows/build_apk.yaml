@@ -26,7 +26,7 @@ jobs:
           echo "$KEYSTORE_AS_BASE64" | base64 --decode > app/keystore.jks
           ls -lah app/keystore.jks
         env:
-          KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }}
+          KEYSTORE_AS_BASE64: ${{ secrets.GOOGLE_PLAY_SIGNING_KEY_FILE_AS_BASE64 }}
 
       - name: Debug Keystore Path
         run: file app/keystore.jks
