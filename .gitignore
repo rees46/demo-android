@@ -1,6 +1,7 @@
 # Gradle files
 .gradle/
 build/
+!build/outputs/apk/prod/release/app-prod-release.apk
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -12,7 +13,6 @@ local.properties
 captures/
 .externalNativeBuild/
 .cxx/
-*.apk
 output.json
 
 # IntelliJ
