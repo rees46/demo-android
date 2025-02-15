@@ -7,22 +7,7 @@ on:
       - stage
 
 jobs:
-  prepare_google_services:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Decode and create google-services.json
-        run: |
-          mkdir -p app/src/prod/release
-          echo "$GOOGLE_SERVICES_JSON" | base64 -d > app/src/prod/release/google-services.json
-          ls -la app/src/prod/release
-        env:
-          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}
-
   publish_and_version_bump:
-    needs: prepare_google_services
     uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
     with:
       packageName: "rees46.demo_shop"
@@ -36,3 +21,18 @@ jobs:
       SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
       GITHUB_APP_ID: ${{ vars.PUBLIVERSIONER_ID }}
       GITHUB_APP_PRIVATE_KEY: ${{ secrets.PUBLIVERSIONER_SECRET }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Decode and create google-services.json
+        run: |
+          mkdir -p app/src/prod/release
+          echo "${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}" | base64 --decode > app/src/prod/release/google-services.json
+          ls -la app/src/prod/release
+        env:
+          GOOGLE_SERVICES_FILE_AS_BASE64: ${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}
+
+      - name: Continue with reusable workflow
+        uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
