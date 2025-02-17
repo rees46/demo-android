@@ -51,3 +51,4 @@ jobs:
           commit_message: 'chore: add release APK'
           branch: ${{ github.ref }}
           file_pattern: 'release/*'
+          repo: ${{ github.repository }}
