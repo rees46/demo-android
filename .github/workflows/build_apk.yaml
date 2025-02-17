@@ -45,6 +45,10 @@ jobs:
           mkdir -p release
           cp app/build/outputs/apk/prod/release/app-prod-release.apk release/
 
+      - name: Add release APK to git
+        run: |
+          git add release/app-prod-release.apk
+
       - name: Commit and push changes
         uses: planetscale/ghcommit-action@v0.1.44
         with:
