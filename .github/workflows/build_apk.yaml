@@ -45,3 +45,9 @@ jobs:
           mkdir -p release
           cp app/build/outputs/apk/prod/release/app-prod-release.apk release/
 
+      - name: Commit and push changes
+        uses: planetscale/ghcommit-action@v0.1.44
+        with:
+          commit_message: 'chore: add release APK'
+          branch: ${{ github.ref }}
+          file_pattern: 'release/*'
