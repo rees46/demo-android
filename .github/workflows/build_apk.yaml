@@ -11,8 +11,23 @@ jobs:
   build_release_apk:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ inputs.appId }}
+          private-key: ${{ secrets.appSecret }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Get current version from source
+        working-directory: source
+        env:
+          FILE_PATH: "version.properties"
+        id: version_source
+        run: |
+          current_version=$(awk -F"=" '/VERSION_NAME/ {print $2}' "$FILE_PATH")
+          echo "version=$current_version" >> $GITHUB_OUTPUT
 
       - name: Decode and create google-services.json
         run: |
@@ -49,6 +64,15 @@ jobs:
       - name: Debug release directory
         run: |
           ls release/
+
+      - name: Create release
+        env:
+          TAG: ${{ steps.version_source.outputs.version }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          gh release create "v$TAG" ./release/app-prod-release.apk \
+          --title=$TAG \
+          --generate-notes
 
       # - name: Add release APK to git
       #   run: |
