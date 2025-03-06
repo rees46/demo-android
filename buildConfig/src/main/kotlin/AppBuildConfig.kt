@@ -112,10 +112,12 @@ class AppBuildConfig : Plugin<Project> {
 
         signingConfigs {
             create(RELEASE_CONFIG) {
-                storeFile = File(localProperties.getProperty(RELEASE_STORE_FILE))
-                storePassword = localProperties.getProperty(RELEASE_STORE_PASSWORD)
-                keyAlias = localProperties.getProperty(RELEASE_KEY_ALIAS)
-                keyPassword = localProperties.getProperty(RELEASE_KEY_PASSWORD)
+                storeFile = File(
+                    localProperties.getProperty(RELEASE_STORE_FILE) ?: System.getenv("SIGNING_STORE_FILE")
+                )
+                storePassword = localProperties.getProperty(RELEASE_STORE_PASSWORD) ?: System.getenv("SIGNING_STORE_PASSWORD")
+                keyAlias = localProperties.getProperty(RELEASE_KEY_ALIAS) ?: System.getenv("SIGNING_KEY_ALIAS")
+                keyPassword = localProperties.getProperty(RELEASE_KEY_PASSWORD) ?: System.getenv("SIGNING_KEY_PASSWORD")
             }
             create(DEBUG_CONFIG) {
             }
