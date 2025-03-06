@@ -14,3 +14,5 @@ jobs:
     permissions: write-all
     secrets:
       token: ${{ secrets.JADE_SMITH_BOT_TOKEN }}
+    with:
+      tergetRepository: personaclick/demo-android
