@@ -1,12 +1,13 @@
 name: Sync repositories
 
 on:
-  workflow_run:
-    workflows:
-      - "Bump version, create release and publish"
-    types:
-      - completed
-  workflow_dispatch:
+  pull_request:
+  # workflow_run:
+  #   workflows:
+  #     - "Bump version, create release and publish"
+  #   types:
+  #     - completed
+  # workflow_dispatch:
 
 jobs:
   run:
