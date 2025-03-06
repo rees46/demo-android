@@ -14,7 +14,7 @@ jobs:
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
-          app-id: ${{ inputs.appId }}
+          app-id: ${{ vars.appId }}
           private-key: ${{ secrets.appSecret }}
 
       - name: Checkout repository
@@ -60,10 +60,6 @@ jobs:
         run: |
           mkdir -p release
           cp app/build/outputs/apk/prod/release/app-prod-release.apk release/
-
-      - name: Debug release directory
-        run: |
-          ls release/
 
       - name: Create release
         env:
