@@ -1,19 +1,16 @@
 name: Sync repositories
 
 on:
-  pull_request:
-  # workflow_run:
-  #   workflows:
-  #     - "Bump version, create release and publish"
-  #   types:
-  #     - completed
-  # workflow_dispatch:
+  workflow_run:
+    workflows:
+      - "Bump version, create release and publish"
+    types:
+      - completed
+  workflow_dispatch:
 
 jobs:
   run:
-    # if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch'
-    # TODO change branch name to master
-    uses: rees46/workflow/.github/workflows/reusable-android-synchronization.yaml@feat/android-sync
+    uses: rees46/workflow/.github/workflows/reusable-android-synchronization.yaml@master
     permissions: write-all
     secrets:
       token: ${{ secrets.JADE_SMITH_BOT_TOKEN }}
