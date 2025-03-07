@@ -1,11 +1,10 @@
 name: Build APK
 
 on:
-  pull_request:
-  # push:
-  #   branches:
-  #     - master
-  #     - feat/add-release-apk-building
+  push:
+    branches:
+      - master
+      - feat/add-release-apk-building
 
 jobs:
   build_release_apk:
@@ -80,4 +79,3 @@ jobs:
       #     branch: ${{ github.ref }}
       #     file_pattern: "release/*"
       #     repo: ${{ github.repository }}
-
