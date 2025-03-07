@@ -112,7 +112,7 @@ class AppBuildConfig : Plugin<Project> {
 
         signingConfigs {
             create(RELEASE_CONFIG) {
-                storeFile = File(
+                storeFile = rootProject.file(
                     localProperties.getProperty(RELEASE_STORE_FILE) ?: System.getenv("SIGNING_STORE_FILE")
                 )
                 storePassword = localProperties.getProperty(RELEASE_STORE_PASSWORD) ?: System.getenv("SIGNING_STORE_PASSWORD")
