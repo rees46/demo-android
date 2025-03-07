@@ -67,15 +67,3 @@ jobs:
           gh release create "v$TAG" ./release/app-prod-release.apk \
           --title=$TAG \
           --generate-notes
-
-      # - name: Add release APK to git
-      #   run: |
-      #     git add release/app-prod-release.apk
-      #
-      # - name: Commit and push changes
-      #   uses: planetscale/ghcommit-action@v0.1.44
-      #   with:
-      #     commit_message: "chore: add release APK"
-      #     branch: ${{ github.ref }}
-      #     file_pattern: "release/*"
-      #     repo: ${{ github.repository }}
