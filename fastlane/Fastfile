@@ -1,0 +1,24 @@
+default_platform(:android)
+
+platform :android do
+  desc "Сборка и публикация в Google Play"
+  lane :deploy do
+    # Декодируем файлы перед сборкой
+    sh "../scripts/decode-secrets.sh"
+
+    # Сборка AAB
+    gradle(
+      task: "bundle",
+      build_type: "Release",
+      flavor: "prod"
+    )
+
+    # Подпись AAB файла
+    upload_to_play_store(
+      track: "internal",
+      aab: "app/build/outputs/bundle/prodRelease/app-prod-release.aab",
+      json_key: "app/play-account.json",
+      package_name: "rees46.demo_shop"
+    )
+  end
+end
