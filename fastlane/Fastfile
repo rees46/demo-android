@@ -3,8 +3,6 @@ default_platform(:android)
 platform :android do
   desc "Сборка и публикация в Google Play"
   lane :deploy do
-	sh "../scripts/decode-secrets.sh"
-
     gradle(
       task: "bundle",
       build_type: "Release",
