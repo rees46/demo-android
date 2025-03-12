@@ -1,20 +1,23 @@
 name: Publish to Play Store and Bump Version
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
   publish_and_version_bump:
-    uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
+    # TODO uncomment
+    # uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
+    uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@fix/android-publish
     with:
       packageName: "rees46.demo_shop"
       releaseFiles: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
       PROPERTIES_FILE: "version.properties"
     secrets:
-      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}  # Google Play Auth for service account
-      KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }}          # Keystore for singing release bundle
+      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }} # Google Play Auth for service account
+      KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }} # Keystore for singing release bundle
       SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
       SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       SIGNING_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
