@@ -3,7 +3,7 @@ name: Sync repositories
 on:
   workflow_run:
     workflows:
-      - "Bump version, create release and publish"
+      - "Publish to Play Store and Bump Version"
     types:
       - completed
   workflow_dispatch:
