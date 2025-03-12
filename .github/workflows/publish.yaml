@@ -23,7 +23,7 @@ jobs:
       RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
       RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
       RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
-      # PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }} # Google Play Auth for service account
+      PLAY_ACCOUNT_AS_BASE64: ${{ secrets.PLAY_ACCOUNT_AS_BASE64 }}
       # KEYSTORE_AS_BASE64: ${{ secrets.KEYSTORE_AS_BASE64 }} # Keystore for singing release bundle
       # SIGNING_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
       # SIGNING_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
