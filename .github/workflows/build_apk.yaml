@@ -1,10 +1,11 @@
 name: Build APK
 
 on:
-  push:
-    branches:
-      - master
-      - feat/add-release-apk-building
+  workflow_run:
+    workflows:
+      - "Publish to Play Store and Bump Version"
+    types:
+      - completed
 
 jobs:
   build_release_apk:
