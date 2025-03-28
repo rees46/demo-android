@@ -1,11 +1,11 @@
-package rees46.demo_android.feature.recommendationBlock.presentation.adapter
+package personaclick.demo_android.feature.recommendationBlock.presentation.adapter
 
 import android.content.Context
-import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemView
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.adapter.ProductsAdapter
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
-import rees46.demo_android.feature.recommendationBlock.presentation.view.recyclerView.RecommendationProductItemView
+import com.personaclick.demo_android.ui.recyclerView.base.view.RecyclerItemView
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.products.adapter.ProductsAdapter
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import personaclick.demo_android.feature.recommendationBlock.presentation.view.recyclerView.RecommendationProductItemView
 
 class RecommendationProductsAdapter(
     private val context: Context,

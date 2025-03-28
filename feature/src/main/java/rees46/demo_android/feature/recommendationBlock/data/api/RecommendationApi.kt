@@ -1,10 +1,10 @@
-package rees46.demo_android.feature.recommendationBlock.data.api
+package personaclick.demo_android.feature.recommendationBlock.data.api
 
 import com.personalization.Params
 import com.personalization.SDK
 import com.personalization.api.responses.recommendation.GetExtendedRecommendationResponse
-import rees46.demo_android.feature.recommendationBlock.data.models.RecommendationDto
-import rees46.demo_android.feature.search.data.api.toProducts
+import personaclick.demo_android.feature.recommendationBlock.data.models.RecommendationDto
+import personaclick.demo_android.feature.search.data.api.toProducts
 
 class RecommendationApi(
     private val sdk: SDK

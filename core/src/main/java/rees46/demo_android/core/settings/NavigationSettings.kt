@@ -1,4 +1,4 @@
-package rees46.demo_android.core.settings
+package personaclick.demo_android.core.settings
 
 object NavigationSettings {
     const val PRODUCT_ARGUMENT_FIELD = "product"

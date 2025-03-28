@@ -1,4 +1,4 @@
-package com.rees46.demo_android.ui.extensions
+package com.personaclick.demo_android.ui.extensions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

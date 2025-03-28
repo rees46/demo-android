@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "rees46.demo_android"
+    namespace = "personaclick.demo_android"
     buildFeatures {
         viewBinding = true
     }
@@ -34,7 +34,7 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.gson)
     implementation(libs.glide)
-    implementation(libs.rees46.sdk)
+    implementation(libs.personaclick.sdk)
     implementation(project(":core"))
     implementation(project(":ui"))
     implementation(project(":navigation"))

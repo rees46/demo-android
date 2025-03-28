@@ -1,6 +1,6 @@
-package com.rees46.demo_android.ui.recyclerView.products.models
+package com.personaclick.demo_android.ui.recyclerView.products.models
 
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
 data class ProductRecyclerViewItem(
     val id: String,

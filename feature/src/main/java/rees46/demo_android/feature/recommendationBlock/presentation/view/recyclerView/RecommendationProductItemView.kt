@@ -1,10 +1,10 @@
-package rees46.demo_android.feature.recommendationBlock.presentation.view.recyclerView
+package personaclick.demo_android.feature.recommendationBlock.presentation.view.recyclerView
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.products.view.ProductItemView
-import rees46.demo_android.R
+import com.personaclick.demo_android.ui.recyclerView.products.view.ProductItemView
+import personaclick.demo_android.R
 
 @SuppressLint("ViewConstructor")
 class RecommendationProductItemView(

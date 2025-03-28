@@ -1,11 +1,11 @@
-package rees46.demo_android.feature.category.presentation.view
+package personaclick.demo_android.feature.category.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import rees46.demo_android.databinding.FragmentCategoryBinding
+import personaclick.demo_android.databinding.FragmentCategoryBinding
 
 class CategoryFragment : Fragment() {
 

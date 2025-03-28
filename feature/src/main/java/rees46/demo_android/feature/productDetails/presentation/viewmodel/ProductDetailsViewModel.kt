@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.productDetails.presentation.viewmodel
+package personaclick.demo_android.feature.productDetails.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,12 +7,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.productDetails.domain.usecase.AddProductToCartUseCase
-import rees46.demo_android.feature.productDetails.domain.usecase.GetCartProductUseCase
-import rees46.demo_android.feature.productDetails.domain.usecase.GetRecommendationForProductUseCase
-import rees46.demo_android.feature.productDetails.presentation.ProductAction
-import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
+import personaclick.demo_android.feature.productDetails.domain.models.Product
+import personaclick.demo_android.feature.productDetails.domain.usecase.AddProductToCartUseCase
+import personaclick.demo_android.feature.productDetails.domain.usecase.GetCartProductUseCase
+import personaclick.demo_android.feature.productDetails.domain.usecase.GetRecommendationForProductUseCase
+import personaclick.demo_android.feature.productDetails.presentation.ProductAction
+import personaclick.demo_android.feature.recommendationBlock.domain.models.Recommendation
 
 class ProductDetailsViewModel(
     private val addProductToCartUseCase: AddProductToCartUseCase,

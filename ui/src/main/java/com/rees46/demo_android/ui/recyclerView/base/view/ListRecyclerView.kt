@@ -1,10 +1,10 @@
-package com.rees46.demo_android.ui.recyclerView.base.view
+package com.personaclick.demo_android.ui.recyclerView.base.view
 
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.adapter.ListItemAdapter
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.adapter.ListItemAdapter
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 
 abstract class ListRecyclerView<I: RecyclerViewItem, IV: RecyclerItemView> @JvmOverloads constructor(
     context: Context,

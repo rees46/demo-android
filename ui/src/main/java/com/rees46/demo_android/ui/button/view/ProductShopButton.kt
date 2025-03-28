@@ -1,8 +1,8 @@
-package com.rees46.demo_android.ui.button.view
+package com.personaclick.demo_android.ui.button.view
 
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.ui.R
+import com.personaclick.ui.R
 
 class ProductShopButton @JvmOverloads constructor(
     context: Context,

@@ -1,9 +1,9 @@
-package com.rees46.demo_android.ui.recyclerView.products.view
+package com.personaclick.demo_android.ui.recyclerView.products.view
 
 import android.content.Context
 import android.util.AttributeSet
-import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.view.ListRecyclerView
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 
 abstract class ProductsRecyclerView @JvmOverloads constructor(
     context: Context,

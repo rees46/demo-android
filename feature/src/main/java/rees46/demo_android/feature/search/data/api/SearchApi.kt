@@ -1,11 +1,11 @@
-package rees46.demo_android.feature.search.data.api
+package personaclick.demo_android.feature.search.data.api
 
 import com.personalization.SDK
 import com.personalization.api.responses.product.Product
 import com.personalization.api.responses.search.Category
-import rees46.demo_android.feature.productDetails.data.models.ProductDto
-import rees46.demo_android.feature.search.data.models.SearchDto
-import rees46.demo_android.feature.search.data.models.CategoryDto
+import personaclick.demo_android.feature.productDetails.data.models.ProductDto
+import personaclick.demo_android.feature.search.data.models.SearchDto
+import personaclick.demo_android.feature.search.data.models.CategoryDto
 import kotlin.random.Random
 
 class SearchApi(

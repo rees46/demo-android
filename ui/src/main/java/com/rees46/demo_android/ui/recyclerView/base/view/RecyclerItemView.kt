@@ -1,11 +1,11 @@
-package com.rees46.demo_android.ui.recyclerView.base.view
+package com.personaclick.demo_android.ui.recyclerView.base.view
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
 @SuppressLint("ViewConstructor")
 abstract class RecyclerItemView(

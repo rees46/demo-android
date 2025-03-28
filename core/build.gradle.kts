@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "rees46.demo_android.core"
+    namespace = "personaclick.demo_android.core"
 }
 
 dependencies {
@@ -19,5 +19,5 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
     implementation(libs.koin.compat)
-    implementation(libs.rees46.sdk)
+    implementation(libs.personaclick.sdk)
 }

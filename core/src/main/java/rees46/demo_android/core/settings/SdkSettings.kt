@@ -1,4 +1,4 @@
-package rees46.demo_android.core.settings
+package personaclick.demo_android.core.settings
 
 object SdkSettings {
     const val API_URL = "https://api.personaclick.com/"

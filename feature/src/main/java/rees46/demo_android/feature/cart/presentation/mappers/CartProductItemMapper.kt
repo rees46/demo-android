@@ -1,8 +1,8 @@
-package rees46.demo_android.feature.cart.presentation.mappers
+package personaclick.demo_android.feature.cart.presentation.mappers
 
-import rees46.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
-import rees46.demo_android.feature.cart.domain.models.CartProduct
-import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import personaclick.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
+import personaclick.demo_android.feature.cart.domain.models.CartProduct
+import personaclick.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class CartProductItemMapper(
     private val productItemMapper: ProductItemMapper

@@ -1,13 +1,13 @@
-package rees46.demo_android.feature.search.presentation.view.recyclerView
+package personaclick.demo_android.feature.search.presentation.view.recyclerView
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rees46.demo_android.ui.recyclerView.base.view.ListRecyclerView
-import com.rees46.demo_android.ui.recyclerView.base.adapter.ListItemAdapter
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
-import rees46.demo_android.feature.search.presentation.adapter.SearchProductAdapter
+import com.personaclick.demo_android.ui.recyclerView.base.view.ListRecyclerView
+import com.personaclick.demo_android.ui.recyclerView.base.adapter.ListItemAdapter
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import personaclick.demo_android.feature.search.presentation.adapter.SearchProductAdapter
 
 class SearchProductsRecyclerView @JvmOverloads constructor(
     private val context: Context,

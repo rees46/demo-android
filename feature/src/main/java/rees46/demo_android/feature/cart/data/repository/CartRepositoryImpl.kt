@@ -1,12 +1,12 @@
-package rees46.demo_android.feature.cart.data.repository
+package personaclick.demo_android.feature.cart.data.repository
 
 import kotlinx.coroutines.flow.StateFlow
-import rees46.demo_android.core.utils.SdkUtils
-import rees46.demo_android.feature.cart.data.api.CartApi
-import rees46.demo_android.feature.cart.data.models.Cart
-import rees46.demo_android.feature.cart.domain.repository.CartRepository
-import rees46.demo_android.feature.cart.domain.models.CartProduct
-import rees46.demo_android.feature.productDetails.domain.models.Product
+import personaclick.demo_android.core.utils.SdkUtils
+import personaclick.demo_android.feature.cart.data.api.CartApi
+import personaclick.demo_android.feature.cart.data.models.Cart
+import personaclick.demo_android.feature.cart.domain.repository.CartRepository
+import personaclick.demo_android.feature.cart.domain.models.CartProduct
+import personaclick.demo_android.feature.productDetails.domain.models.Product
 
 class CartRepositoryImpl(
     private val cartApi: CartApi,

@@ -1,6 +1,6 @@
-package com.rees46.demo_android.ui.recyclerView.base.listener
+package com.personaclick.demo_android.ui.recyclerView.base.listener
 
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
 interface OnItemClickListener {
 

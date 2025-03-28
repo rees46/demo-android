@@ -1,11 +1,11 @@
-package rees46.demo_android.feature.recommendationBlock.di
+package personaclick.demo_android.feature.recommendationBlock.di
 
 import org.koin.dsl.module
-import rees46.demo_android.feature.recommendationBlock.data.api.RecommendationApi
-import rees46.demo_android.feature.recommendationBlock.data.mappers.RecommendationMapper
-import rees46.demo_android.feature.recommendationBlock.data.repository.RecommendationRepositoryImpl
-import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
-import rees46.demo_android.feature.recommendationBlock.domain.usecase.GetRecommendationUseCase
+import personaclick.demo_android.feature.recommendationBlock.data.api.RecommendationApi
+import personaclick.demo_android.feature.recommendationBlock.data.mappers.RecommendationMapper
+import personaclick.demo_android.feature.recommendationBlock.data.repository.RecommendationRepositoryImpl
+import personaclick.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
+import personaclick.demo_android.feature.recommendationBlock.domain.usecase.GetRecommendationUseCase
 
 val recommendationBlockModule = module {
     single {

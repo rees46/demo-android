@@ -1,7 +1,7 @@
-package rees46.demo_android.feature.search.presentation.models
+package personaclick.demo_android.feature.search.presentation.models
 
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 
 data class SearchRecyclerViewItem(
     val productItems: List<ProductRecyclerViewItem>,

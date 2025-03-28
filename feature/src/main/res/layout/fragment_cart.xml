@@ -46,7 +46,7 @@
                 android:layout_marginHorizontal="@dimen/margin_default"
                 android:orientation="vertical">
 
-                <rees46.demo_android.feature.cart.presentation.view.recyclerView.CartProductsRecyclerView
+                <personaclick.demo_android.feature.cart.presentation.view.recyclerView.CartProductsRecyclerView
                     android:id="@+id/cart_products_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -115,14 +115,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/total_text">
 
-                    <rees46.demo_android.feature.cart.presentation.view.button.ContinueShoppingButton
+                    <personaclick.demo_android.feature.cart.presentation.view.button.ContinueShoppingButton
                         android:id="@+id/continue_shopping"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1" />
 
-                    <rees46.demo_android.feature.cart.presentation.view.button.CheckoutButton
+                    <personaclick.demo_android.feature.cart.presentation.view.button.CheckoutButton
                         android:id="@+id/checkout_button"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -131,7 +131,7 @@
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
+            <personaclick.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
                 android:id="@+id/recommendation_block"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

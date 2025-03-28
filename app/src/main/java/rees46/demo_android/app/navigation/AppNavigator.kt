@@ -1,16 +1,16 @@
-package rees46.demo_android.app.navigation
+package personaclick.demo_android.app.navigation
 
 import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.NavController.OnDestinationChangedListener
-import com.rees46.demo_android.navigation.Destination
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.ProductDetails
-import com.rees46.demo_android.navigation.ProductsDetails
-import rees46.demo_android.app.R
-import rees46.demo_android.core.settings.NavigationSettings
+import com.personaclick.demo_android.navigation.Destination
+import com.personaclick.demo_android.navigation.Navigator
+import com.personaclick.demo_android.navigation.ProductDetails
+import com.personaclick.demo_android.navigation.ProductsDetails
+import personaclick.demo_android.app.R
+import personaclick.demo_android.core.settings.NavigationSettings
 
 class AppNavigator(private val navController: NavController) : Navigator {
 

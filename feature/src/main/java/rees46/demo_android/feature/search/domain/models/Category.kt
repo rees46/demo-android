@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.search.domain.models
+package personaclick.demo_android.feature.search.domain.models
 
 data class Category(
     val id: String,

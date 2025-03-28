@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.productDetails.presentation.view
+package personaclick.demo_android.feature.productDetails.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +8,22 @@ import androidx.core.os.BundleCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.models.NavigationProduct
-import com.rees46.demo_android.ui.extensions.updateImage
+import com.personaclick.demo_android.navigation.Navigator
+import com.personaclick.demo_android.navigation.models.NavigationProduct
+import com.personaclick.demo_android.ui.extensions.updateImage
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.core.settings.NavigationSettings
-import rees46.demo_android.databinding.FragmentProductDetailsBinding
-import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
-import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.productDetails.presentation.ProductAction
-import rees46.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
-import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import personaclick.demo_android.core.settings.NavigationSettings
+import personaclick.demo_android.databinding.FragmentProductDetailsBinding
+import personaclick.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
+import personaclick.demo_android.feature.productDetails.domain.models.Product
+import personaclick.demo_android.feature.productDetails.presentation.ProductAction
+import personaclick.demo_android.feature.productDetails.presentation.viewmodel.ProductDetailsViewModel
+import personaclick.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductDetailsFragment : Fragment() {
 
@@ -129,6 +129,6 @@ class ProductDetailsFragment : Fragment() {
 
     private fun navigateProductsFragment(products: List<Product>) {
         val navigationProducts = navigationProductMapper.toNavigationProducts(products)
-        navigator.navigate(com.rees46.demo_android.navigation.ProductsDetails(navigationProducts))
+        navigator.navigate(com.personaclick.demo_android.navigation.ProductsDetails(navigationProducts))
     }
 }

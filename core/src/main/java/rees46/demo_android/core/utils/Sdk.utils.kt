@@ -1,10 +1,10 @@
-package rees46.demo_android.core.utils
+package personaclick.demo_android.core.utils
 
 import android.content.Context
 import com.personalization.SDK
 import com.personalization.api.OnApiCallbackListener
 import org.json.JSONObject
-import rees46.demo_android.core.settings.SdkSettings
+import personaclick.demo_android.core.settings.SdkSettings
 
 object SdkUtils {
 

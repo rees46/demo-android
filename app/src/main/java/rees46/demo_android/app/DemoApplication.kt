@@ -1,21 +1,21 @@
-package rees46.demo_android.app
+package personaclick.demo_android.app
 
 import android.app.Application
 import com.personalization.SDK
 import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-import rees46.demo_android.app.di.navigatorModule
-import rees46.demo_android.core.di.sdkModule
-import rees46.demo_android.core.utils.SdkUtils
-import rees46.demo_android.feature.cart.di.cartModule
-import rees46.demo_android.feature.category.di.categoryModule
-import rees46.demo_android.feature.home.di.homeModule
-import rees46.demo_android.feature.productDetails.di.productDetailsModule
-import rees46.demo_android.feature.products.di.productsModule
-import rees46.demo_android.feature.recommendationBlock.di.recommendationBlockModule
-import rees46.demo_android.feature.search.di.searchModule
-import rees46.demo_android.feature.settings.di.settingsModule
+import personaclick.demo_android.app.di.navigatorModule
+import personaclick.demo_android.core.di.sdkModule
+import personaclick.demo_android.core.utils.SdkUtils
+import personaclick.demo_android.feature.cart.di.cartModule
+import personaclick.demo_android.feature.category.di.categoryModule
+import personaclick.demo_android.feature.home.di.homeModule
+import personaclick.demo_android.feature.productDetails.di.productDetailsModule
+import personaclick.demo_android.feature.products.di.productsModule
+import personaclick.demo_android.feature.recommendationBlock.di.recommendationBlockModule
+import personaclick.demo_android.feature.search.di.searchModule
+import personaclick.demo_android.feature.settings.di.settingsModule
 
 class DemoApplication : Application() {
 

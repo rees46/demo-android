@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_name_text" />
 
-    <com.rees46.demo_android.ui.text.view.OldPriceText
+    <com.personaclick.demo_android.ui.text.view.OldPriceText
         android:id="@+id/old_price_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/old_price_text" />
 
-    <com.rees46.demo_android.ui.button.view.ProductShopButton
+    <com.personaclick.demo_android.ui.button.view.ProductShopButton
         android:id="@+id/shop_button"
         android:layout_width="62dp"
         android:layout_height="0dp"

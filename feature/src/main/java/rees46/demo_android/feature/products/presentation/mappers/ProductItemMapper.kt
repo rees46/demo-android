@@ -1,7 +1,7 @@
-package rees46.demo_android.feature.products.presentation.mappers
+package personaclick.demo_android.feature.products.presentation.mappers
 
-import rees46.demo_android.feature.productDetails.domain.models.Product
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import personaclick.demo_android.feature.productDetails.domain.models.Product
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 
 class ProductItemMapper {
 

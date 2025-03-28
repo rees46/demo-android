@@ -28,7 +28,7 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 navigationRuntimeKtx = "2.7.7"
-rees46Sdk = "2.0.44"
+personaclickSdk = "2.0.44"
 tripletPluginVersion = "3.11.0"
 
 [libraries]
@@ -62,7 +62,7 @@ androidx-navigation-fragment = { group = "androidx.navigation", name = "navigati
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-rees46-sdk = { module = "com.rees46:rees46-sdk", version.ref = "rees46Sdk" }
+personaclick-sdk = { module = "com.personaclick:personaclick-sdk", version.ref = "personaclickSdk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

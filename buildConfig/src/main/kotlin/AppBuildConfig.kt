@@ -214,7 +214,7 @@ class AppBuildConfig : Plugin<Project> {
         private const val RELEASE_KEY_ALIAS = "RELEASE_KEY_ALIAS"
 
         private const val ANDROID_APPLICATION_LIB = "com.android.application"
-        private const val APPLICATION_ID = "rees46.demo_android"
+        private const val APPLICATION_ID = "personaclick.demo_android"
         private const val ANDROID_LIB = "com.android.library"
         private const val JVM_TARGET = "20"
         private const val TARGET_SDK = 34

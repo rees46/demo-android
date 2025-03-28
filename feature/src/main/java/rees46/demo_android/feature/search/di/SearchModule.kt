@@ -1,15 +1,15 @@
-package rees46.demo_android.feature.search.di
+package personaclick.demo_android.feature.search.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import rees46.demo_android.feature.search.data.api.SearchApi
-import rees46.demo_android.feature.search.data.mappers.SearchMapper
-import rees46.demo_android.feature.search.data.repository.SearchRepositoryImpl
-import rees46.demo_android.feature.search.domain.repository.SearchRepository
-import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
-import rees46.demo_android.feature.search.domain.usecase.SearchProductsUseCase
-import rees46.demo_android.feature.search.domain.usecase.SearchRecommendedProductsUseCase
-import rees46.demo_android.feature.search.presentation.mappers.SearchItemMapper
+import personaclick.demo_android.feature.search.data.api.SearchApi
+import personaclick.demo_android.feature.search.data.mappers.SearchMapper
+import personaclick.demo_android.feature.search.data.repository.SearchRepositoryImpl
+import personaclick.demo_android.feature.search.domain.repository.SearchRepository
+import personaclick.demo_android.feature.search.presentation.viewmodel.SearchViewModel
+import personaclick.demo_android.feature.search.domain.usecase.SearchProductsUseCase
+import personaclick.demo_android.feature.search.domain.usecase.SearchRecommendedProductsUseCase
+import personaclick.demo_android.feature.search.presentation.mappers.SearchItemMapper
 
 val searchModule = module {
     viewModel {

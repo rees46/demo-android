@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.search.presentation.view
+package personaclick.demo_android.feature.search.presentation.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -10,23 +10,23 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.extensions.backPressedInvoke
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import com.personaclick.demo_android.ui.extensions.backPressedInvoke
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.R
-import rees46.demo_android.databinding.FragmentSearchBinding
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.ProductDetails
-import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
-import rees46.demo_android.feature.search.presentation.mappers.SearchItemMapper
-import rees46.demo_android.feature.search.presentation.viewmodel.SearchViewModel
+import personaclick.demo_android.R
+import personaclick.demo_android.databinding.FragmentSearchBinding
+import com.personaclick.demo_android.navigation.Navigator
+import com.personaclick.demo_android.navigation.ProductDetails
+import personaclick.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
+import personaclick.demo_android.feature.search.presentation.mappers.SearchItemMapper
+import personaclick.demo_android.feature.search.presentation.viewmodel.SearchViewModel
 
 class SearchFragment : Fragment(), OnItemClickListener {
 

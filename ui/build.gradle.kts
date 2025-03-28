@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.rees46.ui"
+    namespace = "com.personaclick.ui"
     viewBinding {
         enable = true
     }

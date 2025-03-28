@@ -55,7 +55,7 @@
         android:textSize="@dimen/text_size_product_details_description"
         android:layout_marginTop="@dimen/margin_medium_between_product_details" />
 
-    <rees46.demo_android.feature.productDetails.presentation.view.text.OldPriceText
+    <personaclick.demo_android.feature.productDetails.presentation.view.text.OldPriceText
         android:id="@+id/old_price_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             android:textStyle="bold"
             android:textColor="@color/text_color_primary" />
 
-        <rees46.demo_android.feature.productDetails.presentation.view.description.ProductDetailsSaleCardView
+        <personaclick.demo_android.feature.productDetails.presentation.view.description.ProductDetailsSaleCardView
             android:id="@+id/saleCardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

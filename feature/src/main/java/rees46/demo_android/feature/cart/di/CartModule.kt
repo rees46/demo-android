@@ -1,17 +1,16 @@
-package rees46.demo_android.feature.cart.di
+package personaclick.demo_android.feature.cart.di
 
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import rees46.demo_android.feature.cart.data.api.CartApi
-import rees46.demo_android.feature.cart.data.models.Cart
-import rees46.demo_android.feature.cart.data.repository.CartRepositoryImpl
-import rees46.demo_android.feature.cart.domain.repository.CartRepository
-import rees46.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
-import rees46.demo_android.feature.cart.domain.usecase.GetCartSumPriceUseCase
-import rees46.demo_android.feature.cart.domain.usecase.RemoveProductFromCartUseCase
-import rees46.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
-import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
-import kotlin.math.sin
+import personaclick.demo_android.feature.cart.data.api.CartApi
+import personaclick.demo_android.feature.cart.data.models.Cart
+import personaclick.demo_android.feature.cart.data.repository.CartRepositoryImpl
+import personaclick.demo_android.feature.cart.domain.repository.CartRepository
+import personaclick.demo_android.feature.cart.domain.usecase.GetCartProductsUseCase
+import personaclick.demo_android.feature.cart.domain.usecase.GetCartSumPriceUseCase
+import personaclick.demo_android.feature.cart.domain.usecase.RemoveProductFromCartUseCase
+import personaclick.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
+import personaclick.demo_android.feature.cart.presentation.viewmodel.CartViewModel
 
 val cartModule = module {
     viewModel {

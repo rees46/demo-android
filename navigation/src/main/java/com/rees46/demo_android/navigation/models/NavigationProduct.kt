@@ -1,4 +1,4 @@
-package com.rees46.demo_android.navigation.models
+package com.personaclick.demo_android.navigation.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

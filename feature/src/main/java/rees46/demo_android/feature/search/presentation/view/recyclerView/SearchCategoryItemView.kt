@@ -1,13 +1,13 @@
-package rees46.demo_android.feature.search.presentation.view.recyclerView
+package personaclick.demo_android.feature.search.presentation.view.recyclerView
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.view.RecyclerItemView
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import rees46.demo_android.databinding.ViewSearchCategoryItemBinding
-import rees46.demo_android.feature.search.presentation.models.CategoryRecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.view.RecyclerItemView
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import personaclick.demo_android.databinding.ViewSearchCategoryItemBinding
+import personaclick.demo_android.feature.search.presentation.models.CategoryRecyclerViewItem
 
 class SearchCategoryItemView @JvmOverloads constructor(
     context: Context,

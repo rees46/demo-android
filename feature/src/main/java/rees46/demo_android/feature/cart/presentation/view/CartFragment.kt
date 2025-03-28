@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.cart.presentation.view
+package personaclick.demo_android.feature.cart.presentation.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,25 +9,25 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import rees46.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import personaclick.demo_android.feature.cart.presentation.models.CartProductRecyclerViewItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.databinding.FragmentCartBinding
-import rees46.demo_android.feature.cart.presentation.viewmodel.CartViewModel
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.ProductDetails
-import com.rees46.demo_android.navigation.ProductsDetails
-import rees46.demo_android.feature.cart.domain.models.CartProduct
-import rees46.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
-import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
-import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import personaclick.demo_android.databinding.FragmentCartBinding
+import personaclick.demo_android.feature.cart.presentation.viewmodel.CartViewModel
+import com.personaclick.demo_android.navigation.Navigator
+import com.personaclick.demo_android.navigation.ProductDetails
+import com.personaclick.demo_android.navigation.ProductsDetails
+import personaclick.demo_android.feature.cart.domain.models.CartProduct
+import personaclick.demo_android.feature.cart.presentation.mappers.CartProductItemMapper
+import personaclick.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
+import personaclick.demo_android.feature.productDetails.domain.models.Product
+import personaclick.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class CartFragment : Fragment(), OnItemClickListener {
 

@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.products.presentation.view
+package personaclick.demo_android.feature.products.presentation.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,22 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.databinding.FragmentProductsBinding
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.ProductDetails
-import com.rees46.demo_android.navigation.models.NavigationProduct
-import rees46.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
-import rees46.demo_android.feature.productDetails.domain.models.Product
-import com.rees46.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
-import rees46.demo_android.core.settings.NavigationSettings
-import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
-import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import personaclick.demo_android.databinding.FragmentProductsBinding
+import com.personaclick.demo_android.navigation.Navigator
+import com.personaclick.demo_android.navigation.ProductDetails
+import com.personaclick.demo_android.navigation.models.NavigationProduct
+import personaclick.demo_android.feature.products.presentation.viewmodel.ProductsViewModel
+import personaclick.demo_android.feature.productDetails.domain.models.Product
+import com.personaclick.demo_android.ui.recyclerView.products.models.ProductRecyclerViewItem
+import personaclick.demo_android.core.settings.NavigationSettings
+import personaclick.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
+import personaclick.demo_android.feature.products.presentation.mappers.ProductItemMapper
 
 class ProductsFragment : Fragment(), OnItemClickListener {
 

@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <rees46.demo_android.feature.products.presentation.view.recyclerView.ScrollProductsRecyclerView
+            <personaclick.demo_android.feature.products.presentation.view.recyclerView.ScrollProductsRecyclerView
                 android:id="@+id/products_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

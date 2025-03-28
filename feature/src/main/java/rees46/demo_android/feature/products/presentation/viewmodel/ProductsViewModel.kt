@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.products.presentation.viewmodel
+package personaclick.demo_android.feature.products.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 

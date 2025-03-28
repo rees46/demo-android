@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.productDetails.data.models
+package personaclick.demo_android.feature.productDetails.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

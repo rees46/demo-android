@@ -29,7 +29,7 @@
         android:gravity="center"
         android:layout_marginTop="@dimen/margin_error_default_offset" />
 
-    <com.rees46.demo_android.ui.button.view.ErrorGoHomeButton
+    <com.personaclick.demo_android.ui.button.view.ErrorGoHomeButton
         android:id="@+id/go_home_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"

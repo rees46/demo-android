@@ -1,8 +1,8 @@
-package com.rees46.demo_android.ui.recyclerView.base.view
+package com.personaclick.demo_android.ui.recyclerView.base.view
 
 import androidx.recyclerview.widget.RecyclerView
-import com.rees46.demo_android.ui.recyclerView.base.listener.OnItemClickListener
-import com.rees46.demo_android.ui.recyclerView.base.models.RecyclerViewItem
+import com.personaclick.demo_android.ui.recyclerView.base.listener.OnItemClickListener
+import com.personaclick.demo_android.ui.recyclerView.base.models.RecyclerViewItem
 
 class RecyclerItemViewHolder(
     private val view: RecyclerItemView,

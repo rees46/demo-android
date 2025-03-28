@@ -1,10 +1,10 @@
-package rees46.demo_android.feature.recommendationBlock.data.repository
+package personaclick.demo_android.feature.recommendationBlock.data.repository
 
 import com.personalization.Params
-import rees46.demo_android.feature.recommendationBlock.data.api.RecommendationApi
-import rees46.demo_android.feature.recommendationBlock.data.mappers.RecommendationMapper
-import rees46.demo_android.feature.recommendationBlock.domain.models.Recommendation
-import rees46.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
+import personaclick.demo_android.feature.recommendationBlock.data.api.RecommendationApi
+import personaclick.demo_android.feature.recommendationBlock.data.mappers.RecommendationMapper
+import personaclick.demo_android.feature.recommendationBlock.domain.models.Recommendation
+import personaclick.demo_android.feature.recommendationBlock.domain.repository.RecommendationRepository
 
 class RecommendationRepositoryImpl (
     private val recommendationApi: RecommendationApi,

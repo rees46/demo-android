@@ -1,4 +1,4 @@
-package rees46.demo_android.feature.home.presentation.view
+package personaclick.demo_android.feature.home.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,22 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.personalization.SDK
-import com.rees46.demo_android.navigation.Navigator
-import com.rees46.demo_android.navigation.ProductDetails
-import com.rees46.demo_android.navigation.ProductsDetails
+import com.personaclick.demo_android.navigation.Navigator
+import com.personaclick.demo_android.navigation.ProductDetails
+import com.personaclick.demo_android.navigation.ProductsDetails
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import rees46.demo_android.R
-import rees46.demo_android.databinding.FragmentHomeBinding
-import rees46.demo_android.feature.home.presentation.viewmodel.HomeViewModel
-import rees46.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
-import rees46.demo_android.feature.productDetails.domain.models.Product
-import rees46.demo_android.feature.products.presentation.mappers.ProductItemMapper
-import rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
+import personaclick.demo_android.R
+import personaclick.demo_android.databinding.FragmentHomeBinding
+import personaclick.demo_android.feature.home.presentation.viewmodel.HomeViewModel
+import personaclick.demo_android.feature.productDetails.domain.mappers.NavigationProductMapper
+import personaclick.demo_android.feature.productDetails.domain.models.Product
+import personaclick.demo_android.feature.products.presentation.mappers.ProductItemMapper
+import personaclick.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
 
 class HomeFragment : Fragment() {
 
