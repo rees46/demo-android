@@ -54,6 +54,6 @@ class DemoApplication : Application() {
     }
 
     companion object {
-        private const val SHOP_ID = "357382bf66ac0ce2f1722677c59511"
+        private const val SHOP_ID = "42a4cd11ebab3b0454778d18d4f3d5"
     }
 }
