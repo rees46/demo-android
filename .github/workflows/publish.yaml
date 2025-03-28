@@ -8,10 +8,10 @@ on:
 
 jobs:
   publish_and_version_bump:
-    uses: rees46/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
+    uses: personaclick/workflow/.github/workflows/reusable-android-google-play-publish.yaml@master
     with:
       githubAppId: ${{ vars.PUBLIVERSIONER_ID }}
-      packageName: "rees46.demo_shop"
+      packageName: "personaclick.demo_shop"
       aabReleasePath: "app/build/outputs/bundle/prodRelease/app-prod-release.aab"
       propertiesFilePath: "version.properties"
     secrets:
