@@ -17,7 +17,7 @@ class ProductMapper {
                     priceFull = priceFull,
                     priceFullFormatted = priceFullFormatted,
                     pictureUrl = pictureUrl,
-                    description = description,
+                    description = description?:"",
                     rating = rating,
                     sale = sale
                 )
