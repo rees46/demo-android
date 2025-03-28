@@ -32,7 +32,7 @@
                 android:id="@+id/story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:code="fcaa8d3168ab7d7346e4b4f1a1c92214"
+                app:code="09d291f54de95e9e5bde43b343b0b0d7"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <rees46.demo_android.feature.recommendationBlock.presentation.view.RecommendationBlockView
