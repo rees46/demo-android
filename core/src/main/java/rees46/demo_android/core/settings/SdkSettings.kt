@@ -1,7 +1,7 @@
 package rees46.demo_android.core.settings
 
 object SdkSettings {
-    const val API_URL = "https://api.rees46.ru/"
+    const val API_URL = "https://api.personaclick.com/"
     const val PREFERENCES_KEY = "demo android"
     const val TAG = "DEMO TAG"
     const val STREAM = "android"
