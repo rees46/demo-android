@@ -32,3 +32,5 @@ play-account.json
 
 # Android Profiling
 *.hprof
+
+.local/
