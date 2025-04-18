@@ -23,8 +23,6 @@ dependencyResolutionManagement {
 rootProject.name = "demo-android"
 
 include(":feature")
-include(":data")
-include(":domain")
 include(":core")
 include(":app")
 include(":ui")
