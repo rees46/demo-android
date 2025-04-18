@@ -11,7 +11,7 @@ data class ProductRecyclerViewItem(
     val priceFull: Double?,
     val priceFullFormatted: String?,
     val pictureUrl: String,
-    val description: String,
+    val description: String?,
     val rating: Float,
     val sale: Int
 ) : RecyclerViewItem() {
