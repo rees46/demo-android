@@ -21,21 +21,14 @@ jobs:
       - uses: rees46/workflow/.github/actions/sync/read-replacements@feat/read-replacements-action
         id: getReplacementsStep
 
-      - name: debug replacements
-        run: echo ${{ steps.getReplacementsStep.outputs.replacements }}
-
   repoSync:
-    runs-on: ubuntu-latest
-    steps:
-      - name: debug replacements
-        run: echo ${{ needs.prepare.outputs.replacements }}
-    # needs: prepare
-    # uses: rees46/workflow/.github/workflows/reusable-repo-sync.yml@master
-    # secrets:
-    #   appSecret: ${{ secrets.PERSONACLICK_COURIER_SECRET }}
-    # with:
-    #   appId: ${{ vars.PERSONACLICK_COURIER_ID }}
-    #   replacements: ${{ needs.prepare.outputs.replacements }}
-    #   targetRepository: personaclick/demo-android
-    #   repositoryOwner: personaclick
-    #   reviewerUsername: iwwwanow
+    needs: prepare
+    uses: rees46/workflow/.github/workflows/reusable-repo-sync.yml@master
+    secrets:
+      appSecret: ${{ secrets.PERSONACLICK_COURIER_SECRET }}
+    with:
+      appId: ${{ vars.PERSONACLICK_COURIER_ID }}
+      replacements: ${{ needs.prepare.outputs.replacements }}
+      targetRepository: personaclick/demo-android
+      repositoryOwner: personaclick
+      reviewerUsername: iwwwanow
