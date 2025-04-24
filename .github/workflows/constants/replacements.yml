@@ -1,5 +1,6 @@
 deletions:
   - .github/workflows/repo-sync.yaml
+  - .github/workflows/constants/replacements.yml
 ignore:
   - version.properties
   - app/src/main/res/drawable/ic_app.xml
