@@ -19,3 +19,6 @@ jobs:
       appSecret: ${{ secrets.PUBLIVERSIONER_SECRET }}
       googleServicesFileAsBase64: ${{ secrets.GOOGLE_SERVICES_FILE_AS_BASE64 }}
       googlePlaySigningKeyFileAsBase64: ${{ secrets.GOOGLE_PLAY_SIGNING_KEY_FILE_AS_BASE64 }}
+      releaseStorePassword: ${{ secrets.RELEASE_STORE_PASSWORD }}
+      releaseKeyAlias: ${{ secrets.RELEASE_KEY_ALIAS }}
+      releaseKeyPassword: ${{ secrets.RELEASE_KEY_PASSWORD }}
