@@ -1,3 +1,5 @@
+<!-- TODO rm -->
+
 # REES46 Demo Android
 
 ## Description
@@ -7,6 +9,7 @@ REES46 Demo Android - application to demonstrate working with SDK.
 ## Configure
 
 Versions:
+
 - REES46 SDK 2.0.20
 - Java 20
 - Kotlin 2.0.0
