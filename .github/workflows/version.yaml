@@ -1,15 +1,17 @@
 name: Bump version
 
 on:
-  pull_request:
+  # pull_request:
   #   types:
   #     - closed
-  #   branches:
-  #     - master
-  #   paths-ignore:
-  #     - ".github/**"
-  #     - "version.properties"
-  # workflow_dispatch:
+  push:
+    branches:
+      # - master
+      - debug
+    paths-ignore:
+      - ".github/**"
+      - "version.properties"
+  workflow_dispatch:
 
 jobs:
   bump-version:
