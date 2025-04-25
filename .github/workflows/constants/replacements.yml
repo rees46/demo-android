@@ -28,6 +28,8 @@ replacements:
     to: https://api.personaclick.com/
   - from: com.rees46:rees46-sdk
     to: com.personaclick:personaclick-sdk
+  - from: api.rees46.ru
+    to: api.personaclick.com
   - from: api.rees46.com
     to: api.personaclick.com
   - from: rees46.com
