@@ -11,9 +11,7 @@ on:
 jobs:
   build_release_apk:
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/'))
-    # TODO uncomment
-    # uses: rees46/workflow/.github/workflows/reusable-android-release-apk.yaml@master
-    uses: rees46/workflow/.github/workflows/reusable-android-release-apk.yaml@refactor/google-play-publish
+    uses: rees46/workflow/.github/workflows/reusable-android-release-apk.yaml@master
     with:
       appId: ${{ vars.PUBLIVERSIONER_ID }}
     secrets:

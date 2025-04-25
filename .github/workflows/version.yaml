@@ -1,13 +1,9 @@
 name: Bump version
 
 on:
-  # pull_request:
-  #   types:
-  #     - closed
   push:
     branches:
-      # - master
-      - debug
+      - master
     paths-ignore:
       - ".github/**"
       - "version.properties"
@@ -15,10 +11,8 @@ on:
 
 jobs:
   bump-version:
-    # TODO uncomment
-    # if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true && !startsWith(github.event.pull_request.head.ref, 'release/'))
-    # uses: rees46/workflow/.github/workflows/reusable-multiplatform-version-bump.yaml@master
-    uses: rees46/workflow/.github/workflows/reusable-multiplatform-version-bump.yaml@refactor/google-play-publish
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true && !startsWith(github.event.pull_request.head.ref, 'release/'))
+    uses: rees46/workflow/.github/workflows/reusable-multiplatform-version-bump.yaml@master
     permissions: write-all
     secrets:
       appSecret: ${{ secrets.PUBLIVERSIONER_SECRET }}
