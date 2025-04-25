@@ -1,5 +1,3 @@
-<!-- TODO rm -->
-
 # REES46 Demo Android
 
 ## Description
