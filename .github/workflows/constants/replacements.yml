@@ -6,6 +6,8 @@ ignore:
   - app/src/main/res/drawable/ic_app.xml
   - app/src/main/res/drawable/ic_logo.xml
 replacements:
+  - from: "publish.yaml.bak"
+    to: "publish.yaml"
   - from: "PUBLIVERSIONER_SECRET"
     to: "PERSONACLICK_COURIER_SECRET"
   - from: "PUBLIVERSIONER_ID"
@@ -28,6 +30,8 @@ replacements:
     to: https://api.personaclick.com/
   - from: com.rees46:rees46-sdk
     to: com.personaclick:personaclick-sdk
+  - from: api.rees46.ru
+    to: api.personaclick.com
   - from: api.rees46.com
     to: api.personaclick.com
   - from: rees46.com
