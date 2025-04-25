@@ -6,6 +6,8 @@ ignore:
   - app/src/main/res/drawable/ic_app.xml
   - app/src/main/res/drawable/ic_logo.xml
 replacements:
+  - from: "publish.yaml.bak"
+    to: "publish.yaml"
   - from: "PUBLIVERSIONER_SECRET"
     to: "PERSONACLICK_COURIER_SECRET"
   - from: "PUBLIVERSIONER_ID"
