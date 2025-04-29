@@ -6,6 +6,10 @@ ignore:
   - app/src/main/res/drawable/ic_app.xml
   - app/src/main/res/drawable/ic_logo.xml
 replacements:
+  - from: "rees46.demo_shop"
+    to: "personaClick.demo_shop"
+  - from: "TODO publish workflow commit hash"
+    to: "TODO publish workflow commit hash"
   - from: "publish.yaml.bak"
     to: "publish.yaml"
   - from: "PUBLIVERSIONER_SECRET"
