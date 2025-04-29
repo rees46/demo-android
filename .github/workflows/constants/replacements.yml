@@ -6,6 +6,10 @@ ignore:
   - app/src/main/res/drawable/ic_app.xml
   - app/src/main/res/drawable/ic_logo.xml
 replacements:
+  - from: "rees46.demo_shop"
+    to: "personaClick.demo_shop"
+  - from: "1cfee7e2e762eed3a3d7d67c413aa0bae7f5ffae"
+    to: "7907f21814b2f998ffd80451754ce026e3553265"
   - from: "publish.yaml.bak"
     to: "publish.yaml"
   - from: "PUBLIVERSIONER_SECRET"
