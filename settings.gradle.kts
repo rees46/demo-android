@@ -27,3 +27,4 @@ include(":core")
 include(":app")
 include(":ui")
 include(":navigation")
+
