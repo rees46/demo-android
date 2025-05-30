@@ -5,6 +5,10 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       [
+        "@semantic-release/github",
+        { "successComment": false, "releasedLabels": false },
+      ],
+      [
         "@semantic-release/git",
         {
           "assets": ["version.properties"],
